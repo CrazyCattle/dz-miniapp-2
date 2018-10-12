@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "校招推荐",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "tip": "/components/tips/tip",
+    "loading": "/components/loading/loading"
+  }
+}

@@ -1,0 +1,267 @@
+.page {
+  padding-bottom: 40rpx;
+}
+.page-head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+}
+.page-1,
+.page-2,
+.page-3 {
+  padding-top: 162rpx;
+}
+.search-box {
+  padding: 14rpx 16rpx;
+}
+.search-box .search-input {
+  width: 100%;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #848ca1;
+  letter-spacing: 0.26rpx;
+  border-radius: 2px;
+  position: relative;
+}
+.search-box .search-input .ipt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  /* opacity: 0; */
+  z-index: 1;
+}
+
+.search-box .search {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+.page-tab {
+  display: flex;
+}
+.page-tab .tab-item {
+  flex: 1;
+  box-sizing: border-box;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  color: #313148;
+  border-bottom: 1rpx solid #e6e9f3;
+}
+.page-tab .tab-item.active {
+  color: #618FEB;
+  border-bottom: 4rpx solid #618FEB;
+}
+/* page 2 */
+.fliter-box {
+  padding-top: 20rpx; 
+}
+.fliter-box:not(:first-child) {
+  margin-top: 20rpx;
+}
+.fliter-box .title {
+  display: inline-block;
+  margin-bottom: 10rpx;
+  color: #313148;
+  letter-spacing: 0;
+  font-family: 'PingFangSC-Semibold';
+  font-weight: bold;
+  font-size: 26rpx;
+  position: relative;
+}
+
+.fliter-box .title::before, .fliter-box .title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30rpx;
+  height: 2rpx;
+  background-color: #e6e9f3;
+}
+
+.fliter-box .title::before {
+  left: -40rpx;
+}
+
+.fliter-box .title::after {
+  right: -40rpx;
+}
+
+.fliter-box .tit {
+  font-size: 24rpx;
+  color: #848ca1;
+}
+
+.fliter-tab {
+  display: flex;
+  padding: 40rpx;
+  flex-wrap: wrap;
+}
+.fliter-tab .item {
+  width: 200rpx;
+  height: 56rpx;
+  margin: 40rpx 34rpx 0 0;
+  line-height: 56rpx;
+  font-size: 24rpx;
+  color: #313148;
+  border-radius: 28rpx;
+  background: #f3f4f8;
+}
+.fliter-tab .item:nth-child(3n) {
+  margin-right: 0;
+}
+.fliter-tab .item:nth-child(1),
+.fliter-tab .item:nth-child(2),
+.fliter-tab .item:nth-child(3) {
+  margin-top: 0;
+}
+
+/* page 2 */
+.scroll-box {
+  height: 386rpx;
+}
+.scroll-swiper {
+  height: 240rpx;
+}
+.scroll-title {
+  display: flex;
+  padding: 40rpx 32rpx 30rpx 40rpx;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'PingFangSC-Medium';
+  font-weight: bold;
+  font-size: 26rpx;
+  color: #313148;
+}
+.scroll-box .slide-image {
+  width: 100%;
+  height: 100%;
+}
+.scroll-box swiper-item {
+  box-sizing: border-box;
+  padding-right: 20rpx;
+}
+.scroll-box swiper-item:last-child {
+  padding-right: 0;
+}
+.more {
+  display: flex;
+  height: 92rpx;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color:#618FEB;
+  letter-spacing: 0;
+}
+.c-more {
+  font-size: 22rpx;
+  color: #b7bcce;
+  font-weight: normal;
+}
+.c-more .arrow-icon {
+  border-left-color: #b7bcce;
+}
+.arrow-icon {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5rpx;
+  position: relative;
+  border: 10rpx solid transparent;
+  border-left-color: #618FEB;
+}
+.arrow-icon .inner {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -9rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 8rpx solid transparent;
+  border-left-color: #fff;
+}
+
+/* 发现好课 */
+.r-list-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  /* border-bottom: 1rpx solid #eaecf3; */
+}
+.r-list-item:last-child {
+  border-bottom: none;
+  position: relative;
+}
+.r-list-item::after {
+  content: '';
+  position: absolute;
+  width: 670rpx;
+  height: 0;
+  bottom: 0;
+  left: 40rpx;
+  border-bottom: 1rpx solid #eaecf3; 
+}
+.r-list-item .cont {
+  flex: 1;
+  height: 160rpx;
+  padding: 30rpx 0 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.r-list-item .pic {
+  width: 220rpx;
+  height: 160rpx;
+  margin: 0 40rpx 0 30rpx;
+  border-radius: 1rpx;
+}
+.r-list-item .cont .job {
+  width: 420rpx;
+  padding-left: 40rpx;
+  font-family: 'PingFangSC-Semibold';
+  font-weight: bold;
+  font-size: 30rpx;
+  color:#313148;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.r-list-item .cont .company {
+  width: 420rpx;
+  padding-left: 40rpx;
+  font-size: 24rpx;
+  color: #848ca1;
+  letter-spacing: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+.r-list-item .cont .company .img {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 16rpx;
+  border-radius: 50%;
+}
+.r-list-item .cont .s-desc {
+  display: flex;
+  width: 300rpx;
+  padding-left: 40rpx;
+  justify-content: space-between;
+}
+.r-list-item .cont .infor {
+  font-size: 24rpx;
+  color: #848ca1;
+}
+
+/* page 3 */

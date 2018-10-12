@@ -1,0 +1,91 @@
+/**app.wxss**/
+html,body,page {
+  width: 100%;
+  height: 100%;
+  font-family: PingFangSC-Regular;
+  background-color: #f3f4f8;
+}
+.hidden {
+  height: 100%;
+  padding-bottom: 0 !important;
+  overflow: hidden;
+}
+.none {
+  display: none;
+}
+.bg {
+  background-color: #f3f4f8;
+}
+.bg-f {
+  background-color: #fff;
+}
+
+.mt20 {
+  margin-top: 20rpx;
+}
+.mt30 {
+  margin-top: 30rpx;
+}
+.mt40 {
+  margin-top: 40rpx;
+}
+.mt60 {
+  margin-top: 60rpx;
+}
+.mt100 {
+  margin-top: 100rpx;
+}
+.mb20 {
+  margin-bottom: 20rpx;
+}
+.ml20 {
+  margin-left: 20rpx;
+}
+.mr20 {
+  margin-right: 20rpx;
+}
+.pt20 {
+  padding-top: 20rpx;
+}
+.pb20 {
+  padding-bottom: 20rpx;
+}
+.pl20 {
+  padding-left: 20rpx;
+}
+.pr20 {
+  padding-right: 20rpx;
+}
+.lh-normal { line-height: 100%; }
+.tc { text-align: center; }
+.tl { text-align: left; }
+.tr { text-align: right; }
+
+
+.baseBtn {
+  width: 540rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  border-radius: 34rpx;
+  font-family: 'PingFangSC-Medium';
+  font-size: 26rpx;
+  color:#fff;
+  background-color:#618FEB;
+  border: 0;
+}
+button::after,
+button::before {
+  border: none;
+}
+
+.placeholder {
+  font-size: 26rpx;
+  color:#848ca1;
+  font-family: 'PingFangSC-Regular';
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

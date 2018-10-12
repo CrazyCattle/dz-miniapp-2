@@ -1,0 +1,49 @@
+<view class="page-login">
+  <form bindsubmit="formSubmit">
+    <view class="container mt20" wx:if="{{ step == '1' }}">
+      <view class="form-box bg-f">
+        <view class="row">
+          <view class="row-tit">电话：</view>
+          <view class="rot-ipt">
+            <input class="input" confirm-type="done" bindblur="iptPhone" bindinput="iptPhone" type="number" placeholder='请输入手机号'></input>
+          </view>
+        </view>
+        <view class="row">
+          <view class="row-tit">验证码：</view>
+          <view class="rot-ipt">
+            <input class="input getCode-ipt" bindblur="iptCode" bindinput="iptCode" confirm-type="done" type="number" placeholder='请输入短信验证码'></input>
+            <button wx:if="{{ canGetCode }}" class="getCode" type="default" size="mini" bindtap="getCode">获取验证码</button>
+            <button wx:else class="getCode" type="default" size="mini" disabled>{{ timeLimit }}</button>
+          </view>
+        </view>
+      </view>
+      <button bindtap="nextToPwd" class="baseBtn mt100">下一步</button>
+    </view>
+
+    <view class="container mt20" wx:if="{{ step == '2' }}">
+      <view class="form-box bg-f">
+        <view class="row">
+          <view class="row-tit">新密码：</view>
+          <view class="rot-ipt">
+            <input class="input" password confirm-type="done" bindblur="iptNewPwd" bindinput="iptNewPwd" type="text" placeholder='请输入新密码'></input>
+          </view>
+        </view>
+        <view class="row">
+          <view class="row-tit">确认密码：</view>
+          <view class="rot-ipt">
+            <input class="input" password confirm-type="done" bindblur="iptRepeatPwd" bindinput="iptRepeatPwd" type="text" placeholder='请再次输入新密码'></input>
+          </view>
+        </view>
+      </view>
+      <button bindtap="nextToIndex" class="baseBtn mt100">下一步</button>
+    </view>
+
+    <view class="repwd-success container bg-f" wx:if="{{ step == '3' }}">
+      <view class="form-box">
+        <image class="success-icon" src="../../images/success.png"></image>
+        <view class="success-tip">重置密码成功！</view>
+      </view>
+      <button bindtap="gotoIndex" class="baseBtn mt100">回首页</button>
+    </view>
+  </form>
+</view>

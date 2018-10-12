@@ -1,0 +1,82 @@
+<view class="page-login">
+  <form bindsubmit="formSubmit">
+    <view class="form-box bg-f">
+
+      <view class="row">
+        <view class="row-tit">目标行业：</view>
+        <view class="rot-ipt">
+          <picker class="picker" mode="selector" range="{{industry}}" value="{{industryIndex}}" bindchange="listenerIndustry">
+            <view class="inner-picker">{{ industry[industryIndex] }}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="row">
+        <view class="row-tit">职位类别：</view>
+        <view class="rot-ipt">
+          <picker class="picker" mode="selector" range="{{job}}" value="{{jobIndex}}" bindchange="listenerJob">
+            <view class="inner-picker">{{ job[jobIndex] }}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="row">
+        <view class="row-tit">地点：</view>
+        <view class="rot-ipt">
+          <picker class="picker" mode="selector" range="{{address}}" value="{{addressIndex}}" bindchange="listenerAddress">
+            <view class="inner-picker">{{ address[addressIndex] }}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="row">
+        <view class="row-tit">薪资：</view>
+        <view class="rot-ipt">
+          <picker class="picker" bindchange="listenerSalary" mode="selector" range="{{salary}}"  value="{{ salaryIndex }}">
+            <view class="inner-picker">{{ salary[salaryIndex] }}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="row">
+        <view class="row-tit">公司规模：</view>
+        <view class="rot-ipt">
+          <picker class="picker" bindchange="listenerSize" mode="selector" range="{{ size }}"  value="{{ sizeIndex }}">
+            <view class="inner-picker">{{ size[sizeIndex] }}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="row">
+        <view class="row-tit">公司性质：</view>
+        <view class="rot-ipt">
+          <picker class="picker" mode="selector" range="{{ nature }}" value="{{ natureIndex }}" bindchange="listenerNature">
+            <view class="inner-picker">{{ nature[natureIndex] }}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <button formType="submit" placeholder-class="placeholder" class="baseBtn mt60">保存</button>
+    <view class="delete-box tc">
+      <text class="delete">删除此条</text>
+    </view>
+  </form>
+</view>

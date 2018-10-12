@@ -1,0 +1,47 @@
+<view class="page-login">
+  <form bindsubmit="formSubmit">
+    <view class="form-box bg-f mt20">
+      <view class="row">
+        <view class="row-tit">姓名：</view>
+        <view class="rot-ipt">
+          <input type="text" placeholder-class="placeholder" class="input" placeholder='请输入姓名' value="{{ user_name }}" bindinput="iptName"></input>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">性别：</view>
+        <view class="rot-ipt">
+          <picker class="picker" mode="selector" range="{{ sex }}" value="{{ index }}" bindchange="listenerPickerSelected">
+            <view class="inner-picker">{{ sex[index] }}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">生日：</view>
+        <view class="rot-ipt">
+          <picker class="picker" bindchange="listenerDatePickerSelected" mode="date" fields="month" start="1970-01" end="{{ endTime }}" value="{{ user_birthday }}">
+            <view class="inner-picker">{{ user_birthday }}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">联系电话：</view>
+        <view class="rot-ipt">
+          <input class="input" type="number" placeholder-class="placeholder" placeholder='填写联系电话' value="{{ user_phone }}" bindinput="iptPhone"></input>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">联系邮箱：</view>
+        <view class="rot-ipt">
+          <input class="input" type="text" placeholder-class="placeholder" placeholder='填写联系邮箱' value="{{ user_email }}" bindinput="iptEmail"></input>
+        </view>
+      </view>
+    </view>
+    <button bindtap="saveUserInfo" placeholder-class="placeholder" class="baseBtn mt60">保存</button>
+  </form>
+</view>

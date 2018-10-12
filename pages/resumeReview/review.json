@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "待面试",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "tip": "/components/tips/tip"
+  }
+}

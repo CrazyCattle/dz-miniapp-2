@@ -1,0 +1,4 @@
+<view class="tips" style="{{height?'height:100%':''}}">
+  <image class="tip-icon" src="../../images/tips.png"></image>
+  <view class="tip">{{ tips }}</view>
+</view>

@@ -1,0 +1,79 @@
+.recommend {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.r-list-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #eaecf3;
+  position: relative;
+}
+.r-list-item:last-child {
+  border-bottom: none;
+  position: relative;
+}
+.r-list-item:last-child::after {
+  content: '';
+  position: absolute;
+  width: 670rpx;
+  height: 0;
+  bottom: 0;
+  left: 40rpx;
+  border-bottom: 1rpx solid #eaecf3;
+}
+.r-list-item .cont {
+  flex: 1;
+  height: 160rpx;
+  padding: 30rpx 0 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.r-list-item .pic {
+  width: 220rpx;
+  height: 160rpx;
+  margin: 0 40rpx 0 30rpx;
+  border-radius: 1rpx;
+}
+.r-list-item .cont .job {
+  width: 420rpx;
+  padding-left: 40rpx;
+  font-family: 'PingFangSC-Semibold';
+  font-weight: bold;
+  font-size: 30rpx;
+  color:#313148;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.r-list-item .cont .company {
+  width: 420rpx;
+  padding-left: 40rpx;
+  font-size: 24rpx;
+  color: #848ca1;
+  letter-spacing: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+.r-list-item .cont .company .img {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 16rpx;
+  border-radius: 50%;
+}
+.r-list-item .cont .s-desc {
+  display: flex;
+  width: 300rpx;
+  padding-left: 40rpx;
+  justify-content: space-between;
+}
+.r-list-item .cont .infor {
+  font-size: 24rpx;
+  color: #848ca1;
+}

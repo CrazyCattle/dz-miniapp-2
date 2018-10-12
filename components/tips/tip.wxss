@@ -1,0 +1,14 @@
+.tips {
+  padding-top: 200rpx;
+}
+.tips .tip-icon {
+  display: block;
+  width: 202rpx;
+  height: 202rpx;
+  margin: 0 auto 28rpx;
+}
+.tips .tip {
+  font-size: 28rpx;
+  color: #9da3b4;
+  text-align: center;
+}

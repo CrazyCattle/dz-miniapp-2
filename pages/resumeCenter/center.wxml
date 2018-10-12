@@ -1,0 +1,163 @@
+<view class="resume-center">
+  <view class="center-tab bg-f">
+    <view class="center-tab-item {{page=='1'?'active':''}}" data-page="1" bindtap="tabPage">在线简历</view>
+    <view class="center-tab-item {{page=='2'?'active':''}}" data-page="2" bindtap="tabPage">
+      投递箱<!-- <view class="notice tc ml20">15</view> -->
+    </view>
+    <view class="center-tab-item {{page=='3'?'active':''}}" data-page="3" bindtap="tabPage">邀请函</view>
+    <view class="center-tab-item {{page=='4'?'active':''}}" data-page="4" bindtap="tabPage">收藏夹</view>
+  </view>
+  <view class="resume-list" wx:if="{{page == '1' && noResumeList}}">
+    <view class="list-content">
+      <view class="resume-tips">
+        <image class="tip-icon" src="../../images/noresume.png"></image>
+        <view class="tip">还没有写简历，快去写一封吧~</view>
+        <view class="tipfooter">电脑登陆<text>{{ website }}</text>写简历</view>
+      </view>
+    </view>
+  </view>
+  <view class="resume-list" wx:if="{{ page == '1' && resumeList.length > 0 }}">
+    <scroll-view scroll-y style="height: 100%;">
+      <view class="resume-item active bg-f" bindtap='linkResume' data-id="{{item.resumes_id}}" wx:for="{{ resumeList }}" wx:key="key">
+        <view class="item-lf">
+          <view class="title ellipsis">{{ item.title }}</view>
+          <view class="desc">{{item.city}} | {{ item.expectwork }}</view>
+        </view>
+        <view class="item-rt">
+          <text class="editBtn" catchtap='editResumeBasicInfor' data-id="{{ item.resumes_id }}" data-lan="{{ item.language }}">编辑</text>
+          <text class="editBtn" catchtap="delResume" data-id="{{ item.resumes_id }}">删除</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- <tip content="暂无信息" wx:if="{{ page == '2'}}"></tip> -->
+  <view class="fliter-tab bg-f tc" wx:if="{{ page == '2' && curShow}}">
+    <view class="item {{tabActive==0?'active':''}}" bindtap="changeTab" data-tab="0">全部</view>
+    <view class="item {{tabActive==1?'active':''}}" bindtap="changeTab" data-tab="1">投递成功</view>
+    <view class="item {{tabActive==2?'active':''}}" bindtap="changeTab" data-tab="2">被查看</view>
+    <view class="item {{tabActive==3?'active':''}}" bindtap="changeTab" data-tab="3">通过筛选</view>
+    <view class="item {{tabActive==4?'active':''}}" bindtap="changeTab" data-tab="4">面试邀请</view>
+    <view class="item {{tabActive==5?'active':''}}" bindtap="changeTab" data-tab="5">面试结果</view>
+  </view> 
+  <view class="invi-list send-list" wx:if="{{ page == '2' && curShow}}">
+    <tip content="暂无信息" wx:if="{{ !hasMoreInfor1 }}"></tip>
+    <scroll-view scroll-y style="height: 100%;" wx:if="{{ mydropinbox.length > 0 }}" bindscrolltolower="lower1">
+      <view class="invi-item bg-f" wx:for="{{ mydropinbox }}" bindtap='linkToDetail' data-index="{{ index }}" wx:for-item="item" wx:key wx:for-index="index">
+        <view class="main">
+          <view class="row">
+            <view class="job">{{ item.position_name }}</view>
+            <view class="time">{{ item.apply_updatetime }}</view>
+          </view>
+          <view class="row">
+            <view class="company">{{ item.company_name }}</view>
+            <!-- <view class="status" data-ids="{{ index }}" bindtap='showStatus'> -->
+            <view class="status">
+              <!-- <view class="tips {{ ids== index ?'active':'' }}"> -->
+              <view class="tips active">
+                <block wx:if="{{ item.apply_passstate == '-1'}}">【不合适】</block>
+                <block wx:if="{{ item.apply_passstate == '0'}}">【待处理】</block>
+                <block wx:if="{{ item.apply_passstate == '1'}}">【待定】</block>
+                <block wx:if="{{ item.apply_passstate == '2'}}">【邀请面试】</block>
+                <block wx:if="{{ item.apply_passstate == '3'}}">【已面试】</block>
+              </view>
+              <!-- <view class="arrow-icon b-arrow-icon {{ ids == index ?'active':'' }}">
+                <view class="inner"></view>
+              </view> -->
+            </view>
+          </view>
+        </view>
+        <view class="status-row" wx:if="{{ ids == index }}">
+          <view class="status-detail">
+            <text class="status-item {{ item.apply_read == '1' || item.apply_passstate == '0' || item.apply_passstate == '1' || item.apply_passstate == '2' || item.apply_passstate == '3'?'active':'' }}">投递简历</text>
+            <text class="status-item {{ item.apply_read == '1'?'active':'' }}">被查看</text>
+            <text class="status-item {{ item.apply_passstate == '1' || item.apply_passstate == '2' || item.apply_passstate == '3'?'active':'' }}">通过筛选</text>
+            <text class="status-item {{ item.apply_passstate == '2' || item.apply_passstate == '3'?'active':'' }}">面试邀请</text>
+            <text class="status-item {{ item.apply_passstate == '3'?'active':'' }}">面试结束</text>
+            <view class="line">
+              <view class="innerline" style="width: {{item.apply_passstate=='2'||item.apply_passstate=='3'?'100%':item.apply_read=='1'?'50%':item.apply_passstate=='1'?'75%':item.apply_passstate == '0'?'25%':'0%'}}"></view>
+            </view>
+          </view>
+          <view class="status-d-row active" wx:for="{{ item.tracks }}" wx:for-item="iItem" wx:key>
+            <text class="status-txt">{{iItem.tracks_information?iItem.tracks_information:'企业尚未留言'}}</text>
+            <view class="status-time pt20">{{ iItem.tracks_time }}</view>
+          </view>
+        </view>
+      </view>
+      <loading wx:if="{{ showMore1 }}"></loading>
+    </scroll-view>
+  </view>
+
+  <!-- <tip content="暂无信息" wx:if="{{ page == '3'}}"></tip> -->
+  <view class="invi-list" wx:if="{{ page == '3' && curShow }}">
+    <tip content="暂无信息" wx:if="{{ !hasMoreInfor2 }}"></tip>
+    <scroll-view scroll-y style="height: 100%;" wx:if="{{ myinvitatio.length > 0 }}" bindscrolltolower="lower2">
+      <view class="invi-item mt20 bg-f" wx:for="{{ myinvitatio }}" wx:for-item="item" wx:key wx:for-index="index">
+        <view class="main" data-id="{{ index }}" bindtap='showDetail'>
+          <view class="row">
+            <view class="job">{{ item.position_name }}</view>
+            <view class="time">{{ item.invitation_uptime }}</view>
+          </view>
+          <view class="row">
+            <view class="company">{{ item.company_name }}</view>
+            <view class="arrow-icon b-arrow-icon" wx:if = "{{ id != index }}">
+              <view class="inner"></view>
+            </view>
+          </view>
+        </view>
+        <view class="row" wx:if="{{ id == index }}" bindtap="showDetailNone" data-id="{{ index }}">
+          <view class="information">{{ item.invitation_txt }}</view>
+          <view class="arrow-icon t-arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+      <loading wx:if="{{ showMore2 }}"></loading>
+    </scroll-view>
+  </view>
+
+  <view class="collect-filter bg-f" wx:if="{{ page == '4' && curShow }}">
+    <view class="filter-tab {{fliterType=='job'?'acitve':''}}" bindtap="changeCokllectFilter" data-type="job">收藏职位</view>
+    <view class="filter-tab {{fliterType=='company'?'acitve':''}}" bindtap="changeCokllectFilter" data-type="company">收藏企业</view>
+  </view>
+  <view class="scroll-list-box pt20" wx:if="{{ page == '4' && curShow }}">
+    <tip content="您未收藏任何职业" height="100%" wx:if="{{ page == '4' && fliterType == 'job' && jobList.length == 0 }}"></tip>
+    <view class="scroll-list-box bg-f" wx:if="{{ fliterType == 'job' }}">
+      <scroll-view scroll-y style="height: 100%;" bindscrolltolower="positionLower">
+        <view class="r-list" wx:if="{{ showPos }}">
+          <view class="r-list-item" wx:for="{{ jobList }}" data-id="{{ item.position_id }}" bindtap="linkToJobDetail" wx:key wx:for-item="item">
+            <image class="pic" src="{{ item.company_logo }}"></image>
+            <view class="cont">
+              <view class="job lh-normal">{{ item.position_name }}</view>
+              <view class="company">{{ item.company_name }}</view>
+              <view class="s-desc">
+                <text class="infor lh-normal">{{ item.city_name }} | {{ item.education_name }} </text>
+                <text class="infor lh-normal">截止日期：{{ item.position_stoptime }}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <loading wx:if="{{ !showPos }}"></loading>
+      </scroll-view>
+    </view>
+    <tip content="您未收藏任何企业" height="100%" wx:if="{{ page == '4' && fliterType == 'company' && companyList.length == 0 }}"></tip>
+    <view class="scroll-list-box bg-f" wx:if="{{ fliterType == 'company' }}">
+      <scroll-view scroll-y style="height: 100%;" bindscrolltolower="companyLower">
+        <view class="r-list" wx:if="{{ showCompany }}">
+          <view class="r-list-item" wx:for="{{ companyList }}" bindtap="linkCompanyDetail" data-id="{{ item.company_id }}" wx:key wx:for-item="item" >
+            <image class="pic" src="{{ item.company_logo }}"></image>
+            <view class="cont">
+              <view class="job lh-normal">{{ item.company_name }}</view>
+              <view class="company">{{ item.positionnames }}</view>
+              <view class="s-desc">
+                <text class="infor lh-normal">{{ item.city_name }} | {{ item.education_name }} </text>
+                <text class="infor lh-normal">截止日期：{{ item.position_stoptime }}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <loading wx:if="{{ !showCompany }}"></loading>
+      </scroll-view>
+    </view>
+  </view>
+</view>

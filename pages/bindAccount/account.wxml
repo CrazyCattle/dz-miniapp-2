@@ -1,0 +1,26 @@
+<view class="page-account">
+  <view class="notice-box tc bg-f">
+    <view class="notice">绑定已经账号，即可微信直接登录</view>
+    <image class="connect-img" src="../../images/connect.png"></image>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view class="form-box bg-f mt20">
+      <view class="row">
+        <view class="row-tit">账号：</view>
+        <view class="rot-ipt">
+          <input type="text" class="input" placeholder='请输入学号/手机号' bindblur="inputName" bindinput="inputName"></input>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">密码：</view>
+        <view class="rot-ipt">
+          <input type="text" password class="input" bindblur="inputPwd" bindinput="inputPwd" placeholder='请输入密码'></input>
+        </view>
+      </view>
+    </view>
+    <button bindtap="loginIn" class="baseBtn mt100">绑定并登录</button>
+    <view class="link-register tc mt40">
+      没有账号？ <text class="register" bindtap="register">立即注册</text>
+    </view>
+  </form>
+</view>

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "已投递",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "tip": "/components/tips/tip"
+  }
+}

@@ -1,0 +1,35 @@
+.page-detail {
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: 28rpx 30rpx;
+  border-top: 1rpx solid #e6e9f3;
+}
+.page-detail .d-title {
+  font-family: 'PingFangSC-Semibold';
+  font-weight: bold;
+  font-size: 26rpx;
+  color:#313148;
+}
+.page-detail .time {
+  padding: 10rpx 0;
+  font-size: 24rpx;
+  color: #848ca1;
+  letter-spacing: 0.04rpx;
+  line-height: 50rpx;
+}
+.d-content {
+  font-size: 24rpx;
+  color:#848ca1;
+  letter-spacing:0.04rpx;
+  line-height: 50rpx;
+}
+.tit {
+  padding: 40rpx 0;
+}
+.fj {
+  display: flex;
+  padding-top: 40rpx;
+}
+.fj .row {
+  text-decoration: underline;
+}

@@ -1,0 +1,8 @@
+<view class="suggestion">
+  <form>
+    <view class="textarea-box">
+      <textarea class="textarea bg-f" bindinput="suggest" bindblur="suggest" placeholder-class='placeholder' placeholder='填写问题情景、条件等详细描述…' value="{{suggestion}}"></textarea>
+    </view>
+    <button bindtap="submitSuggest" class="baseBtn mt60">邮箱投递</button>
+  </form>
+</view>

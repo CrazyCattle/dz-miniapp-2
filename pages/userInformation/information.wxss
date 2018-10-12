@@ -1,0 +1,90 @@
+.page-userinfor {
+  padding-top: 20rpx;
+}
+
+.me-head-infor {
+  display: flex;
+  height: 200rpx;
+  padding: 0 40rpx;
+  align-items: center;
+  position: relative;
+}
+
+.me-head-infor .me-pic {
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 26rpx;
+  background-color: #e6e9f3;
+  border-radius: 50%;
+}
+
+.me-head-infor .me-name {
+  font-size: 30rpx;
+  color: #313148;
+}
+
+.edit-row, .edit-content {
+  position: relative;
+}
+
+.edit-row {
+  padding: 30rpx 0 30rpx 40rpx;
+}
+
+.edit-title {
+  padding-bottom: 10rpx;
+  font-size: 30rpx;
+  color: #313148;
+}
+
+.editBtn {
+  position: absolute;
+  right: 32rpx;
+  width: 88rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #fff;
+  background: #618FEB;
+  border-radius: 22rpx;
+}
+
+.edit-row .editBtn {
+  top: 30rpx;
+}
+
+.edit-content .editBtn {
+  top: 20rpx;
+}
+
+.edit-content .row {
+  font-size: 24rpx;
+  color: #848ca1;
+  line-height: 50rpx;
+}
+
+.expect {
+  padding-bottom: 0;
+}
+
+.expect .edit-title {
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #e6e9f3;
+}
+
+.expect .edit-content {
+  padding: 10rpx 0 20rpx 0;
+  border-bottom: 1rpx solid #e6e9f3;
+}
+
+.addExpectBtn {
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-right: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #618FEB;
+}

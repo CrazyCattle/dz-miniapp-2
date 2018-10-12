@@ -1,0 +1,75 @@
+<view class="page-me">
+  <view class="me-head bg-f">
+    <view class="me-head-infor">
+      <image wx:if="{{ stud_info.student_name }}" class="me-pic" src="{{ stud_img }}" bindtap='editUserInfor'></image>
+      <image wx:else class="me-pic" src="{{ stud_img }}"></image>
+      <view class="me-desc">
+        <block wx:if="{{ stud_info.student_name }}">
+          <view class="me-name">{{ stud_info.student_truename }}</view>
+          <text class="me-educ">{{ stud_info.university_title }} | {{ stud_info.major_name }}</text>
+        </block>
+        <view wx:else class="me-name" bindtap="linkLR">登录/注册</view>
+      </view>
+      <view wx:if="{{ stud_info.student_name }}" class="editUser" bindtap='editUserInfor'>编辑</view>
+    </view>
+
+    <view class="me-send-box">
+      <view class="me-send" bindtap="linkSend">
+        已投递：
+        <text class="num">{{ stud_info.applynums || '0' }}</text>
+      </view>
+      <view class="me-review" bindtap="linkView">
+        待面试：
+        <text class="num">{{ stud_info.interviewnums || '0' }}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="me-setting bg-f">
+    <view class="me-row" bindtap="linkCourseCollect">
+      <image class="icon rourse" src="../../images/me/course.png"></image>我的课程
+      <view class="arrow-icon">
+        <view class="inner"></view>
+      </view>
+    </view>
+    <view class="me-row" bindtap='linkResumeCenter'>
+      <image class="icon resume" src="../../images/me/resume.png"></image>简历中心
+      <view class="arrow-icon">
+        <view class="inner"></view>
+      </view>
+    </view>
+    <!-- <view class="me-row">
+      <image class="icon job" src="../../images/me/job.png"></image>求职锦囊
+      <view class="arrow-icon">
+        <view class="inner"></view>
+      </view>
+    </view> -->
+  </view>
+
+  <view class="me-setting bg-f" wx:if="{{ !!stud_id }}">
+    <view class="me-row" bindtap='linkSetting'>
+      <image class="icon pwd" src="../../images/me/notice.png"></image>消息设置
+      <view class="arrow-icon">
+        <view class="inner"></view>
+      </view>
+    </view>
+    <view class="me-row" bindtap="editPwd">
+      <image class="icon pwd" src="../../images/me/pwd.png"></image>修改密码
+      <view class="arrow-icon">
+        <view class="inner"></view>
+      </view>
+    </view>
+    <view class="me-row" bindtap='linkSuggestion'>
+      <image class="icon infor" src="../../images/me/infor.png"></image>建议反馈
+      <view class="arrow-icon">
+        <view class="inner"></view>
+      </view>
+    </view>
+    <view class="me-row" bindtap="loginOut">
+      <image class="icon out" src="../../images/me/out.png"></image>退出登录
+      <view class="arrow-icon">
+        <view class="inner"></view>
+      </view>
+    </view>
+  </view>
+</view>

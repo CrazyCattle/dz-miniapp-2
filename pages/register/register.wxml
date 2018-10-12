@@ -1,0 +1,48 @@
+<view class="page-login">
+  <form bindsubmit="formSubmit">
+    <view class="form-box bg-f mt20">
+      <view class="row">
+        <view class="row-tit">姓名：</view>
+        <view class="rot-ipt">
+          <input class="input" confirm-type="done" bindblur="iptName" bindinput="iptName" type="text" placeholder='请填写姓名'></input>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">学号：</view>
+        <view class="rot-ipt">
+          <input class="input" confirm-type="done" bindblur="iptCard" bindinput="iptCard" type="number" placeholder='请填写学号'></input>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">学校：</view>
+        <view class="rot-ipt">
+          <input class="input" confirm-type="done" type="text" value="{{ schoolName }}" disabled></input>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">密码：</view>
+        <view class="rot-ipt">
+          <input password class="input" confirm-type="done" bindblur="iptPwd" bindinput="iptPwd" type="text" placeholder='请输入密码'></input>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">电话：</view>
+        <view class="rot-ipt">
+          <input class="input" confirm-type="done" bindblur="iptPhone" bindinput="iptPhone" type="number" placeholder='请输入手机号'></input>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">验证码：</view>
+        <view class="rot-ipt">
+          <input class="input getCode-ipt" bindblur="iptCode" bindinput="iptCode" confirm-type="done" type="number" placeholder='请输入短信验证码'></input>
+          <button wx:if="{{ canGetCode }}" class="getCode" type="default" size="mini" bindtap="getCode">获取验证码</button>
+          <button wx:else class="getCode" type="default" size="mini" disabled>{{ timeLimit }}</button>
+        </view>
+      </view>
+    </view>
+    <button bindtap="register" class="baseBtn mt100">注册</button>
+    <view class="link-register tc mt40">
+      注册及同意《大招网用户协议》
+    </view>
+  </form>
+</view>

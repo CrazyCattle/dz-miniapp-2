@@ -1,0 +1,74 @@
+<view class="page-login">
+  <form bindsubmit="formSubmit">
+    <view class="form-box bg-f mt20">
+      <view class="row">
+        <view class="row-tit">学校：</view>
+        <view class="rot-ipt">
+          <input type="text" placeholder-class="placeholder" class="input" placeholder='请填写学校' disabled value='{{ user_school }}'></input>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">学历：</view>
+        <view class="rot-ipt">
+          <picker class="picker" mode="selector" range="{{educ}}" value="{{index}}" bindchange="listenerPickerSelected">
+            <view class="inner-picker">{{ educ[index] }}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">院系：</view>
+        <view class="rot-ipt">
+          <picker class="picker" mode="selector" range="{{department}}" value="{{departmentIndex}}" bindchange="listenerDepartment">
+            <view class="inner-picker">{{ department[departmentIndex] }}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">专业：</view>
+        <view class="rot-ipt">
+          <picker class="picker" mode="selector" range="{{major}}" value="{{majorIndex}}" bindchange="listenerMajor">
+            <view class="inner-picker">{{ major[majorIndex] }}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">学号：</view>
+        <view class="rot-ipt">
+          <input class="input" placeholder-class="placeholder" placeholder='请填写学号' value="{{student_name}}" bindinput="iptStudenNumber"></input>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">入学时间：</view>
+        <view class="rot-ipt">
+          <picker class="picker" bindchange="listenerStartTime" mode="date" fields="month" start="1970-01" end="{{endTime}}" value="{{ student_stgraduatetwo }}">
+            <view class="inner-picker">{{student_stgraduatetwo}}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">毕业时间：</view>
+        <view class="rot-ipt">
+          <picker class="picker" bindchange="listenerEndTime" mode="date" fields="month" start="1970-01" end="{{endTime}}" value="{{ student_edgraduate }}">
+            <view class="inner-picker">{{student_edgraduate}}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <button bindtap="modifyEduc" placeholder-class="placeholder" class="baseBtn mt60">保存</button>
+  </form>
+</view>

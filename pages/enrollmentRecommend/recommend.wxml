@@ -1,0 +1,38 @@
+<view class="infor-list">
+  <scroll-view  wx:if="{{ !showTips }}" scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
+    <view class="infor-item {{ index==0?'active':'' }} infor-xztj bg-f" wx:for="{{ messageArr }}" wx:for-item="item" wx:for-index="index" wx:key>
+      <view class="item-title">
+        <text class="tit">{{ item.mis_title }}</text>
+        <text class="time">{{ item.mis_time }}</text>
+      </view>
+      <text class="desc">{{ item.mis_txt }}</text>
+      <!--<view class="desc">截止日期：2018/01/26</view>-->
+    </view>
+    <loading wx:if="{{ showLoading }}"></loading>
+    <!--<view class="infor-item infor-xztj bg-f">
+      <view class="item-title">
+        <text class="tit">投递进度更新</text>
+        <text class="time">14:30</text>
+      </view>
+      <view class="desc">职位：Java研发工程师</view>
+      <view class="desc">截止日期：2018/01/26</view>
+    </view>
+    <view class="infor-item infor-xztj bg-f">
+      <view class="item-title">
+        <text class="tit">投递进度更新</text>
+        <text class="time">14:30</text>
+      </view>
+      <view class="desc">职位：Java研发工程师</view>
+      <view class="desc">截止日期：2018/01/26</view>
+    </view>
+    <view class="infor-item infor-xztj bg-f">
+      <view class="item-title">
+        <text class="tit">投递进度更新</text>
+        <text class="time">14:30</text>
+      </view>
+      <view class="desc">职位：Java研发工程师</view>
+      <view class="desc">截止日期：2018/01/26</view>
+    </view>-->
+  </scroll-view>
+  <tip content="暂无消息" wx:if="{{ showTips }}"></tip>
+</view>

@@ -1,0 +1,25 @@
+<view class="page-detail bg-f">
+  <view class="d-title tc">{{ content.notice_title }}</view>
+  <view class="time tc">发布时间：{{ content.notice_releasetime }}</view>
+  <view class="d-content">
+    <view class="main">
+      {{ content.notice_content }}
+    </view>
+    <!-- <view class="tit">一、选聘方式及数量</view>
+    <view class="main">
+      全省面向“985”高校毕业生采用免试方式选聘一批大学生村官，不占用各市考试名额，不限定选聘数量，不限定男女比例。
+    </view>
+    <view class="tit">二、选聘条件</view>
+    <view class="main">
+      1.“985”高校应届全日制本科及以上学历毕业生，学习成绩优良，具备授予学士及以上学位条件。定向培养生、委托培养生以及二级学院、独立学院、网络学院、成人教育学院毕业生不列入选聘范围。2.本科生年龄一般在25周岁以下（1990年3月以后出生），硕士研究生年龄一般在28周岁以下（1987年3月以后出生），博士研究生年龄一般在30周岁以下（1985年3月以后出生）。3.身心健康，适应农村工作需要。4.在校学习期间未受过处分。
+    </view>-->
+    <view class="fj" wx:if="{{ content.notice_filelist.length > 0 }}">
+      <view class="fj-content">附件：</view>
+      <view class="fj-content">
+        <view class="row" wx:for="{{ content.notice_filelist }}" wx:for-item="item" wx:for-index="index" wx:key data-url="{{ item.tb_fileurl }}" bindtap="downFiles">
+          {{ index + 1 }}. {{ item.tb_name }}
+        </view>
+      </view>
+    </view> 
+  </view>
+</view>

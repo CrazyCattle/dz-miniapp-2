@@ -1,0 +1,18 @@
+<view class="recommend bg-f">
+  <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
+    <view class="r-list" wx:if="{{ jobList.length > 0 }}">
+      <view class="r-list-item" wx:for="{{ jobList }}" wx:key="key" wx:for-item="item" bindtap="linkJobDetail" data-id="{{ item.position_id }}">
+        <image class="pic" src="{{ item.company_logo }}"></image>
+        <view class="cont">
+          <view class="job ellipsis lh-normal ">{{ item.company_name }}</view>
+          <view class="company">[{{item.positionnums}}个]{{ item.positionnames }}</view>
+          <view class="s-desc"> 
+            <text class="infor lh-normal">{{ item.city_name }} | {{ item.education_name }} </text>
+            <text class="infor lh-normal">截止日期：{{ item.position_stoptime }}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <loading wx:if="{{ showLoading }}"></loading>
+  </scroll-view>
+</view>

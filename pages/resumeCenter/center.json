@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "简历中心",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "disableScroll": true,
+  "usingComponents": {
+    "loading": "/components/loading/loading",
+    "tip": "/components/tips/tip"
+  }
+}

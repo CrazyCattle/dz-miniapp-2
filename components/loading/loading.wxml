@@ -1,0 +1,7 @@
+<!--components/loading/loading.wxml-->
+<view class="loading">
+  <view class="loading-icon">
+    <image class="img" src="../../images/loading.png"></image>
+  </view>
+  正在加载
+</view>

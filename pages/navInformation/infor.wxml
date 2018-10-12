@@ -1,0 +1,80 @@
+<view class="infor-center pt20">
+  <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
+    <view class="center-tab bg-f" wx:if="{{ showNav }}">
+      <view class="center-tab-item" bindtap="linkStatus">
+        <image class="icon" src="../../images/infor/item-1.png"></image>
+        <text>投递状态</text>
+      </view>
+      <view class="center-tab-item" bindtap="linkInvi">
+        <image class="icon" src="../../images/infor/item-2.png"></image>
+        <text>校招邀约</text>
+      </view>
+      <view class="center-tab-item" bindtap="linkRecommend">
+        <image class="icon" src="../../images/infor/item-3.png"></image>
+        <text>校招推荐</text>
+      </view>
+      <view class="center-tab-item" bindtap="linkNotice">
+        <image class="icon" src="../../images/infor/item-4.png"></image>
+        <text>通知公告</text>
+      </view>
+    </view>
+
+    <tip wx:if="{{ showTips }}" content="暂无消息"></tip>
+
+    <view wx:else class="infor-list">
+      <view class="infor-item {{ index=='0'?'active':'' }} infor-status bg-f mt20" data-id="{{ item.mis_id }}" wx:for="{{ messageArr }}" wx:for-item="item" wx:for-index="index" wx:key>
+        <view class="item-title">
+          <text class="tit">{{ item.mis_title }}</text>
+          <text class="time">{{ item.mis_time }}</text>
+        </view>
+        <text class="desc">{{ item.mis_txt }}</text>
+        <!--<text class="desc">职位：企业服务部实习生</text>-->
+      </view>
+      <loading wx:if="{{ showLoading }}"></loading>
+      <!--<view class="infor-item infor-xztj bg-f mt20">
+        <view class="item-title">
+          <text class="tit">投递进度更新</text>
+          <text class="time">14:30</text>
+        </view>
+        <view class="desc">职位：Java研发工程师</view>
+        <view class="desc">截止日期：2018/01/26</view>
+      </view>
+
+      <view class="infor-item infor-xzyy bg-f mt20">
+        <view class="item-title">
+          <text class="tit">投递进度更新</text>
+          <text class="time">14:30</text>
+        </view>
+        <view class="desc">上海脚步网络科技有限公司</view>
+        <view class="desc">职位：产品培训生</view>
+      </view>
+
+      <view class="infor-item infor-status bg-f mt20">
+        <view class="item-title">
+          <text class="tit">投递进度更新投递进度更新投递进度更新投递进度更新</text>
+          <text class="time">14:30</text>
+        </view>
+        <view class="desc">企业已经接收到您投递的简历</view>
+        <view class="desc">职位：企业服务部实习生</view>
+      </view>
+
+      <view class="infor-item infor-xztj bg-f mt20">
+        <view class="item-title">
+          <text class="tit">投递进度更新</text>
+          <text class="time">14:30</text>
+        </view>
+        <view class="desc">职位：Java研发工程师</view>
+        <view class="desc">截止日期：2018/01/26</view>
+      </view>
+
+      <view class="infor-item infor-xzyy bg-f mt20">
+        <view class="item-title">
+          <text class="tit">投递进度更新</text>
+          <text class="time">14:30</text>
+        </view>
+        <view class="desc">上海脚步网络科技有限公司</view>
+        <view class="desc">职位：产品培训生</view>
+      </view>-->
+    </view>
+  </scroll-view>
+</view>

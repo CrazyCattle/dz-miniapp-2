@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "名企推荐",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "disableScroll": true,
+  "usingComponents": {
+    "loading": "/components/loading/loading",
+    "tip": "/components/tips/tip"
+  }
+}

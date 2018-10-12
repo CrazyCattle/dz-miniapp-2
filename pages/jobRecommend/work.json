@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "职位推荐",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "disableScroll": true,
+  "usingComponents": {
+    "loading": "/components/loading/loading"
+  }
+}

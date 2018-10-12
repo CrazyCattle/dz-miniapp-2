@@ -1,0 +1,83 @@
+{
+  "pages": [
+    "pages/navIndex/index",
+    "pages/navMe/me",
+    "pages/navCourse/course",
+    "pages/navInformation/infor",
+    "pages/login/login",
+    "pages/companyDetail/detail",
+    "pages/companyRecommend/company",
+    "pages/jobRecommend/work",
+    "pages/moreCourse/course",
+    "pages/courseChild/course",
+    "pages/jobDetail/detail",
+    "pages/courseCollection/collect",
+    "pages/coursePlay/play",
+    "pages/courseRecord/record",
+    "pages/register/register",
+    "pages/bindAccount/account",
+    "pages/loginRegister/loginregister",
+    "pages/resumeCenter/center",
+    "pages/userInformation/information",
+    "pages/editBasicInfor/infor",
+    "pages/editJobExpectation/expect",
+    "pages/editEducation/educ",
+    "pages/editResumeBasicInfor/infor",
+    "pages/suggestion/suggestion",
+    "pages/resume/resume",
+    "pages/inforStatus/status",
+    "pages/enrollmentInvitation/invi",
+    "pages/enrollmentRecommend/recommend",
+    "pages/inforNotice/notice",
+    "pages/inforSetting/setting",
+    "pages/inforNoticeDetail/detail",
+    "pages/editUserPwd/pwd",
+    "pages/resumeSend/send",
+    "pages/resumeReview/review",
+    "pages/moreSameJob/job",
+    "pages/jobRecommendSearch/search",
+    "pages/companyRecommendSearch/search",
+    "pages/companyJobList/list",
+    "pages/deliveryResume/resume",
+    "pages/editJobExpectNew/new",
+    "pages/resumeCenterDropbox/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "color": "#b7bcce",
+    "selectedColor": "#618FEB",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/nav/nav-index-active.png",
+        "iconPath": "images/nav/nav-index.png",
+        "pagePath": "pages/navIndex/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/nav/nav-course-active.png",
+        "iconPath": "images/nav/nav-course.png",
+        "pagePath": "pages/navCourse/course",
+        "text": "课程"
+      },
+      {
+        "selectedIconPath": "images/nav/nav-infor-active.png",
+        "iconPath": "images/nav/nav-infor.png",
+        "pagePath": "pages/navInformation/infor",
+        "text": "消息"
+      },
+      {
+        "selectedIconPath": "images/nav/nav-me-active.png",
+        "iconPath": "images/nav/nav-me.png",
+        "pagePath": "pages/navMe/me",
+        "text": "我的"
+      }
+    ]
+  }
+}

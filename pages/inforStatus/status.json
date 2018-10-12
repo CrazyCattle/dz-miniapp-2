@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "投递状态",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "tip": "/components/tips/tip",
+    "loading": "/components/loading/loading"
+  }
+}

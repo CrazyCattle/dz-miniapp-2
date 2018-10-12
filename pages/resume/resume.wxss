@@ -1,0 +1,108 @@
+.resume-box {
+  width: 700rpx;
+  height: 994rpx;
+  margin: 52rpx auto 0;
+  overflow-y: scroll;
+}
+.send-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 98rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.send {
+  position: fixed;
+  top: 40rpx;
+  left: 50%;
+  will-change: transform;
+  transform: translate3d(-50%, 0, 0);  
+  width: 700rpx;
+  height: 1010rpx;
+  background-color: #fff;
+  border-radius: 12rpx;
+  z-index: 3000;
+}
+.send .title {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size:15px;
+  color:#fff;
+  background:#618FEB;
+  border-radius:6px 6px 0 0;
+}
+.send .tips {
+  box-sizing: border-box;
+  padding: 30rpx 50rpx;
+  line-height: 45rpx;
+  font-size: 26rpx;
+  color: #848ca1;
+  text-align: center;
+  border-bottom: 1rpx solid #e6e9f3;
+}
+.send .send-content {
+  padding: 40rpx 60rpx 0;
+  
+}
+.send .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.send .row .row-title {
+  font-size: 26rpx;
+  color: #313148;
+}
+.ipt-box {
+  box-sizing: border-box;
+  width: 440rpx;
+  height: 56rpx;
+  padding: 12rpx 40rpx;
+  border-radius: 28rpx;
+  border:1rpx solid #d6dae4;
+  display: flex;
+  align-items: center;
+}
+.ipt-box .ipt {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #b7bcce;
+  letter-spacing: -0px;
+}
+.textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 236rpx;
+  padding: 20rpx 30rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  border:1px solid #d6dae4;
+  font-size: 24rpx;
+  color: #b7bcce;
+  letter-spacing: 0px;
+  line-height: 46rpx;
+  overflow: hidden;
+}
+.btn {
+  width: 260rpx;
+  height: 60rpx;
+  margin: 0;
+  border-radius: 30rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 26rpx;
+}
+.reset {
+  color: #848ca1;
+}
+.ok {
+  background: #618FEB;
+}

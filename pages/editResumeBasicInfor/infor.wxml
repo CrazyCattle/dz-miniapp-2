@@ -1,0 +1,53 @@
+<view class="me-head-infor bg-f mt20">
+  <image class="me-pic" src=" {{ user_pic?user_pic:'../../images/user_pic.png' }} "></image>
+  <view class="me-desc">
+    <view class="me-name" bindtap="chooseImg">点击更换简历照片</view>
+  </view>
+  <view class="save-pic" bindtap="uploadUserImg">保存</view>
+</view>
+
+<form bindsubmit="formSubmit">
+  <view class="form-box bg-f mt20">
+    <view class="row">
+      <view class="row-tit">简历名称：</view>
+      <view class="rot-ipt">
+        <input type="text" placeholder-class="placeholder" class="input" placeholder='请输入简历名称' value='{{ resumeTitle }}' bindinput="iptTitle"
+          bindchange="iptTitle"></input>
+      </view>
+    </view>
+    <view class="row">
+      <view class="row-tit">姓名：</view>
+      <view class="rot-ipt">
+        <input class="input" placeholder-class="placeholder" placeholder='请输入姓名' value="{{ user_name }}" bindinput="iptName" bindchange="iptName"></input>
+      </view>
+    </view>
+    <view class="row">
+      <view class="row-tit">联系电话：</view>
+      <view class="rot-ipt">
+        <input class="input" type="number" placeholder-class="placeholder" placeholder='填写联系电话' value="{{ user_phone }}" bindinput="iptPhone"
+          bindchange="iptPhone"></input>
+      </view>
+    </view>
+    <view class="row">
+      <view class="row-tit">联系邮箱：</view>
+      <view class="rot-ipt">
+        <input class="input" placeholder-class="placeholder" placeholder='填写联系邮箱' value="{{ user_email }}" bindinput="iptEmail" bindchange="iptEmail"></input>
+      </view>
+    </view>
+
+    <view class="row">
+      <view class="row-tit">求职意向：</view>
+      <view class="rot-ipt">
+        <input class="input" placeholder-class="placeholder" value="{{ user_exprect }}" placeholder='请输入求职意向' bindinput="iptExprect" bindchange="iptExprect" disabled></input>
+        <view class="select-exprect">
+          <text>选择求职意向</text>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+          <picker class="picker" mode="multiSelector" range="{{multiArray}}" value="{{multiIndex}}" bindchange="listenerJobExpect" bindcolumnchange="bindMultiPickerColumnChange">当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}</picker>
+        </view>
+      </view>
+    </view>
+  </view>
+  <button bindtap="submitResumeInfo" placeholder-class="placeholder" class="baseBtn mt60">保存</button>
+</form>

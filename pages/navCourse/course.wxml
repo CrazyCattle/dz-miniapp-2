@@ -1,0 +1,132 @@
+<view class="page">
+  <view class="page-head">
+    <view class="search-box bg">
+      <view class="search-input bg-f" wx:if="{{ !focus }}" bindtap="iptFocus">
+        <image class="search" src="../../images/search.png"></image>{{ placeholderTxt}}
+      </view>
+      <view class="search-input bg-f" wx:if="{{ focus }}">
+        <input class="ipt" type="text" confirm-type="search" focus='{{ focus }}' bindblur="cc" bindconfirm="iptConfirm" bindinput="searchChange" catchtap='iptFocus'></input>
+      </view>
+    </view>
+    <view class="page-tab tc bg-f">
+      <view class="tab-item {{page=='1'?'active':''}}" data-page="1" bindtap="tabPage">分类</view>
+      <view class="tab-item {{page=='2'?'active':''}}" data-page="2" bindtap="tabPage">推荐</view>
+      <view class="tab-item {{page=='3'?'active':''}}" data-page="3" bindtap="tabPage">收藏/历史</view>
+    </view>
+  </view>
+
+  <view class="page-1 bg" wx:if="{{ page == '1' }}">
+    <view wx:if="{{ typeArr.length > 0 }}" class="fliter-box bg-f tc" wx:for="{{ typeArr }}" wx:for-item="item" wx:key="key">
+      <view class="tc">
+        <view class="title">{{ item.class_name }}</view>
+      </view>
+      <text class="tit">{{ item.class_intro }}</text>
+      <view class="fliter-tab">
+        <view class="item" data-id="{{ citem.class_id }}" bindtap="linkChildPage" wx:for="{{ item.twolist }}" wx:for-item="citem" wx:key="key">{{ citem.class_name }}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="page-2 bg" wx:if="{{ page == '2' }}">
+    <tip content="暂无信息" wx:if="{{page == '2' && page2Show}}"></tip>
+    <view class="scroll-box bg-f" wx:if="{{ imgUrls.length > 0 }}">
+      <view class="scroll-title">
+        课程推荐
+        <view class="c-more" bindtap="linkCourse">
+          查看更多
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+      <swiper class="scroll-swiper" indicator-dots="{{ indicatorDots }}" autoplay="{{ canautoplay }}" duration="160" display-multiple-items="2" previous-margin="35rpx" next-margin="35rpx" skip-hidden-item-layout="true">
+        <block wx:for="{{imgUrls}}" wx:key="key">
+          <swiper-item class="swiper-item">
+            <image src="{{ item.lesson_img }}" data-id="{{ item.lesson_id }}" bindtap="linkCoursePlay" class="slide-image"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="fliter-box mt20 bg-f tc" wx:if="{{ courseList.length > 0 }}">
+      <view class="tc">
+        <view class="title">发现好课</view>
+        <view class="r-list tl">
+          <view class="r-list-item" wx:for="{{ courseList }}" wx:key="key" wx:for-item="item" data-id="{{ item.lesson_id }}" bindtap="linCourse">
+            <view class="cont">
+              <view class="company">
+                <image class="img" src="{{ item.teacher_img }}"></image>
+                {{ item.teacher_name }}
+              </view>
+              <view class="job lh-normal">{{ item.lesson_name }}</view>
+              <view class="s-desc">
+                <text class="infor lh-normal">{{ item.viewCount }}人学过</text>
+                <text class="infor lh-normal">时长：{{ item.lesson_alltime }}</text>
+              </view>
+            </view>
+            <image class="pic" src="{{ item.lesson_img }}"></image>
+          </view>
+        </view>
+        <loading wx:if="{{ showLoading }}"></loading>
+      </view>
+    </view>
+  </view>
+
+  <view class="page-3 bg" wx:if="{{ page == '3' }}">
+    <view class="fliter-box mt20 bg-f tc">
+      <view class="tc">
+        <view class="title">收藏夹</view>
+        <view class="r-list tl">
+          <tipnormal content="暂无信息" wx:if="{{page == '3' && page3Show}}"></tipnormal>
+          <view class="r-list-item" wx:if="{{ courseCollected.length > 0 }}" wx:for="{{ courseCollected }}" wx:key="key" wx:for-item="item" data-id="{{ item.lesson_id }}" bindtap="linCourse">
+            <view class="cont">
+              <view class="company">
+                <image class="img" src="{{ item.teacher_img }}"></image>
+                {{ item.teacher_truename }}
+              </view>
+              <view class="job lh-normal">{{ item.lesson_name }}</view>
+              <view class="s-desc">
+                <text class="infor lh-normal">{{ item.viewCount }}人学过</text>
+                <text class="infor lh-normal">时长：{{ item.lesson_alltime }}</text>
+              </view>
+            </view>
+            <image class="pic" src="{{ item.lesson_img }}"></image>
+          </view>
+          <view class="more" bindtap="linkCollect" wx:if="{{ showCollectMore }}">
+            查看更多
+            <view class="arrow-icon">
+              <view class="inner"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="fliter-box mt20 bg-f tc">
+      <view class="tc">
+        <view class="title">听课记录</view>
+        <view class="r-list tl">
+          <tipnormal content="暂无信息" wx:if="{{page == '3' && page3RecordShow}}"></tipnormal>
+          <view class="r-list-item" wx:if="{{ courseHistory.length > 0 }}" wx:for="{{ courseHistory }}" wx:key="key" wx:for-item="item" data-id="{{ item.lesson_id }}" bindtap="linCourse">
+            <view class="cont">
+              <view class="company">
+                <image class="img" src="{{ item.teacher_img }}"></image>
+                {{ item.teacher_truename }}
+              </view>
+              <view class="job lh-normal">{{ item.lesson_name }}</view>
+              <view class="s-desc">
+                <text class="infor lh-normal">{{ item.viewCount }}人学过</text>
+                <text class="infor lh-normal">时长：{{ item.lesson_alltime }}</text>
+              </view>
+            </view>
+            <image class="pic" src="{{ item.lesson_img }}"></image>
+          </view>
+        </view>
+        <view class="more" bindtap="linkRecord" wx:if="{{ showHistoryMore }}">
+          查看更多
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

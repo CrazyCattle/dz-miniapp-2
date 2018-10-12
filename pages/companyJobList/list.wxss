@@ -1,0 +1,33 @@
+.recruit { 
+  padding: 0 40rpx;
+}
+.recruit-item { 
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #e6e9f3;
+}
+.recruit-item:last-child {
+  border: none;
+}
+.recruit-item .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.row:first-child {
+  margin-bottom: 22rpx;
+}
+.row:first-child .txt:first-child {
+  max-width: 450rpx;
+  font-family:PingFangSC-Semibold;
+  font-weight: bold;
+  font-size: 30rpx;
+  color: #313148;
+}
+.row:first-child .txt:last-child {
+  font-size: 26rpx;
+  color:#f14a3e;
+}
+.row:last-child .txt {
+  font-size: 24rpx;
+  color: #848ca1;
+}

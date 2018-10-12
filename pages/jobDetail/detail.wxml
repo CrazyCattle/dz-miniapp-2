@@ -1,0 +1,100 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="jobDetail bg">
+  <view class="r-list jobDetail-title bg-f">
+    <view class="r-list-item">
+      <view class="cont jobDetailTitle">
+        <view class="job lh-normal">{{ list.position_name }} 
+          <text class="salary" wx:if="{{ list.position_salarymin && list.position_salarymax }}">[{{list.position_salarymin}}k-{{list.position_salarymax}}k]</text>
+          <text class="salary" wx:else>[不限]</text>
+        </view>
+        <view class="infor lh-normal">{{list.city_name}} | {{list.education_name}} | {{list.positiontype_name}}</view>
+        <view class="infor lh-normal">截止日期：{{list.position_stoptime}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="r-list jobDetail-title bg-f">
+    <view class="r-list-item" data-id="{{ list.company_id }}" bindtap="linkToCompany">
+      <image class="pic" src="{{ list.cominfo.company_logo }}"></image>
+      <view class="cont">
+        <view class="job lh-normal">{{ list.cominfo.company_name }}</view>
+        <view class="company">[{{ list.cominfo.positionnums }}个]{{ list.cominfo.positionnames }}</view>
+        <view class="s-desc"> 
+          <text class="infor lh-normal">{{ list.cominfo.city_name }} | {{ list.cominfo.education_name }}</text>
+          <text class="infor lh-normal">截止日期：{{list.cominfo.position_stoptime}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="j-row mt20 bg-f">
+    <view class="inner-row" wx:if="{{ hasDesc }}">
+      <view class="tit">职位描述：</view>
+      <view class="job-desc wxParse">
+        <template is="wxParse" data="{{wxParseData:article1.nodes}}" />
+      </view>
+    </view>
+    <view class="inner-row" wx:if="{{ hasReq }}">
+      <view class="tit">任职要求：</view>
+      <view class="job-desc wxParse">
+        <template is="wxParse" data="{{wxParseData:article2.nodes}}" />
+      </view>
+    </view>
+  </view>
+
+  <view class="j-row mt20 bg-f">
+    <view class="inner-row">
+      <view class="tit">工作地点：</view>
+      <view class="job-desc location">
+        <image class="icon" src="../../images/address.png"></image>
+        {{ list.position_addresss?list.position_addresss:'该公司尚未填写地址' }}
+      </view>
+      <view class="map">
+        <view class="linkMap" data-name="{{ list.position_addresss }}" bindtap="linkMap">
+          查看地图
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view> 
+      </view>
+    </view>
+  </view>
+
+  <view class="recommend mt20 bg-f" wx:if="{{ companyList.length > 0 }}">
+    <view class="tc"><text class="title lh-normal">相似职位</text></view>
+    <view class="r-list">
+      <view class="r-list-item" wx:for="{{ companyList }}" wx:key="key" wx:for-item="item" data-id="{{ item.position_id }}" bindtap="linkToJobDetail">
+        <image class="pic" src="{{ item.company_logo }}"></image>
+        <view class="cont">
+          <view class="job lh-normal">{{ item.position_name }}</view>
+          <view class="company">{{ item.company_name }}</view>
+          <view class="s-desc"> 
+            <text class="infor lh-normal">{{ item.city_name }} | {{ item.education_name }} </text>
+            <text class="infor lh-normal">截止日期：{{ item.position_stoptime }}</text>
+          </view>
+        </view>
+      </view>
+      <view class="more" bindtap="linkMoreSameJob"  wx:if="{{ companyList.length == 4 }}">
+        查看更多
+        <view class="arrow-icon">
+          <view class="inner"></view>
+        </view> 
+      </view>
+    </view>
+  </view>
+
+  <view class="tab-fun--bottom bg-f">
+    <view class="tab-lf">
+      <button class="fun-btn" open-type="share">
+        <image class="img" src="../../images/share.png"></image>
+        <text>分享</text>
+      </button>
+      <view class="fun-btn {{ collected?'active':'' }}" bindtap="collect">
+        <image class="img" src="{{ collected?'../../images/collected.png':'../../images/collect.png' }}"></image>
+        <text>收藏</text>
+      </view>
+    </view>
+    <view class="tab-rt send-resume" bindtap="delivery">
+      投递简历
+    </view>
+  </view>
+</view>

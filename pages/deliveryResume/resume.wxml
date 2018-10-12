@@ -1,0 +1,33 @@
+<view class="resume-list" wx:if="{{ page == '1' && resumeList.length > 0 }}">
+  <view class="tit">请选择你要投递的简历</view>
+  <view class="list-content">
+    <scroll-view scroll-y style="height: 100%;">
+      <view class="srcoll-box">
+        <form bindsubmit="formSubmit" report-submit='true' wx:for="{{ resumeList }}" wx:key="key">
+          <view class="resume-item active bg-f" >
+            <input type="hidden" name="id" value="{{ item.resumes_id }}"></input>
+            <view class="item-lf">
+              <view class="title ellipsis">{{ item.title }}</view>
+              <view class="desc">{{item.city}} | {{ item.expectwork }}</view>
+            </view>
+            <view class="item-rt">
+              <text class="editBtn" catchtap='linkResume' data-id="{{ item.resumes_id }}" data-lan="{{ item.language }}">预览</text>
+              <!-- <text class="editBtn" catchtap="deliveryResume" data-id="{{ item.resumes_id }}">投递</text> -->
+              <button class="editBtn" formType="submit" data-id="{{ item.resumes_id }}">投递</button>
+            </view>
+          </view>
+        </form>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<view class="resume-list" wx:if="{{page == '1' && resumeList.length == 0}}">
+  <view class="tit">请选择你要投递的简历</view>
+  <view class="list-content">
+    <view class="resume-tips">
+      <image class="tip-icon" src="../../images/noresume.png"></image>
+      <view class="tip">还没有写简历，快去写一封吧~</view>
+      <view class="tipfooter">电脑登陆<text>{{ website }}</text>写简历</view>
+    </view>
+  </view>
+</view>

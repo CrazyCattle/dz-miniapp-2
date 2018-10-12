@@ -1,0 +1,224 @@
+.course-video {
+  display: block;
+  width: 100%;
+  height: 420rpx;
+}
+.page-play {
+  min-height: 100%;
+}
+.course-info {
+  padding: 28rpx 40rpx 58rpx;
+}
+.course-info .row {
+  display: flex;
+  justify-content: space-between;
+}
+.course-info .row:nth-child(2) {
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #e6e9f3;
+}
+.course-info .v-tit {
+  margin-bottom: 32rpx;
+  font-family: 'PingFangSC-Semibold';
+  font-weight: bold;
+  font-size: 30rpx;
+  color:#494c4e;
+}
+
+.course-info .v-students,
+.course-info .v-fun {
+  font-size: 24rpx;
+  color:#848ca1;
+} 
+.course-info .v-fun {
+  display: flex;
+  align-items: center;
+}
+.course-info .icon {
+  margin-right: 10rpx;
+}
+.v-fun .icon-1 {
+  width: 36rpx;
+  height: 36rpx;
+}
+.v-fun .icon-2 {
+  width: 38rpx;
+  height: 32rpx;
+}
+.v-fun .item {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.v-fun .item.active {
+  color: #618FEB;
+}
+.v-fun .item:last-child {
+  margin-left: 40rpx;
+}
+
+.courst-list {
+  position: absolute;
+  top: 50rpx;
+  right: 0;
+  padding: 30rpx 20rpx 30rpx 60rpx;
+  width: 608rpx;
+  border-radius: 4rpx;
+  background: #fff;
+  box-shadow: 0 0 14px 0 #d6dae4;
+  z-index: 1;
+  box-sizing: border-box;
+  transform-origin: 85% 0%;
+  transform: scale(0,0);
+  transition: transform .2s ease-in-out;
+}
+.courst-list.active {
+  transform: scale(1, 1);
+}
+.courst-list .courst-play-item {
+  font-size: 24rpx;
+  color: #848ca1;
+  line-height: 60rpx;
+  position: relative;
+}
+.courst-list .courst-play-item::before {
+  content: '';
+  position: absolute;
+  left: -30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12rpx;
+  height: 12rpx;
+  background-color: #618FEB;
+  border-radius: 50%;
+}
+.courst-list .courst-play-item.active {
+  color: #618FEB;
+}
+.courst-list .active::before {
+  width: 0;
+  height: 0;
+  left: -28rpx;
+  border: 10rpx solid transparent;
+  border-left-width: 13rpx;
+  border-left-color: #618FEB;
+  border-radius: 0;
+  background-color: #fff;
+}
+.courst-list .arr {
+  position: absolute;
+  top: -18rpx;
+  right: 65rpx;
+  width: 0;
+  height: 0;
+  border: 10rpx solid transparent;
+  border-bottom-color: #fff;
+}
+
+.course-info .row:nth-child(3) {
+  padding-top: 30rpx;
+}
+.v-user-pic {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #f3f4f8;
+  border-radius: 50%;
+}
+.v-user-infor {
+  flex: 1;
+  padding-left: 10rpx;
+  position: relative;
+}
+.v-user-name {
+  font-family:'PingFangSC-Semibold';
+  font-weight: bold;  
+  font-size: 26rpx;
+  color:#313148;
+}
+.v-user-desc {
+  font-size: 24rpx;
+  color:#848ca1;
+  letter-spacing:0;
+  line-height: 40rpx;
+}
+.v-user-desc.active {
+  max-height: 80rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+
+.fliter-box {
+  padding: 20rpx 0; 
+}
+.fliter-box .title {
+  display: inline-block;
+  margin-bottom: 10rpx;
+  color: #313148;
+  letter-spacing: 0;
+  font-family: 'PingFangSC-Semibold';
+  font-weight: bold;
+  font-size: 26rpx;
+  position: relative;
+}
+
+.fliter-box .title::before, .fliter-box .title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30rpx;
+  height: 2rpx;
+  background-color: #e6e9f3;
+}
+
+.fliter-box .title::before {
+  left: -40rpx;
+}
+
+.fliter-box .title::after {
+  right: -40rpx;
+}
+
+.fliter-box .course-detail {
+  display: block;
+  width: 674rpx;
+  height: 364rpx;
+  margin: 20rpx auto;
+}
+.fliter-box .course-detail:last-child {
+  padding-bottom: 0;
+}
+
+.arrow-content {
+  width: 100%;
+  height: 50rpx;
+  position: relative;
+}
+.arrow-icon {
+  position: absolute;
+  top: 15rpx;
+  right: 15rpx;
+  width: 0;
+  height: 0;
+  margin-top: 5rpx;
+  border: 10rpx solid transparent;
+  border-top-color: #618FEB;
+  transform-origin: 25% 25%;
+  transition: transform .2s linear;
+}
+.arrow-icon .inner {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -9rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8rpx solid transparent;
+  border-top-color: #fff;
+}
+.arrow-icon.active {
+  transform: rotate(180deg) translateX(-50%);
+}

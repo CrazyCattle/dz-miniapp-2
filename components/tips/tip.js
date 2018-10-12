@@ -1,0 +1,29 @@
+// components/tips/tip.js
+Component({
+  /**
+   * 组件的属性列表
+   */
+  properties: {
+    content: String,
+    height:String
+  },
+
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    tips: ''
+  },
+  attached () {
+    this.setData({
+      tips: this.data.content,
+      height: this.data.height
+    })
+  },
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+
+  }
+})

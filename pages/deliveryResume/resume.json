@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "投递简历",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "disableScroll": true,
+  "usingComponents": {
+    "loading": "/components/loading/loading",
+    "tip": "/components/tips/tip"
+  }
+}

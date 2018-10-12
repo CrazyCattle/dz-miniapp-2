@@ -1,0 +1,88 @@
+.page-login {
+  padding-top: 20rpx;
+}
+.form-box {
+  padding-left: 40rpx 
+}
+.form-box .row {
+  display: flex;
+  border-bottom: 1rpx solid #f3f4f8;
+}
+.form-box .row .row-tit {
+  display: flex;
+  width: 145rpx;
+  align-items: center;
+  font-size: 26rpx;
+  color: #313148;
+}
+.form-box .row .rot-ipt {
+  box-sizing: border-box;
+  flex: 1;
+  height: 98rpx;
+  padding: 15rpx 15rpx 15rpx 0;
+  position: relative;
+}
+.form-box .row .input {
+  width: 100%;
+  height: 100%;
+  font-size: 26rpx;
+  color:#848ca1;
+  font-family: 'PingFangSC-Regular';
+}
+.picker {
+  box-sizing: border-box;
+  flex: 1;
+  height: 100%;
+  line-height: 68rpx;
+  font-size: 26rpx;
+  color:#848ca1;
+  font-family: 'PingFangSC-Regular';
+}
+.input:focus {
+  border: none;
+}
+
+.arrow-icon {
+  position: absolute;
+  right: 22rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  margin-left: 5rpx;
+  border: 10rpx solid transparent;
+  border-left-color: #47dbe2;
+}
+.arrow-icon .inner {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -9rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 8rpx solid transparent;
+  border-left-color: #fff;
+}
+
+.addMoreAddress {
+  position: absolute;
+  right: 64rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+  border: 1rpx solid #51d3d9;
+  border-radius: 50%;
+  color: #51d3d9;
+}
+
+.delete-box {
+  padding-top: 44rpx;
+}
+.delete {
+  font-size: 28rpx;
+  color: #848ca1;
+  text-decoration: underline;
+}

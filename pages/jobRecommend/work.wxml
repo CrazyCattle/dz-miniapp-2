@@ -1,0 +1,88 @@
+<view class="recommend-head">
+  <view class="search-box bg">
+    <view class="search-input bg-f" wx:if="{{ !focus }}" bindtap="iptFocus">
+      <image class="search" src="../../images/search.png"></image>{{ placeholderTxt}}
+    </view>
+    <view class="search-input bg-f" wx:if="{{ focus }}">
+      <input class="ipt" type="text" confirm-type="search" focus='{{ focus }}' bindblur="cc" bindconfirm="iptConfirm" bindinput="searchChange" catchtap='iptFocus'></input>
+    </view>
+  </view>
+
+  <view class="typefilter-box bg-f">
+    <view class="filter-head">招聘单位类型</view>
+    <swiper class="typefilter" display-multiple-items="4">
+      <swiper-item wx:for="{{ recruitType }}" wx:for-item="item" wx:for-index="index" wx:key>
+        <view class="filter-item">
+          <text class="content {{ filterType == index?'active':'' }}" data-id="{{item.parameter}}" bindtap="filterData" data-type="{{ index }}">{{ item.tilte }}</text>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="sort-box">
+    <view class="sort-item" data-id="1" catchtap="tabFilter">
+      {{ positionTXT }}
+      <view class="arrow-icon {{ active=='1'?'active':'' }}">
+        <view class="inner"></view>
+      </view> 
+    </view>
+    <view class="sort-item" data-id="2" catchtap="tabFilter">
+      {{ cityTXT }}
+      <view class="arrow-icon {{ active=='2'?'active':'' }}">
+        <view class="inner"></view>
+      </view> 
+    </view>
+    <view class="sort-item sort-educ-item" data-id="3" catchtap="tabFilter">
+      {{ educTXT }}
+      <view class="arrow-icon {{ active=='3'?'active':'' }}">
+        <view class="inner"></view>
+      </view> 
+      <view class="educ-filter-box tl {{ active=='3'?'active':'' }}" style="{{ active=='3'?'z-index: 1;':'' }}" catchtap="filterEduc">
+        <view class="educ-filter-item" wx:for="{{eduType}}" data-id="{{item.parameter}}" wx:key bindtap="chooseEduId" data-txt="{{item.tilte}}">
+          {{item.tilte}}
+        </view>
+      </view>
+    </view>
+
+    <view class="type-filter-box tl {{ active=='1'?'active':'' }}" style="{{ active=='1'?'z-index: 1;':'' }}" catchtap="filterEduc">
+      <scroll-view style="height: 100%;" scroll-y class="lf-filter">
+        <view class="type-filter-item" wx:for="{{posiTypeParent}}" catchtap="chooseParentType" wx:key data-id="{{item.positiontype_id}}">
+          {{item.positiontype_name}}
+        </view>
+      </scroll-view>
+      <scroll-view style="height: 100%;" scroll-y class="rt-filter" wx:if="{{posiTypeChild.length > 0}}">
+        <view class="type-filter-item" wx:for="{{posiTypeChild}}" wx:key data-id="{{item.positiontype_id}}" data-txt="{{item.positiontype_name}}" bindtap="chooseChildType">
+          {{item.positiontype_name}}
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="city-filter-box tl {{ active=='2'?'active':'' }}" style="{{ active=='2'?'z-index: 1;':'' }}" catchtap="filterEduc">
+      <scroll-view class="prov" scroll-y style="height: 100%;">
+        <view class="prov-box">
+          <view class="prov-item" wx:for="{{ provinceList }}" data-id="{{item.province_code}}" wx:key catchtap="chooseProvince">{{ item.province_name }}</view>
+        </view>
+      </scroll-view>
+      <scroll-view class="city" scroll-y style="height: 100%;">
+        <view class="city-item" wx:for="{{cityList}}" wx:key data-id="{{item.city_id}}" bindtap="chooseCity" data-txt="{{item.city_name}}">{{item.city_name}}</view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+<view class="recommend bg-f">
+  <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
+    <view class="r-list" wx:if="{{ jobList.length > 0 }}">
+      <view class="r-list-item" wx:for="{{ jobList }}" wx:key="key" wx:for-item="item" bindtap="linkJobDetail" data-id="{{ item.position_id }}">
+        <image class="pic" src="{{ item.company_logo }}"></image>
+        <view class="cont">
+          <view class="job ellipsis lh-normal ">{{ item.position_name }}</view>
+          <view class="company">{{ item.company_name }}</view>
+          <view class="s-desc"> 
+            <text class="infor lh-normal">{{ item.city_name }} | {{ item.education_name }} </text>
+            <text class="infor lh-normal">截止日期：{{ item.position_stoptime }}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <loading wx:if="{{ showLoading }}"></loading>
+  </scroll-view>
+</view>

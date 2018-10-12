@@ -1,0 +1,126 @@
+.me-head-infor {
+  display: flex;
+  height: 240rpx;
+  padding: 0 36rpx;
+  align-items: center;
+  border: 1rpx solid #e6e9f3;
+  border-left: none;
+  border-right: none;
+  position: relative;
+}
+.me-head-infor .me-pic {
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 26rpx;
+  border-radius: 50%;
+}
+.me-head-infor .me-name {
+  font-size: 30rpx;
+  color: #313148;
+}
+.me-head-infor .me-educ {
+  font-size: 24rpx;
+  color: #848ca1;
+}
+.editUser {
+  position: absolute;
+  right: 30rpx;
+  top: 80rpx;
+  font-size: 22rpx;
+  color: #848ca1;
+}
+
+.me-send-box {
+  display: flex;
+  height: 80rpx;
+  font-size: 26rpx;
+  color: #313148;
+}
+.me-send-box .me-send,
+.me-send-box .me-review {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.me-send-box .me-send::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 0;
+  height: 38rpx;
+  transform: translateY(-50%);
+  border-right: 1rpx solid #e6e9f3;
+}
+.me-send-box .num {
+  font-size: 26rpx;
+  color: #618FEB;
+}
+
+.me-setting {
+  margin-top: 25rpx;
+  padding-left: 40rpx;
+}
+.me-row {
+  display: flex;
+  height: 88rpx;
+  align-items: center;
+  border-bottom: 1rpx solid #e6e9f3;
+  font-size: 26rpx;
+  color: #313148;
+  position: relative;
+}
+.me-row:last-child {
+  border-bottom: none;
+}
+.me-row .icon {
+  margin-right: 26rpx;
+}
+.me-row .rourse {
+  width: 34rpx;
+  height: 24rpx;
+}
+.me-row .resume {
+  width: 32rpx;
+  height: 32rpx;
+}
+.me-row .job {
+  width: 32rpx;
+  height: 32rpx;
+}
+.me-row .pwd {
+  width: 32rpx;
+  height: 38rpx;
+}
+.me-row .infor {
+  width: 32rpx;
+  height: 30rpx;
+}
+.me-row .out {
+  width: 32rpx;
+  height: 30rpx;
+}
+
+.arrow-icon {
+  position: absolute;
+  right: 28rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  margin-left: 5rpx;
+  border: 10rpx solid transparent;
+  border-left-color: #b7bcce;
+}
+.arrow-icon .inner {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -9rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 8rpx solid transparent;
+  border-left-color: #fff;
+}

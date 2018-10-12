@@ -36,6 +36,11 @@ Page({
       }
     ],
   },
+  linkShare () {
+    wx.navigateTo({
+      url: '../share/share',
+    })
+  },
   showMore () {
     this.setData({
       showMore: !this.data.showMore
@@ -46,6 +51,9 @@ Page({
     wx.navigateTo({
       url: `../coursePlay/play?id=${id}`,
     })
+  },
+  getPhoneNumber (e) {
+    console.log(e)
   },
   onLoad: function (options) {
     let id = options.id

@@ -5,10 +5,12 @@
     <view class="wxParse {{ showMore?'active':''}}">
       <template is="wxParse" data="{{wxParseData:article.nodes}}" />
     </view>
+    <view class="linkShare" catchtap='linkShare'>限时免费，戳此获取</view>
     <view class="arrow-icon-more {{ showMore?'active':'' }}">
       <view class="inner"></view>
     </view>
   </view>
+  <!-- <button class="linkShare" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>  -->
 </view>
 
 <view class="fliter-box mt20 bg-f tc" wx:for="{{ classThree }}" wx:key="key">

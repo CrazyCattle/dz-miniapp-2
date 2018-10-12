@@ -40,7 +40,8 @@
     "pages/companyJobList/list",
     "pages/deliveryResume/resume",
     "pages/editJobExpectNew/new",
-    "pages/resumeCenterDropbox/index"
+    "pages/resumeCenterDropbox/index",
+    "pages/share/share"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -64,13 +65,13 @@
         "selectedIconPath": "images/nav/nav-course-active.png",
         "iconPath": "images/nav/nav-course.png",
         "pagePath": "pages/navCourse/course",
-        "text": "课程"
+        "text": "直观"
       },
       {
         "selectedIconPath": "images/nav/nav-infor-active.png",
         "iconPath": "images/nav/nav-infor.png",
         "pagePath": "pages/navInformation/infor",
-        "text": "消息"
+        "text": "投递箱"
       },
       {
         "selectedIconPath": "images/nav/nav-me-active.png",

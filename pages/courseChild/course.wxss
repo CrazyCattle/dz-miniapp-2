@@ -227,3 +227,15 @@
 .arrow-icon-more.active {
   transform: rotate(180deg) translateX(-50%);
 }
+
+.linkShare {
+  width: 320rpx;
+  height: 60rpx;
+  margin: auto;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  color: #618FEB;
+  font-size: 24rpx;
+  border: 1px solid #618FEB;
+}

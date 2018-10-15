@@ -27,10 +27,20 @@
     </view> -->
 
     <!-- 支持 3 -->
-    <button class="btn" open-type=''>
+    <!-- <button class="btn" open-type=''>
       <image class="img" src="../../images/invi/btn-support.png"></image>
     </button>
-    <view class="support-txt">支持成功后，你将获得本节课程</view>
+    <view class="support-txt">支持成功后，你将获得本节课程</view> -->
+
+    <!-- 已领取 立即查看 -->
+    <button class="btn">
+      <image class="img" src="../../images/invi/btn-check.png"></image>
+    </button>
+    <view class="back">
+      <button class="btn">
+        <image class="img" src="../../images/invi/btn-back.png"></image>
+      </button>
+    </view>
   </view>
 
   <view class="supporter">
@@ -65,6 +75,21 @@
       <view class="item">
         <image class="img" src="https://static.dazhao100.cn/pic/1526907753l016152041.png"></image>
         <text class="name">crazycattle</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="obtainPop" style="display: none;">
+    <view class="cont-box">
+      <view class="imgs">
+        <image class="img" src="../../images/invi/BG-support.png"></image>
+      </view>
+      <view class="pop-box">
+        <view class="tips">支持成功</view>
+        <text class="txt">恭喜你获赠本节课程</text>
+        <button class="btn">
+          <image class="img" src="../../images/invi/btn-get.png"></image>
+        </button>
       </view>
     </view>
   </view>

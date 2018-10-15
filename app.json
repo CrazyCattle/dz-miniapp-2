@@ -41,7 +41,8 @@
     "pages/deliveryResume/resume",
     "pages/editJobExpectNew/new",
     "pages/resumeCenterDropbox/index",
-    "pages/share/share"
+    "pages/share/share",
+    "pages/visual/visual"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -64,7 +65,7 @@
       {
         "selectedIconPath": "images/nav/nav-course-active.png",
         "iconPath": "images/nav/nav-course.png",
-        "pagePath": "pages/navCourse/course",
+        "pagePath": "pages/visual/visual",
         "text": "直观"
       },
       {

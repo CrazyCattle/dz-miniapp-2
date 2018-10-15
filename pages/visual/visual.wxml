@@ -1,0 +1,56 @@
+<view class="view bg">
+  <view class="type-banner">
+    <swiper class="scroll-swiper" indicator-dots="{{ indicatorDots }}" autoplay="{{ canautoplay }}" duration="160" display-multiple-items="1" previous-margin="75rpx" next-margin="75rpx" skip-hidden-item-layout="true" current="0" bindchange="swiperChange">
+      <block wx:for="{{imgUrls}}" wx:index="index" wx:key="key">
+        <swiper-item class="swiper-item">
+          <image src="{{ item }}" class="slide-image {{swiperIndex == index ? 'active' : ''}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="dots">  
+      <block wx:for="{{imgUrls}}" wx:key="key">  
+        <view class="dot {{index == swiperIndex ? ' active' : ''}}"></view>  
+      </block>  
+    </view>
+  </view>
+  <view class="type-content mt20">
+    <view class="type-list">
+      <view class="title">一级标题</view>
+      <view class="row">
+        <view class="item" wx:for="{{ list }}" wx:key="key" bindtap='linkToChild'>
+          <image class="logo" src='{{ item.img }}'></image>
+          <view class="txt ellipsis">{{ item.title }}</view>
+        </view>
+      </view>
+      <view class="more">
+        查看更多
+        <view class="arrow-icon">
+          <view class="inner"></view>
+        </view> 
+      </view>
+    </view>
+    <view class="type-list mt20">
+      <view class="title">一级标题</view>
+      <view class="row">
+        <view class="item">
+          <image class="logo" src='https://static.dazhao100.cn/pic/1526907753l016152041.png'></image>
+          <view class="txt ellipsis">UI设计中的插画与情感化hahhahahhhhahah</view>
+        </view>
+        <view class="item">
+          <image class="logo" src='https://static.dazhao100.cn/pic/1526907753l016152041.png'></image>
+          <view class="txt ellipsis">UI设计中的插画与情感化hahhahahhhhahah</view>
+        </view>
+        <view class="item">
+          <image class="logo" src='https://static.dazhao100.cn/pic/1526907753l016152041.png'></image>
+          <view class="txt ellipsis">UI设计中的插画与情感化hahhahahhhhahah</view>
+        </view>
+      </view>
+      <view class="more">
+        查看更多
+        <view class="arrow-icon">
+          <view class="inner"></view>
+        </view> 
+      </view>
+    </view>
+  </view>
+</view>

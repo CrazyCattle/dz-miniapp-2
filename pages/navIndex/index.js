@@ -30,7 +30,7 @@ Page({
     autoplay: true,
     canautoplay: false,
     circular: true,
-    interval: 2500,
+    interval: 5000,
     duration: 300,
     aiList: [],
     showAiTip: false,
@@ -259,6 +259,12 @@ Page({
           this.setData({
             banner: res.data.result
           })
+
+          if (res.data.result.length > 1) {
+            this.setData({
+              indicatorDots: true
+            })
+          }
         }
       }
     })

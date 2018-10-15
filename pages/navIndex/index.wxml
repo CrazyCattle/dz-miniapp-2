@@ -1,11 +1,25 @@
 <view class="index bg">
-  <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+  <view class="search">
+    <view class="city">
+      福州 <view class="drop-icon"><image class="img" src="../../images/drop.png"></image></view>
+    </view>
+    <view class="search-ipt">
+      <view class="search-icon">
+        <image class="img" src="../../images/search.png"></image>
+      </view>
+      <view class="search-tips">请输入公司或者职位名称</view>
+    </view>
+  </view>
+  <swiper wx:if="{{ banner.length > 1 }}" class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
     <block wx:for="{{ banner }}" wx:key="key">
       <swiper-item>
         <image src="{{ item.list_img }}" class="slide-image"></image>
       </swiper-item>
     </block>
   </swiper>
+  <view class="swiper" wx:if="{{ banner.length == 1 }}">
+    <image wx:for="{{ banner }}" wx:key="key" src="{{ item.list_img }}" class="slide-image"></image>
+  </view>
   <view class="nav-list bg-f">
     <view class="nav-item" bindtap="linkCourseType">
       <image class="img" src="../../images/index/nav/item_1.png"></image>

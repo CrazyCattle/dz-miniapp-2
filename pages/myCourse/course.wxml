@@ -1,0 +1,12 @@
+<view class="list-box">
+  <scroll-view scroll-y style="height: 100%;">
+    <view class="type-list">
+      <view class="row">
+        <view class="item" wx:for="{{ list }}" wx:key="key" bindtap='linkToChild'>
+          <image class="logo" src='{{ item.img }}'></image>
+          <view class="txt ellipsis">{{ item.title }}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -68,8 +68,11 @@ Page({
   },
   linkCourseCollect(){
     if (getUserState()) {
-      wx.reLaunch({
-        url: '../navCourse/course?page=3',
+      // wx.reLaunch({
+      //   url: '../navCourse/course?page=3',
+      // })
+      wx.navigateTo({
+        url: '../myCourse/course',
       })
     } else {
       navToLogin()

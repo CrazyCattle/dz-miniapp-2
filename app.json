@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/share/share",
     "pages/navIndex/index",
     "pages/navMe/me",
     "pages/navCourse/course",
@@ -41,8 +42,9 @@
     "pages/deliveryResume/resume",
     "pages/editJobExpectNew/new",
     "pages/resumeCenterDropbox/index",
-    "pages/share/share",
-    "pages/visual/visual"
+    "pages/visual/visual",
+    "pages/visualChild/vchild",
+    "pages/myCourse/course"
   ],
   "window": {
     "backgroundTextStyle": "light",

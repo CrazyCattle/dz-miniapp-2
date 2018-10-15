@@ -1,0 +1,20 @@
+<view class="list-box bg">
+  <scroll-view scroll-y style="height: 100%;" scroll-top="{{scrollTop}}">
+    <view class="type-list">
+      <view class="title">一级标题</view>
+      <view class="row">
+        <view class="item" wx:for="{{ list }}" wx:key="key" bindtap='linkToChild'>
+          <image class="logo" src='{{ item.img }}'></image>
+        </view>
+      </view>
+    </view>
+    <view class="type-list">
+      <view class="title">一级标题</view>
+      <view class="row">
+        <view class="item" wx:for="{{ list }}" wx:key="key" bindtap='linkToChild'>
+          <image class="logo" src='{{ item.img }}'></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

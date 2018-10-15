@@ -29,6 +29,12 @@ Page({
       url: '../courseChild/course?id=78'
     })
   },
+  linkToMore (e) {
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `../visualChild/vchild?id=${id}`
+    })
+  },
   onLoad: function (options) {},
   onReady: function () {},
   onShow: function () {},

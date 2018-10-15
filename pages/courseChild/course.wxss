@@ -1,16 +1,29 @@
 @import "../../wxParse/wxParse.wxss";
 
+.banner {
+  height: 420rpx;
+}
+.banner .img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.course-raiders {
+  margin-top: -20rpx;
+  border-radius: 20rpx 20rpx 0 0;
+}
 .course-raiders-head {
-  padding: 20rpx 0;
+  padding: 40rpx 0;
   font-family: 'PingFangSC-Medium';
-  font-size: 26rpx;
-  color: #313148;
+  font-size: 30rpx;
+  color: #494C4E;
 }
 
 .course-raiders-desc {
   padding: 0 42rpx 80rpx;
   font-size: 24rpx;
-  color: #848ca1;
+  color: #848CA1;
   letter-spacing: 0;
   line-height: 40rpx;
   position: relative;

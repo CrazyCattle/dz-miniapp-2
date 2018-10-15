@@ -22,7 +22,7 @@
           <view class="txt ellipsis">{{ item.title }}</view>
         </view>
       </view>
-      <view class="more">
+      <view class="more" bindtap='linkToMore' data-id="78">
         查看更多
         <view class="arrow-icon">
           <view class="inner"></view>
@@ -45,7 +45,7 @@
           <view class="txt ellipsis">UI设计中的插画与情感化hahhahahhhhahah</view>
         </view>
       </view>
-      <view class="more">
+      <view class="more" bindtap='linkToMore' data-id="79">
         查看更多
         <view class="arrow-icon">
           <view class="inner"></view>

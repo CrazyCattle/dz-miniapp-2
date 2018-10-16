@@ -37,7 +37,17 @@ Page({
     // 职位推荐
     jobList: [],
     // 名企推荐
-    companyList: []
+    companyList: [],
+
+    // 推荐区域显示
+    showType: 1
+  },
+  showRecommend (e) {
+    let type = e.currentTarget.dataset.type
+    console.log(type)
+    this.setData({
+      showType: type
+    })
   },
   showTip(e) {
     let key = e.currentTarget.dataset.key

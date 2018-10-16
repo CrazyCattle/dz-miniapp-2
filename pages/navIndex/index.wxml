@@ -10,7 +10,7 @@
       <view class="search-tips">请输入公司或者职位名称</view>
     </view>
   </view>
-  <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
+  <scroll-view scroll-y style="height: 100%;" bindscrolltolower="" scroll-top="{{scrollTop}}">
     <swiper wx:if="{{ banner.length > 1 }}" class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
       <block wx:for="{{ banner }}" wx:key="key">
         <swiper-item>
@@ -61,10 +61,12 @@
     <view class="recommend-box">
       <view class="recommend mt20 bg-f" wx:if="{{ aiList.length !== 0 }}">
         <view class="recommend-tab">
-          <view class="tab recom cur tl">推荐职位</view>
-          <view class="tab current tc">最近职位</view>
-          <view class="tab hot tr">热门企业</view>
+          <view class="tab recom {{ showType == 1?'cur':'' }}" data-type="1" bindtap="showRecommend">推荐职位</view>
+          <view class="tab current {{ showType == 2?'cur':'' }}" data-type="2" bindtap="showRecommend">最近职位</view>
+          <view class="tab hot {{ showType == 3?'cur':'' }}" data-type="3" bindtap="showRecommend">热门企业</view>
         </view>
+      </view>
+      <view class="recommend bg-f" wx:if="{{ showType == 1 && jobList.length > 0 }}">
         <view class="ai-tip" bindtap="linkToEditInfor" wx:if="{{ showAiTip }}">
           修正您的<text class="notice">个人信息</text>，AI 管家 将为您匹配更精准的信息
           <view class="icon" catchtap="closeTip">
@@ -84,8 +86,6 @@
         <view class="position">
           <view class="post cur">全职</view><view class="post">实习</view>
         </view>
-      </view>
-      <view class="recommend bg-f" wx:if="{{ jobList.length > 0 }}">
         <view class="r-list">
           <view class="r-list-item" wx:for="{{ jobList }}" wx:key="key" wx:for-index="index" wx:for-item="item" bindtap="linkJobDetail" data-id="{{ item.position_id }}">
             <image class="pic" src="{{ item.company_logo }}"></image>
@@ -119,7 +119,41 @@
           </view>
         </view>
       </view>
-      <view class="recommend bg-f" wx:if="{{ companyList.length > 0 }}">
+      <view class="recommend bg-f" wx:if="{{ showType == 2 && jobList.length > 0 }}">
+        <view class="r-list">
+          <view class="r-list-item" wx:for="{{ jobList }}" wx:key="key" wx:for-index="index" wx:for-item="item" bindtap="linkJobDetail" data-id="{{ item.position_id }}">
+            <image class="pic" src="{{ item.company_logo }}"></image>
+            <view class="cont">
+              <view class="tit">
+                <view class="job lh-normal">{{ item.position_name }}</view>
+                <!-- <view class="dot" catchtap="showTip" data-key="{{index}}" data-clicked="{{clicked}}">
+                  <image src='../../images/dot.png' class="dotImg"></image>
+                  <view wx:if="{{ index == key && clicked }}" data-key="{{index}}" class="noInterest" data-id="{{item.position_id}}" catchtap='noInterest'>不感兴趣</view>
+                </view> -->
+                <view class="salary">
+                  8-9K
+                </view>
+              </view>
+              <view class="company">{{ item.company_name }}</view>
+              <view class="s-desc"> 
+                <text class="infor lh-normal">{{ item.city_name }} | {{ item.education_name }} </text>
+                <text class="infor lh-normal" hidden="true">截止日期：{{ item.position_stoptime }}</text>
+                <view class="dot" catchtap="showTip" data-key="{{index}}" data-clicked="{{clicked}}">
+                  <image src='../../images/dot.png' class="dotImg"></image>
+                  <view wx:if="{{ index == key && clicked }}" data-key="{{index}}" class="noInterest" data-id="{item.position_id}}" catchtap='noInterest'>不感兴趣</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="more" bindtap="linkMoreJob">
+            查看更多
+            <view class="arrow-icon">
+              <view class="inner"></view>
+            </view> 
+          </view>
+        </view>
+      </view>
+      <view class="recommend bg-f" wx:if="{{ showType == 3 && companyList.length > 0 }}">
         <view class="r-list">
           <view class="r-list-item" wx:for="{{ companyList }}" wx:key="key" wx:for-item="item"  bindtap="linkCompanyDetail" data-id="{{ item.company_id }}">
             <image class="pic" src="{{ item.company_logo }}"></image>
@@ -141,6 +175,5 @@
         </view>
       </view>
     </view>
-  
   </scroll-view>
 </view>

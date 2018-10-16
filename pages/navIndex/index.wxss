@@ -1,6 +1,15 @@
 /* pages/index/index.wxss */
 .index {
-  padding-bottom: 38rpx;
+  /* padding-bottom: 38rpx; */
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width:100%;
+  height:100%;
+  padding-top:70rpx;
 }
 
 .search {
@@ -8,7 +17,13 @@
   height: 70rpx;
   padding-right: 26rpx;
   align-items: center;
+  position:fixed;
+  width: 100%;
+  top:0;
+  left:0;
+  box-sizing: border-box;
   background-color: #F3F4F8;
+  z-index:5;
 }
 .search .city {
   flex: 1;
@@ -118,31 +133,6 @@
 .scroll-box swiper-item:last-child {
   padding-right: 20rpx;
 }
-.recommend > .tc {
-  padding-top: 35rpx;
-}
-.recommend .title {
-  display: inline-block;
-  margin-bottom: 10rpx;
-  color:#313148;
-  letter-spacing:0;
-  font-family: 'PingFangSC-Semibold';
-  font-weight: bold;
-  font-size: 26rpx;
-  position: relative;
-}
-.recommend .title::before,
-.recommend .title::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30rpx;
-  height:2rpx;
-  background-color: #e6e9f3;
-}
-.recommend .title::before { left: -40rpx; }
-.recommend .title::after { right: -40rpx; }
 .r-list-item {
   display: flex;
   align-items: center;
@@ -247,7 +237,53 @@
   border-radius: 3rpx;
   box-shadow: 0 0 0 5rpx rgba(0,0,0,.05);
 }
-
+/* 推荐职位tab */
+.recommend-tab{
+  display: flex;
+  align-items: center;
+  padding:24rpx 80rpx 24rpx  80rpx;
+  justify-content: center;
+}
+.recommend-tab .tab{
+  flex:1;
+  font-size:26rpx;
+  font-weight:300;
+  color:rgba(183,188,206,1);
+}
+.recommend-tab .tab.cur::before{
+  content:'';
+  position: absolute;
+  left:0;
+  bottom:-9rpx;
+  width:100rpx;
+  height:4rpx;
+  background:rgba(97,143,235,1);
+  border-radius:6rpx;
+}
+.recommend-tab .tab.cur{
+  position: relative;
+  color:rgba(49,49,72,1);
+}
+.position{
+  display: flex;
+  padding:0rpx 44rpx 24rpx  44rpx;
+}
+.position .post{
+  width:120rpx;
+  height:56rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  line-height:56rpx;
+  color:rgba(49,49,72,1);
+  background:rgba(243,244,248,1);
+  border-radius:30rpx;
+  text-align: center;
+  margin-right:24rpx;
+}
+.position .post.cur{
+  background:rgba(97,143,235,1);
+  color:#fff;
+}
 /* ai */
 .ai-tip {
   box-sizing: border-box;

@@ -1,5 +1,8 @@
 Page({
   data: {
+    placeholderTxt: '搜索课程或者讲师',
+    focus: false,
+
     swiperIndex: 0,
     // indicatorDots: true,
     autoplay: true,
@@ -17,6 +20,29 @@ Page({
       { img: 'https://static.dazhao100.cn/pic/1526907753l016152041.png', title: 'UI设计中的插画与情感化hahhahahhhhahah' },
       { img: 'https://static.dazhao100.cn/pic/1526907753l016152041.png', title: 'UI设计中的插画与情感化hahhahahhhhahah'}
     ]
+  },
+  iptFocus(e) {
+    this.setData({
+      focus: !this.data.focus,
+      taped: !this.data.taped
+    })
+    console.log(this.data.focus)
+  },
+  cc() {
+    this.setData({
+      focus: !this.data.focus,
+      taped: !this.data.taped
+    })
+  },
+  searchChange(e) {
+    console.log(e.detail.value)
+
+  },
+  iptConfirm(e) {
+    let keyword = e.detail.value
+    wx.navigateTo({
+      url: `../courseCollection/collect?keyword=${keyword}`
+    })
   },
   swiperChange(e) {
     const that = this;

@@ -44,7 +44,10 @@
     "pages/share/share",
     "pages/visual/visual",
     "pages/visualChild/vchild",
-    "pages/myCourse/course"
+    "pages/myCourse/course",
+    "pages/myResume/resume",
+    "pages/collectFolder/folder",
+    "pages/deliveryBox/delivery"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -73,7 +76,7 @@
       {
         "selectedIconPath": "images/nav/nav-infor-active.png",
         "iconPath": "images/nav/nav-infor.png",
-        "pagePath": "pages/navInformation/infor",
+        "pagePath": "pages/deliveryBox/delivery",
         "text": "投递箱"
       },
       {

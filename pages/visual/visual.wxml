@@ -1,4 +1,12 @@
 <view class="view bg">
+  <view class="search-box bg-f">
+    <view class="search-input" wx:if="{{ !focus }}" bindtap="iptFocus">
+      <image class="search" src="../../images/search.png"></image>{{ placeholderTxt}}
+    </view>
+    <view class="search-input bg-f" wx:if="{{ focus }}">
+      <input class="ipt" type="text" confirm-type="search" focus='{{ focus }}' bindblur="cc" bindconfirm="iptConfirm" bindinput="searchChange" catchtap='iptFocus'></input>
+    </view>
+  </view>
   <view class="type-banner">
     <swiper class="scroll-swiper" indicator-dots="{{ indicatorDots }}" autoplay="{{ canautoplay }}" duration="160" display-multiple-items="1" previous-margin="75rpx" next-margin="75rpx" skip-hidden-item-layout="true" current="0" bindchange="swiperChange">
       <block wx:for="{{imgUrls}}" wx:index="index" wx:key="key">

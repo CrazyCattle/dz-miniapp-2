@@ -1,0 +1,21 @@
+<view class="resume-box">
+  <scroll-view class="scroll" scroll-y style="height: 100%;" scroll-top="{{scrollTop}}">
+    <view class="list">
+      <view class="item" wx:for="{{ list }}" wx:key="key" wx:for-index="index">
+        <image class="img" src="{{ item.imgUrl }}"></image>
+        <view class="conts">
+          <view class="conts__top">
+            <text class="tit">{{ item.title }}{{ index }}</text>
+            <text class="time">{{ item.time }}</text>
+          </view>
+          <view class="conts__bottom">
+            <text class="company">{{ item.company }}</text>
+            <text class="status" wx:if="{{ item.status == 2 }}">【待定】</text>
+            <text class="status" wx:if="{{ item.status == 1 }}">【待处理】</text>
+            <text class="status" wx:if="{{ item.status == 0 }}">【不合适】</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

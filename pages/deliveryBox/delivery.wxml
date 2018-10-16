@@ -1,0 +1,25 @@
+<view class="resume-box">
+  <scroll-view class="scroll" scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
+    <view class="list">
+      <view class="item" wx:for="{{ mydropinbox }}" wx:key="key" wx:for-index="index">
+        <image class="img" src="https://static.dazhao100.cn/pic/1526907753l016152041.png"></image>
+        <view class="conts">
+          <view class="conts__top">
+            <text class="tit ellipsis">{{ item.title }}</text>
+            <text class="time">{{ item.apply_updatetime }}</text>
+          </view>
+          <view class="conts__bottom">
+            <text class="company">{{ item.company_name }}</text>
+            <text class="status">
+              <block wx:if="{{ item.apply_passstate == '-1'}}">【不合适】</block>
+              <block wx:if="{{ item.apply_passstate == '0'}}">【待处理】</block>
+              <block wx:if="{{ item.apply_passstate == '1'}}">【待定】</block>
+              <block wx:if="{{ item.apply_passstate == '2'}}">【邀请面试】</block>
+              <block wx:if="{{ item.apply_passstate == '3'}}">【已面试】</block>
+            </text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

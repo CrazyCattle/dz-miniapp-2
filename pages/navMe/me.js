@@ -92,6 +92,15 @@ Page({
       navToLogin()
     }
   },
+  linkCollectFolder () {
+    if (getUserState()) {
+      wx.navigateTo({
+        url: '../collectFolder/folder'
+      })
+    } else {
+      navToLogin()
+    }
+  },
   editUserInfor() {
     wx.navigateTo({
       url: '../userInformation/information'

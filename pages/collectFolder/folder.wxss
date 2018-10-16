@@ -1,0 +1,73 @@
+
+.collect-filter {
+  height: 132rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  border-top: 1rpx solid #e6e9f3;
+}
+.filter-tab {
+  width: 200rpx;
+  height: 52rpx;
+  border-radius: 26rpx;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 52rpx;
+  color: #313148;
+  background: #f3f4f8;
+}
+.filter-tab.acitve {
+  color: #fff;
+  background: #618FEB;
+}
+.scroll-container {
+  height: calc(100% - 150rpx);
+}
+.scroll-container .scroll-list {
+  height: 100%;
+}
+.r-list-item {
+  display: flex;
+  align-items: center;
+}
+.r-list-item .cont {
+  flex: 1;
+  height: 140rpx;
+  padding: 32rpx 50rpx 32rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #eaecf3;
+}
+.r-list-item .pic {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 0 35rpx;
+  border: 1rpx solid #e6e9f3;
+  border-radius: 1rpx;
+  box-sizing: border-box;
+}
+.r-list-item .cont .job {
+  font-family: 'PingFangSC-Semibold';
+  font-weight: bold;
+  font-size: 30rpx;
+  line-height: 35rpx;
+  color: #313148;
+}
+.r-list-item .cont .company {
+  width: 490rpx;
+  font-size: 26rpx;
+  color: #848ca1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.r-list-item .cont .s-desc {
+  display: flex;
+  justify-content: space-between;
+}
+.r-list-item .cont .infor {
+  font-size: 22rpx;
+  color: #848ca1;
+}

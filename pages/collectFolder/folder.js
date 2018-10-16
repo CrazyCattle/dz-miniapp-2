@@ -76,7 +76,11 @@ Page({
     }
   },
   onLoad: function (options) {
-    this.getPositionCollectFun()
+    if (getUserState() && !!app.globalData.student_id && !!app.globalData.token) {
+      this.getPositionCollectFun()
+    } else {
+      navToLogin()
+    }
   },
   onReady: function () {},
   onShow: function () {},

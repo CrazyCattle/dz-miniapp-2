@@ -1,20 +1,16 @@
-<view class="resume-box">
-  <scroll-view class="scroll" scroll-y style="height: 100%;" scroll-top="{{scrollTop}}">
-    <view class="list">
-      <view class="item" wx:for="{{ list }}" wx:key="key" wx:for-index="index">
-        <image class="img" src="{{ item.imgUrl }}"></image>
-        <view class="conts">
-          <view class="conts__top">
-            <text class="tit">{{ item.title }}{{ index }}</text>
-            <text class="time">{{ item.time }}</text>
-          </view>
-          <view class="conts__bottom">
-            <text class="company">{{ item.company }}</text>
-            <text class="status" wx:if="{{ item.status == 2 }}">【待定】</text>
-            <text class="status" wx:if="{{ item.status == 1 }}">【待处理】</text>
-            <text class="status" wx:if="{{ item.status == 0 }}">【不合适】</text>
-          </view>
+<view class="resume-list" wx:if="{{ resumeList.length > 0 }}">
+  <scroll-view scroll-y style="height: 100%;">
+    <view class="list-box">
+      <!-- <view class="resume-item active bg-f" bindtap='linkResume' data-id="{{item.resumes_id}}" wx:for="{{ resumeList }}" wx:key="key"> -->
+      <view class="resume-item active bg-f" catchtap='editResumeBasicInfor' data-id="{{ item.resumes_id }}" data-lan="{{ item.language }}" wx:for="{{ resumeList }}" wx:key="key">
+        <view class="item-lf">
+          <view class="title ellipsis">{{ item.title }}</view>
+          <view class="desc">{{item.city}} | {{ item.expectwork }}</view>
         </view>
+        <!-- <view class="item-rt">
+          <text class="editBtn" catchtap='editResumeBasicInfor' data-id="{{ item.resumes_id }}" data-lan="{{ item.language }}">编辑</text>
+          <text class="editBtn" catchtap="delResume" data-id="{{ item.resumes_id }}">删除</text>
+        </view> -->
       </view>
     </view>
   </scroll-view>

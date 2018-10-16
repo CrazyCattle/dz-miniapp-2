@@ -2,5 +2,9 @@
   "navigationBarTitleText": "我的简历",
   "navigationBarBackgroundColor": "#fff",
   "navigationBarTextStyle": "black",
-  "disableScroll": true
+  "disableScroll": true,
+  "usingComponents": {
+    "loading": "/components/loading/loading",
+    "tip": "/components/tips/tip"
+  }
 }

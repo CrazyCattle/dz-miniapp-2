@@ -7,7 +7,7 @@
   </view>
 </view>
 <view class="scroll-container pt20">
-  <tip content="您未收藏任何职业" height="100%" wx:if="{{ jobList.length == 0 }}"></tip>
+  <tip content="您未收藏任何职业" height="100%" wx:if="{{ fliterType == 'job' && jobList.length == 0 }}"></tip>
   <view class="scroll-list bg-f" wx:if="{{ fliterType == 'job' }}">
     <scroll-view scroll-y style="height: 100%;" bindscrolltolower="positionLower">
       <view class="r-list" wx:if="{{ showPos }}">
@@ -26,8 +26,8 @@
       <loading wx:if="{{ !showPos }}"></loading>
     </scroll-view>
   </view>
-  <tip content="您未收藏任何企业" height="100%" wx:if="{{ page == '4' && fliterType == 'company' && companyList.length == 0 }}"></tip>
-  <view class="scroll-list-box bg-f" wx:if="{{ fliterType == 'company' }}">
+  <tip content="您未收藏任何企业" height="100%" wx:if="{{ fliterType == 'company' && companyList.length == 0 }}"></tip>
+  <view class="scroll-list bg-f" wx:if="{{ fliterType == 'company' }}">
     <scroll-view scroll-y style="height: 100%;" bindscrolltolower="companyLower">
       <view class="r-list" wx:if="{{ showCompany }}">
         <view class="r-list-item" wx:for="{{ companyList }}" bindtap="linkCompanyDetail" data-id="{{ item.company_id }}" wx:key wx:for-item="item" >
@@ -42,7 +42,7 @@
           </view>
         </view>
       </view>
-      <!-- <loading wx:if="{{ !showCompany }}"></loading> -->
+      <loading wx:if="{{ !showCompany }}"></loading>
     </scroll-view>
   </view>
 </view>

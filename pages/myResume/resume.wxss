@@ -1,59 +1,81 @@
-.resume-box {
+.resume-list {
+  box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
   width: 100%;
   height: 100%;
 }
-.resume-box .list {
-  padding: 20rpx 15rpx;
+.list-box {
+  padding: 25rpx 16rpx 20rpx;
 }
-.resume-box .list .item {
-  display: flex;
-  box-sizing: border-box;
-  padding: 32rpx 30rpx;
+.resume-item {
+  height: 180rpx;
   margin-bottom: 20rpx;
-  border-radius:4rpx;
-  background-color: #fff;
-}
-.resume-box .list .item:last-child {
-  margin-bottom: 0;
-}
-.resume-box .list .img {
-  width: 116rpx;
-  height: 116rpx;
-  margin-right: 22rpx;
-}
-.resume-box .list .conts {
-  flex: 1;
+  padding: 40rpx;
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  border-left: 12rpx solid transparent;
+  border-radius: 4rpx;
 }
-.conts__top,
-.conts__bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.conts__top .tit {
-  font-size: 28rpx;
-  color: #313148;
-  font-weight: bold;
-  font-family:'PingFangSC-Semibold';
-}
-.conts__top .time {
-  font-size: 22rpx;
-  color: #848CA1;
+.resume-item:first-child {
+  margin-top: 0;
 }
 
-.conts__bottom .company {
-  font-size: 26rpx;
-  color: #848CA1;
+.resume-item.active {
+  border-left-color: #618FEB;
 }
-.conts__bottom .status {
+
+.resume-item .item-lf {
+  /* flex: 1; */
+  display: flex;
+  width: 630rpx;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.resume-item .item-lf .title {
+  box-sizing: border-box;
+  width: 100%;
+  padding-right: 25rpx;
+  font-size: 30rpx;
+  color: #313148;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resume-item .item-lf .desc {
+  font-size: 26rpx;
+  color: #848ca1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resume-item .item-rt {
+  width: 196rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.editBtn {
+  width: 88rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
   font-size: 24rpx;
-  color: #618FEB;
+  color: #fff;
+  border-radius: 22rpx;
+}
+
+.editBtn:first-child {
+  margin-right: 20rpx;
+  background: #618FEB;
+}
+
+.editBtn:last-child {
+  background: #b7bcce;
 }

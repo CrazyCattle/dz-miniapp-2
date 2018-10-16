@@ -32,7 +32,7 @@
         <view class="inner"></view>
       </view>
     </view>
-    <view class="me-row">
+    <view class="me-row" bindtap='editUserInfor'>
       <image class="icon resume" src="../../images/me/resume.png"></image>求职期望
       <view class="arrow-icon">
         <view class="inner"></view>

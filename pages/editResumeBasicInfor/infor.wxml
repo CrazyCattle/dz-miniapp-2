@@ -50,4 +50,5 @@
     </view>
   </view>
   <button bindtap="submitResumeInfo" placeholder-class="placeholder" class="baseBtn mt60">保存</button>
+  <button bindtap="reviewResume" data-id="{{ resume_id }}" placeholder-class="placeholder" class="baseBtn mt60">预览简历</button>
 </form>

@@ -152,6 +152,10 @@
   align-items: center;
   justify-content: space-between;
 }
+.r-list-item .cont > .tit .salary{
+  font-size:26rpx;
+  color:rgba(247,95,54,1);
+}
 .r-list-item .cont .dot {
   width: 40rpx;
   height: 50rpx;
@@ -164,6 +168,7 @@
   width: 100%;
   height:8rpx;
 }
+
 .r-list-item .pic {
   width: 140rpx;
   height: 140rpx;
@@ -189,6 +194,7 @@
 .r-list-item .cont .s-desc {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .r-list-item .cont .infor {
   font-size: 22rpx;
@@ -227,7 +233,8 @@
 .noInterest {
   position: absolute;
   right: 0;
-  top: 55rpx;
+  /* top: 55rpx; */
+  top: -52rpx;
   width: 120rpx;
   text-align: center;
   font-size: 26rpx;

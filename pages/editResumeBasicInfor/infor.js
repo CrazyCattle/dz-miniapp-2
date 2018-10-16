@@ -36,6 +36,12 @@ Page({
     //中英文
     lan: ''
   },
+  reviewResume (e) {
+    let resumes_id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `../resume/resume?resumes_id=${resumes_id}`,
+    })
+  },
   chooseImg() {
     wx.chooseImage({
       count: 1,
@@ -306,6 +312,7 @@ Page({
     })
   },
   onLoad: function (options) {
+    console.log(options)
     let id = options.id
     let lan = options.lan
 

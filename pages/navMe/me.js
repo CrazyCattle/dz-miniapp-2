@@ -81,7 +81,7 @@ Page({
   linkResumeCenter() {
     if (getUserState()) {
       wx.navigateTo({
-        url: '../resumeCenter/center'
+        url: '../myResume/resume'
       })
     } else {
       // wx.showToast({
@@ -102,9 +102,13 @@ Page({
     }
   },
   editUserInfor() {
-    wx.navigateTo({
-      url: '../userInformation/information'
-    })
+    if (getUserState()) {
+      wx.navigateTo({
+        url: '../userInformation/information'
+      })
+    } else {
+      navToLogin()
+    }
   },
   linkSuggestion() {
     wx.navigateTo({

@@ -246,11 +246,20 @@
   box-sizing: border-box;
 }
 .r-list-item .cont .job {
-  width: 494rpx;
-  font-family: 'PingFangSC-Semibold';
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-weight: bold;
   font-size: 30rpx;
   color:#313148;
+}
+.r-list-item .cont .job .title {
+  max-width: 350rpx;
+  font-family: 'PingFangSC-Semibold';
+}
+.r-list-item .cont .job .salary{
+  font-size:26rpx;
+  color:rgba(247,95,54,1);
 }
 .r-list-item .cont .company {
   width: 490rpx;

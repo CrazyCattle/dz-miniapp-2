@@ -1,0 +1,31 @@
+<view class="recovery-box">
+  <view class="tip">
+    <view class="info">该账号已在青藤就业注册</view>
+    <view class="info">需要授权恢复账号数据</view>
+  </view>
+  <view class="change-box">
+    <view class="change change-l">
+      <image class="img" src="../../images/authory/yeel.png"></image>
+    </view>
+    <view class="change change-c">
+      <image class="img" src="../../images/authory/change.png"></image>
+    </view>
+    <view class="change change-r">
+      <image class="img" src="../../images/authory/yeer.png"></image>
+    </view>
+  </view>
+  <view class="datail">
+    <view class="item">
+      <view class="item-l"><image class="img" src="../../images/authory/arrow-prev.png"></image></view>
+      <view class="item-c">
+        <view class="list">姓名：周**</view>
+        <view class="list">学号：201300800265</view>
+        <view class="list">学校：山东大学</view>
+      </view>
+      <view class="item-l"><image class="img" src="../../images/authory/arrow-next.png"></image></view>
+    </view>
+  </view>
+  <view class="authorizy">
+    <button bindtap="auth" class="btn">授权恢复</button>
+  </view>
+</view>

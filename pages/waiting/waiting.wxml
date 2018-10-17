@@ -1,0 +1,13 @@
+<view class="waiting">
+  <view class="loading-style-18 loader-inner">
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+    <view class="item"></view>
+  </view>
+  <view class="info">正在恢复，请耐心等待</view>
+</view>

@@ -42,6 +42,11 @@ Page({
     // 推荐区域显示
     showType: 1
   },
+  linkSearch () {
+    wx.navigateTo({
+      url: '../search/search'
+    })
+  },
   showRecommend (e) {
     let type = e.currentTarget.dataset.type
     console.log(type)

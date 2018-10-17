@@ -1,0 +1,94 @@
+.searchBox {
+  display: flex;
+  height: 90rpx;
+  padding-right: 26rpx;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #F3F4F8;
+  z-index:5;
+}
+.searchBox .city {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #313148;
+  font-size: 26rpx;
+}
+.searchBox .city .drop-icon {
+  width: 20rpx;
+  height: 20rpx;
+}
+.searchBox .city .drop-icon .img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-left: 5rpx;
+}
+.searchBox .search-ipt {
+  width: 576rpx;
+  background-color: #fff;
+  border-radius: 28rpx;
+  position: relative;
+}
+.searchBox .search-ipt .search-tips {
+  height: 56rpx;
+  padding-left: 60rpx;
+  line-height: 56rpx;
+  color: #848CA1;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.searchBox .search-ipt .search-tips .ipt {
+  height: 46rpx;
+}
+.searchBox .search-ipt .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 28rpx;
+  transform: translateY(-50%);
+  width: 24rpx;
+  height: 24rpx;
+}
+.searchBox .search-ipt .search-icon .img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.search-conts {
+  padding: 30rpx 45rpx 0 32rpx;
+}
+.search-conts .s-c-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #313148;
+}
+.search-conts .s-c-title .delect-icon {
+  width: 24rpx;
+  height: 24rpx;
+}
+.search-conts .s-c-title .delect-icon .icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.search-conts .list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -3rpx;
+}
+.search-conts .list .item {
+  padding: 12rpx 32rpx;
+  margin: 24rpx 16rpx 0 0;
+  font-size: 24rpx;
+  line-height: 26rpx;
+  color: #848CA1;
+  border-radius: 25rpx;
+  background-color: #fff;
+}

@@ -1,0 +1,34 @@
+<view class="">
+  <view class="searchBox">
+    <view class="city">
+      福州 <view class="drop-icon"><image class="img" src="../../images/drop.png"></image></view>
+    </view>
+    <view class="search-ipt">
+      <view class="search-icon">
+        <image class="img" src="../../images/search.png"></image>
+      </view>
+      <view class="search-tips">
+        <input class="ipt" placeholder='请输入公司或者职位名称'></input>
+      </view>
+    </view>
+  </view>
+
+  <view class="search-conts">
+    <view class="s-c-title">
+      <view class="tit">历史搜索</view>
+      <view class="delect-icon">
+        <image class="icon" src="../../images/delete.png"></image>
+      </view>
+    </view>
+    <view class="list">
+      <view class="item">UI视觉设计师</view>
+      <view class="item">游戏UI设计师</view>
+      <view class="item">Java开发工程师</view>
+      <view class="item">新浪微博</view>
+      <view class="item">马蜂窝</view>
+      <view class="item">小米</view>
+      <view class="item">京东集团</view>
+      <view class="item">UI设计师</view>
+    </view>
+  </view>
+</view>

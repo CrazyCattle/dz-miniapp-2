@@ -1,9 +1,9 @@
 <view class="index bg">
-  <view class="search">
+  <view class="searchBox">
     <view class="city">
       福州 <view class="drop-icon"><image class="img" src="../../images/drop.png"></image></view>
     </view>
-    <view class="search-ipt">
+    <view class="search-ipt" bindtap="linkSearch">
       <view class="search-icon">
         <image class="img" src="../../images/search.png"></image>
       </view>

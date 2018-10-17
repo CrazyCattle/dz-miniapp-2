@@ -47,7 +47,9 @@
     "pages/myCourse/course",
     "pages/myResume/resume",
     "pages/collectFolder/folder",
-    "pages/deliveryBox/delivery"
+    "pages/authorizedRecoverty/recovery",
+    "pages/deliveryBox/delivery",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",

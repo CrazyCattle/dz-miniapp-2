@@ -74,7 +74,10 @@
       <view class="r-list-item" wx:for="{{ jobList }}" wx:key="key" wx:for-item="item" bindtap="linkJobDetail" data-id="{{ item.position_id }}">
         <image class="pic" src="{{ item.company_logo }}"></image>
         <view class="cont">
-          <view class="job ellipsis lh-normal ">{{ item.position_name }}</view>
+          <view class="job lh-normal">
+            <view class="title ellipsis">{{ item.position_name }}</view>
+            <view class="salary">8-9K</view>
+          </view>
           <view class="company">{{ item.company_name }}</view>
           <view class="s-desc"> 
             <text class="infor lh-normal">{{ item.city_name }} | {{ item.education_name }} </text>

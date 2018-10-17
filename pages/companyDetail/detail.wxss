@@ -111,6 +111,11 @@
   letter-spacing: 0.04rpx;
   line-height: 50rpx;
 }
+.inner-row .c-pic .pic {
+  display: block;
+  width: 100%;
+  height: 364rpx;
+}
 .inner-row .job-desc text{
   display: none;
 }

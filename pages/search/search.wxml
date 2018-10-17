@@ -16,19 +16,19 @@
   <view class="search-conts">
     <view class="s-c-title">
       <view class="tit">历史搜索</view>
-      <view class="delect-icon">
+      <view class="delect-icon" bindtap="removeSearch">
         <image class="icon" src="../../images/delete.png"></image>
       </view>
     </view>
-    <view class="list">
-      <view class="item">UI视觉设计师</view>
-      <view class="item">游戏UI设计师</view>
-      <view class="item">Java开发工程师</view>
-      <view class="item">新浪微博</view>
-      <view class="item">马蜂窝</view>
-      <view class="item">小米</view>
-      <view class="item">京东集团</view>
-      <view class="item">UI设计师</view>
+    <view class="item-list">
+      <view class="item" data-id="1">UI视觉设计师</view>
+      <view class="item" data-id="1">游戏UI设计师</view>
+      <view class="item" data-id="1">Java开发工程师</view>
+      <view class="item" data-id="1">新浪微博</view>
+      <view class="item" data-id="1">马蜂窝</view>
+      <view class="item" data-id="1">小米</view>
+      <view class="item" data-id="1">京东集团</view>
+      <view class="item" data-id="1">UI设计师</view>
     </view>
   </view>
 </view>

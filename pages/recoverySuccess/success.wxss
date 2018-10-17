@@ -1,0 +1,30 @@
+.success-box{
+  background-color:#fff;
+  height:100%;
+  text-align: center;
+}
+.success{
+  padding-top:100rpx;
+}
+.success .img{
+  width:80rpx;
+  height:80rpx;
+}
+.success .info{
+  font-size:26rpx;
+  color:rgba(132,140,161,1);
+  margin-top:40rpx;
+  margin-bottom:68rpx;
+}
+.back .btn{
+  font-size:26rpx;
+  width:540rpx;
+  height:68rpx;
+  line-height:68rpx;
+  text-align: center;
+  background:rgba(97,143,235,1);
+  border-radius:37rpx;
+  color:rgba(255,255,255,1);
+  margin-left:auto;
+  margin-right:auto;
+}

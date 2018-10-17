@@ -1,0 +1,14 @@
+<view class="agree">
+  <form>
+    <view class="psw">
+      <view class="label">密码：</view>
+      <view class="setting">
+        <input password class="input" confirm-type="done" bindblur="iptPwd" bindinput="iptPwd" type="text" placeholder='请设置密码'></input>
+      </view>
+    </view>
+    <view class="back">
+      <view class="btn">注册</view>
+    </view>
+    <view class="protocol">同意《大招一百用户协议》</view>
+  </form>
+</view>

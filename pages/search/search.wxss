@@ -78,12 +78,12 @@
   height: 100%;
 }
 
-.search-conts .list {
+.item-list {
   display: flex;
   flex-wrap: wrap;
   margin-top: -3rpx;
 }
-.search-conts .list .item {
+.item-list .item {
   padding: 12rpx 32rpx;
   margin: 24rpx 16rpx 0 0;
   font-size: 24rpx;

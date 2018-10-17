@@ -26,6 +26,9 @@ Page({
     // page 1
     resumeList: [],
   },
+  checkboxChange (e) {
+    console.log(e.detail.value)
+  },
   formSubmit(e) {
     console.log(e.detail.value, e.detail.formId)
     const id = e.detail.value.id

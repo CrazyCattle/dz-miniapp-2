@@ -1,5 +1,5 @@
 {
-  "pages": [
+  "pages": [ 
     "pages/navIndex/index",
     "pages/navMe/me",
     "pages/navCourse/course",
@@ -49,7 +49,10 @@
     "pages/collectFolder/folder",
     "pages/authorizedRecoverty/recovery",
     "pages/deliveryBox/delivery",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/waiting/waiting",
+    "pages/recoverySuccess/success",
+    "pages/agreeRegister/agreeRegister"
   ],
   "window": {
     "backgroundTextStyle": "light",

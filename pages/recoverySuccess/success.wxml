@@ -1,0 +1,9 @@
+<view class="success-box">
+ <view class="success">
+  <image class="img" src="../../images/authory/succss.png"></image>
+  <view class="info">恢复成功！</view>
+ </view>
+ <view class="back">
+    <view class="btn">回首页</view>
+ </view>
+</view>

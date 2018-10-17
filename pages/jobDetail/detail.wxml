@@ -11,6 +11,13 @@
         <view class="infor lh-normal">截止日期：{{list.position_stoptime}}</view>
       </view>
     </view>
+    <view class="item-list">
+      <view class="item" data-id="1">UI视觉设计师</view>
+      <view class="item" data-id="1">游戏UI设计师</view>
+      <view class="item" data-id="1">Java开发工程师</view>
+      <view class="item" data-id="1">新浪微博</view>
+      <view class="item" data-id="1">马蜂窝</view>
+    </view>
   </view>
   <view class="r-list jobDetail-title bg-f">
     <view class="r-list-item" data-id="{{ list.company_id }}" bindtap="linkToCompany">

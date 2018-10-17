@@ -18,6 +18,24 @@
           </view>
         </form>
       </view>
+
+      <view class="srcoll-box">
+        <form bindsubmit="formSubmit" report-submit='true'>
+          <checkbox-group bindchange="checkboxChange">
+            <view class="resume-item active bg-f" wx:for="{{ resumeList }}" wx:key="key">
+              <input type="hidden" name="id" value="{{ item.resumes_id }}"></input>
+              <view class="item-lf">
+                <view class="title ellipsis">{{ item.title }}</view>
+                <view class="desc">{{item.city}} | {{ item.expectwork }}</view>
+              </view>
+              <view class="item-rt">
+                <checkbox value="{{ item.resumes_id }}" />
+              </view>
+            </view>
+          </checkbox-group>
+          <button class="subFixedBtn">投递简历</button>
+        </form>
+      </view>
     </scroll-view>
   </view>
 </view>

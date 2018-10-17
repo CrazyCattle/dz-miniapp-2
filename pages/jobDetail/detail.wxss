@@ -37,7 +37,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-bottom: 1rpx solid #eaecf3;
+  /* border-bottom: 1rpx solid #eaecf3; */
 }
 .r-list-item:last-child .cont {
   border-bottom: none;
@@ -78,7 +78,7 @@
   border-top: 1rpx solid #eaecf3;
 }
 .jobDetail-title:first-child {
-  padding: 0 35rpx;
+  padding: 0 35rpx 40rpx;
 }
 .jobDetail-title .salary {
   color:red;
@@ -222,4 +222,20 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -24rpx;
+}
+.item-list .item {
+  padding: 12rpx 32rpx;
+  margin: 24rpx 16rpx 0 0;
+  font-size: 24rpx;
+  line-height: 26rpx;
+  color: #618FEB;
+  border-radius: 25rpx;
+  border: 1rpx solid #618FEB;
 }

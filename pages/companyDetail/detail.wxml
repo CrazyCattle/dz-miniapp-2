@@ -30,8 +30,8 @@
         </view> 
       </view>
     </view>
-    <view class="j-row mt20 bg-f" wx:if="{{ active==1 }}">
-      <view class="inner-row">
+    <view class="j-row mt20" wx:if="{{ active==1 }}">
+      <view class="inner-row bg-f">
         <view class="tit">企业基本信息：</view>
         <view class="job-desc">企业性质：{{list.unittype_name}}</view>
         <view class="job-desc" wx:if="{{ list.company_stage != '' }}">发展阶段：{{list.company_stage}}</view>
@@ -39,6 +39,13 @@
         <view class="job-desc">企业规模：{{list.unitsize_name}}</view>
         <view class="job-desc" wx:if="{{ list.company_url != null }}">企业网址：{{list.company_url}}</view>
         <view class="job-desc" wx:if="{{ list.company_addresss != null }}">公司地址：{{list.company_addresss}}</view>
+      </view>
+
+      <view class="inner-row bg-f mt20">
+        <view class="tit">企业图册</view>
+        <view class="c-pic">
+          <image class="pic" src="https://static.dazhao100.cn/pic/1512456564l807313863.jpg"></image>
+        </view>
       </view>
     </view>
 

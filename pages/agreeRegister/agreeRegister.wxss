@@ -1,0 +1,40 @@
+/* pages/agreeRegister/agreeRegister.wxss */
+.agree .psw{
+  background-color:#fff;
+  margin-top:20rpx;
+  margin-bottom:200rpx;
+  font-size:26rpx;
+  display:flex;
+  align-items: center;
+  height:100rpx;
+}
+.agree .psw .label{
+  width:120rpx;
+  color:rgba(49,49,72,1);
+  text-align: left;
+  padding-left:40rpx;
+}
+.agree .psw .setting{
+  flex:1;
+}
+.agree .psw .setting .input{
+  color:rgba(132,140,161,1);
+}
+.agree .back .btn{
+  font-size:26rpx;
+  width:540rpx;
+  height:68rpx;
+  line-height:68rpx;
+  text-align: center;
+  background:rgba(97,143,235,1);
+  border-radius:37rpx;
+  color:rgba(255,255,255,1);
+  margin-left:auto;
+  margin-right:auto;
+}
+.agree .protocol{
+  font-size:26rpx;
+  color:rgba(130,140,163,1);
+  text-align: center;
+  padding-top:20rpx;
+}

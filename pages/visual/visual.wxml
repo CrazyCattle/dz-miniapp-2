@@ -10,8 +10,8 @@
   <view class="type-banner">
     <swiper class="scroll-swiper" indicator-dots="{{ indicatorDots }}" autoplay="{{ canautoplay }}" duration="160" display-multiple-items="1" previous-margin="75rpx" next-margin="75rpx" skip-hidden-item-layout="true" current="0" bindchange="swiperChange">
       <block wx:for="{{imgUrls}}" wx:index="index" wx:key="key">
-        <swiper-item class="swiper-item">
-          <image src="{{ item }}" class="slide-image {{swiperIndex == index ? 'active' : ''}}"></image>
+        <swiper-item class="swiper-item" data-id="{{ item.id }}">
+          <image src="{{ item.img }}" class="slide-image {{swiperIndex == index ? 'active' : ''}}"></image>
         </swiper-item>
       </block>
     </swiper>
@@ -22,7 +22,7 @@
     </view>
   </view>
   <view class="type-content mt20">
-    <view class="type-list" wx:for="{{ list }}" wx:key="key">
+    <view class="type-list" wx:for="{{ list }}" wx:key="key" wx:if="{{ item.twolist.length > 0 }}">
       <view class="title">{{ item.class_name }}</view>
       <view class="row">
         <view class="item" wx:for="{{ item.twolist }}" wx:for-item="cItem" wx:key="key" data-id="{{ cItem.class_id }}" bindtap='linkToChild'>
@@ -30,7 +30,7 @@
           <view class="txt ellipsis">{{ cItem.class_name }}</view>
         </view>
       </view>
-      <view class="more" bindtap='linkToMore' data-id="{{ item.class_id }}">
+      <view class="more" bindtap='linkToMore' data-id="{{ item.class_id }}" wx:if="{{ item.gtfour == 1 }}">
         查看更多
         <view class="arrow-icon">
           <view class="inner"></view>

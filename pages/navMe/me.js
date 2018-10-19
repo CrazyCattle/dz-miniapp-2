@@ -130,7 +130,10 @@ Page({
     wx.removeStorageSync('stud_info')
     wx.removeStorageSync('student_id')
     wx.removeStorageSync('userIcon')
-    wx.removeStorageSync('token')
+    wx.removeStorageSync('baseCity')
+    wx.removeStorageSync('searches')
+    wx.removeStorageSync('baseCityId')
+    wx.removeStorageSync('loginType')
 
     app.globalData.stud_info = ''
     app.globalData.student_id = ''

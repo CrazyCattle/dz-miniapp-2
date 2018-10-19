@@ -64,6 +64,8 @@ module.exports = {
   pushSetting: `${basicUrl}/PushSetting`, //学生推送设置
   getPushSetting: `${basicUrl}/PushSetting`, //获取学生推送设置
   getStuForecast: `${basicUrl}/getStuForecast`, //后去AI推荐
-
+  
+  
   getSiteCityList: `${basicUrl}/getSiteCityList`, //获取 首页 站点城市明细
+  LessonBanner: `${basicUrl}/LessonBanner`, //获取 直观banner
 };

@@ -1,15 +1,34 @@
 <view class="">
   <form>
     <view class="searchBox">
-      <view class="city">
-        福州 <view class="drop-icon"><image class="img" src="../../images/drop.png"></image></view>
+      <view class="city" bindtap="showCityChoose">
+        {{ curCity }}
+        <view class="drop-icon">
+          <image class="img" src="../../images/drop.png"></image>
+        </view>
+      </view>
+      <view class="city-filter-box tl {{ active=='1'?'active':'' }}" style="{{ active=='1'?'z-index: 1;':'' }}">
+        <scroll-view class="prov" scroll-y style="height: 100%;">
+          <view class="prov-box">
+            <view class="prov-item" wx:for="{{ provinceList }}" data-id="{{item.id}}" wx:key catchtap="chooseProvince">
+              {{ item.name }}
+            </view>
+          </view>
+        </scroll-view>
+        <scroll-view class="city" scroll-y style="height: 100%;">
+          <view class="city-item" wx:for="{{ cityList }}" wx:key data-id="{{ item.id }}" bindtap="chooseCity" data-txt="{{item.name}}">{{item.name}}</view>
+        </scroll-view>
       </view>
       <view class="search-ipt">
         <view class="search-icon">
           <image class="img" src="../../images/search.png"></image>
         </view>
         <view class="search-tips">
-          <input type="text" confirm-type="search" class="ipt" placeholder='请输入公司或者职位名称'></input>
+          <input type="text"
+            bindconfirm="iptConfirm"
+            confirm-type="search"
+            class="ipt"
+            placeholder='请输入公司或者职位名称'></input>
         </view>
       </view>
     </view>
@@ -22,14 +41,14 @@
         </view>
       </view>
       <view class="item-list">
-        <view class="item" data-id="1" bindtap="linkToRecom">UI视觉设计师</view>
-        <view class="item" data-id="1" bindtap="linkToRecom">游戏UI设计师</view>
-        <view class="item" data-id="1" bindtap="linkToRecom">Java开发工程师</view>
-        <view class="item" data-id="1" bindtap="linkToRecom">新浪微博</view>
-        <view class="item" data-id="1" bindtap="linkToRecom">马蜂窝</view>
-        <view class="item" data-id="1" bindtap="linkToRecom">小米</view>
-        <view class="item" data-id="1" bindtap="linkToRecom">京东集团</view>
-        <view class="item" data-id="1" bindtap="linkToRecom">UI设计师</view>
+        <view class="item" 
+          wx:for="{{ searches }}"
+          wx:key data-id="{{ item.id }}"
+          data-txt="{{ item.keyword }}"
+          data-city="{{ item.curCity }}"
+          bindtap="linkToRecom">
+          {{ item.keyword }}
+        </view>
       </view>
     </view>
   </form>

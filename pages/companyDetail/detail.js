@@ -61,7 +61,7 @@ Page({
           success: res => {
             if (res.data.error == '0') {
               this.setData({
-                recruitList: res.data.result.list
+                recruitList: res.data.listjson
               })
 
               if(this.data.recruitList.length >= 6) {
@@ -98,7 +98,7 @@ Page({
         data: {
           stu_id: app.globalData.student_id,
           token: app.globalData.token,
-          company_id: this.data.companyId
+          id: this.data.companyId
         },
         method: 'POST',
         header: {
@@ -128,7 +128,7 @@ Page({
     let collected = e.currentTarget.dataset.collected
     this.sendCollectCompany().then(res => {
       if (res.error == '0') {
-        if (res.errortip == '企业成功收藏') {
+        if (res.listjson.state == 1) {
           this.setData({
             collected: true
           })
@@ -155,7 +155,7 @@ Page({
         data: {
           stu_id: app.globalData.student_id,
           token: app.globalData.token,
-          company_id: cId
+          id: cId
         },
         method: 'GET',
         success: res => {
@@ -172,12 +172,12 @@ Page({
             }
           } else {
             if (res.data.error == '0') {
-              const { list } = res.data.result
+              const list = res.data.listjson
               this.setData({ 
                 list,
-                c_name: list.company_name
+                c_name: list.companyName
               })
-              const article = list.company_introduce
+              const article = list.companyDescript
               console.log(list.collectinc)
               if (list.collectinc != 0) {
                 this.setData({
@@ -193,6 +193,7 @@ Page({
     })
   },
   onLoad: function (options) {
+    console.log(options.id)
     this.setData({
       companyId: options.id
     })

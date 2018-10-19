@@ -1,13 +1,16 @@
 <import src="../../wxParse/wxParse.wxml" />
 <view class="qyDetail bg {{ showMask?'hidden':'' }}">
   <view class="company-detail bg-f">
-    <image class="logo" src="{{ list.company_logo }}"></image>
-    <view class="company-name">{{ list.company_name }}</view>
+    <image class="logo" src="{{ list.companyLogo }}"></image>
+    <view class="company-name">{{ list.companyName }}</view>
     <view class="expection">
-      <image class="address" src="../../images/address.png"></image>{{list.city_name}}
-      <image class="internet" src="../../images/internet.png"></image>{{list.industry_name}}
+      <image class="address" src="../../images/address.png"></image>{{list.city}}
+      <image class="internet" src="../../images/internet.png"></image>{{list.industry}}
     </view>
-    <view class="range">{{list.unittype_name}}  |  {{list.company_stage}}  |  {{list.unitsize_name}}</view>
+    <view class="range">
+      <image class="xz" src="../../images/xz-icon.png"></image>{{list.companyType}}
+      <image class="gm" src="../../images/gm-icon.png"></image>{{list.peoples}}
+    </view>
   </view>
   <view class="company-infor">
     <view class="infor-tab--box bg-f">
@@ -33,31 +36,31 @@
     <view class="j-row mt20" wx:if="{{ active==1 }}">
       <view class="inner-row bg-f">
         <view class="tit">企业基本信息：</view>
-        <view class="job-desc">企业性质：{{list.unittype_name}}</view>
-        <view class="job-desc" wx:if="{{ list.company_stage != '' }}">发展阶段：{{list.company_stage}}</view>
-        <view class="job-desc" wx:if="{{ list.industry_name != '' && list.industry_name != null }}">企业领域：{{list.industry_name}}</view>
-        <view class="job-desc">企业规模：{{list.unitsize_name}}</view>
-        <view class="job-desc" wx:if="{{ list.company_url != null }}">企业网址：{{list.company_url}}</view>
-        <view class="job-desc" wx:if="{{ list.company_addresss != null }}">公司地址：{{list.company_addresss}}</view>
+        <view class="job-desc">企业全称：{{list.companyName}}</view>
+        <view class="job-desc">企业性质：{{list.companyType}}</view>
+        <view class="job-desc">企业领域：{{list.industry}}</view>
+        <view class="job-desc">企业规模：{{list.peoples}}</view>
+        <view class="job-desc">企业网址：{{list.webSite}}</view>
+        <view class="job-desc">企业微博：{{list.weiboUrl}}</view>
       </view>
 
-      <view class="inner-row bg-f mt20">
+      <view class="inner-row bg-f mt20" wx:if="{{ list.companyPhoto.length > 0 }}">
         <view class="tit">企业图册</view>
-        <view class="c-pic">
-          <image class="pic" src="https://static.dazhao100.cn/pic/1512456564l807313863.jpg"></image>
+        <view class="c-pic mb20" wx:for="{{ list.companyPhoto }}" wx:for-item="cItem">
+          <image class="pic" src="{{ cItem.imgPath }}"></image>
         </view>
       </view>
     </view>
 
     <view class="recruit bg-f"  wx:if="{{ active==2 }}">
-      <view class="recruit-item bg-f" wx:for="{{ recruitList }}" wx:for-item="item" wx:key="key" data-id="{{item.position_id}}" bindtap="linkJobDetail">
+      <view class="recruit-item bg-f" wx:for="{{ recruitList }}" wx:for-item="item" wx:key="key" data-id="{{item.id_job}}" bindtap="linkJobDetail">
         <view class="row">
-          <view class="txt">{{ item.position_name }}</view>
-          <view class="txt">{{ item.position_salarymin }}K ~ {{ item.position_salarymax }}K </view>
+          <view class="txt">{{ item.companyName }}</view>
+          <view class="txt">{{ item.payMin/1000 }}K ~ {{ item.payMax/1000 }}K </view>
         </view>
         <view class="row">
-          <view class="txt">{{ item.city_name }} | {{ item.education_name }}</view>
-          <view class="txt">截止日期：{{ item.position_stoptime }}</view>
+          <view class="txt">{{ item.workCity }} | {{ item.degree }}</view>
+          <!-- <view class="txt">截止日期：{{ item.position_stoptime }}</view> -->
         </view>
       </view>
       <view class="more" wx:if="{{showMore}}" bindtap="linkJobList">

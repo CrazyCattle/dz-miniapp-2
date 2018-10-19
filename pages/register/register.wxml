@@ -1,10 +1,10 @@
 <view class="page-login">
   <form bindsubmit="formSubmit">
     <view class="form-box bg-f mt20">
-      <view class="row">
-        <view class="row-tit">姓名：</view>
+      <!-- <view class="row">
+        <view class="row-tit">手机号：</view>
         <view class="rot-ipt">
-          <input class="input" confirm-type="done" bindblur="iptName" bindinput="iptName" type="text" placeholder='请填写姓名'></input>
+          <input class="input" confirm-type="done" bindblur="iptName" bindinput="iptName" type="text" placeholder='请填写手机号'></input>
         </view>
       </view>
       <view class="row">
@@ -24,9 +24,9 @@
         <view class="rot-ipt">
           <input password class="input" confirm-type="done" bindblur="iptPwd" bindinput="iptPwd" type="text" placeholder='请输入密码'></input>
         </view>
-      </view>
+      </view> -->
       <view class="row">
-        <view class="row-tit">电话：</view>
+        <view class="row-tit">手机号：</view>
         <view class="rot-ipt">
           <input class="input" confirm-type="done" bindblur="iptPhone" bindinput="iptPhone" type="number" placeholder='请输入手机号'></input>
         </view>

@@ -1,5 +1,6 @@
 import {
-  getCClass
+  getCClass,
+  LessonBanner
 } from '../../api';
 
 import {
@@ -23,11 +24,7 @@ Page({
     circular: true,
     interval: 5000,
     duration: 300,
-    imgUrls: [
-      'https://static.dazhao100.cn/pic/1514342891l592025878.png',
-      'https://static.dazhao100.cn/pic/1528698094l338683272.png',
-      'https://static.dazhao100.cn/pic/1528683179l389784958.png'
-    ],
+    imgUrls: [],
     list: []
   },
   iptFocus(e) {
@@ -71,9 +68,22 @@ Page({
       url: `../visualChild/vchild?id=${id}`
     })
   },
+  getBanner () {
+    wx.request({
+      url: `${LessonBanner}`,
+      success: res => {
+        console.log(res)
+        if (res.data.error == 0) {
+          this.setData({
+            imgUrls: res.data.listjson
+          })
+        }
+      }
+    })
+  },
   onLoad: function (options) {
     wx.request({
-      url: `${getCClass}`,
+      url: `${getCClass}?twonum=4`,
       method: 'GET',
       success: res => {
         console.log(res)
@@ -84,6 +94,9 @@ Page({
         }
       }
     })
+
+    this.getBanner()
+
     if (getUserState() && !!app.globalData.student_id && !!app.globalData.token) {
       
     } else {

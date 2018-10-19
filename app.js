@@ -13,8 +13,8 @@ App({
     schoolInfor: wx.getStorageSync('schoolInfor') || '', //学校信息
     token: wx.getStorageSync('token') || '',//后台登陆token
     loginType: '',  //登陆类型
-    baseCity: wx.getStorageSync('baseCity') || '',// 获取首页 城市
-    baseCityId: wx.getStorageSync('baseCityId') || '',// 获取首页 城市ID
+    baseCity: wx.getStorageSync('baseCity') || '全国',// 获取首页 城市
+    baseCityId: wx.getStorageSync('baseCityId') || '1',// 获取首页 城市ID
   },
   
   onLaunch: function () {

@@ -38,7 +38,20 @@
   padding-bottom: 30rpx;
   font-size: 22rpx;
   color: #848ca1;
+  display: flex;
+  align-items: center;
 }
+.company-detail .range .xz {
+  width: 22rpx;
+  height: 20rpx;
+  margin-right: 10rpx;
+}
+.company-detail .range .gm {
+  height: 20rpx;
+  width: 22rpx;
+  margin: 0 10rpx 0 60rpx;
+}
+
 
 .infor-tab--box {
   display: flex;

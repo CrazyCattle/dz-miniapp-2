@@ -62,6 +62,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.removeStorageSync('schoolInfo')
+    wx.removeStorageSync('stud_info')
+    wx.removeStorageSync('student_id')
+    wx.removeStorageSync('userIcon')
+    wx.removeStorageSync('baseCity')
+    wx.removeStorageSync('searches')
+    wx.removeStorageSync('baseCityId')
+    wx.removeStorageSync('loginType')
+    
     new Promise((resolve, reject) => {
       if (!app.globalData.schoolInfo) {
         wx.request({

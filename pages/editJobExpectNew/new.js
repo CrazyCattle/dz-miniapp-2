@@ -14,6 +14,8 @@ const app = getApp()
 
 Page({
   data: {
+    issel: '',
+
     user_exprect: '',
     industry: '',
     city: '',
@@ -297,6 +299,7 @@ Page({
       province_id: this.data.prov_changeId,
       city_id: this.data.addressIndexArr[e.detail.value[1]]
     })
+    console.log(e.detail.value, this.data.city_id)
   },
   listenerCityChange(e) {
     // console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
@@ -305,20 +308,21 @@ Page({
     let _self = this
     if (c == '0') {
       _self.data.addressOne.forEach((val, i) => {
-        if (val.province_name == _self.data.addressArray[0][v]) {
+        console.log(val.name, _self.data.addressArray[0][v])
+        if (val.name == _self.data.addressArray[0][v]) {
           wx.request({
-            url: `${getCityList}?father_id=${val.province_code}`,
+            url: `${getCityList}?id=${val.id}`,
             success: res => {
               if (res.data.error == '0') {
                 const arr = []
                 const arr1 = []
                 res.data.listjson.forEach((v, i) => {
-                  arr.push(v.city_name)
-                  arr1.push(v.city_id)
+                  arr.push(v.name)
+                  arr1.push(v.id)
                 })
                 _self.setData({
                   addressArray: [_self.data.addressOneC, arr],
-                  prov_changeId: val.province_id,
+                  prov_changeId: val.id,
                   addressIndexArr: arr1
                 })
                 
@@ -368,6 +372,8 @@ Page({
       data: {
         token: app.globalData.token,
         stu_id: app.globalData.student_id,
+        resumeDefault: 1,
+        issel: this.data.isMajor,
         expect_id: this.data.expect_id == '-9999' ? 0 : this.data.expect_id,
         industry_id: this.data.industry_id,  
         father_id: this.data.father_id,  
@@ -401,25 +407,26 @@ Page({
 
   onLoad: function (options) {
     let data = JSON.parse(options.data)
-    console.log(data)
+    console.log(data, 11111111)
     this.setData({
       industry: data.industry,
       user_exprect: data.jobyname,
+      issel: data.issel,
 
       city: data.workCity,
       salary: data.salary,
       company_size: data.people,
       company_type: data.companytype,
 
-      industry_id: data.industry_id,  
-      father_id: data.father_id,  
-      positiontype_id: data.positiontype_id,  
-      province_id: data.province_id,  
-      city_id: data.city_id,  
-      expect_pay: data.expect_pay,  
-      expect_unittype: data.expect_unittype,  
-      expect_unitsize: data.expect_unitsize,  
-      expect_id: data.expect_id
+      // industry_id: data.industry_id,  
+      // father_id: data.father_id,  
+      // positiontype_id: data.positiontype_id,  
+      // province_id: data.province_id,  
+      // city_id: data.city_id,  
+      // expect_pay: data.expect_pay,  
+      // expect_unittype: data.expect_unittype,  
+      // expect_unitsize: data.expect_unitsize,  
+      // expect_id: data.expect_id
     })
 
     // this.getSalaryBaseFun()
@@ -481,7 +488,7 @@ Page({
             const { listjson } = res.data
             const jobOne = []
             listjson.forEach((v, i) => {
-              jobOne.push(v.province_name)
+              jobOne.push(v.name)
             })
             this.setData({
               addressOne: listjson,
@@ -493,19 +500,19 @@ Page({
       })
     }).then(res => {
       wx.request({
-        url: `${getCityList}?father_id=${res[0].province_code}`,
+        url: `${getCityList}?id=${res[0].id}`,
         success: data => {
           if (data.data.error == '0') {
             const arr = []
             const arr1 = []
             data.data.listjson.forEach((v, i) => {
-              arr.push(v.city_name)
-              arr1.push(v.city_id)
+              arr.push(v.name)
+              arr1.push(v.id)
             })
             this.setData({
               addressArray: [this.data.addressOneC, arr],
-              prov_changeId: res[0].province_id,
-              province_id: res[0].province_id,
+              prov_changeId: res[0].id,
+              province_id: res[0].id,
               addressIndexArr: arr1
             })
           }

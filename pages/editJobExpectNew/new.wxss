@@ -86,3 +86,39 @@
   color: #848ca1;
   text-decoration: underline;
 }
+
+.major {
+  display: flex;
+  padding: 26rpx 40rpx;
+  margin-top: 20rpx;
+  align-items: center;
+  background-color: #fff;
+}
+.major .txt {
+  margin-right: 30rpx;
+  font-size: 26rpx;
+  color: #313148;
+}
+.major .circle {
+  display: flex;
+  margin-right: 20rpx;
+  align-items: center;
+  font-size: 26rpx;
+  color: #313148;
+}
+.major .circle .i-circle {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 18rpx;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 2rpx solid #C9C9C9;
+}
+.major .circle .i-circle.active {
+  border: none;
+}
+.major .circle .img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

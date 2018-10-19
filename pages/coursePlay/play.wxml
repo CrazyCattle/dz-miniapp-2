@@ -5,7 +5,9 @@
       <text class="v-tit">{{ playInfor.lesson_name }}</text>
     </view>
     <view class="row">
-      <view class="v-students">{{ playInfor.viewCount }}人正在学</view>
+      <view class="v-students">
+        <!-- {{ playInfor.viewCount }}人正在学 -->
+      </view>
       <view class="v-fun">
         <view class="item {{ menuActive?'active':'' }}" catchtap="showMenu">
           <image class="icon icon-2" src="{{ menuActive?'../../images/menu-active.png':'../../images/menu.png' }}"></image>目录

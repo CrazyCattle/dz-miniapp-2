@@ -1,4 +1,4 @@
-const basicUrl = "https://stu.dazhao100.cn/api";
+const basicUrl = "http://api.dznewbt102.com/api";
 
 module.exports = {
   judgeStu: `${basicUrl}/judgeStu`,//判断微信用户是否存在
@@ -64,4 +64,6 @@ module.exports = {
   pushSetting: `${basicUrl}/PushSetting`, //学生推送设置
   getPushSetting: `${basicUrl}/PushSetting`, //获取学生推送设置
   getStuForecast: `${basicUrl}/getStuForecast`, //后去AI推荐
+
+  getSiteCityList: `${basicUrl}/getSiteCityList`, //获取 首页 站点城市明细
 };

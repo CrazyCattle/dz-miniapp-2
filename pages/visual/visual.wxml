@@ -22,38 +22,15 @@
     </view>
   </view>
   <view class="type-content mt20">
-    <view class="type-list">
-      <view class="title">一级标题</view>
+    <view class="type-list" wx:for="{{ list }}" wx:key="key">
+      <view class="title">{{ item.class_name }}</view>
       <view class="row">
-        <view class="item" wx:for="{{ list }}" wx:key="key" bindtap='linkToChild'>
-          <image class="logo" src='{{ item.img }}'></image>
-          <view class="txt ellipsis">{{ item.title }}</view>
+        <view class="item" wx:for="{{ item.twolist }}" wx:for-item="cItem" wx:key="key" data-id="{{ cItem.class_id }}" bindtap='linkToChild'>
+          <image class="logo" src='{{ cItem.class_img }}'></image>
+          <view class="txt ellipsis">{{ cItem.class_name }}</view>
         </view>
       </view>
-      <view class="more" bindtap='linkToMore' data-id="78">
-        查看更多
-        <view class="arrow-icon">
-          <view class="inner"></view>
-        </view> 
-      </view>
-    </view>
-    <view class="type-list mt20">
-      <view class="title">一级标题</view>
-      <view class="row">
-        <view class="item">
-          <image class="logo" src='https://static.dazhao100.cn/pic/1526907753l016152041.png'></image>
-          <view class="txt ellipsis">UI设计中的插画与情感化hahhahahhhhahah</view>
-        </view>
-        <view class="item">
-          <image class="logo" src='https://static.dazhao100.cn/pic/1526907753l016152041.png'></image>
-          <view class="txt ellipsis">UI设计中的插画与情感化hahhahahhhhahah</view>
-        </view>
-        <view class="item">
-          <image class="logo" src='https://static.dazhao100.cn/pic/1526907753l016152041.png'></image>
-          <view class="txt ellipsis">UI设计中的插画与情感化hahhahahhhhahah</view>
-        </view>
-      </view>
-      <view class="more" bindtap='linkToMore' data-id="79">
+      <view class="more" bindtap='linkToMore' data-id="{{ item.class_id }}">
         查看更多
         <view class="arrow-icon">
           <view class="inner"></view>

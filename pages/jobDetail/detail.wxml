@@ -3,31 +3,32 @@
   <view class="r-list jobDetail-title bg-f">
     <view class="r-list-item">
       <view class="cont jobDetailTitle">
-        <view class="job lh-normal">{{ list.position_name }} 
-          <text class="salary" wx:if="{{ list.position_salarymin && list.position_salarymax }}">[{{list.position_salarymin}}k-{{list.position_salarymax}}k]</text>
+        <view class="job lh-normal">{{ list.jobName }}
+          <text class="salary" wx:if="{{ list.payMin && list.payMax }}">{{list.payMin/1000}}k-{{list.payMax/1000}}k</text>
           <text class="salary" wx:else>[不限]</text>
         </view>
-        <view class="infor lh-normal">{{list.city_name}} | {{list.education_name}} | {{list.positiontype_name}}</view>
-        <view class="infor lh-normal">截止日期：{{list.position_stoptime}}</view>
+        <view class="infor lh-normal">
+          <block wx:if='{{list.workType ==1}}'>全职</block>        
+          <block wx:else>实习</block>        
+         | {{list.degree}} | {{list.workProvince}}{{list.workCity}}</view>
+        <view class="infor lh-normal">截止日期：{{list.endDate}}</view>
       </view>
     </view>
     <view class="item-list">
-      <view class="item" data-id="1">UI视觉设计师</view>
-      <view class="item" data-id="1">游戏UI设计师</view>
-      <view class="item" data-id="1">Java开发工程师</view>
-      <view class="item" data-id="1">新浪微博</view>
-      <view class="item" data-id="1">马蜂窝</view>
+      <view class="item" wx:for="{{ cTag }}">{{ item }}</view>
     </view>
   </view>
   <view class="r-list jobDetail-title bg-f">
-    <view class="r-list-item" data-id="{{ list.company_id }}" bindtap="linkToCompany">
-      <image class="pic" src="{{ list.cominfo.company_logo }}"></image>
+    <view class="r-list-item" data-id="{{ list.companyId }}" bindtap="linkToCompany">
+      <image class="pic" src="{{ list.cominfo.companyLogo }}"></image>
       <view class="cont">
-        <view class="job lh-normal">{{ list.cominfo.company_name }}</view>
-        <view class="company">[{{ list.cominfo.positionnums }}个]{{ list.cominfo.positionnames }}</view>
+        <view class="job lh-normal">{{ list.cominfo.companyName }}</view>
+        <!-- <view class="company">[{{ list.cominfo.positionnums }}个]{{ list.cominfo.positionnames }}</view> -->
         <view class="s-desc"> 
-          <text class="infor lh-normal">{{ list.cominfo.city_name }} | {{ list.cominfo.education_name }}</text>
-          <text class="infor lh-normal">截止日期：{{list.cominfo.position_stoptime}}</text>
+          <text class="infor lh-normal">
+            {{ list.cominfo.industry }} | {{ list.cominfo.companyType }} | {{ list.cominfo.peoples }}
+          </text>
+          <!-- <text class="infor lh-normal">截止日期：{{list.cominfo.position_stoptime}}</text> -->
         </view>
       </view>
     </view>
@@ -53,10 +54,10 @@
       <view class="tit">工作地点：</view>
       <view class="job-desc location">
         <image class="icon" src="../../images/address.png"></image>
-        {{ list.position_addresss?list.position_addresss:'该公司尚未填写地址' }}
+        {{ list.workAddress?list.workAddress:'该公司尚未填写地址' }}
       </view>
       <view class="map">
-        <view class="linkMap" data-name="{{ list.position_addresss }}" bindtap="linkMap">
+        <view class="linkMap" data-name="{{ list.workAddress }}" bindtap="linkMap">
           查看地图
           <view class="arrow-icon">
             <view class="inner"></view>

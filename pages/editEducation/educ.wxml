@@ -4,21 +4,21 @@
       <view class="row">
         <view class="row-tit">学校：</view>
         <view class="rot-ipt">
-          <input type="text" placeholder-class="placeholder" class="input" placeholder='请填写学校' disabled value='{{ user_school }}'></input>
+          <input type="text" bindblur="inputSchoolName" bindinput="inputSchoolName" class="input" placeholder='请填写学校' value='{{ school_name }}'></input>
         </view>
       </view>
       <view class="row">
         <view class="row-tit">学历：</view>
         <view class="rot-ipt">
-          <picker class="picker" mode="selector" range="{{educ}}" value="{{index}}" bindchange="listenerPickerSelected">
-            <view class="inner-picker">{{ educ[index] }}</view>
+          <picker class="picker" mode="selector" range="{{ educ }}" value="{{index}}" bindchange="listenerPickerSelected">
+            <view class="inner-picker">{{ educCont }}</view>
           </picker>
           <view class="arrow-icon">
             <view class="inner"></view>
           </view>
         </view>
       </view>
-      <view class="row">
+      <!-- <view class="row">
         <view class="row-tit">院系：</view>
         <view class="rot-ipt">
           <picker class="picker" mode="selector" range="{{department}}" value="{{departmentIndex}}" bindchange="listenerDepartment">
@@ -28,24 +28,25 @@
             <view class="inner"></view>
           </view>
         </view>
-      </view>
+      </view> -->
       <view class="row">
         <view class="row-tit">专业：</view>
         <view class="rot-ipt">
-          <picker class="picker" mode="selector" range="{{major}}" value="{{majorIndex}}" bindchange="listenerMajor">
+          <input type="text" bindblur="inputMajor" bindinput="inputMajor" class="input" placeholder='请填写专业' value='{{ majorCont }}'></input>
+          <!-- <picker class="picker" mode="selector" range="{{major}}" value="{{majorIndex}}" bindchange="listenerMajor">
             <view class="inner-picker">{{ major[majorIndex] }}</view>
           </picker>
           <view class="arrow-icon">
             <view class="inner"></view>
-          </view>
+          </view> -->
         </view>
       </view>
-      <view class="row">
+      <!-- <view class="row">
         <view class="row-tit">学号：</view>
         <view class="rot-ipt">
           <input class="input" placeholder-class="placeholder" placeholder='请填写学号' value="{{student_name}}" bindinput="iptStudenNumber"></input>
         </view>
-      </view>
+      </view> -->
       <view class="row">
         <view class="row-tit">入学时间：</view>
         <view class="rot-ipt">

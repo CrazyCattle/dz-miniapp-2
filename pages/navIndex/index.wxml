@@ -1,7 +1,10 @@
 <view class="index bg">
   <view class="searchBox">
-    <view class="city">
-      福州 <view class="drop-icon"><image class="img" src="../../images/drop.png"></image></view>
+    <view class="city" bindtap='exchangeCity'>
+      <block>{{ baseCity }}站</block>
+      <view class="drop-icon">
+        <image class="img" src="../../images/drop.png"></image>
+      </view>
     </view>
     <view class="search-ipt" bindtap="linkSearch">
       <view class="search-icon">
@@ -11,15 +14,22 @@
     </view>
   </view>
   <scroll-view scroll-y style="height: 100%;" bindscrolltolower="" scroll-top="{{scrollTop}}">
-    <swiper wx:if="{{ banner.length > 1 }}" class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
-      <block wx:for="{{ banner }}" wx:key="key">
-        <swiper-item>
-          <image src="{{ item.list_img }}" class="slide-image"></image>
-        </swiper-item>
-      </block>
-    </swiper>
-    <view class="swiper" wx:if="{{ banner.length == 1 }}">
-      <image wx:for="{{ banner }}" wx:key="key" src="{{ item.list_img }}" class="slide-image"></image>
+    <view class="banner-box">
+      <swiper bindchange="swiperChange" wx:if="{{ banner.length > 1 }}" class="swiper" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+        <block wx:for="{{ banner }}" wx:key="key">
+          <swiper-item>
+            <image src="{{ item.img }}" class="slide-image"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+      <view wx:if="{{ banner.length > 1 }}" class="dots">
+        <block wx:for="{{banner}}" wx:key="key">
+          <view class="dot {{index == swiperIndex ?'active':''}}"></view>
+        </block>  
+      </view>
+      <view class="swiper" wx:if="{{ banner.length == 1 }}">
+        <image wx:for="{{ banner }}" wx:key="key" src="{{ item.lisimgt_img }}" class="slide-image"></image>
+      </view>
     </view>
     <view class="nav-list bg-f">
       <view class="nav-item" bindtap="linkCourseType">
@@ -40,7 +50,7 @@
       </view>   -->
     </view>
     
-    <view class="scroll-box mt20 bg-f" hidden="true" wx:if="{{ imgUrls.length > 0 }}">
+    <!-- <view class="scroll-box mt20 bg-f" hidden="true" wx:if="{{ imgUrls.length > 0 }}">
       <view class="scroll-title">
         课程推荐
         <view class="c-more" bindtap="linkCourse">
@@ -57,17 +67,17 @@
           </swiper-item>
         </block>
       </swiper>
-    </view>
-    <view class="recommend-box">
-      <view class="recommend mt20 bg-f" wx:if="{{ aiList.length !== 0 }}">
+    </view> -->
+    <view class="recommend-box mt20">
+      <view class="recommend mt20 bg-f">
         <view class="recommend-tab">
           <view class="tab recom {{ showType == 1?'cur':'' }}" data-type="1" bindtap="showRecommend">推荐职位</view>
           <view class="tab current {{ showType == 2?'cur':'' }}" data-type="2" bindtap="showRecommend">最近职位</view>
           <view class="tab hot {{ showType == 3?'cur':'' }}" data-type="3" bindtap="showRecommend">热门企业</view>
         </view>
       </view>
-      <view class="recommend bg-f" wx:if="{{ showType == 1 && jobList.length > 0 }}">
-        <view class="ai-tip" bindtap="linkToEditInfor" wx:if="{{ showAiTip }}">
+      <view class="recommend bg-f" wx:if="{{ showType == 1 }}">
+        <view class="ai-tip" bindtap="linkToEditInfor">
           修正您的<text class="notice">个人信息</text>，AI 管家 将为您匹配更精准的信息
           <view class="icon" catchtap="closeTip">
             <image class="icon-close" src="../../images/close.png"></image>
@@ -80,98 +90,90 @@
         <view class="rejob" hidden="true">
           <text class="tit">AI管家觉得您骨子里适合以下职位：</text>
           <view class="rejob-box">
-            <view class="item" wx:for="{{ aiList.position_name }}" wx:for-item="item" wx:key>{{ item.position_name }}</view>
+            <view class="item" wx:for="{{ aiList.position_name }}" wx:for-item="item" wx:key>
+              {{ item.position_name }}
+            </view>
           </view>
         </view>
         <view class="position">
-          <view class="post cur">全职</view><view class="post">实习</view>
+          <view class="post {{ workType == 1?'cur':'' }}" data-id="1" bindtap="changeWT">全职</view>
+          <view class="post {{ workType == 2?'cur':'' }}" data-id="2" bindtap="changeWT">实习</view>
         </view>
         <view class="r-list">
-          <view class="r-list-item" wx:for="{{ jobList }}" wx:key="key" wx:for-index="index" wx:for-item="item" bindtap="linkJobDetail" data-id="{{ item.position_id }}">
-            <image class="pic" src="{{ item.company_logo }}"></image>
+          <view class="r-list-item" wx:for="{{ jobList }}" wx:key="key" wx:for-index="index" wx:for-item="item" bindtap="linkJobDetail" data-id="{{ item.id_job }}">
+            <image class="pic" src="{{ item.companyLogo }}"></image>
             <view class="cont">
               <view class="tit">
-                <view class="job lh-normal">{{ item.position_name }}</view>
-                <!-- <view class="dot" catchtap="showTip" data-key="{{index}}" data-clicked="{{clicked}}">
-                  <image src='../../images/dot.png' class="dotImg"></image>
-                  <view wx:if="{{ index == key && clicked }}" data-key="{{index}}" class="noInterest" data-id="{{item.position_id}}" catchtap='noInterest'>不感兴趣</view>
-                </view> -->
-                <view class="salary">
-                  8-9K
-                </view>
+                <view class="job lh-normal">{{ item.jobName }}</view>
+                <view class="salary">{{ item.payMin/1000 }}-{{ item.payMax/1000 }}K</view>
               </view>
-              <view class="company">{{ item.company_name }}</view>
+              <view class="company">{{ item.companyName }}</view>
               <view class="s-desc"> 
-                <text class="infor lh-normal">{{ item.city_name }} | {{ item.education_name }} </text>
-                <text class="infor lh-normal" hidden="true">截止日期：{{ item.position_stoptime }}</text>
+                <text class="infor lh-normal">{{ item.workCity }} | {{ item.degree }} </text>
                 <view class="dot" catchtap="showTip" data-key="{{index}}" data-clicked="{{clicked}}">
                   <image src='../../images/dot.png' class="dotImg"></image>
-                  <view wx:if="{{ index == key && clicked }}" data-key="{{index}}" class="noInterest" data-id="{item.position_id}}" catchtap='noInterest'>不感兴趣</view>
+                  <view wx:if="{{ index == key && clicked }}" data-key="{{index}}" class="noInterest" data-id="{item.id_job}}" catchtap='noInterest'>不感兴趣</view>
                 </view>
               </view>
             </view>
           </view>
-          <view class="more" bindtap="linkMoreJob">
+          <!-- <view class="more" bindtap="linkMoreJob">
             查看更多
             <view class="arrow-icon">
               <view class="inner"></view>
             </view> 
-          </view>
+          </view> -->
         </view>
       </view>
-      <view class="recommend bg-f" wx:if="{{ showType == 2 && jobList.length > 0 }}">
+      <view class="recommend bg-f" wx:if="{{ showType == 2 }}">
+        <view class="position">
+          <view class="post {{ workType == 1?'cur':'' }}" data-id="1" bindtap="changeWT">全职</view>
+          <view class="post {{ workType == 2?'cur':'' }}" data-id="2" bindtap="changeWT">实习</view>
+        </view>
         <view class="r-list">
-          <view class="r-list-item" wx:for="{{ jobList }}" wx:key="key" wx:for-index="index" wx:for-item="item" bindtap="linkJobDetail" data-id="{{ item.position_id }}">
-            <image class="pic" src="{{ item.company_logo }}"></image>
+          <view class="r-list-item" wx:for="{{ jobList }}" wx:key="key" wx:for-index="index" wx:for-item="item" bindtap="linkJobDetail" data-id="{{ item.id_job }}">
+            <image class="pic" src="{{ item.companyLogo }}"></image>
             <view class="cont">
               <view class="tit">
-                <view class="job lh-normal">{{ item.position_name }}</view>
-                <!-- <view class="dot" catchtap="showTip" data-key="{{index}}" data-clicked="{{clicked}}">
-                  <image src='../../images/dot.png' class="dotImg"></image>
-                  <view wx:if="{{ index == key && clicked }}" data-key="{{index}}" class="noInterest" data-id="{{item.position_id}}" catchtap='noInterest'>不感兴趣</view>
-                </view> -->
-                <view class="salary">
-                  8-9K
-                </view>
+                <view class="job lh-normal">{{ item.jobName }}</view>
+                <view class="salary">{{ item.payMin/1000 }}-{{ item.payMax/1000 }}K</view>
               </view>
-              <view class="company">{{ item.company_name }}</view>
+              <view class="company">{{ item.companyName }}</view>
               <view class="s-desc"> 
-                <text class="infor lh-normal">{{ item.city_name }} | {{ item.education_name }} </text>
-                <text class="infor lh-normal" hidden="true">截止日期：{{ item.position_stoptime }}</text>
+                <text class="infor lh-normal">{{ item.workCity }} | {{ item.degree }} </text>
                 <view class="dot" catchtap="showTip" data-key="{{index}}" data-clicked="{{clicked}}">
                   <image src='../../images/dot.png' class="dotImg"></image>
-                  <view wx:if="{{ index == key && clicked }}" data-key="{{index}}" class="noInterest" data-id="{item.position_id}}" catchtap='noInterest'>不感兴趣</view>
+                  <view wx:if="{{ index == key && clicked }}" data-key="{{index}}" class="noInterest" data-id="{item.id_job}}" catchtap='noInterest'>不感兴趣</view>
                 </view>
               </view>
             </view>
           </view>
-          <view class="more" bindtap="linkMoreJob">
+          <!-- <view class="more" bindtap="linkMoreJob">
             查看更多
             <view class="arrow-icon">
               <view class="inner"></view>
             </view> 
-          </view>
+          </view> -->
         </view>
       </view>
       <view class="recommend bg-f" wx:if="{{ showType == 3 && companyList.length > 0 }}">
         <view class="r-list">
-          <view class="r-list-item" wx:for="{{ companyList }}" wx:key="key" wx:for-item="item"  bindtap="linkCompanyDetail" data-id="{{ item.company_id }}">
-            <image class="pic" src="{{ item.company_logo }}"></image>
+          <view class="r-list-item" wx:for="{{ companyList }}" wx:key="key" wx:for-item="item"  bindtap="linkCompanyDetail" data-id="{{ item.id }}">
+            <image class="pic" src="{{ item.companyLogo }}"></image>
             <view class="cont">
-              <view class="job lh-normal">{{ item.company_name }}</view>
-              <view class="company">[{{item.positionnums}}个]{{ item.positionnames }}</view>
+              <view class="job lh-normal">{{ item.companyName }}</view>
+              <view class="company">[{{item.jobnum}}个]{{ item.jobnames }}</view>
               <view class="s-desc"> 
-                <text class="infor lh-normal">{{ item.city_name }} | {{ item.education_name }} </text>
-                <text class="infor lh-normal" hidden='true'>截止日期：{{ item.position_stoptime }}</text>
+                <text class="infor lh-normal">{{ item.city }} | {{ item.education_name }} </text>
               </view>
             </view>
           </view>
-          <view class="more" bindtap="linkMoreCompany">
+          <!-- <view class="more" bindtap="linkMoreCompany">
             查看更多
             <view class="arrow-icon">
               <view class="inner"></view>
             </view> 
-          </view>
+          </view> -->
         </view>
       </view>
     </view>

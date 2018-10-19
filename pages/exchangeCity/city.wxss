@@ -1,0 +1,32 @@
+.city-box {
+  padding: 32rpx 36rpx;
+}
+.city-box .title {
+  padding-bottom: 10rpx;
+  font-size: 26rpx;
+  color: #313148;
+  font-family: 'PingFangSC-Semibold';
+}
+.city-box .city-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.city-box .city-list .item {
+  width: 32%;
+  margin: 28rpx 2% 0 0;
+  text-align: center;
+  line-height: 68rpx;
+  color: #323249;
+  font-size: 24rpx;
+  background-color: #FEFEFE;
+}
+.city-box .city-list .item:nth-child(3n) {
+  margin-right: 0;
+}
+
+.city-box .tips {
+  padding-top: 280rpx;
+  font-size: 26rpx;
+  color: #B7BCCE;
+  text-align: center;
+}

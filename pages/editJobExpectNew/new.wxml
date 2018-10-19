@@ -3,7 +3,7 @@
     <view class="form-box bg-f">
 
       <view class="row">
-        <view class="row-tit">目标行业：</view>
+        <view class="row-tit">期望行业：</view>
         <view class="rot-ipt">
           <picker class="picker" mode="multiSelector" range="{{industryArray}}" value="{{industryIndex}}" bindchange="listenerIndustry" bindcolumnchange="listenerIndustryChange">
             <view class="inner-picker">{{ industry }}</view>
@@ -15,7 +15,7 @@
       </view>
 
       <view class="row">
-        <view class="row-tit">职位类别：</view>
+        <view class="row-tit">期望职位：</view>
         <view class="rot-ipt">
           <!--<picker class="picker" mode="selector" range="{{job}}" value="{{jobIndex}}" bindchange="listenerJob">
             <view class="inner-picker">{{ job[jobIndex] }}</view>
@@ -82,8 +82,8 @@
       </view>
     </view>
     <button placeholder-class="placeholder" class="baseBtn mt60" bindtap="saveExpect">保存</button>
-    <view class="delete-box tc" wx:if="{{ expect_id != -9999 }}">
+    <!-- <view class="delete-box tc" wx:if="{{ expect_id != -9999 }}">
       <text class="delete" bindtap="deleteExpect">删除此条</text>
-    </view>
+    </view> -->
   </form>
 </view>

@@ -36,7 +36,7 @@
   padding: 32rpx 50rpx 32rpx 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   /* border-bottom: 1rpx solid #eaecf3; */
 }
 .r-list-item:last-child .cont {
@@ -81,7 +81,8 @@
   padding: 0 35rpx 40rpx;
 }
 .jobDetail-title .salary {
-  color:red;
+  padding-left: 10rpx;
+  color:#FF7452;
 }
 
 

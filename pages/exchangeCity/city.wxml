@@ -1,0 +1,9 @@
+<view class="city-box">
+  <view class="title">切换城市分站，为你提供更合适的职位信息</view>
+  <view class="city-list">
+    <view class="item" wx:for="{{ listjson }}" wx:key data-id="{{ item.id }}" data-cnsite="{{ item.name }}" bindtap="chooseCity">
+      {{ item.site_name }}
+    </view>
+  </view>
+  <view class="tips">其他城市正在开通中……</view>
+</view>

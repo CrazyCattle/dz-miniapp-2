@@ -19,7 +19,7 @@ Page({
     stud_info: '',
     user_name: '',
     user_sex: '',
-    user_birthday: '',
+    // user_birthday: '',
     user_phone: '',
     user_email: '',
     sex: ['男', '女'],
@@ -35,11 +35,11 @@ Page({
       user_sex: this.data.sex[this.data.index]
     })
   },
-  listenerDatePickerSelected(e) {
-    this.setData({
-      user_birthday: e.detail.value
-    })
-  },
+  // listenerDatePickerSelected(e) {
+  //   this.setData({
+  //     user_birthday: e.detail.value
+  //   })
+  // },
   iptName(e) {
     this.setData({
       user_name: e.detail.value.trim()
@@ -102,7 +102,7 @@ Page({
             stu_id: app.globalData.student_id,
             student_truename: _self.data.user_name,
             student_sex: _self.data.user_sex,
-            student_birthday: _self.data.user_birthday,
+            // student_birthday: _self.data.user_birthday,
             student_mobile: _self.data.user_phone,
             student_email: _self.data.user_email,
             token: app.globalData.token
@@ -130,6 +130,7 @@ Page({
                 for (var key in listjson) {
                   stud_info[key] = listjson[key]
                 }
+                console.log(stud_info)
                 wx.setStorageSync('stud_info', stud_info)
                 let timer = setTimeout(() => {
                   wx.navigateBack()
@@ -144,13 +145,13 @@ Page({
   },
   onLoad: function (options) {
     stud_info = wx.getStorageSync('stud_info')
+    console.log(stud_info)
     this.setData({
       stud_info: wx.getStorageSync('stud_info'),
-      user_name: wx.getStorageSync('stud_info').student_truename,
-      user_sex: wx.getStorageSync('stud_info').student_sex,
-      user_birthday: wx.getStorageSync('stud_info').student_birthday,
-      user_phone: wx.getStorageSync('stud_info').student_mobile,
-      user_email: wx.getStorageSync('stud_info').student_email,
+      user_name: stud_info.name,
+      user_sex: stud_info.sex,
+      user_phone: stud_info.phone,
+      user_email: stud_info.email,
       endTime: formatTime(new Date())
     })
     this.data.sex.forEach((v, i) => {

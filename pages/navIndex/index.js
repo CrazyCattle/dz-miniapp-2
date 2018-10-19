@@ -20,19 +20,27 @@ const app = getApp()
 
 Page({
   data: {
+    swiperIndex: 0,
+
     key: -1,
     clicked: false,
     student_id: app.globalData.student_id || wx.getStorageSync("student_id") || '',
     // 轮播
     banner: [],
-    imgUrls: [],
-    indicatorDots: false,
+
     autoplay: true,
-    canautoplay: false,
+    canautoplay: true,
     circular: true,
     interval: 5000,
     duration: 300,
     aiList: [],
+
+    workType: 1,
+    orderby: 0,
+    isai: 1,
+    baseCity: '',
+    baseCityId: '',
+
     showAiTip: false,
     // 职位推荐
     jobList: [],
@@ -41,6 +49,17 @@ Page({
 
     // 推荐区域显示
     showType: 1
+  },
+  swiperChange(e) {
+    const that = this;
+    that.setData({
+      swiperIndex: e.detail.current,
+    })
+  },
+  exchangeCity () {
+    wx.navigateTo({
+      url: '../exchangeCity/city'
+    })
   },
   linkSearch () {
     wx.navigateTo({
@@ -53,7 +72,32 @@ Page({
     this.setData({
       showType: type
     })
+
+    if (type == 1) {
+      this.setData({
+        orderby: 0,
+        isai: 1,
+      })
+      this.getPositionListFun()
+    } else if (type == 2) {
+      this.setData({
+        orderby: 1,
+        isai: 0,
+      })
+      this.getPositionListFun()
+    } else if( type == 3) {
+      this.getCompanyListFun()
+    }
   },
+  changeWT (e) {
+    let id = e.currentTarget.dataset.id
+    if (id !== this.data.workType) {
+      this.setData({
+        workType: id
+      })
+      this.getPositionListFun()
+    }
+  }, 
   showTip(e) {
     let key = e.currentTarget.dataset.key
     let clicked = e.currentTarget.dataset.clicked
@@ -151,45 +195,45 @@ Page({
         },
         success: res => {
           console.log(res, 'ai')
-          const { result } = res.data
-          if (res.data.tokeninc == '0') {
-            if (loginType == 'wxlogin') {
-              setNewToken().then(res => {
-                if (res == 'ok') {
-                  _self.getAI()
-                }
-              })
-            } else {
-              initLoginStatus()
-            }
-          } else {
-            if (!result.hasOwnProperty('length')) {
-              const { list } = result
-              if (!list.hasOwnProperty('length')) {
-                console.log(wx.getStorageSync('showAiTip') === false)
-                if (wx.getStorageSync('showAiTip') === '') {
-                  this.setData({
-                    showAiTip: true
-                  })
-                } else if (wx.getStorageSync('showAiTip') === false) {
-                  this.setData({
-                    showAiTip: false
-                  })
-                }
-                this.setData({
-                  aiList: list
-                })
-              } else {
-                this.setData({
-                  aiList: []
-                })
-              }
-            } else {
-              this.setData({
-                aiList: []
-              })
-            }
-          }
+          // const { result } = res.data
+          // if (res.data.tokeninc == '0') {
+          //   if (loginType == 'wxlogin') {
+          //     setNewToken().then(res => {
+          //       if (res == 'ok') {
+          //         _self.getAI()
+          //       }
+          //     })
+          //   } else {
+          //     initLoginStatus()
+          //   }
+          // } else {
+          //   if (!result.hasOwnProperty('length')) {
+          //     const { list } = result
+          //     if (!list.hasOwnProperty('length')) {
+          //       console.log(wx.getStorageSync('showAiTip') === false)
+          //       if (wx.getStorageSync('showAiTip') === '') {
+          //         this.setData({
+          //           showAiTip: true
+          //         })
+          //       } else if (wx.getStorageSync('showAiTip') === false) {
+          //         this.setData({
+          //           showAiTip: false
+          //         })
+          //       }
+          //       this.setData({
+          //         aiList: list
+          //       })
+          //     } else {
+          //       this.setData({
+          //         aiList: []
+          //       })
+          //     }
+          //   } else {
+          //     this.setData({
+          //       aiList: []
+          //     })
+          //   }
+          // }
         }
       })
     } else {
@@ -272,10 +316,10 @@ Page({
       success: res => {
         if (res.data.error == '0') {
           this.setData({
-            banner: res.data.result
+            banner: res.data.listjson
           })
 
-          if (res.data.result.length > 1) {
+          if (res.data.listjson.length > 1) {
             this.setData({
               indicatorDots: true
             })
@@ -284,37 +328,30 @@ Page({
       }
     })
   },
-  // 获取首页课程推荐轮播
-  getIndexCRecommendFun() {
-    wx.request({
-      url: `${getIndexCRecommend}`+(!!app.globalData.student_id?`?stu_id=${app.globalData.student_id}`:''),
-      success: res => {
-        const { result } = res.data
-        if (res.data.error == '0') {
-          this.setData({
-            imgUrls: result
-          })
-        }
-      }
-    })
-  },
-  // 获取职位推荐
+
   getPositionListFun() {
     wx.request({
       url: `${getPositionList}`,
       data: {
-        isai: 1,
-        p: '1',
+        p: 1,
         isrom: '1',
-        nums: '4',
-        stu_id: getUserState() ? `${app.globalData.student_id}` : '0'
+        nums: 10,
+        city_id: this.data.baseCityId,
+        stu_id: getUserState() ? `${app.globalData.student_id}` : '0',
+        isai: this.data.isai,
+        workType: this.data.workType,
+        orderby: this.data.orderby
       },
       method: 'GET',
       success: (res) => {
         if (res.data.error == '0') {
           console.log(res.data)
           this.setData({
-            jobList: res.data.result.list
+            jobList: res.data.listjson
+          })
+        } else {
+          this.setData({
+            jobList: []
           })
         }
       }
@@ -328,13 +365,19 @@ Page({
         p: '1',
         isrom: '1',
         nums: '4',
-        stu_id: getUserState() ? `${app.globalData.student_id}` : '0'
+        city: this.data.baseCity,
+        stu_id: getUserState() ? `${app.globalData.student_id}` : '0',
+        workType: this.data.workType,
       },
       method: 'GET',
       success: (res) => {
         if (res.data.error == '0') {
           this.setData({
-            companyList: res.data.result.list
+            companyList: res.data.listjson
+          })
+        } else {
+          this.setData({
+            companyList: []
           })
         }
       }
@@ -344,9 +387,15 @@ Page({
     wx.setNavigationBarTitle({
       title: '首页'
     })
+
+    this.setData({
+      baseCity: app.globalData.baseCity,
+      baseCityId: app.globalData.baseCityId,
+    })
+
     this.getAI()
     this.getBannerFun()
-    this.getIndexCRecommendFun()
+    // this.getIndexCRecommendFun()
     this.getPositionListFun()
     this.getCompanyListFun()
   }

@@ -35,7 +35,10 @@ Page({
     positionId: undefined,
 
     hasDesc: false,
-    hasReq: false
+    hasReq: false,
+
+    // 公司福利数组
+    cTag: []
   },
   linkToCompany (e) {
     let id = e.currentTarget.dataset.id
@@ -150,7 +153,7 @@ Page({
         data: {
           token: app.globalData.token,
           stu_id: app.globalData.student_id,
-          position_id: id
+          id_job: id
         },
         method: 'GET',
         success: res => {
@@ -167,11 +170,8 @@ Page({
             }
           } else {
             if (res.data.error == '0') {
-              const { list } = res.data.result
-              _self.setData({
-
-              })
-              console.log(list.collectinc,'ttttt')
+              const list = res.data.listjson
+              console.log(list)
               if (list.collectinc == '1') {
                 _self.setData({
                   collected: true
@@ -183,23 +183,24 @@ Page({
               }
               this.setData({ 
                 list,
-                work_name: list.position_name
+                work_name: list.jobName,
+                cTag: list.jobTag
               })
               console.log(this.data.list)
-              const { position_demand,position_description } = res.data.result.list
-              if (!!position_demand) {
+              const { jobRequest, jobDescript } = res.data.listjson
+              if (!!jobRequest) {
                 _self.setData({
                   hasDesc: true
                 })
-                WxParse.wxParse('article1', 'html', position_demand, _self, 5);
+                WxParse.wxParse('article1', 'html', jobRequest, _self, 5);
               }
-              if (!!position_description) {
+              if (!!jobDescript) {
                 _self.setData({
                   hasReq: true
                 })
-                WxParse.wxParse('article2', 'html', position_description, _self, 5);
+                WxParse.wxParse('article2', 'html', jobDescript, _self, 5);
               }
-              resolve(this.data.list.positiontype_id)
+              resolve(this.data.list.id_job)
             }
           }
         }
@@ -232,12 +233,12 @@ Page({
       this.setData({
         positionId: res
       })
-      this.getSameCompany(res).then(res => {
-        this.setData({
-          companyList: this.data.companyList.concat(res)
-        })
-        console.log(this.data.companyList)
-      })
+      // this.getSameCompany(res).then(res => {
+      //   this.setData({
+      //     companyList: this.data.companyList.concat(res)
+      //   })
+      //   console.log(this.data.companyList)
+      // })
     })
   },
   onReady: function () {},

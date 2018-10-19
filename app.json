@@ -1,5 +1,5 @@
 {
-  "pages": [ 
+  "pages": [
     "pages/navIndex/index",
     "pages/navMe/me",
     "pages/navCourse/course",
@@ -52,7 +52,8 @@
     "pages/search/search",
     "pages/waiting/waiting",
     "pages/recoverySuccess/success",
-    "pages/agreeRegister/agreeRegister"
+    "pages/agreeRegister/agreeRegister",
+    "pages/exchangeCity/city"
   ],
   "window": {
     "backgroundTextStyle": "light",

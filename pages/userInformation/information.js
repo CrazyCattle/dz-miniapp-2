@@ -151,7 +151,7 @@ Page({
        console.log(res)
        if (res.data.error == '0') {
           this.setData({
-            expectList: res.data.result
+            expectList: res.data.listjson
           })
        }
       }
@@ -169,8 +169,9 @@ Page({
     this.setData({
       user_pic: app.globalData.student_img || wx.getStorageSync('stud_img'),
       stud_info: wx.getStorageSync('stud_info'),
-      schoolInfor: wx.getStorageSync('schoolInfo')
+      // schoolInfor: wx.getStorageSync('schoolInfo')
     })
+    console.log(this.data.stud_info)
     if (this.data.isBack) {
       this.getExpect()
     }

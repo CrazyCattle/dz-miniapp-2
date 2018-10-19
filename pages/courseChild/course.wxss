@@ -21,7 +21,7 @@
 }
 
 .course-raiders-desc {
-  padding: 0 42rpx 80rpx;
+  padding: 0 42rpx 45rpx;
   font-size: 24rpx;
   color: #848CA1;
   letter-spacing: 0;
@@ -30,7 +30,7 @@
 }
 
 .course-raiders-desc .wxParse {
-  max-height: 200rpx;
+  /* max-height: 200rpx; */
   overflow: hidden;
 }
 
@@ -244,7 +244,7 @@
 .linkShare {
   width: 320rpx;
   height: 60rpx;
-  margin: auto;
+  margin: 32rpx auto 0;
   text-align: center;
   line-height: 60rpx;
   border-radius: 30rpx;

@@ -7,9 +7,6 @@
     <view class="row">
       <view class="v-students">{{ playInfor.viewCount }}人正在学</view>
       <view class="v-fun">
-        <view class="item {{ collected?'active':'' }}" bindtap="collectCourse" data-id="{{ playInfor.lesson_id }}">
-          <image class="icon icon-1" src="{{ collected?'../../images/collected.png':'../../images/collect.png' }}"></image>收藏
-        </view>
         <view class="item {{ menuActive?'active':'' }}" catchtap="showMenu">
           <image class="icon icon-2" src="{{ menuActive?'../../images/menu-active.png':'../../images/menu.png' }}"></image>目录
           <view class="courst-list {{ menuActive?'active':'' }}">

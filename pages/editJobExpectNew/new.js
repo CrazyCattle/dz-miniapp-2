@@ -54,45 +54,45 @@ Page({
     prov_changeId: undefined,
     
     // 薪资数据
-    salaryArr: [],
+    salaryArr: ['不限','1k - 2k','2k - 4k','4k - 5k','5k - 7k','7k - 9k','9k - 12k','12k - 20k'],
     salaryIndex: 0,
     salaryIndexArr: [],
     // 公司规模数据
-    sizeArr: [],
+    sizeArr: ['15人以下','15 - 50人','50 - 150人','150 - 500人','500 - 2000人','2000人以上'],
     sizeIndex: 0,
     sizeIndexArr: [],
     //公司性质
-    xzArr: [],
+    xzArr: ['民营 / 股份制企业','国有企业','外资','合资','事业单位','政府或非盈利机构','上市公司','其他'],
     xzIndex: 0,
     xzIndexArr: [],
   },
 
 
   //获取薪资
-  getSalaryBaseFun() {
-    wx.request({
-      url: `${getSalaryBase}`,
-      method: 'GET',
-      success: res => {
-        if (res.data.error == '0') {
-          const arr1 = []
-          const arr2 =[]
-          res.data.result.forEach((v, i) => {
-            arr1.push(v.tilte)
-            arr2.push(v.parameter)
-          })
-          this.setData({
-            salaryArr: arr1,
-            salaryIndexArr: arr2
-          })
-        }
-      }
-    })
-  },
+  // getSalaryBaseFun() {
+  //   wx.request({
+  //     url: `${getSalaryBase}`,
+  //     method: 'GET',
+  //     success: res => {
+  //       if (res.data.error == '0') {
+  //         const arr1 = []
+  //         const arr2 =[]
+  //         res.data.result.forEach((v, i) => {
+  //           arr1.push(v.tilte)
+  //           arr2.push(v.parameter)
+  //         })
+  //         this.setData({
+  //           salaryArr: arr1,
+  //           salaryIndexArr: arr2
+  //         })
+  //       }
+  //     }
+  //   })
+  // },
   listenerSalary(e) {
     this.setData({
       salaryIndex: e.detail.value,
-      expect_pay: this.data.salaryIndexArr[e.detail.value]
+      // expect_pay: this.data.salaryIndexArr[e.detail.value]
     });
     this.setData({
       salary: this.data.salaryArr[this.data.salaryIndex]
@@ -100,30 +100,30 @@ Page({
   },
 
   //获取公司规模
-  getunitsizeTypeFun() {
-    wx.request({
-      url: `${getunitsizeType}`,
-      method: 'GET',
-      success: res => {
-        if (res.data.error == '0') {
-          const arr1 = []
-          const arr2 = []
-          res.data.result.forEach((v, i) => {
-            arr1.push(v.tilte)
-            arr2.push(v.parameter)
-          })
-          this.setData({
-            sizeArr: arr1,
-            sizeIndexArr: arr2
-          })
-        }
-      }
-    })
-  },
+  // getunitsizeTypeFun() {
+  //   wx.request({
+  //     url: `${getunitsizeType}`,
+  //     method: 'GET',
+  //     success: res => {
+  //       if (res.data.error == '0') {
+  //         const arr1 = []
+  //         const arr2 = []
+  //         res.data.result.forEach((v, i) => {
+  //           arr1.push(v.tilte)
+  //           arr2.push(v.parameter)
+  //         })
+  //         this.setData({
+  //           sizeArr: arr1,
+  //           sizeIndexArr: arr2
+  //         })
+  //       }
+  //     }
+  //   })
+  // },
   listenerSize(e) {
     this.setData({
       sizeIndex: e.detail.value,
-      expect_unitsize: this.data.sizeIndexArr[e.detail.value]
+      // expect_unitsize: this.data.sizeIndexArr[e.detail.value]
     });
     this.setData({
       company_size: this.data.sizeArr[this.data.sizeIndex]
@@ -131,37 +131,37 @@ Page({
   },
 
   //获取公司性质
-  getCompanyXZFun() {
-    wx.request({
-      url: `${getZPType}?module=ComUnitType`,
-      method: 'GET',
-      success: res => {
-        if (res.data.error == '0') {
-          const arr1 = []
-          const arr2 = []
-          res.data.listjson.forEach((v, i) => {
-            arr1.push(v.tilte)
-            arr2.push(v.parameter)
-          })
-          this.setData({
-            xzArr: arr1,
-            xzIndexArr: arr2
-          })
-        }
-      }
-    })
-  },
+  // getCompanyXZFun() {
+  //   wx.request({
+  //     url: `${getZPType}?module=ComUnitType`,
+  //     method: 'GET',
+  //     success: res => {
+  //       if (res.data.error == '0') {
+  //         const arr1 = []
+  //         const arr2 = []
+  //         res.data.listjson.forEach((v, i) => {
+  //           arr1.push(v.tilte)
+  //           arr2.push(v.parameter)
+  //         })
+  //         this.setData({
+  //           xzArr: arr1,
+  //           xzIndexArr: arr2
+  //         })
+  //       }
+  //     }
+  //   })
+  // },
   listenerNature(e) {
     this.setData({
       xzIndex: e.detail.value,
-      expect_unittype: this.data.xzIndexArr[e.detail.value]
+      // expect_unittype: this.data.xzIndexArr[e.detail.value]
     });
     this.setData({
       company_type: this.data.xzArr[this.data.xzIndex]
     })
   },
 
-  // 监听目标行业
+  // 监听期望行业
   listenerIndustry(e) {
     this.setData({
       industry: this.data.industryArray[1][e.detail.value[1]],
@@ -174,16 +174,17 @@ Page({
     let _self = this
     if (c == '0') {
       _self.data.industryOne.forEach((val, i) => {
-        if (val.tilte == _self.data.industryArray[0][v]) {
+        console.log(_self.data.industryArray[0][v], val)
+        if (val.categoryName1 == _self.data.industryArray[0][v]) {
           wx.request({
-            url: `${getIndustryList}?tb_type=${val.parameter}`,
+            url: `${getIndustryList}?categoryId1=${val.categoryId1}`,
             success: res => {
               if (res.data.error == '0') {
                 const arr = []
                 const arr1 = []
-                res.data.result.forEach((v, i) => {
-                  arr.push(v.industry_name)
-                  arr1.push(v.industry_id)
+                res.data.listjson.forEach((v, i) => {
+                  arr.push(v.categoryName2)
+                  arr1.push(v.categoryId2)
                 })
                 _self.setData({
                   industryArray: [_self.data.industryOneC, arr],
@@ -208,7 +209,7 @@ Page({
             const { listjson } = res.data
             const jobOne = []
             listjson.forEach((v, i) => {
-              jobOne.push(v.positiontype_name)
+              jobOne.push(v.categoryName1)
             })
             this.setData({
               jobOne: listjson,
@@ -230,8 +231,8 @@ Page({
           const arr = []
           const arr1 = []
           res.data.listjson.forEach((v, i) => {
-            arr.push(v.positiontype_name)
-            arr1.push(v.positiontype_id)
+            arr.push(v.categoryName2)
+            arr1.push(v.categoryId2)
           })
           this.setData({
             jobArray: [this.data.jobOneC, arr],
@@ -258,21 +259,22 @@ Page({
     let _self = this
     if (c == '0') {
       _self.data.jobOne.forEach((val, i) => {
-        if (val.positiontype_name == _self.data.jobArray[0][v]) {
+        console.log(val, _self.data.jobArray[0][v])
+        if (val.categoryName1 == _self.data.jobArray[0][v]) {
           wx.request({
-            url: `${getPositionType}?father_id=${val.positiontype_id}&level=2`,
+            url: `${getPositionType}?father_id=${val.categoryId1}&level=2`,
             success: res => {
               if (res.data.error == '0') {
                 const arr = []
                 const arr1 = []
                 res.data.listjson.forEach((v, i) => {
-                  arr.push(v.positiontype_name)
-                  arr1.push(v.positiontype_id)
+                  arr.push(v.categoryName2)
+                  arr1.push(v.categoryId2)
                 })
                 _self.setData({
                   jobArray: [_self.data.jobOneC, arr],
                   jobIndexArr: arr1,
-                  father_changeId: val.positiontype_id
+                  father_changeId: val.categoryId2
                 })
               } else {
                 wx.showToast({
@@ -399,13 +401,16 @@ Page({
 
   onLoad: function (options) {
     let data = JSON.parse(options.data)
+    console.log(data)
     this.setData({
-      user_exprect: data.industry_name,
-      industry: data.positiontype_name,
-      city: data.city_name,
-      salary: data.expect_payname,
-      company_size: data.expect_unitsizename,
-      company_type: data.expect_unittypename,
+      industry: data.industry,
+      user_exprect: data.jobyname,
+
+      city: data.workCity,
+      salary: data.salary,
+      company_size: data.people,
+      company_type: data.companytype,
+
       industry_id: data.industry_id,  
       father_id: data.father_id,  
       positiontype_id: data.positiontype_id,  
@@ -417,12 +422,12 @@ Page({
       expect_id: data.expect_id
     })
 
-    this.getSalaryBaseFun()
-    this.getunitsizeTypeFun()
-    this.getCompanyXZFun()
+    // this.getSalaryBaseFun()
+    // this.getunitsizeTypeFun()
+    // this.getCompanyXZFun()
 
     this.getPosiParentTypeFun().then((res) => {
-      this.getPosiChildTypeFun(res[0].positiontype_id)
+      this.getPosiChildTypeFun(res[0].categoryId1)
     })
 
     // 行业大类
@@ -434,7 +439,8 @@ Page({
             const { listjson } = res.data
             const jobOne = []
             listjson.forEach((v, i) => {
-              jobOne.push(v.tilte)
+              console.log(v, i)
+              jobOne.push(v.categoryName1)
             })
             this.setData({
               industryOne: listjson,
@@ -446,19 +452,21 @@ Page({
       })
     }).then(res => {
       wx.request({
-        url: `${getIndustryList}?tb_type=${res[0].parameter}`,
+        url: `${getIndustryList}?categoryId1=${res[0].categoryId1}`,
         success: res => {
           if (res.data.error == '0') {
             const arr = []
             const arr1 = []
-            res.data.result.forEach((v, i) => {
-              arr.push(v.industry_name)
-              arr1.push(v.industry_id)
+            res.data.listjson.forEach((v, i) => {
+              arr.push(v.categoryName2)
+              arr1.push(v.categoryId2)
             })
             this.setData({
               industryArray: [this.data.industryOneC, arr],
               industryIndexArr: arr1
             })
+
+            console.log(this.data.industryArray)
           }
         }
       })

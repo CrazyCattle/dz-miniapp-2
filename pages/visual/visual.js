@@ -1,7 +1,20 @@
+import {
+  getCClass
+} from '../../api';
+
+import {
+  setNewToken,
+  initLoginStatus,
+  getUserState
+} from '../../utils/util';
+
+const app = getApp()
+
 Page({
   data: {
     placeholderTxt: '搜索课程或者讲师',
     focus: false,
+    cId: '',
 
     swiperIndex: 0,
     // indicatorDots: true,
@@ -15,11 +28,7 @@ Page({
       'https://static.dazhao100.cn/pic/1528698094l338683272.png',
       'https://static.dazhao100.cn/pic/1528683179l389784958.png'
     ],
-    list: [
-      { img: 'https://static.dazhao100.cn/pic/1526907753l016152041.png', title: 'UI设计中的插画与情感化hahhahahhhhahah' },
-      { img: 'https://static.dazhao100.cn/pic/1526907753l016152041.png', title: 'UI设计中的插画与情感化hahhahahhhhahah' },
-      { img: 'https://static.dazhao100.cn/pic/1526907753l016152041.png', title: 'UI设计中的插画与情感化hahhahahhhhahah'}
-    ]
+    list: []
   },
   iptFocus(e) {
     this.setData({
@@ -50,9 +59,10 @@ Page({
       swiperIndex: e.detail.current,
     })
   },
-  linkToChild () {
+  linkToChild (e) {
+    const cId = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../courseChild/course?id=78'
+      url: `../courseChild/course?id=${cId}`
     })
   },
   linkToMore (e) {
@@ -61,7 +71,25 @@ Page({
       url: `../visualChild/vchild?id=${id}`
     })
   },
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    wx.request({
+      url: `${getCClass}`,
+      method: 'GET',
+      success: res => {
+        console.log(res)
+        if (res.data.error == 0) {
+          this.setData({
+            list: res.data.listjson
+          })
+        }
+      }
+    })
+    if (getUserState() && !!app.globalData.student_id && !!app.globalData.token) {
+      
+    } else {
+      navToLogin()
+    }
+  },
   onReady: function () {},
   onShow: function () {},
   onHide: function () {},

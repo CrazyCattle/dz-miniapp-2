@@ -18,7 +18,7 @@
           </view>
         </view>
       </view>
-      <view class="row">
+      <!-- <view class="row">
         <view class="row-tit">生日：</view>
         <view class="rot-ipt">
           <picker class="picker" bindchange="listenerDatePickerSelected" mode="date" fields="month" start="1970-01" end="{{ endTime }}" value="{{ user_birthday }}">
@@ -28,7 +28,7 @@
             <view class="inner"></view>
           </view>
         </view>
-      </view>
+      </view> -->
       <view class="row">
         <view class="row-tit">联系电话：</view>
         <view class="rot-ipt">

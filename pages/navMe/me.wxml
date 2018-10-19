@@ -1,16 +1,16 @@
 <view class="page-me">
   <view class="me-head bg-f">
     <view class="me-head-infor">
-      <image wx:if="{{ stud_info.student_name }}" class="me-pic" src="{{ stud_img }}" bindtap='editUserInfor'></image>
-      <image wx:else class="me-pic" src="{{ stud_img }}"></image>
+      <image wx:if="{{ stud_info.userIcon }}" class="me-pic" src="{{ userIcon }}" bindtap='editUserInfor'></image>
+      <image wx:else class="me-pic" src="{{ userIcon }}"></image>
       <view class="me-desc">
-        <block wx:if="{{ stud_info.student_name }}">
-          <view class="me-name">{{ stud_info.student_truename }}</view>
-          <text class="me-educ">{{ stud_info.university_title }} | {{ stud_info.major_name }}</text>
+        <block wx:if="{{ stud_info.id }}">
+          <view class="me-name">{{ stud_info.name }}</view>
+          <text class="me-educ">{{ stud_info.school_name }} | {{ stud_info.academy }}</text>
         </block>
         <view wx:else class="me-name" bindtap="linkLR">登录/注册</view>
       </view>
-      <view wx:if="{{ stud_info.student_name }}" class="editUser" bindtap='editUserInfor'>编辑</view>
+      <view wx:if="{{ stud_info.name }}" class="editUser" bindtap='editUserInfor'>编辑</view>
     </view>
 
     <view class="me-send-box">

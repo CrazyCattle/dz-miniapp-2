@@ -16,8 +16,7 @@ Page({
     
     courseId: undefined,
     active: false,
-    menuActive: false,
-    collected: false
+    menuActive: false
   },
   more () {
     this.setData({
@@ -57,9 +56,6 @@ Page({
               title: res.data.errortip,
               icon: "none",
               duration: 1000
-            });
-            this.setData({
-              collected: !this.data.collected
             })
           }
         }
@@ -84,14 +80,13 @@ Page({
         console.log(res)
         const { error } = res.data
         if (error == '0') {
-          const { result } = res.data
-          console.log(result)
+          const { listjson } = res.data
+          console.log(listjson)
           this.setData({
-            playInfor: result,
-            collected: result.collect
+            playInfor: listjson
           })
           wx.setNavigationBarTitle({
-            title: result.lesson_name
+            title: listjson.lesson_name
           })
         }
       },

@@ -10,37 +10,35 @@
     <view class="edit-title">基本信息</view>
     <view class="editBtn" bindtap='linkEditBasic'>编辑</view>
     <view class="edit-content">
-      <view class="row">姓名： {{ stud_info.student_truename }}</view>
-      <view class="row">性别： {{ stud_info.student_sex }}</view>
-      <view class="row">生日： {{ stud_info.student_birthday }}</view>
-      <view class="row">手机： {{ stud_info.student_mobile }}</view>
-      <view class="row">邮箱： {{ stud_info.student_email }}</view>
+      <view class="row">姓名： {{ stud_info.name }}</view>
+      <view class="row">性别： {{ stud_info.sex }}</view>
+      <view class="row">手机： {{ stud_info.phone }}</view>
+      <view class="row">邮箱： {{ stud_info.email }}</view>
     </view>
   </view>
   <view class="edit-row bg-f mt20">
     <view class="edit-title">教育背景</view>
     <view class="editBtn" bindtap='linkEditEduc'>编辑</view>
     <view class="edit-content">
-      <view class="row">学校： {{ schoolInfor.university_title }}</view>
-      <view class="row">学历： {{ stud_info.student_degree_name }}</view>
-      <view class="row">院系： {{ stud_info.faculty_name }}</view>
-      <view class="row">专业： {{ stud_info.major_name }}</view>
-      <view class="row">学号： {{ stud_info.student_name }}</view>
-      <view class="row">入学时间： {{ stud_info.student_stgraduatetwo }}</view>
-      <view class="row">毕业时间： {{ stud_info.student_edgraduate }}</view>
+      <view class="row">学校： {{ stud_info.school_name }}</view>
+      <view class="row">学历： {{ stud_info.xueli }}</view>
+      <view class="row">专业： {{ stud_info.special }}</view>
+      <view class="row">入学时间： {{ stud_info.admission_time }}</view>
+      <view class="row">毕业时间： {{ stud_info.sour_bysj }}</view>
     </view>
   </view>
   <view class="edit-row expect bg-f mt20">
     <view class="edit-title">求职期望</view>
     <view class="edit-content" wx:for="{{expectList}}" wx:for-item="item" wx:key wx:for-index="index">
       <view class="editBtn" data-id="1" bindtap='linkJobExpect' data-id="{{item.expect_id}}" data-key="{{ index }}">编辑</view>
-      <view class="row">目标行业： {{item.industry_name}}</view>
-      <view class="row">目标职位： {{item.positiontype_name}}</view>
-      <view class="row">地点： {{item.city_name}}</view>
-      <view class="row">薪资： {{item.expect_payname}}</view>
-      <view class="row">公司规模：{{item.expect_unitsizename}}</view>
-      <view class="row">公司性质：{{item.expect_unittypename}}</view>
+      <view class="row">期望行业： {{item.industry}}</view>
+      <view class="row">期望职位： {{item.jobyname}}</view>
+      <view class="row">地点： {{item.workCity}}</view>
+      <view class="row">薪资： {{item.salary}}</view>
+      <view class="row">公司规模：{{item.people}}</view>
+      <view class="row">公司性质：{{item.companytype}}</view>
+      <view class="row">期望职位与专业对口：{{item.issel}}</view>
     </view>
-    <view class="addExpectBtn" wx:if="{{expectList.length < 3}}" bindtap="linkJobExpect" data-key="-1">+ 添加求职期望</view>
+    <!-- <view class="addExpectBtn" wx:if="{{expectList.length < 3}}" bindtap="linkJobExpect" data-key="-1">+ 添加求职期望</view> -->
   </view>
 </view>

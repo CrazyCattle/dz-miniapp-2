@@ -5,7 +5,10 @@
       <view class="resume-item active bg-f" catchtap='editResumeBasicInfor' data-id="{{ item.resumes_id }}" data-lan="{{ item.language }}" wx:for="{{ resumeList }}" wx:key="key">
         <view class="item-lf">
           <view class="title ellipsis">{{ item.title }}</view>
-          <view class="desc">{{item.city}} | {{ item.expectwork }}</view>
+          <view class="desc">
+            <block wx:if="{{ item.language == 0}}">中文</block>
+            <block wx:else>英文</block>
+            | {{ item.expectwork }}</view>
         </view>
         <!-- <view class="item-rt">
           <text class="editBtn" catchtap='editResumeBasicInfor' data-id="{{ item.resumes_id }}" data-lan="{{ item.language }}">编辑</text>

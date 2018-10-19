@@ -62,6 +62,7 @@ Page({
       c_id: id
     })
 
+    console.log(options)
     wx.request({
       url: `${getSClass}${id}`,
       method: 'GET',
@@ -69,8 +70,8 @@ Page({
         console.log(res)
         const { error } = res.data
         if (error == '0') {
-          console.log(res.data.result)
-          const { class_intro, classThree } = res.data.result
+          console.log(res.data.listjson)
+          const { class_intro, classThree } = res.data.listjson
           const article = class_intro.class_intro
           const { class_name } = class_intro
           _self.setData({

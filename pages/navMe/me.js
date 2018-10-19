@@ -16,7 +16,7 @@ Page({
     token: '',
     stud_info: {},
     stud_id: '',
-    stud_img: '',
+    userIcon: '',
     schoolInfor: ''
   },
   linkSend() {
@@ -129,12 +129,12 @@ Page({
     wx.removeStorageSync('schoolInfo')
     wx.removeStorageSync('stud_info')
     wx.removeStorageSync('student_id')
-    wx.removeStorageSync('stud_img')
+    wx.removeStorageSync('userIcon')
     wx.removeStorageSync('token')
 
     app.globalData.stud_info = ''
     app.globalData.student_id = ''
-    app.globalData.student_img = '../../images/user_pic.png'
+    app.globalData.userIcon = '../../images/user_pic.png'
     app.globalData.token = ''
 
     wx.showToast({
@@ -182,11 +182,11 @@ Page({
         if (res.data.error == '0') {
           const { listjson } = res.data
           wx.setStorageSync("stud_info", (app.globalData.stud_info = listjson));
-          wx.setStorageSync("stud_img", (app.globalData.student_img = listjson.student_img));
+          wx.setStorageSync("userIcon", (app.globalData.userIcon = listjson.userIcon));
 
           this.setData({
             stud_info: listjson,
-            stud_img: listjson.student_img,
+            userIcon: listjson.userIcon,
             stud_id: app.globalData.student_id
           })
         }
@@ -220,22 +220,22 @@ Page({
           if (res.data.error == '0') {
             const { listjson } = res.data
             wx.setStorageSync("stud_info", (app.globalData.stud_info = listjson));
-            if (!listjson.student_img) {
-              wx.setStorageSync("stud_img", (app.globalData.student_img = '../../images/head_mian_pic.png'));
+            if (!listjson.userIcon) {
+              wx.setStorageSync("userIcon", (app.globalData.userIcon = '../../images/head_mian_pic.png'));
               this.setData({
-                stud_img: '../../images/head_mian_pic.png'
+                userIcon: '../../images/head_mian_pic.png'
               })
             } else {
-              wx.setStorageSync("stud_img", (app.globalData.student_img = listjson.student_img));
+              wx.setStorageSync("userIcon", (app.globalData.userIcon = listjson.userIcon));
               this.setData({
-                stud_img: listjson.student_img
+                userIcon: listjson.userIcon
               })
             }
             this.setData({
               stud_info: listjson,
               stud_id: app.globalData.student_id
             })
-            console.log(this.data.stud_img)
+            console.log(this.data.userIcon)
           }
         }
       })
@@ -244,11 +244,11 @@ Page({
   onShow: function () {
     this.setData({
       stud_info: wx.getStorageSync('stud_info'),
-      stud_img: app.globalData.student_img || wx.getStorageSync('stud_img') || '../../images/user_pic.png',
+      userIcon: app.globalData.userIcon || wx.getStorageSync('userIcon') || '../../images/user_pic.png',
       stud_id: app.globalData.student_id
     })
-    if (!app.globalData.student_img && !!wx.getStorageSync('stud_img')) {
-      app.globalData.student_img = wx.getStorageSync('stud_img')
+    if (!app.globalData.userIcon && !!wx.getStorageSync('userIcon')) {
+      app.globalData.userIcon = wx.getStorageSync('userIcon')
     }
   }
 })

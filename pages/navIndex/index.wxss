@@ -178,10 +178,14 @@
   box-sizing: border-box;
 }
 .r-list-item .cont .job {
+  max-width: 350rpx;
   font-family: 'PingFangSC-Semibold';
   font-weight: bold;
   font-size: 30rpx;
   color:#313148;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .r-list-item .cont .company {
   width: 490rpx;
@@ -364,4 +368,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.banner-box {
+  position: relative;
+}
+.dots {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  bottom: 25rpx;
+  transform: translateX(-50%);
+}  
+.dots .dot{  
+  width: 12rpx;
+  height: 12rpx;   
+  border-radius: 50%;
+  margin-right: 15rpx;
+  background-color: #fff;
+  opacity: .5;
+}
+.dots .dot.active{  
+  opacity: 1;
 }

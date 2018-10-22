@@ -3,7 +3,8 @@ import {
   getResumeOne,
   jobExpect,
   jobExpectChild,
-  uploadImg
+  uploadImg,
+  getPositionType
 } from '../../api';
 
 import {
@@ -54,6 +55,8 @@ Page({
             user_pic: res.tempFilePaths[0],
             userImgPath: res.tempFiles
           });
+
+          this.uploadUserImg()
         }
       },
       fail: res => { throw Error(res) },
@@ -74,16 +77,16 @@ Page({
     let _self = this
     if (c == '0') {
       _self.data.expectOne.forEach((val, i) => {
-        if (val.tilte == _self.data.multiArray[0][v]) {
+        if (val.categoryName1 == _self.data.multiArray[0][v]) {
           wx.request({
-            url: `${jobExpectChild}&language=${_self.data.lan}&parameter=${val.parameter}`,
+            url: `${getPositionType}?level=2&father_id=${val.categoryId1}`,
             success: res => {
               console.log(res)
               if (res.data.error == '0') {
                 console.log(res.data.listjson)
                 const arr = []
                 res.data.listjson.forEach((v, i) => {
-                  arr.push(v.section)
+                  arr.push(v.categoryName2)
                 })
                 _self.setData({
                   multiArray: [_self.data.expectOneC, arr]
@@ -332,7 +335,7 @@ Page({
             const { listjson } = res.data
             const expectOne = []
             listjson.forEach((v, i) => {
-              expectOne.push(v.tilte)
+              expectOne.push(v.categoryName1)
             })
             this.setData({
               expectOne: listjson,
@@ -344,12 +347,12 @@ Page({
       })
     }).then(res => {
       wx.request({
-        url: `${jobExpectChild}&language=${lan}&parameter=${res[0].parameter}`,
+        url: `${getPositionType}?level=2&father_id=${res[0].categoryId1}`,
         success: res => {
           if (res.data.error == '0') {
             const arr = []
             res.data.listjson.forEach((v, i) => {
-              arr.push(v.section)
+              arr.push(v.categoryName2)
             })
             this.setData({
               multiArray: [this.data.expectOneC, arr]

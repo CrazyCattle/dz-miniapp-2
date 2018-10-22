@@ -7,42 +7,51 @@
   </view>
 </view>
 <view class="scroll-container pt20">
-  <tip content="您未收藏任何职业" height="100%" wx:if="{{ fliterType == 'job' && jobList.length == 0 }}"></tip>
+  <tip content="您未收藏任何职业" height="100%" wx:if="{{ fliterType == 'job' && jobList.length == 0 && !showLoading}}"></tip>
   <view class="scroll-list bg-f" wx:if="{{ fliterType == 'job' }}">
     <scroll-view scroll-y style="height: 100%;" bindscrolltolower="positionLower">
-      <view class="r-list" wx:if="{{ showPos }}">
-        <view class="r-list-item" wx:for="{{ jobList }}" data-id="{{ item.position_id }}" bindtap="linkToJobDetail" wx:key wx:for-item="item">
-          <image class="pic" src="{{ item.company_logo }}"></image>
+      <view class="r-list" wx:if="{{ !showLoading }}">
+        <view class="r-list-item" wx:for="{{ jobList }}" data-id="{{ item.id_job }}" bindtap="linkToJobDetail" wx:key wx:for-item="item">
+          <image class="pic" src="{{ item.companyLogo }}"></image>
           <view class="cont">
-            <view class="job lh-normal">{{ item.position_name }}</view>
-            <view class="company">{{ item.company_name }}</view>
+            <view class="job lh-normal">
+              <view class="title">
+                <text class="txt">{{ item.jobName }}</text>
+                <text class="type">
+                  <block wx:if="{{ item.workType == 1 }}">全职</block>
+                  <block wx:if="{{ item.workType == 2 }}">实习</block>
+                </text>
+              </view>
+              <view class="salary">{{item.payMin/1000}}~{{item.payMax/1000}}K</view>
+            </view>
+            <view class="company">{{ item.companyName }}</view>
             <view class="s-desc">
-              <text class="infor lh-normal">{{ item.city_name }} | {{ item.education_name }} </text>
-              <text class="infor lh-normal">截止日期：{{ item.position_stoptime }}</text>
+              <text class="infor lh-normal">{{ item.degree }} | {{ item.workCity }}</text>
+              <!-- <text class="infor lh-normal">截止日期：{{ item.position_stoptime }}</text> -->
             </view>
           </view>
         </view>
       </view>
-      <loading wx:if="{{ !showPos }}"></loading>
+      <loading wx:if="{{ showLoading }}"></loading>
     </scroll-view>
   </view>
-  <tip content="您未收藏任何企业" height="100%" wx:if="{{ fliterType == 'company' && companyList.length == 0 }}"></tip>
+  <tip content="您未收藏任何企业" height="100%" wx:if="{{ fliterType == 'company' && companyList.length == 0 && !showLoading }}"></tip>
   <view class="scroll-list bg-f" wx:if="{{ fliterType == 'company' }}">
     <scroll-view scroll-y style="height: 100%;" bindscrolltolower="companyLower">
-      <view class="r-list" wx:if="{{ showCompany }}">
+      <view class="r-list" wx:if="{{ !showLoading }}">
         <view class="r-list-item" wx:for="{{ companyList }}" bindtap="linkCompanyDetail" data-id="{{ item.company_id }}" wx:key wx:for-item="item" >
-          <image class="pic" src="{{ item.company_logo }}"></image>
+          <image class="pic" src="{{ item.companyLogo }}"></image>
           <view class="cont">
-            <view class="job lh-normal">{{ item.company_name }}</view>
-            <view class="company">{{ item.positionnames }}</view>
+            <view class="job lh-normal">{{ item.companyName }}</view>
+            <view class="company">[{{item.jobnum}}个]{{ item.jobnames }}</view>
             <view class="s-desc">
-              <text class="infor lh-normal">{{ item.city_name }} | {{ item.education_name }} </text>
-              <text class="infor lh-normal">截止日期：{{ item.position_stoptime }}</text>
+              <text class="infor lh-normal">{{item.industry}} | {{ item.companyType }} | {{ item.peoples }} </text>
+              <!-- <text class="infor lh-normal">截止日期：{{ item.position_stoptime }}</text> -->
             </view>
           </view>
         </view>
       </view>
-      <loading wx:if="{{ !showCompany }}"></loading>
+      <loading wx:if="{{ showLoading }}"></loading>
     </scroll-view>
   </view>
 </view>

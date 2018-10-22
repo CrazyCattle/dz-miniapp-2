@@ -19,6 +19,12 @@ Page({
     showLoading: true,
     showTips: false,
   },
+  linkToChild (e) {
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `../courseChild/course?id=${id}`
+    })
+  },
   lower() {
     const _self = this
     if (_self.timer) {

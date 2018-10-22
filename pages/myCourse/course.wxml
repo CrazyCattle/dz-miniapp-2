@@ -2,7 +2,7 @@
   <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
     <view class="type-list">
       <view class="row">
-        <view class="item" wx:for="{{ list }}" wx:key="key" bindtap='linkToChild'>
+        <view class="item" wx:for="{{ list }}" wx:key="key" data-id="{{ item.class_id }}" bindtap='linkToChild'>
           <image class="logo" src='{{ item.class_img }}'></image>
           <view class="txt ellipsis">{{ item.class_name }}</view>
         </view>

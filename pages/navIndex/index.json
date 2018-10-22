@@ -2,5 +2,9 @@
   "navigationBarTitleText": "",
   "navigationBarBackgroundColor": "#fff",
   "navigationBarTextStyle": "black",
-  "disableScroll": true
+  "disableScroll": true,
+  "usingComponents": {
+    "loading": "/components/loading/loading",
+    "tip": "/components/tips/tip"
+  }
 }

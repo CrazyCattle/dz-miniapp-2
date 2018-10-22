@@ -302,7 +302,7 @@ Page({
         token: app.globalData.token,
         stu_id: app.globalData.student_id,
         id: this.data.resumeId,
-        resumeDefault: 1,
+        resumeDefault: 0,
 
         issel: this.data.issel,
         industry: this.data.industry, 

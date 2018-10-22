@@ -21,6 +21,10 @@ const app = getApp()
 Page({
   data: {
     swiperIndex: 0,
+    curpage: 1,
+    showLoading: false,
+    canLoadMore: true,
+    hasToken: false,
 
     key: -1,
     clicked: false,
@@ -70,7 +74,10 @@ Page({
     let type = e.currentTarget.dataset.type
     console.log(type)
     this.setData({
-      showType: type
+      canLoadMore: true,
+      showLoading: false,
+      showType: type,
+      curpage: 1
     })
 
     if (type == 1) {
@@ -93,7 +100,11 @@ Page({
     let id = e.currentTarget.dataset.id
     if (id !== this.data.workType) {
       this.setData({
-        workType: id
+        workType: id,
+        curpage: 1,
+        jobList: [],
+        canLoadMore: true,
+        showLoading: false
       })
       this.getPositionListFun()
     }
@@ -143,11 +154,12 @@ Page({
         })
       }).then(res => {
         if (res == 'OK') {
-          this.getPositionListFun()
           this.setData({
             key: -1,
             clicked: false,
+            curpage: 1
           })
+          this.getPositionListFun()
         }
       })
     } else {
@@ -330,58 +342,113 @@ Page({
   },
 
   getPositionListFun() {
-    wx.request({
-      url: `${getPositionList}`,
-      data: {
-        p: 1,
-        isrom: '1',
-        nums: 10,
-        city_id: this.data.baseCityId,
-        stu_id: getUserState() ? `${app.globalData.student_id}` : '0',
-        isai: this.data.isai,
-        workType: this.data.workType,
-        orderby: this.data.orderby
-      },
-      method: 'GET',
-      success: (res) => {
-        if (res.data.error == '0') {
-          console.log(res.data)
-          this.setData({
-            jobList: res.data.listjson
-          })
-        } else {
-          this.setData({
-            jobList: []
-          })
+    let loginType = wx.getStorageSync('loginType')
+    if (this.data.canLoadMore) {
+      this.setData({
+        showLoading: true,
+        canLoadMore: false
+      })
+      wx.request({
+        url: `${getPositionList}`,
+        data: {
+          p: this.data.curpage,
+          token: app.globalData.token,
+          isrom: 1,
+          nums: 10,
+          city_id: this.data.baseCityId,
+          stu_id: getUserState() ? `${app.globalData.student_id}` : '0',
+          isai: this.data.isai,
+          workType: this.data.workType,
+          orderby: this.data.orderby
+        },
+        method: 'GET',
+        success: res => {
+          if (res.data.tokeninc == '0') {
+            if (loginType == 'wxlogin') {
+              setNewToken().then(res => {
+                if (res == 'ok') {
+                  this.getPositionListFun()
+                }
+              })
+            } else {
+              initLoginStatus()
+            }
+          } else {
+            if (res.data.error == '0') {
+              let data = res.data.listjson
+              if (data.length > 0) {
+                console.log(data)
+                if (data.length >= 10) {
+                  this.setData({
+                    curpage: ++this.data.curpage,
+                    canLoadMore: true
+                  })
+                } else {
+                  this.setData({
+                    showLoading: false,
+                    canLoadMore: false
+                  })
+                }
+                this.setData({
+                  jobList: this.data.jobList.concat(data)
+                })
+              }
+            }
+          }
         }
-      }
-    })
+      })
+    }
   },
   // 获取企业推荐
   getCompanyListFun() {
-    wx.request({
-      url: `${getCompanyList}`,
-      data: {
-        p: '1',
-        isrom: '1',
-        nums: '4',
-        city: this.data.baseCity,
-        stu_id: getUserState() ? `${app.globalData.student_id}` : '0',
-        workType: this.data.workType,
-      },
-      method: 'GET',
-      success: (res) => {
-        if (res.data.error == '0') {
-          this.setData({
-            companyList: res.data.listjson
-          })
-        } else {
-          this.setData({
-            companyList: []
-          })
+    let loginType = wx.getStorageSync('loginType')
+    if (this.data.canLoadMore) {
+      this.setData({
+        showLoading: true,
+        canLoadMore: false
+      })
+      wx.request({
+        url: `${getCompanyList}`,
+        data: {
+          p: this.data.curpage,
+          isrom: 1,
+          nums: 10,
+          city: this.data.baseCity,
+          workType: this.data.workType,
+        },
+        method: 'GET',
+        success: (res) => {
+          if (res.data.error == '0') {
+            let data = res.data.listjson
+            if (data.length > 0) {
+              if (data.length >= 10) {
+                this.setData({
+                  curpage: ++this.data.curpage,
+                  canLoadMore: true
+                })
+              } else {
+                console.log(111)
+                this.setData({
+                  showLoading: false,
+                  canLoadMore: false
+                })
+              }
+              this.setData({
+                companyList: this.data.companyList.concat(data)
+              })
+            }
+          }
         }
-      }
-    })
+      })
+    }
+  },
+  lower () {
+    console.log(this.data.showType)
+    if (this.data.showType == 1 || this.data.showType == 2) {
+      this.getPositionListFun()
+    } else {
+      this.getCompanyListFun()
+    }
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
@@ -393,10 +460,25 @@ Page({
       baseCityId: app.globalData.baseCityId,
     })
 
-    this.getAI()
+    // this.getAI()
     this.getBannerFun()
     // this.getIndexCRecommendFun()
+    // this.getPositionListFun()
+    // this.getCompanyListFun()
+  },
+  onShow () {
+    if (!app.globalData.student_id || !app.globalData.token) {
+      this.setData({
+        showType: 2,
+        curpage: 1,
+        orderby: 1,
+        isai: 0
+      })
+    } else {
+      this.setData({
+        hasToken: true
+      })
+    }
     this.getPositionListFun()
-    this.getCompanyListFun()
   }
 })

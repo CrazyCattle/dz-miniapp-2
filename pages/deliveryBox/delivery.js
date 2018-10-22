@@ -99,7 +99,7 @@ Page({
   },
   onLoad: function (options) {
     if (getUserState() && !!app.globalData.student_id && !!app.globalData.token) {
-      this.getMydropinboxFun()
+      // this.getMydropinboxFun()
     } else {
       // wx.showToast({
       //   title: "请先登录",

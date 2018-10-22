@@ -54,6 +54,32 @@
   font-size: 30rpx;
   line-height: 35rpx;
   color: #313148;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.r-list-item .cont .job .title {
+  display: flex;
+  align-items: center;
+}
+.r-list-item .cont .title .txt {
+  max-width: 320rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.r-list-item .cont .title .type {
+  padding: 0 15rpx;
+  font-size: 22rpx;
+  line-height: 32rpx;
+  color: #BBB;
+  font-weight: normal;
+  background-color: #F8F8F8;
+}
+.r-list-item .cont .salary {
+  color: #F14A3E;
+  font-size: 26rpx;
+  font-weight: normal;
 }
 .r-list-item .cont .company {
   width: 490rpx;

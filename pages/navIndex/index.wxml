@@ -13,7 +13,7 @@
       <view class="search-tips">请输入公司或者职位名称</view>
     </view>
   </view>
-  <scroll-view scroll-y style="height: 100%;" bindscrolltolower="" scroll-top="{{scrollTop}}">
+  <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
     <view class="banner-box">
       <swiper bindchange="swiperChange" wx:if="{{ banner.length > 1 }}" class="swiper" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
         <block wx:for="{{ banner }}" wx:key="key">
@@ -50,28 +50,15 @@
       </view>   -->
     </view>
     
-    <!-- <view class="scroll-box mt20 bg-f" hidden="true" wx:if="{{ imgUrls.length > 0 }}">
-      <view class="scroll-title">
-        课程推荐
-        <view class="c-more" bindtap="linkCourse">
-          查看更多
-          <view class="arrow-icon">
-            <view class="inner"></view>
-          </view> 
-        </view>
-      </view>
-      <swiper class="scroll-swiper" indicator-dots="{{ indicatorDots }}" autoplay="{{ canautoplay }}" duration="160" display-multiple-items="2" previous-margin="35rpx" next-margin="17.5rpx" skip-hidden-item-layout="true">
-        <block wx:for="{{imgUrls}}" wx:key="key">
-          <swiper-item class="swiper-item">
-            <image data-id="{{ item.lesson_id }}" bindtap="linkCoursePlay" src="{{ item.lesson_img }}" class="slide-image"></image>
-          </swiper-item>
-        </block>
-      </swiper>
-    </view> -->
     <view class="recommend-box mt20">
       <view class="recommend mt20 bg-f">
         <view class="recommend-tab">
-          <view class="tab recom {{ showType == 1?'cur':'' }}" data-type="1" bindtap="showRecommend">推荐职位</view>
+          <view class="tab recom {{ showType == 1?'cur':'' }}"
+            data-type="1"
+            bindtap="showRecommend"
+            wx:if="{{ hasToken }}">
+            推荐职位
+          </view>
           <view class="tab current {{ showType == 2?'cur':'' }}" data-type="2" bindtap="showRecommend">最近职位</view>
           <view class="tab hot {{ showType == 3?'cur':'' }}" data-type="3" bindtap="showRecommend">热门企业</view>
         </view>
@@ -148,12 +135,6 @@
               </view>
             </view>
           </view>
-          <!-- <view class="more" bindtap="linkMoreJob">
-            查看更多
-            <view class="arrow-icon">
-              <view class="inner"></view>
-            </view> 
-          </view> -->
         </view>
       </view>
       <view class="recommend bg-f" wx:if="{{ showType == 3 && companyList.length > 0 }}">
@@ -168,14 +149,9 @@
               </view>
             </view>
           </view>
-          <!-- <view class="more" bindtap="linkMoreCompany">
-            查看更多
-            <view class="arrow-icon">
-              <view class="inner"></view>
-            </view> 
-          </view> -->
         </view>
       </view>
     </view>
+    <loading wx:if="showLoading"></loading>
   </scroll-view>
 </view>

@@ -1,6 +1,6 @@
 <view class="resume-box">
   <scroll-view class="scroll" scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
-    <view class="list">
+    <view class="list" wx:if="{{ mydropinbox.length > 1 }}">
       <view class="item" wx:for="{{ mydropinbox }}" wx:key="key" wx:for-index="index">
         <image class="img" src="https://static.dazhao100.cn/pic/1526907753l016152041.png"></image>
         <view class="conts">
@@ -21,5 +21,6 @@
         </view>
       </view>
     </view>
+    <tip content="暂无任何数据" wx:if="{{ mydropinbox.length == 0 }}"></tip>
   </scroll-view>
 </view>

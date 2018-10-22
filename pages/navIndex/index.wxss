@@ -146,6 +146,10 @@
   justify-content: space-between;
   border-bottom: 1rpx solid #eaecf3;
 }
+.r-list-item:last-child .cont {
+  border: none;
+}
+
 
 .r-list-item .cont > .tit {
   display: flex;

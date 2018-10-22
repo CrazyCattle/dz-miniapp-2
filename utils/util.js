@@ -48,7 +48,7 @@ const initLoginStatus = () => {
     duration: 1000
   });
   let timer = setTimeout(() => {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../login/login'
     })
   }, 300)

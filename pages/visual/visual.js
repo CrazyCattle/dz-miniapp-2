@@ -6,7 +6,8 @@ import {
 import {
   setNewToken,
   initLoginStatus,
-  getUserState
+  getUserState,
+  navToLogin
 } from '../../utils/util';
 
 const app = getApp()
@@ -96,12 +97,6 @@ Page({
     })
 
     this.getBanner()
-
-    if (getUserState() && !!app.globalData.student_id && !!app.globalData.token) {
-      
-    } else {
-      navToLogin()
-    }
   },
   onReady: function () {},
   onShow: function () {},

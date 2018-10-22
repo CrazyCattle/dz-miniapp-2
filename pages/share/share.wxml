@@ -6,45 +6,45 @@
     <image class="img" src="../../images/invi/tit.png"></image>
   </view>
   <view class="share-course">
-    <image class="img" src="https://static.dazhao100.cn/pic/1526907753l016152041.png"></image>
-    <view class="txt ellipsis">简历吐槽大会，这里有你的吗? hahahahahahhahahahahah</view>
+    <image class="img" src="{{ courseDetails.class_img }}"></image>
+    <view class="txt ellipsis">{{ courseDetails.class_name }}</view>
   </view>
 
   <view class="share-box">
     <!-- 邀请 1 -->
-    <!-- <button class="btn" open-type=''>
+    <button class="btn" open-type='' wx:if="{{ hasPower == 0 }}">
       <image class="img" src="../../images/invi/btn-share.png"></image>
-    </button> -->
-    <!-- <view class="share-tips">分享邀请3个以上好友助力领取课程刷新页面 即可播放</view> -->
+    </button>
 
     <!-- 已领取 2 -->
-    <!-- <button class="btn">
+    <button class="btn" wx:if="{{ hasPower == 1 }}">
       <image class="img" src="../../images/invi/btn-over.png"></image>
-    </button> -->
-    <!-- <view class="reshare">
+    </button>
+    <view class="share-tips" wx:if="{{ !isShared }}">分享邀请3个以上好友助力领取课程刷新页面 即可播放</view>
+    <view class="reshare" wx:if="{{ hasPower == 1 }}">
       <button class="sBtn">分享给好友</button>
-      <button class="lBtn">查看视频课程</button>
-    </view> -->
+      <button class="lBtn" bindtap="linkCourse" data-id="{{ cId }}">查看视频课程</button>
+    </view>
 
     <!-- 支持 3 -->
-    <!-- <button class="btn" open-type=''>
+    <button class="btn" open-type='' wx:if="{{ isShared }}">
       <image class="img" src="../../images/invi/btn-support.png"></image>
     </button>
-    <view class="support-txt">支持成功后，你将获得本节课程</view> -->
+    <view class="support-txt" wx:if="{{ isShared }}">支持成功后，你将获得本节课程</view>
 
     <!-- 已领取 立即查看 -->
-    <button class="btn">
+    <!-- <button class="btn">
       <image class="img" src="../../images/invi/btn-check.png"></image>
     </button>
     <view class="back">
       <button class="btn">
         <image class="img" src="../../images/invi/btn-back.png"></image>
       </button>
-    </view>
+    </view> -->
   </view>
 
-  <view class="supporter">
-    <view class="title tc">已有<text class="nums">2</text> 位好友成功支持</view>
+  <view class="supporter" wx:if="{{ !isShared }}">
+    <view class="title tc">已有<text class="nums">{{ shareTimes }}</text> 位好友成功支持</view>
     <view class="list list-1">
       <view class="item">
         <image class="img" src="https://static.dazhao100.cn/pic/1526907753l016152041.png"></image>

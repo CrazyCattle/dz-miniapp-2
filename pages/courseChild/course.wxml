@@ -1,6 +1,6 @@
 <import src="../../wxParse/wxParse.wxml" />
 <view class="banner">
-  <image class="img" src="https://static.dazhao100.cn/pic/1512456564l807313863.jpg"></image>
+  <image class="img" src="{{ class_intro.class_img }}"></image>
 </view>
 <view class="course-raiders bg-f">
   <view class="course-raiders-head tc">{{ class_name }}</view>
@@ -9,7 +9,7 @@
     <view class="wxParse {{ showMore?'active':''}}">
       <template is="wxParse" data="{{wxParseData:article.nodes}}" />
     </view>
-    <view class="linkShare" catchtap='linkShare'>限时免费，戳此获取</view>
+    <view class="linkShare" wx:if="{{ hasPower }}" data-id="{{ cId }}" catchtap='linkShare'>限时免费，戳此获取</view>
     <!-- <view class="arrow-icon-more {{ showMore?'active':'' }}">
       <view class="inner"></view>
     </view> -->
@@ -21,7 +21,7 @@
   <view class="tc">
     <view class="title">{{ item.class_name }}</view>
     <view class="r-list tl">
-      <view class="r-list-item" wx:for="{{ item.lessons }}" wx:key="key" wx:for-item="lesson" data-id="{{ lesson.lesson_id }}" bindtap="linkCoursePlay">
+      <view class="r-list-item" wx:for="{{ item.lessons }}" wx:key="key" wx:if="{{ share_islimits == 1 }}" wx:for-item="lesson" data-id="{{ lesson.lesson_id }}" bindtap="linkCoursePlay">
         <view class="cont">
           <view class="company">
             <image class="img" src="{{ lesson.teacher_img }}"></image>
@@ -35,12 +35,21 @@
         </view>
         <image class="pic" src="{{ lesson.lesson_img }}"></image>
       </view>
-      <!-- <view class="more" bindtap="linkCourse">
-        查看更多
-        <view class="arrow-icon">
-          <view class="inner"></view>
+
+      <view class="r-list-item" wx:for="{{ item.lessons }}" wx:key="key" wx:if="{{ share_islimits == 0 }}" wx:for-item="lesson" data-id="{{ lesson.lesson_id }}" bindtap="linkCourseShare">
+        <view class="cont">
+          <view class="company">
+            <image class="img" src="{{ lesson.teacher_img }}"></image>
+            {{ lesson.teacher_name }}
+          </view>
+          <view class="job lh-normal">{{ lesson.lesson_name }}</view>
+          <view class="s-desc">
+            <text class="infor lh-normal">{{ lesson.viewCount }}人学过</text>
+            <text class="infor lh-normal">时长：{{ lesson.lesson_alltime }}</text>
+          </view>
         </view>
-      </view> -->
+        <image class="pic" src="{{ lesson.lesson_img }}"></image>
+      </view>
     </view>
   </view>
 </view>

@@ -68,4 +68,9 @@ module.exports = {
   
   getSiteCityList: `${basicUrl}/getSiteCityList`, //获取 首页 站点城市明细
   LessonBanner: `${basicUrl}/LessonBanner`, //获取 直观banner
+
+  getStuClassLimit: `${basicUrl}/getStuClassLimit`, // 取用户某课程分类状态
+  SubVisitorer: `${basicUrl}/SubVisitorer`, // 用户支持分享记录提交
+  getStuVisitorer: `${basicUrl}/getStuVisitorer`, // 取用户某课程分类分享用户数据
+  classTwoLesson: `${basicUrl}/classTwoLesson`, // 获取二级详情
 };

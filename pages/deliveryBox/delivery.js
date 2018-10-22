@@ -106,7 +106,7 @@ Page({
       //   icon: "none",
       //   duration: 1000
       // });
-      navToLogin()
+      // navToLogin()
     }
   },
   onReady: function () { },

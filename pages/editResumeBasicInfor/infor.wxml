@@ -1,9 +1,14 @@
-<view class="me-head-infor bg-f mt20">
-  <image class="me-pic" src=" {{ user_pic?user_pic:'../../images/user_pic.png' }} "></image>
+<view class="me-head-infor bg-f mt20" bindtap="chooseImg">
   <view class="me-desc">
-    <view class="me-name" bindtap="chooseImg">点击更换简历照片</view>
+    <view class="me-name">简历头像</view>
   </view>
-  <view class="save-pic" bindtap="uploadUserImg">保存</view>
+  <view class="conts">
+    <image class="me-pic" src=" {{ user_pic?user_pic:'../../images/user_pic.png' }} "></image>
+    <view class="arrow-icon">
+      <view class="inner"></view>
+    </view>
+  </view>
+  <!-- <view class="save-pic" bindtap="uploadUserImg">保存</view> -->
 </view>
 
 <form bindsubmit="formSubmit">
@@ -40,7 +45,7 @@
       <view class="rot-ipt">
         <input class="input" placeholder-class="placeholder" value="{{ user_exprect }}" placeholder='请输入求职意向' bindinput="iptExprect" bindchange="iptExprect" disabled></input>
         <view class="select-exprect">
-          <text>选择求职意向</text>
+          <text class="view">选择求职意向</text>
           <view class="arrow-icon">
             <view class="inner"></view>
           </view>
@@ -50,5 +55,6 @@
     </view>
   </view>
   <button bindtap="submitResumeInfo" placeholder-class="placeholder" class="baseBtn mt60">保存</button>
-  <button bindtap="reviewResume" data-id="{{ resume_id }}" placeholder-class="placeholder" class="baseBtn mt60">预览简历</button>
+  <!-- <button bindtap="reviewResume" data-id="{{ resume_id }}" placeholder-class="placeholder" class="baseBtn reviewBtn mt60">预览简历</button> -->
+  <button class="baseBtn reviewBtn mt60">预览简历</button>
 </form>

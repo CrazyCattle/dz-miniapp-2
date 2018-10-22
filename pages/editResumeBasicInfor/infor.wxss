@@ -1,13 +1,14 @@
 .me-head-infor {
   display: flex;
-  height: 200rpx;
+  height: 210rpx;
   padding: 0 40rpx;
   align-items: center;
+  justify-content: space-between;
   position: relative;
 }
 .me-head-infor .me-pic {
-  width: 140rpx;
-  height: 140rpx;
+  width: 150rpx;
+  height: 150rpx;
   margin-right: 26rpx;
   background-color: #e6e9f3;
   border-radius: 50%;
@@ -16,7 +17,10 @@
   font-size: 30rpx;
   color: #313148;
 }
-
+.me-head-infor .conts {
+  display: flex;
+  align-items: center;
+}
 .save-pic {
   position: absolute;
   width: 88rpx;
@@ -91,11 +95,19 @@
   top: 50%;
   transform: translateY(-50%);  
   height: 68rpx;
+  width: 100%;
   font-size: 24rpx;
   color:#618FEB;
   display: flex;
   align-items: center;
   z-index: 10;
+}
+.select-exprect .view {
+  width: 100%;
+  text-align: right;
+  opacity: 0;
+  position: relative;
+  z-index: 1;
 }
 .picker {
   position: absolute;
@@ -105,4 +117,10 @@
   width: 100%;
   z-index: 20;
   opacity: 0;
+}
+
+.reviewBtn {
+  margin-top: 35rpx;
+  color: #618FEB;
+  background-color: #E6E9F3;
 }

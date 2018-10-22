@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/visual/visual",
     "pages/navIndex/index",
     "pages/navMe/me",
     "pages/navCourse/course",
@@ -42,7 +43,6 @@
     "pages/editJobExpectNew/new",
     "pages/resumeCenterDropbox/index",
     "pages/share/share",
-    "pages/visual/visual",
     "pages/visualChild/vchild",
     "pages/myCourse/course",
     "pages/myResume/resume",

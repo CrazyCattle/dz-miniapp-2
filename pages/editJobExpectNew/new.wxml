@@ -85,12 +85,12 @@
     <view class="major">
       <view class="txt">期望职位与专业对口：</view>
       <view class="circle">
-        <view class="i-circle {{ issel == '是'?'active':'' }}">
+        <view class="i-circle {{ issel == '是'?'active':'' }}" data-sure="是" bindtap="toggleIssel">
           <image class="img"  wx:if="{{ issel == '是' }}" src="../../images/circle.png"></image>
         </view>是
       </view>
       <view class="circle">
-        <view class="i-circle {{ issel == '否'?'active':'' }}">
+        <view class="i-circle {{ issel == '否'?'active':'' }}" data-sure="否" bindtap="toggleIssel">
           <image class="img" wx:if="{{ issel == '否' }}" src="../../images/circle.png"></image>
         </view>否
       </view>

@@ -14,23 +14,7 @@ const app = getApp()
 
 Page({
   data: {
-    issel: '',
-
-    user_exprect: '',
-    industry: '',
-    city: '',
-    salary: undefined,
-    company_size: '',
-    company_type: '',
-    industry_id: undefined,  
-    father_id: undefined,  
-    positiontype_id: undefined,  
-    province_id: undefined,  
-    city_id: undefined,  
-    expect_pay: undefined,  
-    expect_unittype: undefined,  
-    expect_unitsize: undefined,  
-    expect_id: undefined,  
+    resumeId: undefined,
 
     // 目标行业
     industryIndex: [0, 0],
@@ -69,28 +53,7 @@ Page({
     xzIndexArr: [],
   },
 
-
   //获取薪资
-  // getSalaryBaseFun() {
-  //   wx.request({
-  //     url: `${getSalaryBase}`,
-  //     method: 'GET',
-  //     success: res => {
-  //       if (res.data.error == '0') {
-  //         const arr1 = []
-  //         const arr2 =[]
-  //         res.data.result.forEach((v, i) => {
-  //           arr1.push(v.tilte)
-  //           arr2.push(v.parameter)
-  //         })
-  //         this.setData({
-  //           salaryArr: arr1,
-  //           salaryIndexArr: arr2
-  //         })
-  //       }
-  //     }
-  //   })
-  // },
   listenerSalary(e) {
     this.setData({
       salaryIndex: e.detail.value,
@@ -102,26 +65,6 @@ Page({
   },
 
   //获取公司规模
-  // getunitsizeTypeFun() {
-  //   wx.request({
-  //     url: `${getunitsizeType}`,
-  //     method: 'GET',
-  //     success: res => {
-  //       if (res.data.error == '0') {
-  //         const arr1 = []
-  //         const arr2 = []
-  //         res.data.result.forEach((v, i) => {
-  //           arr1.push(v.tilte)
-  //           arr2.push(v.parameter)
-  //         })
-  //         this.setData({
-  //           sizeArr: arr1,
-  //           sizeIndexArr: arr2
-  //         })
-  //       }
-  //     }
-  //   })
-  // },
   listenerSize(e) {
     this.setData({
       sizeIndex: e.detail.value,
@@ -133,26 +76,6 @@ Page({
   },
 
   //获取公司性质
-  // getCompanyXZFun() {
-  //   wx.request({
-  //     url: `${getZPType}?module=ComUnitType`,
-  //     method: 'GET',
-  //     success: res => {
-  //       if (res.data.error == '0') {
-  //         const arr1 = []
-  //         const arr2 = []
-  //         res.data.listjson.forEach((v, i) => {
-  //           arr1.push(v.tilte)
-  //           arr2.push(v.parameter)
-  //         })
-  //         this.setData({
-  //           xzArr: arr1,
-  //           xzIndexArr: arr2
-  //         })
-  //       }
-  //     }
-  //   })
-  // },
   listenerNature(e) {
     this.setData({
       xzIndex: e.detail.value,
@@ -176,7 +99,6 @@ Page({
     let _self = this
     if (c == '0') {
       _self.data.industryOne.forEach((val, i) => {
-        console.log(_self.data.industryArray[0][v], val)
         if (val.categoryName1 == _self.data.industryArray[0][v]) {
           wx.request({
             url: `${getIndustryList}?categoryId1=${val.categoryId1}`,
@@ -223,6 +145,7 @@ Page({
       })
     })
   },
+
   getPosiChildTypeFun(id) {
     let _self = this
     wx.request({
@@ -261,7 +184,6 @@ Page({
     let _self = this
     if (c == '0') {
       _self.data.jobOne.forEach((val, i) => {
-        console.log(val, _self.data.jobArray[0][v])
         if (val.categoryName1 == _self.data.jobArray[0][v]) {
           wx.request({
             url: `${getPositionType}?father_id=${val.categoryId1}&level=2`,
@@ -299,7 +221,6 @@ Page({
       province_id: this.data.prov_changeId,
       city_id: this.data.addressIndexArr[e.detail.value[1]]
     })
-    console.log(e.detail.value, this.data.city_id)
   },
   listenerCityChange(e) {
     // console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
@@ -308,7 +229,6 @@ Page({
     let _self = this
     if (c == '0') {
       _self.data.addressOne.forEach((val, i) => {
-        console.log(val.name, _self.data.addressArray[0][v])
         if (val.name == _self.data.addressArray[0][v]) {
           wx.request({
             url: `${getCityList}?id=${val.id}`,
@@ -323,7 +243,8 @@ Page({
                 _self.setData({
                   addressArray: [_self.data.addressOneC, arr],
                   prov_changeId: val.id,
-                  addressIndexArr: arr1
+                  addressIndexArr: arr1,
+                  workProvince: val.name
                 })
                 
               } else {  
@@ -366,23 +287,31 @@ Page({
       }
     })
   },
+
+  toggleIssel (e) {
+    this.setData({
+      issel: e.currentTarget.dataset.sure
+    })
+  },
+
+  // 修改 保存期望
   saveExpect() {
     wx.request({
       url: `${sendExpect}`,
       data: {
         token: app.globalData.token,
         stu_id: app.globalData.student_id,
+        id: this.data.resumeId,
         resumeDefault: 1,
-        issel: this.data.isMajor,
-        expect_id: this.data.expect_id == '-9999' ? 0 : this.data.expect_id,
-        industry_id: this.data.industry_id,  
-        father_id: this.data.father_id,  
-        positiontype_id: this.data.positiontype_id,  
-        province_id: this.data.province_id,  
-        city_id: this.data.city_id,  
-        expect_pay: this.data.expect_pay,  
-        expect_unittype: this.data.expect_unittype,  
-        expect_unitsize: this.data.expect_unitsize
+
+        issel: this.data.issel,
+        industry: this.data.industry, 
+        jobyname: this.data.user_exprect,  
+        workProvince: this.data.workProvince,
+        workCity: this.data.city,  
+        salary: this.data.salary,  
+        people: this.data.company_size,  
+        companytype: this.data.company_type
       },
       method: 'POST', 
       header: {
@@ -407,31 +336,18 @@ Page({
 
   onLoad: function (options) {
     let data = JSON.parse(options.data)
-    console.log(data, 11111111)
+
     this.setData({
       industry: data.industry,
       user_exprect: data.jobyname,
       issel: data.issel,
-
+      workProvince: data.xjd_province,
       city: data.workCity,
       salary: data.salary,
       company_size: data.people,
       company_type: data.companytype,
-
-      // industry_id: data.industry_id,  
-      // father_id: data.father_id,  
-      // positiontype_id: data.positiontype_id,  
-      // province_id: data.province_id,  
-      // city_id: data.city_id,  
-      // expect_pay: data.expect_pay,  
-      // expect_unittype: data.expect_unittype,  
-      // expect_unitsize: data.expect_unitsize,  
-      // expect_id: data.expect_id
+      resumeId: data.id
     })
-
-    // this.getSalaryBaseFun()
-    // this.getunitsizeTypeFun()
-    // this.getCompanyXZFun()
 
     this.getPosiParentTypeFun().then((res) => {
       this.getPosiChildTypeFun(res[0].categoryId1)
@@ -446,7 +362,6 @@ Page({
             const { listjson } = res.data
             const jobOne = []
             listjson.forEach((v, i) => {
-              console.log(v, i)
               jobOne.push(v.categoryName1)
             })
             this.setData({
@@ -472,8 +387,6 @@ Page({
               industryArray: [this.data.industryOneC, arr],
               industryIndexArr: arr1
             })
-
-            console.log(this.data.industryArray)
           }
         }
       })

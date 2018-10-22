@@ -1,12 +1,14 @@
 <view class="list-box">
-  <scroll-view scroll-y style="height: 100%;">
+  <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
     <view class="type-list">
       <view class="row">
         <view class="item" wx:for="{{ list }}" wx:key="key" bindtap='linkToChild'>
-          <image class="logo" src='{{ item.img }}'></image>
-          <view class="txt ellipsis">{{ item.title }}</view>
+          <image class="logo" src='{{ item.class_img }}'></image>
+          <view class="txt ellipsis">{{ item.class_name }}</view>
         </view>
       </view>
     </view>
+    <loading wx:if="{{ showLoading }}"></loading>
+    <tip wx:if="{{ showTips }}" content="暂无消息"></tip>
   </scroll-view>
 </view>

@@ -1,4 +1,4 @@
-const basicUrl = "http://api.dznewbt102.com/api";
+const basicUrl = "https://napi.dazhao100.cn/api";
 
 module.exports = {
   judgeStu: `${basicUrl}/judgeStu`,//判断微信用户是否存在
@@ -14,7 +14,7 @@ module.exports = {
   collect: `${basicUrl}/collect`,// 收藏与取消收藏 stu_id，lesson_id
   loginIn: `${basicUrl}/UserLogin`, // 用户登录
   getAuthCode: `${basicUrl}/getAuthCode?mobile=`, // 获取短信验证码
-  register: `${basicUrl}/register`, // 用户注册 mobilecode,student_truename,student_name,student_passwd,mobile
+  register: `${basicUrl}/register`, // 用户注册 mobilecode,mobile
   banner: `${basicUrl}/banner`, // 首页banner图
   schoolInfo: `${basicUrl}/universityInfo`, // 高校logo，name
   resumeList: `${basicUrl}/ResumesList`, // 简历列表
@@ -71,6 +71,6 @@ module.exports = {
 
   getStuClassLimit: `${basicUrl}/getStuClassLimit`, // 取用户某课程分类状态
   SubVisitorer: `${basicUrl}/SubVisitorer`, // 用户支持分享记录提交
-  getStuVisitorer: `${basicUrl}/getStuVisitorer`, // 取用户某课程分类分享用户数据
+  StuVisitorer: `${basicUrl}/getStuVisitorer`, // 取用户某课程分类分享用户数据
   classTwoLesson: `${basicUrl}/classTwoLesson`, // 获取二级详情
 };

@@ -30,6 +30,7 @@ Page({
     let id = e.currentTarget.dataset.id
     wx.navigateTo({
       url: `../share/share?id=${id}`
+      // url: `../share/share?id=${id}&stuId=${this.data.cId}`
     })
   },
   showMore () {
@@ -45,9 +46,10 @@ Page({
     })
   },
   linkCourseShare(e) {
-    let id = e.currentTarget.dataset.id
+    let id = e.currentTarget.dataset.cid
     wx.navigateTo({
-      url: `../share/share?id=${id}`,
+      url: `../share/share?id=${id}`
+      // url: `../share/share?id=${id}&stuId=${this.data.cId}`
     })
   },
   getPhoneNumber (e) {
@@ -59,9 +61,17 @@ Page({
       success: res => {
         console.log(res)
         if (res.data.error == 0) {
-          this.setData({
-            hasPower: true
-          })
+          if (res.data.listjson.share_islimits == 1) {
+            this.setData({
+              hasPower: true
+            })
+          }
+        } else if (res.data.error == 1) {
+          if (res.data.listjson.share_islimits == 0) {
+            this.setData({
+              hasPower: true
+            })
+          }
         }
       }
     })

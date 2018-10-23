@@ -12,22 +12,25 @@
 
   <view class="share-box">
     <!-- 邀请 1 -->
-    <button class="btn" open-type='' wx:if="{{ hasPower == 0 }}">
+    <button class="btn" open-type='share' wx:if="{{ shareTimes < 3 }}">
       <image class="img" src="../../images/invi/btn-share.png"></image>
     </button>
 
     <!-- 已领取 2 -->
-    <button class="btn" wx:if="{{ hasPower == 1 }}">
+    <button class="btn" wx:if="{{ shareTimes >= 3 }}">
       <image class="img" src="../../images/invi/btn-over.png"></image>
     </button>
     <view class="share-tips" wx:if="{{ !isShared }}">分享邀请3个以上好友助力领取课程刷新页面 即可播放</view>
-    <view class="reshare" wx:if="{{ hasPower == 1 }}">
-      <button class="sBtn">分享给好友</button>
+    <view class="reshare" wx:if="{{ hasPower == 0 }}">
+      <button class="sBtn" open-type='share'>分享给好友</button>
       <button class="lBtn" bindtap="linkCourse" data-id="{{ cId }}">查看视频课程</button>
     </view>
 
     <!-- 支持 3 -->
-    <button class="btn" open-type='' wx:if="{{ isShared }}">
+    <button class="btn"
+      open-type='getUserInfo'
+      bindgetuserinfo="getUserInfo"
+      wx:if="{{ hasPower == 1 && isShared }}">
       <image class="img" src="../../images/invi/btn-support.png"></image>
     </button>
     <view class="support-txt" wx:if="{{ isShared }}">支持成功后，你将获得本节课程</view>
@@ -45,36 +48,16 @@
 
   <view class="supporter" wx:if="{{ !isShared }}">
     <view class="title tc">已有<text class="nums">{{ shareTimes }}</text> 位好友成功支持</view>
-    <view class="list list-1">
-      <view class="item">
-        <image class="img" src="https://static.dazhao100.cn/pic/1526907753l016152041.png"></image>
-        <text class="name">crazycattle</text>
-      </view>
-      <view class="item">
-        <image class="img" src="https://static.dazhao100.cn/pic/1526907753l016152041.png"></image>
-        <text class="name">crazycattle</text>
+    <view class="list list-1" wx:if="{{ friendList.length > 0 && friendList.length <= 4}}">
+      <view class="item" wx:for="{{ friendList }}" wx:key>
+        <image class="img" src="{{ item.visitorer_avatar }}"></image>
+        <text class="name">{{ item.visitorer_nickname }}</text>
       </view>
     </view>
-    <view class="list list-2">
-      <view class="item">
-        <image class="img" src="https://static.dazhao100.cn/pic/1526907753l016152041.png"></image>
-        <text class="name">crazycattle</text>
-      </view>
-      <view class="item">
-        <image class="img" src="https://static.dazhao100.cn/pic/1526907753l016152041.png"></image>
-        <text class="name">crazycattle</text>
-      </view>
-      <view class="item">
-        <image class="img" src="https://static.dazhao100.cn/pic/1526907753l016152041.png"></image>
-        <text class="name">crazycattle</text>
-      </view>
-      <view class="item">
-        <image class="img" src="https://static.dazhao100.cn/pic/1526907753l016152041.png"></image>
-        <text class="name">crazycattle</text>
-      </view>
-      <view class="item">
-        <image class="img" src="https://static.dazhao100.cn/pic/1526907753l016152041.png"></image>
-        <text class="name">crazycattle</text>
+    <view class="list list-2" wx:if="{{ friendList.length > 0 && friendList.length > 4}}">
+      <view class="item" wx:for="{{ friendList }}" wx:key>
+        <image class="img" src="{{ item.visitorer_avatar }}"></image>
+        <text class="name">{{ item.visitorer_nickname }}</text>
       </view>
     </view>
   </view>

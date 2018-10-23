@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/visual/visual",
     "pages/navIndex/index",
+    "pages/visual/visual",
     "pages/navMe/me",
     "pages/navCourse/course",
     "pages/navInformation/infor",

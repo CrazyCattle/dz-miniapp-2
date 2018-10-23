@@ -145,7 +145,7 @@
   border-radius: 41rpx;
 }
 .supporter .item .name {
-  font-size: 24rpx;
+  font-size: 20rpx;
   color: #848CA1;
 }
 

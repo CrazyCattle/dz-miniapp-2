@@ -74,25 +74,7 @@ Page({
     }
   },
   register() {
-    if (!this.data.student_truename) {
-      wx.showToast({
-        title: "姓名不能为空",
-        icon: "none",
-        duration: 1000
-      });
-    } else if (!this.data.student_name) {
-      wx.showToast({
-        title: "学号不能为空",
-        icon: "none",
-        duration: 1000
-      });
-    } else if (!this.data.student_passwd) {
-      wx.showToast({
-        title: "密码不能为空",
-        icon: "none",
-        duration: 1000
-      });
-    } else if (!this.data.mobile) {
+    if (!this.data.mobile) {
       wx.showToast({
         title: "手机号码不能为空",
         icon: "none",
@@ -106,9 +88,6 @@ Page({
       });
     } else {
       console.log(
-        this.data.student_truename,
-        this.data.student_name,
-        this.data.student_passwd,
         this.data.mobile,
         this.data.mobilecode
       );
@@ -120,9 +99,7 @@ Page({
         method: 'POST',
         data: {
           mobilecode: this.data.mobilecode,
-          student_truename: this.data.student_truename,
-          student_name: this.data.student_name,
-          student_passwd: this.data.student_passwd,
+
           mobile: this.data.mobile
         },
         success: res => {

@@ -374,8 +374,8 @@ Page({
               initLoginStatus()
             }
           } else {
+            let data = res.data.listjson
             if (res.data.error == '0') {
-              let data = res.data.listjson
               if (data.length > 0) {
                 console.log(data)
                 if (data.length >= 10) {
@@ -393,6 +393,12 @@ Page({
                   jobList: this.data.jobList.concat(data)
                 })
               }
+            } else {
+              this.setData({
+                jobList: this.data.jobList.concat(data),
+                showLoading: false,
+                canLoadMore: false
+              })
             }
           }
         }

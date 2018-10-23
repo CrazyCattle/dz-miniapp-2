@@ -12,16 +12,16 @@
 
   <view class="share-box">
     <!-- 邀请 1 -->
-    <button class="btn" open-type='share' wx:if="{{ shareTimes < 3 }}">
+    <button class="btn" open-type='share' wx:if="{{ !hasPower && !isShared }}">
       <image class="img" src="../../images/invi/btn-share.png"></image>
     </button>
 
     <!-- 已领取 2 -->
-    <button class="btn" wx:if="{{ shareTimes >= 3 }}">
+    <button class="btn" wx:if="{{ hasPower && !isShared }}">
       <image class="img" src="../../images/invi/btn-over.png"></image>
     </button>
     <view class="share-tips" wx:if="{{ !isShared }}">分享邀请3个以上好友助力领取课程刷新页面 即可播放</view>
-    <view class="reshare" wx:if="{{ hasPower == 0 }}">
+    <view class="reshare" wx:if="{{ hasPower && !isShared }}">
       <button class="sBtn" open-type='share'>分享给好友</button>
       <button class="lBtn" bindtap="linkCourse" data-id="{{ cId }}">查看视频课程</button>
     </view>
@@ -30,10 +30,10 @@
     <button class="btn"
       open-type='getUserInfo'
       bindgetuserinfo="getUserInfo"
-      wx:if="{{ hasPower == 1 && isShared }}">
+      wx:if="{{ !hasPower && isShared }}">
       <image class="img" src="../../images/invi/btn-support.png"></image>
     </button>
-    <view class="support-txt" wx:if="{{ isShared }}">支持成功后，你将获得本节课程</view>
+    <view class="support-txt" wx:if="{{ !hasPower && isShared }}">支持成功后，你将获得本节课程</view>
 
     <!-- 已领取 立即查看 -->
     <!-- <button class="btn">
@@ -63,15 +63,15 @@
     </view>
   </view>
 
-  <view class="obtainPop" style="display: none;">
+  <view class="obtainPop" wx:if="{{ showGetCourse }}">
     <view class="cont-box">
       <view class="imgs">
-        <image class="img" src="../../images/invi/BG-support.png"></image>
+        <image class="img" src="{{ courseDetails.class_img }}"></image>
       </view>
       <view class="pop-box">
         <view class="tips">支持成功</view>
         <text class="txt">恭喜你获赠本节课程</text>
-        <button class="btn">
+        <button class="btn" data-id="{{ courseDetails.class_id }}">
           <image class="img" src="../../images/invi/btn-get.png"></image>
         </button>
       </view>

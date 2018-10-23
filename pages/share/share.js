@@ -28,8 +28,9 @@ Page({
     friendList: [],
     courseDetails: {},
     isShared: false,
-    hasPower: 1,
-    shareTimes: 0
+    hasPower: 0,
+    shareTimes: 0,
+    showGetCourse: false
   },
   linkCourse (e) {
     let id = e.currentTarget.dataset.id
@@ -60,19 +61,19 @@ Page({
             const data = res.data.listjson
             if (data.share_islimits == 1) {
               this.setData({
-                hasPower: 0,
+                hasPower: 1,
                 shareTimes: data.share_times
               })
             } else {
               this.setData({
-                hasPower: 1,
+                hasPower: 0,
                 shareTimes: data.share_times
               })
             }
           } else {
             if (res.data.listjson.share_islimits == 0) {
               this.setData({
-                hasPower: 1,
+                hasPower: 0,
                 shareTimes: res.data.listjson.share_times
               })
             }
@@ -112,7 +113,6 @@ Page({
     })
   },
   getUserInfo(e) {
-    console.log(e, 11)
     if (e.detail.encryptedData) {
       const rawData = JSON.parse(e.detail.rawData)
       this.setData({
@@ -136,6 +136,11 @@ Page({
             icon: "none",
             duration: 1000
           });
+          if (res.data.error == 0) {
+            this.setData({
+              showGetCourse: true
+            })
+          }
         }
       })
     }

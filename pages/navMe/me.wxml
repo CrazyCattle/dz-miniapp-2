@@ -27,25 +27,25 @@
 
   <view class="me-setting bg-f">
     <view class="me-row" bindtap='linkResumeCenter'>
-      <image class="icon resume" src="../../images/me/resume.png"></image>我的简历
+      <image class="icon resume" src="../../images/me/icon_1.png"></image>我的简历
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap='editUserInfor'>
-      <image class="icon resume" src="../../images/me/resume.png"></image>求职期望
+      <image class="icon expect" src="../../images/me/icon_2.png"></image>求职期望
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap='linkCollectFolder'>
-      <image class="icon resume" src="../../images/me/resume.png"></image>收藏夹
+      <image class="icon collect" src="../../images/me/icon_3.png"></image>收藏夹
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap="linkCourseCollect">
-      <image class="icon rourse" src="../../images/me/course.png"></image>我的课程
+      <image class="icon course" src="../../images/me/icon_4.png"></image>我的课程
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
@@ -66,19 +66,19 @@
       </view>
     </view> -->
     <view class="me-row" bindtap="editPwd">
-      <image class="icon pwd" src="../../images/me/pwd.png"></image>修改密码
+      <image class="icon pwd" src="../../images/me/icon_5.png"></image>修改密码
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap='linkSuggestion'>
-      <image class="icon infor" src="../../images/me/infor.png"></image>建议反馈
+      <image class="icon infor" src="../../images/me/icon_6.png"></image>建议反馈
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap="loginOut">
-      <image class="icon out" src="../../images/me/out.png"></image>退出登录
+      <image class="icon out" src="../../images/me/icon_7.png"></image>退出登录
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>

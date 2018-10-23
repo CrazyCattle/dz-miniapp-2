@@ -17,7 +17,7 @@
   <!-- <button class="linkShare" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>  -->
 </view>
 
-<view class="fliter-box mt20 bg-f tc" wx:for="{{ classThree }}" wx:key="key">
+<view class="fliter-box mt20 bg-f tc" wx:for="{{ classThree }}" wx:for-item="item" wx:key="key">
   <view class="tc">
     <view class="title">{{ item.class_name }}</view>
     <view class="r-list tl">

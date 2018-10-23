@@ -80,17 +80,22 @@
   border-bottom: none;
 }
 .me-row .icon {
+  display: block;
   margin-right: 26rpx;
 }
-.me-row .rourse {
-  width: 34rpx;
-  height: 24rpx;
+.me-row .course {
+  width: 32rpx;
+  height: 30rpx;
 }
 .me-row .resume {
   width: 32rpx;
   height: 32rpx;
 }
-.me-row .job {
+.me-row .expect {
+  width: 37rpx;
+  height: 38rpx;
+}
+.me-row .collect {
   width: 32rpx;
   height: 32rpx;
 }
@@ -100,11 +105,11 @@
 }
 .me-row .infor {
   width: 32rpx;
-  height: 30rpx;
+  height: 29rpx;
 }
 .me-row .out {
   width: 32rpx;
-  height: 30rpx;
+  height: 28rpx;
 }
 
 .arrow-icon {

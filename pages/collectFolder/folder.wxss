@@ -63,7 +63,8 @@
   align-items: center;
 }
 .r-list-item .cont .title .txt {
-  max-width: 320rpx;
+  max-width: 310rpx;
+  margin-right: 10rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -74,6 +75,7 @@
   line-height: 32rpx;
   color: #BBB;
   font-weight: normal;
+  border-radius: 3rpx;
   background-color: #F8F8F8;
 }
 .r-list-item .cont .salary {

@@ -113,6 +113,7 @@ Page({
             this.setData({
               classThree
             })
+            console.log(this.data.classThree)
           }
         }
       }

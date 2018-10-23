@@ -10,10 +10,10 @@
         </block>
         <view wx:else class="me-name" bindtap="linkLR">登录/注册</view>
       </view>
-      <view wx:if="{{ stud_info.name }}" class="editUser" bindtap='editUserInfor'>编辑</view>
+      <view wx:if="{{ stud_info.name }}" class="editUser" bindtap='editUserInfor'>个人信息</view>
     </view>
 
-    <view class="me-send-box">
+    <view class="me-send-box" hidden='true'>
       <view class="me-send" bindtap="linkSend">
         已投递：
         <text class="num">{{ stud_info.applynums || '0' }}</text>

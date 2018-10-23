@@ -47,7 +47,8 @@
   </view>
 
   <view class="supporter" wx:if="{{ !isShared }}">
-    <view class="title tc">已有<text class="nums">{{ shareTimes }}</text> 位好友成功支持</view>
+    <view class="title tc" wx:if="{{ shareTimes }}">已有<text class="nums">{{ shareTimes }}</text>位好友成功支持</view>
+    <view class="title tc" wx:else>暂无好友成功支持</view>
     <view class="list list-1" wx:if="{{ friendList.length > 0 && friendList.length <= 4}}">
       <view class="item" wx:for="{{ friendList }}" wx:key>
         <image class="img" src="{{ item.visitorer_avatar }}"></image>

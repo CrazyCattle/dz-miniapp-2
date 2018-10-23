@@ -1,6 +1,6 @@
 <view class="list-box">
   <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
-    <view class="type-list">
+    <view class="type-list" wx:if="{{ list.length > 0 }}">
       <view class="row">
         <view class="item" wx:for="{{ list }}" wx:key="key" data-id="{{ item.class_id }}" bindtap='linkToChild'>
           <image class="logo" src='{{ item.class_img }}'></image>
@@ -9,6 +9,6 @@
       </view>
     </view>
     <loading wx:if="{{ showLoading }}"></loading>
-    <tip wx:if="{{ showTips }}" content="暂无消息"></tip>
+    <tip wx:if="{{ list.length == 0 && !showLoading }}" content="暂无课程记录"></tip>
   </scroll-view>
 </view>

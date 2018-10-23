@@ -127,6 +127,7 @@ Page({
   },
   loginOut() {
     wx.removeStorageSync('schoolInfo')
+    wx.removeStorageSync('token')
     wx.removeStorageSync('stud_info')
     wx.removeStorageSync('student_id')
     wx.removeStorageSync('userIcon')

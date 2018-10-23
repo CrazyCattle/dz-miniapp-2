@@ -1,6 +1,6 @@
-<view class="resume-list" wx:if="{{ resumeList.length > 0 }}">
+<view class="resume-list">
   <scroll-view scroll-y style="height: 100%;">
-    <view class="list-box">
+    <view class="list-box" wx:if="{{ resumeList.length > 0 }}">
       <!-- <view class="resume-item active bg-f" bindtap='linkResume' data-id="{{item.resumes_id}}" wx:for="{{ resumeList }}" wx:key="key"> -->
       <view class="resume-item active bg-f" catchtap='editResumeBasicInfor' data-id="{{ item.resumes_id }}" data-lan="{{ item.language }}" wx:for="{{ resumeList }}" wx:key="key">
         <view class="item-lf">
@@ -16,5 +16,6 @@
         </view> -->
       </view>
     </view>
+    <tip content="暂无简历数据" wx:if="{{ resumeList.length == 0 }}"></tip>
   </scroll-view>
 </view>

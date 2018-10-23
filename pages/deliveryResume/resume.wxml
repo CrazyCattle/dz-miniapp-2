@@ -1,8 +1,8 @@
 <view class="resume-list" wx:if="{{ page == '1' && resumeList.length > 0 }}">
-  <view class="tit">请选择你要投递的简历</view>
+  <!-- <view class="tit">请选择你要投递的简历</view> -->
   <view class="list-content">
     <scroll-view scroll-y style="height: 100%;">
-      <view class="srcoll-box">
+      <!-- <view class="srcoll-box">
         <form bindsubmit="formSubmit" report-submit='true' wx:for="{{ resumeList }}" wx:key="key">
           <view class="resume-item active bg-f" >
             <input type="hidden" name="id" value="{{ item.resumes_id }}"></input>
@@ -12,12 +12,12 @@
             </view>
             <view class="item-rt">
               <text class="editBtn" catchtap='linkResume' data-id="{{ item.resumes_id }}" data-lan="{{ item.language }}">预览</text>
-              <!-- <text class="editBtn" catchtap="deliveryResume" data-id="{{ item.resumes_id }}">投递</text> -->
+              <text class="editBtn" catchtap="deliveryResume" data-id="{{ item.resumes_id }}">投递</text>
               <button class="editBtn" formType="submit" data-id="{{ item.resumes_id }}">投递</button>
             </view>
           </view>
         </form>
-      </view>
+      </view> -->
 
       <view class="srcoll-box">
         <form bindsubmit="formSubmit" report-submit='true'>

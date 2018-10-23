@@ -48,8 +48,8 @@ Page({
         method: 'GET',
         success: res => {
           console.log(res, 11231)
+          let data = res.data.listjson
           if (res.data.error == '0') {
-            let data = res.data.listjson
             if (data.length > 0) {
               if (data.length == 10) {
                 this.setData({
@@ -71,6 +71,12 @@ Page({
                 showTips: !this.data.showTips
               })
             }
+          } else {
+            this.setData({
+              canLoadMore: false,
+              showLoading: false,
+              jobList: this.data.jobList.concat(data)
+            })
           }
         }
       })
@@ -86,8 +92,8 @@ Page({
         url: `${getCompanyCollect}?stu_id=${app.globalData.student_id}&token=${app.globalData.token}&p=${this.data.curpage}&nums=10`,
         method: 'GET',
         success: res => {
+          let data = res.data.listjson
           if (res.data.error == '0') {
-            let data = res.data.listjson
             if (data.length > 0) {
               if (data.length == 10) {
                 this.setData({
@@ -108,6 +114,12 @@ Page({
                 showLoading: false
               })
             }
+          } else {
+            this.setData({
+              canLoadMore: false,
+              showLoading: false,
+              companyList: this.data.companyList.concat(data)
+            })
           }
         }
       })

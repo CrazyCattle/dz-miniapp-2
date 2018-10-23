@@ -99,7 +99,6 @@ Page({
         method: 'POST',
         data: {
           mobilecode: this.data.mobilecode,
-
           mobile: this.data.mobile
         },
         success: res => {
@@ -109,11 +108,15 @@ Page({
             duration: 1000
           });
           if (res.data.error == '0') {
+            wx.setStorageSync("student_id", (app.globalData.student_id = res.data.listjson.student_id));
+            wx.setStorageSync("token", (app.globalData.token = res.data.listjson.token));
+            wx.setStorageSync("loginType", 'userlogin');
+            app.globalData.loginType = 'userlogin'
             setTimeout(() => {
               wx.reLaunch({
-                url: '../navIndex/index'
+                url: '../navMe/me'
               })
-            },150)
+            }, 150)
           }
         }
       })

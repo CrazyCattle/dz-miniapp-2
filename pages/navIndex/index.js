@@ -281,10 +281,10 @@ Page({
       navToLogin()
     }
   },
-  linkJobRecommend () {
+  linkMyCourse () {
     if (getUserState()) {
       wx.navigateTo({
-        url: `../jobRecommend/work`
+        url: `../myCourse/course`
       })
     } else {
       navToLogin()
@@ -303,12 +303,12 @@ Page({
       navToLogin()
     }
   },
-  linkCourseType (e) {
+  linkInterview (e) {
     wx.switchTab({
-      url: `../navCourse/course`,
+      url: `../deliveryBox/delivery`,
     })
   },
-  linkResumeCenter() {
+  linkMyResume() {
     // wx.navigateTo({
     //   url: '../resumeCenter/center'
     // })

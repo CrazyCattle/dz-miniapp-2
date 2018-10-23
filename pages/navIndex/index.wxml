@@ -32,17 +32,17 @@
       </view>
     </view>
     <view class="nav-list bg-f">
-      <view class="nav-item" bindtap="linkCourseType">
-        <image class="img" src="../../images/index/nav/item_1.png"></image>
-        <text class="txt">课程分类</text>
+      <view class="nav-item" bindtap="linkInterview">
+        <image class="img" src="../../images/index/nav/item_5.png"></image>
+        <text class="txt">面试邀请</text>
       </view>  
-      <view class="nav-item" bindtap="linkJobRecommend">
-        <image class="img" src="../../images/index/nav/item_2.png"></image>
-        <text class="txt">职位推荐</text>
+      <view class="nav-item" bindtap="linkMyCourse">
+        <image class="img" src="../../images/index/nav/item_6.png"></image>
+        <text class="txt">我的课程</text>
       </view>  
-      <view class="nav-item" bindtap="linkResumeCenter">
-        <image class="img" src="../../images/index/nav/item_3.png"></image>
-        <text class="txt">简历中心</text>
+      <view class="nav-item" bindtap="linkMyResume">
+        <image class="img" src="../../images/index/nav/item_7.png"></image>
+        <text class="txt">我的简历</text>
       </view>  
       <!-- <view class="nav-item">
         <image class="img" src="../../images/index/nav/item_4.png"></image>

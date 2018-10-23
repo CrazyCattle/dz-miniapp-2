@@ -16,7 +16,7 @@ Page({
     curpage: 1,
     list: [],
     canLoadMore: true,
-    showLoading: true,
+    showLoading: false,
     showTips: false,
   },
   linkToChild (e) {
@@ -57,8 +57,8 @@ Page({
               initLoginStatus()
             }
           } else {
+            let data = res.data.listjson
             if (res.data.error == '0') {
-              let data = res.data.listjson
               if (data.length > 0) {
                 if (data.length == 10) {
                   this.setData({
@@ -79,6 +79,12 @@ Page({
                   showTips: !this.data.showTips
                 })
               }
+            } else {
+              this.setData({
+                canLoadMore: false,
+                showLoading: false,
+                list: this.data.list.concat(data)
+              })
             }
           }
         }

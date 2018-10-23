@@ -19,37 +19,7 @@ const app = getApp()
 Page({
   data: {
     // page 1
-    resumeList: [],
-    list: [
-      {
-        imgUrl: 'https://static.dazhao100.cn/pic/1526907753l016152041.png',
-        title: '企业服务部实习生',
-        time: '2016.12.30',
-        company: '上海脚步网络科技有限公司',
-        status: 0
-      },
-      {
-        imgUrl: 'https://static.dazhao100.cn/pic/1526907753l016152041.png',
-        title: '企业服务部实习生',
-        time: '2016.12.30',
-        company: '上海脚步网络科技有限公司',
-        status: 1
-      },
-      {
-        imgUrl: 'https://static.dazhao100.cn/pic/1526907753l016152041.png',
-        title: '企业服务部实习生',
-        time: '2016.12.30',
-        company: '上海脚步网络科技有限公司',
-        status: 2
-      },
-      {
-        imgUrl: 'https://static.dazhao100.cn/pic/1526907753l016152041.png',
-        title: '企业服务部实习生',
-        time: '2016.12.30',
-        company: '上海脚步网络科技有限公司',
-        status: 2
-      }
-    ]
+    list: []
   },
   linkResume(e) {
     let resumes_id = e.currentTarget.dataset.id

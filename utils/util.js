@@ -49,7 +49,7 @@ const initLoginStatus = () => {
   });
   let timer = setTimeout(() => {
     wx.redirectTo({
-      url: '../login/login'
+      url: '../loginRegister/loginregister'
     })
   }, 300)
 }

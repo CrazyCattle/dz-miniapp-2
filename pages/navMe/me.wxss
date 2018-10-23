@@ -26,8 +26,12 @@
   position: absolute;
   right: 30rpx;
   top: 80rpx;
+  padding: 0 15rpx;
+  line-height: 42rpx;
   font-size: 22rpx;
-  color: #848ca1;
+  color: #848CA1;
+  background-color: #F3F4F8;
+  border-radius: 2rpx;
 }
 
 .me-send-box {

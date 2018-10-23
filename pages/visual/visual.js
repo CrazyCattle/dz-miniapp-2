@@ -28,27 +28,9 @@ Page({
     imgUrls: [],
     list: []
   },
-  iptFocus(e) {
-    this.setData({
-      focus: !this.data.focus,
-      taped: !this.data.taped
-    })
-    console.log(this.data.focus)
-  },
-  cc() {
-    this.setData({
-      focus: !this.data.focus,
-      taped: !this.data.taped
-    })
-  },
-  searchChange(e) {
-    console.log(e.detail.value)
-
-  },
-  iptConfirm(e) {
-    let keyword = e.detail.value
+  linkToSearch () {
     wx.navigateTo({
-      url: `../courseCollection/collect?keyword=${keyword}`
+      url: '../courseSearch/course'
     })
   },
   swiperChange(e) {

@@ -1,10 +1,7 @@
 <view class="view bg">
   <view class="search-box bg-f">
-    <view class="search-input" wx:if="{{ !focus }}" bindtap="iptFocus">
+    <view class="search-input" bindtap="linkToSearch">
       <image class="search" src="../../images/search.png"></image>{{ placeholderTxt}}
-    </view>
-    <view class="search-input bg-f" wx:if="{{ focus }}">
-      <input class="ipt" type="text" confirm-type="search" focus='{{ focus }}' bindblur="cc" bindconfirm="iptConfirm" bindinput="searchChange" catchtap='iptFocus'></input>
     </view>
   </view>
   <view class="type-banner">

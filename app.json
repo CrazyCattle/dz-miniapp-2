@@ -12,7 +12,7 @@
     "pages/moreCourse/course",
     "pages/courseChild/course",
     "pages/jobDetail/detail",
-    "pages/courseCollection/collect",
+    "pages/courseSearch/course",
     "pages/coursePlay/play",
     "pages/courseRecord/record",
     "pages/register/register",

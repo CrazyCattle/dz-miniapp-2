@@ -7,12 +7,12 @@
     </view>
 
     <button formType="submit" class="baseBtn" bindtap="lonkBind">微信登录</button>
-    <button formType="submit" class="baseBtn mt40" bindtap="linkLogin">学号/手机号登录</button>
+    <button formType="submit" class="baseBtn mt40" bindtap="linkLogin">手机号登录</button>
 
     <view class="tc mt40">
       <text class="register" bindtap="register">注册大招一百帐号</text>
     </view>
 
-    <view class="tip tc">云就业服务平台</view>
+    <!-- <view class="tip tc">云就业服务平台</view> -->
   </view>
 </view>

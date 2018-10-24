@@ -4,7 +4,8 @@ import {
   SubVisitorer,
   StuVisitorer,
   getSClass,
-  classTwoLesson
+  classTwoLesson,
+  getLessonShare
 } from '../../api.js'
 
 import {
@@ -30,7 +31,58 @@ Page({
     isShared: false,
     hasPower: 0,
     shareTimes: 0,
-    showGetCourse: false
+    showGetCourse: false,
+    hasGetCourse: false
+  },
+  linkToIndex () {
+    wx.reLaunch({
+      url: '../navIndex/index',
+    })
+  },
+  linkToCourse (e) {
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `../courseChild/course?id=${id}`
+    })
+  },
+
+  GetLessonShareStatus (id) {
+    let loginType = wx.getStorageSync('loginType')
+    wx.request({
+      url: `${getLessonShare}?token=${app.globalData.token}&stu_id=${app.globalData.student_id}&class_id=${id}`,
+      success: res => {
+        if (res.data.tokeninc == '0') {
+          if (loginType == 'wxlogin') {
+            setNewToken().then(res => {
+              if (res == 'ok') {
+                this.GetLessonShareStatus()
+              }
+            })
+          } else {
+            initLoginStatus()
+          }
+        } else {
+          wx.showToast({
+            title: res.data.errortip,
+            icon: "none",
+            duration: 1000
+          });
+          this.setData({
+            showGetCourse: false,
+            hasGetCourse: true
+          })
+        }
+      }
+    })
+  },
+  GetCourse (e) {
+    let id = e.currentTarget.dataset.id
+    console.log(id)
+    if (getUserState()) {
+      this.GetLessonShareStatus(id)
+    } else {
+      navToLogin()
+    }
   },
   linkCourse (e) {
     let id = e.currentTarget.dataset.id
@@ -136,11 +188,12 @@ Page({
             icon: "none",
             duration: 1000
           });
-          if (res.data.error == 0) {
-            this.setData({
-              showGetCourse: true
-            })
-          }
+          this.setData({
+            showGetCourse: true
+          })
+          // if (res.data.error == 0) {
+          // } else if (res.data.error == 1) {
+          // }
         }
       })
     }

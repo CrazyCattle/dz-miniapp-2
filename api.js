@@ -73,4 +73,5 @@ module.exports = {
   SubVisitorer: `${basicUrl}/SubVisitorer`, // 用户支持分享记录提交
   StuVisitorer: `${basicUrl}/getStuVisitorer`, // 取用户某课程分类分享用户数据
   classTwoLesson: `${basicUrl}/classTwoLesson`, // 获取二级详情
+  getLessonShare: `${basicUrl}/getLessonShare`, // 支持用户直接 获取课程
 };

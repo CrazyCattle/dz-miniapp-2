@@ -33,17 +33,17 @@
       wx:if="{{ !hasPower && isShared }}">
       <image class="img" src="../../images/invi/btn-support.png"></image>
     </button>
-    <view class="support-txt" wx:if="{{ !hasPower && isShared }}">支持成功后，你将获得本节课程</view>
+    <view class="support-txt" wx:if="{{ !hasPower && isShared && !hasGetCourse }}">支持成功后，你将获得本节课程</view>
 
     <!-- 已领取 立即查看 -->
-    <!-- <button class="btn">
+    <button class="btn" wx:if="{{ hasGetCourse }}" data-id="{{ courseDetails.class_id }}" bindtap="linkToCourse">
       <image class="img" src="../../images/invi/btn-check.png"></image>
     </button>
-    <view class="back">
-      <button class="btn">
+    <view class="back" wx:if="{{ hasGetCourse }}">
+      <button class="btn" bindtap='linkToIndex'>
         <image class="img" src="../../images/invi/btn-back.png"></image>
       </button>
-    </view> -->
+    </view>
   </view>
 
   <view class="supporter" wx:if="{{ !isShared }}">
@@ -71,7 +71,7 @@
       <view class="pop-box">
         <view class="tips">支持成功</view>
         <text class="txt">恭喜你获赠本节课程</text>
-        <button class="btn" data-id="{{ courseDetails.class_id }}">
+        <button class="btn" data-id="{{ courseDetails.class_id }}" bindtap="GetCourse">
           <image class="img" src="../../images/invi/btn-get.png"></image>
         </button>
       </view>

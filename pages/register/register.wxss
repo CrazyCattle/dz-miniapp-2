@@ -61,4 +61,5 @@ button.getCode {
 button[disabled][type=default] {
   color: #fff;
   background:#618FEB;
+  opacity: .6;
 }

@@ -11,6 +11,10 @@ Page({
   chooseCity (e) {
     let id = e.currentTarget.dataset.id
     let city = e.currentTarget.dataset.cnsite
+    if (city == '中国') {
+      city = '全国'
+    }
+
     wx.setStorageSync('baseCity', city)
     wx.setStorageSync('baseCityId', id)
 

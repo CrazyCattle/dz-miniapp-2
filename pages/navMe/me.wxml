@@ -37,7 +37,7 @@
         <view class="inner"></view>
       </view>
     </view>
-    <view class="me-row" bindtap='editUserInfor'>
+    <view class="me-row" bindtap='linkExpection'>
       <image class="icon expect" src="../../images/me/icon_2.png"></image>求职期望
       <view class="arrow-icon">
         <view class="inner"></view>

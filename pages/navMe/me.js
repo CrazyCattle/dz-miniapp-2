@@ -1,5 +1,6 @@
 import {
-  getUserInfor
+  getUserInfor,
+  getExpectList
 } from '../../api';
 
 import {
@@ -17,7 +18,35 @@ Page({
     stud_info: {},
     stud_id: '',
     userIcon: '',
-    schoolInfor: ''
+    schoolInfor: '',
+    expectList: []
+  },
+  getExpect() {
+    wx.request({
+      url: `${getExpectList}`,
+      data: {
+        token: app.globalData.token,
+        stu_id: app.globalData.student_id
+      },
+      method: 'GET',
+      success: res => {
+        console.log(res)
+        if (res.data.error == '0') {
+          const expectList = res.data.listjson
+
+          wx.navigateTo({
+            url: `../editJobExpectNew/new?id=${expectList[0].expect_id}&data=${JSON.stringify(expectList[0])}`
+          })
+        }
+      }
+    })
+  },
+  linkExpection () {
+    if (getUserState()) {
+      this.getExpect()
+    } else {
+      navToLogin()
+    }
   },
   linkSend() {
     if (getUserState()) {

@@ -336,12 +336,13 @@ Page({
 
   onLoad: function (options) {
     let data = JSON.parse(options.data)
+    console.log(data, 123456)
 
     this.setData({
       industry: data.industry,
       user_exprect: data.jobyname,
       issel: data.issel,
-      workProvince: data.xjd_province,
+      workProvince: data.workProvince,
       city: data.workCity,
       salary: data.salary,
       company_size: data.people,

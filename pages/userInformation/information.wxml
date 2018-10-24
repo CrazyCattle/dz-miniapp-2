@@ -27,7 +27,7 @@
       <view class="row">毕业时间： {{ stud_info.sour_bysj }}</view>
     </view>
   </view>
-  <view class="edit-row expect bg-f mt20">
+  <view class="edit-row expect bg-f mt20" wx:if="{{ expectList.length > 0 }}">
     <view class="edit-title">求职期望</view>
     <view class="edit-content" wx:for="{{expectList}}" wx:for-item="item" wx:key wx:for-index="index">
       <view class="editBtn" data-id="1" bindtap='linkJobExpect' data-id="{{item.expect_id}}" data-key="{{ index }}">编辑</view>

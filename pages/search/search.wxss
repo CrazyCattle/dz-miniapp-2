@@ -43,6 +43,7 @@
 }
 .searchBox .search-ipt .search-tips .ipt {
   height: 46rpx;
+  width: 100%;
 }
 .searchBox .search-ipt .search-icon {
   position: absolute;

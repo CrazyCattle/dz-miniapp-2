@@ -1,4 +1,4 @@
-<view class="index bg">
+<view class="index bg" bindtap="hideNoInterest">
   <view class="searchBox">
     <view class="city" bindtap='exchangeCity'>
       <block>{{ baseCity }}站</block>
@@ -33,15 +33,15 @@
     </view>
     <view class="nav-list bg-f">
       <view class="nav-item" bindtap="linkInterview">
-        <image class="img" src="../../images/index/nav/item_5.png"></image>
+        <image class="img" src="../../images/index/nav/item_1.png"></image>
         <text class="txt">面试邀请</text>
       </view>  
       <view class="nav-item" bindtap="linkMyCourse">
-        <image class="img" src="../../images/index/nav/item_6.png"></image>
+        <image class="img" src="../../images/index/nav/item_2.png"></image>
         <text class="txt">我的课程</text>
       </view>  
       <view class="nav-item" bindtap="linkMyResume">
-        <image class="img" src="../../images/index/nav/item_7.png"></image>
+        <image class="img" src="../../images/index/nav/item_3.png"></image>
         <text class="txt">我的简历</text>
       </view>  
       <!-- <view class="nav-item">
@@ -59,13 +59,12 @@
             wx:if="{{ hasToken }}">
             推荐职位
           </view>
-          <view class="tab current {{ showType == 2?'cur':'' }}" data-type="2" bindtap="showRecommend">最近职位</view>
+          <view class="tab current {{ showType == 2?'cur':'' }}" data-type="2" bindtap="showRecommend">最新职位</view>
           <view class="tab hot {{ showType == 3?'cur':'' }}" data-type="3" bindtap="showRecommend">热门企业</view>
         </view>
       </view>
       <view class="recommend bg-f" wx:if="{{ showType == 1 }}">
-        <view class="ai-tip" bindtap="linkToEditInfor">
-          修正您的<text class="notice">个人信息</text>，AI 管家 将为您匹配更精准的信息
+        <view class="ai-tip" bindtap="linkToEditInfor">修正您的<text class="notice">个人信息</text>，AI 管家将为您匹配更精准的信息
           <view class="icon" catchtap="closeTip">
             <image class="icon-close" src="../../images/close.png"></image>
           </view>
@@ -94,12 +93,12 @@
                 <view class="job lh-normal">{{ item.jobName }}</view>
                 <view class="salary">{{ item.payMin/1000 }}-{{ item.payMax/1000 }}K</view>
               </view>
-              <view class="company">{{ item.companyName }}</view>
+              <view class="company">{{ item.companyShort }}</view>
               <view class="s-desc"> 
-                <text class="infor lh-normal">{{ item.workCity }} | {{ item.degree }} </text>
+                <text class="infor lh-normal">{{ item.degree }} | {{item.workProvince}}{{ item.workCity }}</text>
                 <view class="dot" catchtap="showTip" data-key="{{index}}" data-clicked="{{clicked}}">
                   <image src='../../images/dot.png' class="dotImg"></image>
-                  <view wx:if="{{ index == key && clicked }}" data-key="{{index}}" class="noInterest" data-id="{item.id_job}}" catchtap='noInterest'>不感兴趣</view>
+                  <view wx:if="{{ index == key && clicked }}" data-key="{{index}}" class="noInterest" data-id="{{item.id_job}}" catchtap='noInterest'>不感兴趣</view>
                 </view>
               </view>
             </view>
@@ -125,13 +124,13 @@
                 <view class="job lh-normal">{{ item.jobName }}</view>
                 <view class="salary">{{ item.payMin/1000 }}-{{ item.payMax/1000 }}K</view>
               </view>
-              <view class="company">{{ item.companyName }}</view>
+              <view class="company">{{ item.companyShort }}</view>
               <view class="s-desc"> 
-                <text class="infor lh-normal">{{ item.workCity }} | {{ item.degree }} </text>
-                <view class="dot" catchtap="showTip" data-key="{{index}}" data-clicked="{{clicked}}">
+                <text class="infor lh-normal">{{ item.degree }} | {{item.workProvince}}{{ item.workCity }}</text>
+                <!-- <view class="dot" catchtap="showTip" data-key="{{index}}" data-clicked="{{clicked}}">
                   <image src='../../images/dot.png' class="dotImg"></image>
                   <view wx:if="{{ index == key && clicked }}" data-key="{{index}}" class="noInterest" data-id="{item.id_job}}" catchtap='noInterest'>不感兴趣</view>
-                </view>
+                </view> -->
               </view>
             </view>
           </view>
@@ -142,10 +141,13 @@
           <view class="r-list-item" wx:for="{{ companyList }}" wx:key="key" wx:for-item="item"  bindtap="linkCompanyDetail" data-id="{{ item.id }}">
             <image class="pic" src="{{ item.companyLogo }}"></image>
             <view class="cont">
-              <view class="job lh-normal">{{ item.companyName }}</view>
-              <view class="company">[{{item.jobnum}}个]{{ item.jobnames }}</view>
+              <view class="job lh-normal">{{ item.companyShort }}</view>
+              <view class="company">[{{item.jobnum}}个]
+                <block wx:if="{{item.jobnum > 0}}"> {{ item.jobnames }} </block>
+                <block wx:else>暂无职位信息</block>
+              </view>
               <view class="s-desc"> 
-                <text class="infor lh-normal">{{ item.city }} | {{ item.education_name }} </text>
+                <text class="infor lh-normal">{{item.industry}} | {{item.province}}{{item.city}}</text>
               </view>
             </view>
           </view>

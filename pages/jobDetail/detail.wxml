@@ -15,14 +15,14 @@
       </view>
     </view>
     <view class="item-list">
-      <view class="item" wx:for="{{ cTag }}">{{ item }}</view>
+      <view class="item" wx:for="{{ cTag }}" wx:key>{{ item }}</view>
     </view>
   </view>
   <view class="r-list jobDetail-title bg-f" wx:if="{{ list.cominfo }}">
     <view class="r-list-item" data-id="{{ list.companyId }}" bindtap="linkToCompany">
       <image class="pic" src="{{ list.cominfo.companyLogo }}"></image>
       <view class="cont">
-        <view class="job lh-normal">{{ list.cominfo.companyName }}</view>
+        <view class="job lh-normal">{{ list.cominfo.companyShort }}</view>
         <!-- <view class="company">[{{ list.cominfo.positionnums }}个]{{ list.cominfo.positionnames }}</view> -->
         <view class="s-desc"> 
           <text class="infor lh-normal">

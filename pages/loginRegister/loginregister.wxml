@@ -3,7 +3,7 @@
   <view class="login-content">
     
     <view class="logo">
-      <image class="logo-img" src="{{ logoUrl }}"></image>
+      <image class="logo-img" src="https://napi.dazhao100.cn/Uploads/icon/applogo.png"></image>
     </view>
 
     <button formType="submit" class="baseBtn" bindtap="lonkBind">微信登录</button>

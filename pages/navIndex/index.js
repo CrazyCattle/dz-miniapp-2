@@ -52,6 +52,12 @@ Page({
     // 推荐区域显示
     showType: 1
   },
+  hideNoInterest () {
+    this.setData({
+      key: -1,
+      clicked: false
+    })
+  },
   swiperChange(e) {
     const that = this;
     that.setData({

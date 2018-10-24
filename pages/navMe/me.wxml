@@ -1,8 +1,13 @@
 <view class="page-me">
   <view class="me-head bg-f">
     <view class="me-head-infor">
-      <image wx:if="{{ stud_info.userIcon }}" class="me-pic" src="{{ userIcon }}" bindtap='editUserInfor'></image>
-      <image wx:else class="me-pic" src="{{ userIcon }}"></image>
+      <block wx:if="{{ stud_info.id }}">
+        <image wx:if="{{ stud_info.userIcon }}" class="me-pic" src="{{ userIcon }}" bindtap='editUserInfor'></image>
+        <image wx:else class="me-pic" src="{{ userIcon }}"></image>
+      </block>
+      <block wx:else>
+        <image class="me-pic" src="{{ userIcon }}" bindtap="linkLR"></image>
+      </block>
       <view class="me-desc">
         <block wx:if="{{ stud_info.id }}">
           <view class="me-name">{{ stud_info.name }}</view>

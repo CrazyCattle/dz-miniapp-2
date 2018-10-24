@@ -89,8 +89,8 @@
   align-items: center;
 }
 .nav-list .nav-item .img {
-  width: 108rpx;
-  height: 108rpx;
+  width: 106rpx;
+  height: 106rpx;
 }
 .nav-list .nav-item .txt {
   padding-top: 20rpx;

@@ -1,10 +1,14 @@
 .resume-list {
-  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
+  box-sizing: border-box;
 }
 .resume-list  .list-content{
   /* height: calc(100% - 140rpx); */
-  height: calc(100% - 100rpx);
+  height: 100%;
 }
 .resume-item {
   height: 180rpx;
@@ -53,6 +57,21 @@
   height: 100%;
   display: flex;
   align-items: center;
+}
+
+.resume-item .item-rt .circle {
+  width: 36rpx;
+  height: 36rpx;
+  border: 2rpx solid #C9C9C9;
+  border-radius: 50%;
+}
+.resume-item .item-rt .circle .img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.resume-item .item-rt .circle.active {
+  border: none;
 }
 
 .editBtn {
@@ -114,7 +133,7 @@
 }
 
 .subFixedBtn {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -127,27 +146,13 @@
 }
 
 
-/* 修改 CheckBox 默认样式 */
-checkbox .wx-checkbox-input{
-   border-radius: 50%;/* 圆角 */
-   width: 36rpx; /* 背景的宽 */
-   height: 36rpx; /* 背景的高 */
+radio .wx-radio-input{
+  border-radius: 3rpx;
+  height: 26rpx;
+  width: 26rpx;
+  margin-top: -4rpx;
 }
-/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
-checkbox .wx-checkbox-input.wx-checkbox-input-checked{
-   border-color: #618FEB;
-   background: #618FEB;
-}
-/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
-checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
-   border-radius: 50%;/* 圆角 */
-   width: 36rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
-   height: 36rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
-   line-height: 36rpx;
-   text-align: center;
-   font-size:23rpx; /* 对勾大小 30rpx */
-   color:#fff; /* 对勾颜色 白色 */
-   background: transparent;
-   transform:translate(-50%, -50%) scale(1);
-   -webkit-transform:translate(-50%, -50%) scale(1);
+radio .wx-radio-input.wx-radio-input-checked::before{
+  background-color: #e02e24;
+  border: 1rpx solid #e02e24;
 }

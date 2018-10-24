@@ -28,6 +28,7 @@
             bindconfirm="iptConfirm"
             confirm-type="search"
             class="ipt"
+            auto-focus
             placeholder='请输入公司或者职位名称'></input>
         </view>
       </view>

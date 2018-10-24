@@ -44,7 +44,7 @@ Page({
         success: res => {
           console.log(res,'aaaa')
           if (res.data.error == '0') {
-            const { list } =  res.data.result
+            const list = res.data.listjson
             this.setData({
               recruitList: this.data.recruitList.concat(list)
             })

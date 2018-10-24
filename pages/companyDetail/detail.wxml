@@ -2,14 +2,14 @@
 <view class="qyDetail bg {{ showMask?'hidden':'' }}">
   <view class="company-detail bg-f">
     <image class="logo" src="{{ list.companyLogo }}"></image>
-    <view class="company-name">{{ list.companyName }}</view>
+    <view class="company-name">{{ list.companyShort }}</view>
     <view class="expection">
       <image class="address" src="../../images/address.png"></image>{{list.city}}
       <image class="internet" src="../../images/internet.png"></image>{{list.industry}}
     </view>
     <view class="range">
       <image class="xz" src="../../images/xz-icon.png"></image>{{list.companyType}}
-      <image class="gm" src="../../images/gm-icon.png"></image>{{list.peoples}}
+      <image class="gm" src="../../images/gm-icon.png"></image>{{list.peoples}}人
     </view>
   </view>
   <view class="company-infor">
@@ -36,12 +36,24 @@
     <view class="j-row mt20" wx:if="{{ active==1 }}">
       <view class="inner-row bg-f">
         <view class="tit">企业基本信息：</view>
-        <view class="job-desc">企业全称：{{list.companyName}}</view>
-        <view class="job-desc">企业性质：{{list.companyType}}</view>
-        <view class="job-desc">企业领域：{{list.industry}}</view>
-        <view class="job-desc">企业规模：{{list.peoples}}</view>
-        <view class="job-desc">企业网址：{{list.webSite}}</view>
-        <view class="job-desc">企业微博：{{list.weiboUrl}}</view>
+        <view class="job-desc">
+          企业全称：<block wx:if="{{list.companyName}}">{{list.companyName}}</block><block wx:else>暂无公司数据</block>
+        </view>
+        <view class="job-desc">
+          企业性质：<block wx:if="{{list.companyType}}">{{list.companyType}}</block><block wx:else>暂无公司数据</block>
+        </view>
+        <view class="job-desc">
+          企业领域：<block wx:if="{{list.industry}}">{{list.industry}}</block><block wx:else>暂无公司数据</block>
+        </view>
+        <view class="job-desc">
+          企业规模：<block wx:if="{{list.peoples}}">{{list.peoples}}</block><block wx:else>暂无公司数据</block>
+        </view>
+        <view class="job-desc">
+          企业网址：<block wx:if="{{list.webSite}}">{{list.webSite}}</block><block wx:else>暂无公司数据</block>
+        </view>
+        <view class="job-desc">
+          企业微博：<block wx:if="{{list.weiboUrl}}">{{list.weiboUrl}}</block><block wx:else>暂无公司数据</block>
+        </view>
       </view>
 
       <view class="inner-row bg-f mt20" wx:if="{{ list.companyPhoto.length > 0 }}">
@@ -59,7 +71,7 @@
           <view class="txt">{{ item.payMin/1000 }}K ~ {{ item.payMax/1000 }}K </view>
         </view>
         <view class="row">
-          <view class="txt">{{ item.workCity }} | {{ item.degree }}</view>
+          <view class="txt">{{ item.workProvince }}{{ item.workCity }} | {{ item.degree }}</view>
           <!-- <view class="txt">截止日期：{{ item.position_stoptime }}</view> -->
         </view>
       </view>
@@ -80,14 +92,17 @@
       </view>
       <view class="fun-btn {{ collected?'active':'' }}" data-collected="{{ collected }}" bindtap="collectCompany">
         <image class="img" src="{{ collected?'../../images/collected.png':'../../images/collect.png' }}"></image> 
-        <text>收藏</text>
+        <text>
+          <block wx:if="{{ collected }}">已收藏</block>
+          <block wx:else>收藏</block>
+        </text>
       </view>
     </view>
   </view>
   <mask wx:if="{{ showMask }}" bindtap="share"></mask>
   <view class="share-box bg-f {{ showMask?'active':'' }}">
     <button class="row row-1" open-type="share"> <image class="icon" src="../../images/f-share.png"></image> 转发给好友或群聊</button>
-    <view class="row" bindtap="productImg"><image class="icon" src="../../images/f-pic.png"></image> 生成长图</view>
+    <!-- <view class="row" bindtap="productImg"><image class="icon" src="../../images/f-pic.png"></image> 生成长图</view> -->
     <view class="close" bindtap="share">取消</view>
   </view>
 </view>

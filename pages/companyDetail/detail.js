@@ -184,8 +184,9 @@ Page({
                   collected: true
                 })
               }
-              WxParse.wxParse('article', 'html', article, _self, 5);
-              console.log(this.data.list)
+              if (article) {
+                WxParse.wxParse('article', 'html', article, _self, 5);
+              }
             }
           }
         }

@@ -26,8 +26,8 @@
 }
 
 .logo, .logo-img {
-  width: 350rpx;
-  height: 120rpx;
+  width: 348rpx;
+  height: 118rpx;
   margin: 0 auto 180rpx;
 }
 

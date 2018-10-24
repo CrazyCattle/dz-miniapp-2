@@ -4,7 +4,7 @@
       <view class="row">
         <view class="row-tit">账号：</view>
         <view class="rot-ipt">
-          <input type="text" class="input" bindblur="inputName" bindinput="inputName" placeholder='请输入学号/手机号'></input>
+          <input type="text" class="input" bindblur="inputName" bindinput="inputName" placeholder='请输入手机号'></input>
         </view>
       </view>
       <view class="row">

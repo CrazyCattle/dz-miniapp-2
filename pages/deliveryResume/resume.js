@@ -12,9 +12,9 @@ const app = getApp()
 
 Page({
   data: {
-    website: '',
     curShow: true,
     noResumeList: false,
+    chooseId: -1,
 
     isBack: false,
     student_id: '',
@@ -24,9 +24,17 @@ Page({
     page: 1,
     fliterType: 'job',
     // page 1
-    resumeList: [],
+    resumeListArr: [],
+    showLinkWeb: false
   },
-  checkboxChange (e) {
+  chooseResume (e) {
+    let rId = e.currentTarget.dataset.id
+
+    this.setData({
+      chooseId: rId
+    })
+  },
+  radioChange (e) {
     console.log(e.detail.value)
   },
   formSubmit(e) {
@@ -64,6 +72,10 @@ Page({
             icon: 'none',
             title: res.data.errortip,
             duration: 1000
+          })
+
+          this.setData({
+            showLinkWeb: true
           })
         }
       }
@@ -143,16 +155,18 @@ Page({
         } else {
           if (error == '0') {
             this.setData({
-              resumeList: res.data.listjson
+              resumeListArr: res.data.listjson
             })
             if (res.data.listjson.length == '0') {
               this.setData({
+                showLinkWeb: true,
                 noResumeList: !this.data.noResumeList
               })
             }
           } else if (error == '1') {
             this.setData({
-              resumeList: [],
+              resumeListArr: [],
+              showLinkWeb: true,
               noResumeList: !this.data.noResumeList
             })
           }
@@ -168,8 +182,7 @@ Page({
   },
   onLoad: function (options) {
     this.setData({
-      jobId: options.id,
-      website: wx.getStorageSync('schoolInfo').enter_stu_url
+      jobId: options.id
     })
     if (!!app.globalData.student_id) {
       this.setData({

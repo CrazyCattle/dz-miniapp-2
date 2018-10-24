@@ -312,7 +312,7 @@ Page({
     // })
     if (getUserState()) {
       wx.navigateTo({
-        url: '../resumeCenter/center'
+        url: '../myResume/resume'
       })
     } else {
       navToLogin()

@@ -152,6 +152,6 @@
         </view>
       </view>
     </view>
-    <loading wx:if="showLoading"></loading>
+    <loading wx:if="{{ showLoading }}"></loading>
   </scroll-view>
 </view>

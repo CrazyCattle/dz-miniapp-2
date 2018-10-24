@@ -14,8 +14,6 @@ import {
   navToLogin
 } from '../../utils/util';
 
-
-
 const app = getApp()
 
 Page({
@@ -424,8 +422,8 @@ Page({
         },
         method: 'GET',
         success: (res) => {
+          let data = res.data.listjson
           if (res.data.error == '0') {
-            let data = res.data.listjson
             if (data.length > 0) {
               if (data.length >= 10) {
                 this.setData({
@@ -443,6 +441,12 @@ Page({
                 companyList: this.data.companyList.concat(data)
               })
             }
+          } else {
+            this.setData({
+              companyList: this.data.companyList.concat(data),
+              showLoading: false,
+              canLoadMore: false
+            })
           }
         }
       })

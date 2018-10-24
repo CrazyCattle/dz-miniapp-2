@@ -66,7 +66,7 @@
   <view class="obtainPop" wx:if="{{ showGetCourse }}">
     <view class="cont-box">
       <view class="imgs">
-        <image class="img" src="{{ courseDetails.class_img }}"></image>
+        <image class="img" src="../../images/BG-support.png"></image>
       </view>
       <view class="pop-box">
         <view class="tips">支持成功</view>

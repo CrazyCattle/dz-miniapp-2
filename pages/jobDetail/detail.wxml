@@ -98,7 +98,7 @@
       </button>
       <view class="fun-btn {{ collected?'active':'' }}" bindtap="collect">
         <image class="img" src="{{ collected?'../../images/collected.png':'../../images/collect.png' }}"></image>
-        <text>收藏</text>
+        <text><block wx:if="{{ collected }}">已收藏</block><block wx:else>收藏</block></text>
       </view>
     </view>
     <view class="tab-rt send-resume" bindtap="delivery">

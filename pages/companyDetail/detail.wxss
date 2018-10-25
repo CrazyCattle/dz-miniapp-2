@@ -268,7 +268,8 @@
 .share-box {
   position: fixed;
   width: 100%;
-  height: 360rpx;
+  /* height: 360rpx; */
+  height: 230rpx;
   bottom: -1rpx;
   left: 0;
   transform: translateY(100%);

@@ -254,12 +254,12 @@ Page({
             const { listjson } = res.data
             wx.setStorageSync("stud_info", (app.globalData.stud_info = listjson));
             if (!listjson.userIcon) {
-              wx.setStorageSync("userIcon", (app.globalData.userIcon = '../../images/head_mian_pic.png'));
+              wx.setStorageSync("userIcon", (app.globalData.student_img = '../../images/head_mian_pic.png'));
               this.setData({
                 userIcon: '../../images/head_mian_pic.png'
               })
             } else {
-              wx.setStorageSync("userIcon", (app.globalData.userIcon = listjson.userIcon));
+              wx.setStorageSync("userIcon", (app.globalData.student_img = listjson.userIcon));
               this.setData({
                 userIcon: listjson.userIcon
               })
@@ -277,7 +277,7 @@ Page({
   onShow: function () {
     this.setData({
       stud_info: wx.getStorageSync('stud_info'),
-      userIcon: app.globalData.userIcon || wx.getStorageSync('userIcon') || '../../images/user_pic.png',
+      userIcon: app.globalData.student_img || wx.getStorageSync('userIcon') || '../../images/user_pic.png',
       stud_id: app.globalData.student_id
     })
     if (!app.globalData.userIcon && !!wx.getStorageSync('userIcon')) {

@@ -1,7 +1,7 @@
 @import "../../wxParse/wxParse.wxss";
 
 .banner {
-  height: 420rpx;
+  height: 516rpx;
 }
 .banner .img {
   display: block;

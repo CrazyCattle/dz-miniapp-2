@@ -71,8 +71,10 @@
   margin-right: 0;
 }
 .type-list .row .logo {
+  display: block;
   width: 100%;
   height: 220rpx;
+  border-radius: 5rpx 5rpx 0 0;
 }
 .type-list .row .txt {
   width: 290rpx;
@@ -130,7 +132,7 @@
   border-radius: 9rpx;
 }
 .type-banner .slide-image{
-  height:320rpx;
+  height: 324rpx;
   width: 535rpx;
   border-radius: 9rpx;
   margin: 0 30rpx;

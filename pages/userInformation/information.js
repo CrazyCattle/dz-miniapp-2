@@ -121,8 +121,9 @@ Page({
           }
         } else {
           if (data.error == '0') {
+            console.log(data)
             app.globalData.student_img = data.originalimg
-            wx.setStorageSync('stud_img', data.originalimg)
+            wx.setStorageSync('userIcon', data.originalimg)
             wx.showToast({
               title: data.errortip,
               icon: "none",

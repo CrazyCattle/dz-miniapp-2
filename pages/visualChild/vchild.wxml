@@ -5,6 +5,7 @@
       <view class="row">
         <view class="item" wx:for="{{ list[0].twolist }}" wx:key="key" data-id="{{ item.class_id }}" bindtap='linkToChild'>
           <image class="logo" src='{{ item.class_img }}'></image>
+          <view class="txt ellipsis">{{ item.class_name }}</view>
         </view>
       </view>
     </view>

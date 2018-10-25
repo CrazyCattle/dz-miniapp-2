@@ -73,7 +73,7 @@
 .swiper,
 .swiper .slide-image {
   width: 750rpx;
-  height: 360rpx;
+  height: 416rpx;
 }
 .nav-list {
   display: flex;

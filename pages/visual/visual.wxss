@@ -139,7 +139,7 @@
 }
 .type-banner .slide-image.active {
   transform: scale(1.15);
-  transition:all .2s ease-in 0s;
+  transition:all .1s linear;
   z-index: 20;
 }
 

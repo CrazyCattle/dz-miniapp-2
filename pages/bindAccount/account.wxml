@@ -8,7 +8,7 @@
       <view class="row">
         <view class="row-tit">账号：</view>
         <view class="rot-ipt">
-          <input type="text" class="input" placeholder='请输入学号/手机号' bindblur="inputName" bindinput="inputName"></input>
+          <input type="text" class="input" placeholder='请输入手机号' bindblur="inputName" bindinput="inputName"></input>
         </view>
       </view>
       <view class="row">

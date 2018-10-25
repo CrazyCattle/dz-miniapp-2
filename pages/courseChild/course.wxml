@@ -9,7 +9,7 @@
     <view class="wxParse {{ showMore?'active':''}}">
       <template is="wxParse" data="{{wxParseData:article.nodes}}" />
     </view>
-    <view class="linkShare" wx:if="{{ hasPower }}" data-id="{{ cId }}" catchtap='linkShare'>限时免费，戳此获取</view>
+    <view class="linkShare" wx:if="{{ class_power == 1 && hasPower }}" data-id="{{ cId }}" catchtap='linkShare'>限时免费，戳此获取</view>
     <!-- <view class="arrow-icon-more {{ showMore?'active':'' }}">
       <view class="inner"></view>
     </view> -->
@@ -21,7 +21,7 @@
   <view class="tc">
     <view class="title">{{ item.class_name }}</view>
     <view class="r-list tl">
-      <view class="r-list-item" wx:for="{{ item.lessons }}" wx:key="key" wx:if="{{ share_islimits == 1 }}" wx:for-item="lesson" data-id="{{ lesson.lesson_id }}" data-cId="{{ cId }}" bindtap="linkCoursePlay">
+      <view class="r-list-item" wx:for="{{ item.lessons }}" wx:key="key" wx:if="{{ class_power == 0 || share_islimits == 1 }}" wx:for-item="lesson" data-id="{{ lesson.lesson_id }}" data-cId="{{ cId }}" bindtap="linkCoursePlay">
         <view class="cont">
           <view class="company">
             <image class="img" src="{{ lesson.teacher_img }}"></image>

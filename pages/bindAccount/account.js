@@ -29,7 +29,7 @@ Page({
     console.log("username:" + this.data.username, "pwd:" + this.data.password);
     if (!this.data.username) {
       wx.showToast({
-        title: "请输入学号/手机号不能为空",
+        title: "手机号不能为空",
         icon: "none",
         duration: 1000
       });

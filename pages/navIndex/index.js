@@ -157,13 +157,17 @@ Page({
           }
         })
       }).then(res => {
+        console.log(id)
         if (res == 'OK') {
           this.setData({
             key: -1,
             clicked: false,
             curpage: 1
+            // jobList
           })
-          this.getPositionListFun()
+          this.setData({
+            jobList: this.data.jobList.filter(e => e.id_job !== id)
+          })
         }
       })
     } else {

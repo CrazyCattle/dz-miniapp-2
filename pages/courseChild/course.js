@@ -18,6 +18,7 @@ Page({
   data: {
     hasPower: false,
     share_islimits: 0,
+    class_power: 0,
 
     showMore: false,
     class_name: '',
@@ -60,14 +61,15 @@ Page({
       url: `${getStuClassLimit}?stu_id=${app.globalData.student_id}&token=${app.globalData.token}&class_id=${this.data.cId}`,
       success: res => {
         console.log(res)
+        const { listjson } = res.data
         if (res.data.error == 0) {
-          if (res.data.listjson.share_islimits == 1) {
+          if (listjson.share_islimits == 1) {
             this.setData({
               hasPower: true
             })
           }
         } else if (res.data.error == 1) {
-          if (res.data.listjson.share_islimits == 0) {
+          if (listjson.share_islimits == 0) {
             this.setData({
               hasPower: true
             })
@@ -98,13 +100,14 @@ Page({
           const { error } = res.data
           if (error == '0') {
             console.log(res.data.listjson)
-            const { class_intro, classThree, share_islimits } = res.data.listjson
+            const { class_intro, classThree, share_islimits, class_power } = res.data.listjson
             const article = class_intro.class_intro
             const { class_name } = class_intro
             this.setData({
               class_name: `${class_name}系列课程`,
               class_intro,
-              share_islimits
+              share_islimits,
+              class_power
             })
             wx.setNavigationBarTitle({
               title: this.data.class_name

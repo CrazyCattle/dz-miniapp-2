@@ -67,7 +67,7 @@
     <view class="recruit bg-f"  wx:if="{{ active==2 }}">
       <view class="recruit-item bg-f" wx:for="{{ recruitList }}" wx:for-item="item" wx:key="key" data-id="{{item.id_job}}" bindtap="linkJobDetail">
         <view class="row">
-          <view class="txt">{{ item.companyName }}</view>
+          <view class="txt">{{ item.jobName }}</view>
           <view class="txt">{{ item.payMin/1000 }}K ~ {{ item.payMax/1000 }}K </view>
         </view>
         <view class="row">

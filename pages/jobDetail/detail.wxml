@@ -11,7 +11,7 @@
           <block wx:if='{{list.workType ==1}}'>全职</block>        
           <block wx:else>实习</block>        
          | {{list.degree}} | {{list.workProvince}}{{list.workCity}}</view>
-        <view class="infor lh-normal">截止日期：{{list.endDate}}</view>
+        <view class="infor lh-normal">截止日期: <block wx:if="{{list.endDate}}">{{list.endDate}}</block><block wx:else>暂无截止日期</block></view>
       </view>
     </view>
     <view class="item-list">

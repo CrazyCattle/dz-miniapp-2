@@ -1,6 +1,6 @@
 <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
   <view class="recruit bg-f">
-    <view class="recruit-item bg-f" wx:for="{{ recruitList }}" wx:for-item="item" wx:key="key" data-id="{{item.position_id}}" bindtap="linkJobDetail">
+    <view class="recruit-item bg-f" wx:for="{{ recruitList }}" wx:for-item="item" wx:key="key" data-id="{{item.id_job}}" bindtap="linkJobDetail">
       <view class="row">
         <view class="txt ellipsis">{{ item.jobName }}</view>
         <view class="txt">{{ item.payMin/1000 }}K ~ {{ item.payMax/1000 }}K </view>

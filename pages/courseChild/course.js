@@ -7,7 +7,8 @@ import {
   setNewToken,
   initLoginStatus,
   getUserState,
-  navToLogin
+  navToLogin,
+  redirectLogin
 } from '../../utils/util'
 
 
@@ -94,7 +95,7 @@ Page({
               }
             })
           } else {
-            initLoginStatus()
+            redirectLogin()
           }
         } else {
           const { error } = res.data

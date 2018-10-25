@@ -3,6 +3,8 @@ import {
   getUserToken
 } from 'api';
 
+const ald = require('./utils/ald-stat.js')
+
 App({
   globalData: {
     userInfo: null,

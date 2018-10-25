@@ -76,11 +76,11 @@ Page({
   },
   showRecommend (e) {
     let type = e.currentTarget.dataset.type
-    console.log(type)
     this.setData({
       canLoadMore: true,
       showLoading: false,
       showType: type,
+      jobList: [],
       curpage: 1
     })
 
@@ -143,7 +143,6 @@ Page({
             "Content-Type": "application/x-www-form-urlencoded"
           },
           success: res => {
-            console.log(res)
             if (res.data.error == '0') {
               wx.showToast({
                 title: res.data.errortip,
@@ -157,7 +156,6 @@ Page({
           }
         })
       }).then(res => {
-        console.log(id)
         if (res == 'OK') {
           this.setData({
             key: -1,
@@ -375,6 +373,9 @@ Page({
             if (loginType == 'wxlogin') {
               setNewToken().then(res => {
                 if (res == 'ok') {
+                  this.setData({
+                    canLoadMore: true
+                  })
                   this.getPositionListFun()
                 }
               })
@@ -385,7 +386,6 @@ Page({
             let data = res.data.listjson
             if (res.data.error == '0') {
               if (data.length > 0) {
-                console.log(data)
                 if (data.length >= 10) {
                   this.setData({
                     curpage: ++this.data.curpage,
@@ -441,7 +441,6 @@ Page({
                   canLoadMore: true
                 })
               } else {
-                console.log(111)
                 this.setData({
                   showLoading: false,
                   canLoadMore: false
@@ -463,7 +462,6 @@ Page({
     }
   },
   lower () {
-    console.log(this.data.showType)
     if (this.data.showType == 1 || this.data.showType == 2) {
       this.getPositionListFun()
     } else {

@@ -120,7 +120,7 @@
   position: relative;
 }
 .type-banner .scroll-swiper {
-  height: 339rpx;
+  /* height: 339rpx; */
   width: 100%;
 }
 .type-banner .swiper-item{
@@ -132,16 +132,19 @@
   border-radius: 9rpx;
 }
 .type-banner .slide-image{
-  height: 324rpx;
-  width: 535rpx;
+  height: 234rpx;
+  width: 479rpx;
   border-radius: 9rpx;
   margin: 0 30rpx;
   z-index: 1;
   position: relative;
 }
 .type-banner .slide-image.active {
-  transform: scale(1.15);
-  transition:all .1s linear;
+  /* transform: scale(1.15); */
+  height: 293rpx;
+  width: 600rpx;
+   margin: 0 0 0 -30rpx;
+  /* transition:all .1s linear; */
   z-index: 20;
 }
 

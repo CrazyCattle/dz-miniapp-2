@@ -5,9 +5,9 @@
     </view>
   </view>
   <view class="type-banner">
-    <swiper class="scroll-swiper" indicator-dots="{{ indicatorDots }}" autoplay="{{ canautoplay }}" duration="160" display-multiple-items="1" previous-margin="75rpx" next-margin="75rpx" skip-hidden-item-layout="true" current="0" bindchange="swiperChange">
+    <swiper class="scroll-swiper" indicator-dots="{{ indicatorDots }}" duration="160" display-multiple-items="1" previous-margin="110rpx" next-margin="80rpx" skip-hidden-item-layout="true" current="0" bindchange="swiperChange">
       <block wx:for="{{imgUrls}}" wx:index="index" wx:key="key">
-        <swiper-item class="swiper-item" data-id="{{ item.id }}">
+        <swiper-item class="swiper-item {{swiperIndex == index ? 'active' : ''}}" data-id="{{ item.id }}">
           <image src="{{ item.img }}" class="slide-image {{swiperIndex == index ? 'active' : ''}}"></image>
         </swiper-item>
       </block>

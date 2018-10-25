@@ -9,7 +9,7 @@
     </view>
     <view class="range">
       <image class="xz" src="../../images/xz-icon.png"></image>{{list.companyType}}
-      <image class="gm" src="../../images/gm-icon.png"></image>{{list.peoples}}人
+      <image class="gm" src="../../images/gm-icon.png"></image>{{list.peoples}}
     </view>
   </view>
   <view class="company-infor">

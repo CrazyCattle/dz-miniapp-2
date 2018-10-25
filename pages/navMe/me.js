@@ -167,7 +167,7 @@ Page({
 
     app.globalData.stud_info = ''
     app.globalData.student_id = ''
-    app.globalData.userIcon = '../../images/user_pic.png'
+    app.globalData.student_img = '../../images/user_pic.png'
     app.globalData.token = ''
 
     wx.showToast({

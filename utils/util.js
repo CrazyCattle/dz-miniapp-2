@@ -29,7 +29,7 @@ const setNewToken = () => {
   })
 }
 
-const initLoginStatus = () => {
+const removeData = () => {
   wx.removeStorageSync('schoolInfo')
   wx.removeStorageSync('stud_info')
   wx.removeStorageSync('student_id')
@@ -47,13 +47,26 @@ const initLoginStatus = () => {
     icon: "none",
     duration: 1000
   });
+}
+
+const initLoginStatus = () => {
+  removeData()
+  
+  let timer = setTimeout(() => {
+    wx.navigateTo({
+      url: '../loginRegister/loginregister'
+    })
+  }, 300)
+}
+
+const redirectLogin = () => {
+  removeData()
   let timer = setTimeout(() => {
     wx.redirectTo({
       url: '../loginRegister/loginregister'
     })
   }, 300)
 }
-
 
 const getUserState = () => {
   const loginType = wx.getStorageSync('loginType')
@@ -75,5 +88,6 @@ module.exports = {
   setNewToken,
   initLoginStatus,
   getUserState,
-  navToLogin
+  navToLogin,
+  redirectLogin
 }

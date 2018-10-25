@@ -18,6 +18,7 @@ const app = getApp()
 
 Page({
   data: {
+    isBack: false,
     // page 1
     list: []
   },
@@ -96,7 +97,15 @@ Page({
     }
   },
   onReady: function () {},
-  onShow: function () {},
+  onShow: function () {
+    console.log(this.data.isBack)
+    if (this.data.isBack) {
+      this.getResume()
+    }
+    this.setData({
+      isBack: true
+    })
+  },
   onHide: function () {},
   onUnload: function () {},
   onPullDownRefresh: function () {},

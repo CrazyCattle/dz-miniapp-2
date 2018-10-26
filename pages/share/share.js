@@ -220,9 +220,17 @@ Page({
         success: res => {
           console.log(res, 1234)
           if (res.data.error == 0) {
-            this.setData({
-              userToken: res.data.result.openid
-            })
+            console.log(res.data.result.openid, app.globalData.openid)
+            
+            if (res.data.result.openid === app.globalData.openid) {
+              this.getLesson()
+              this.getFriendList()
+            } else {
+              this.setData({
+                isShared: true,
+                userToken: res.data.result.openid
+              })
+            }
           }
         }
       })
@@ -259,7 +267,6 @@ Page({
       this.getFriendList()
     } else {
       this.setData({
-        isShared: true,
         from_student_id: options.from_student_id
       })
       this.getUserToken()

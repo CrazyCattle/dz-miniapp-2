@@ -80,8 +80,15 @@
   border-bottom: none;
 }
 .me-row .icon {
-  display: block;
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 26rpx;
+}
+.me-row .img {
+  display: block;
 }
 .me-row .course {
   width: 32rpx;

@@ -1,6 +1,6 @@
 <view class="page-account">
   <view class="notice-box tc bg-f">
-    <view class="notice">绑定已经账号，即可微信直接登录</view>
+    <view class="notice">绑定已有账号，即可微信直接登录</view>
     <image class="connect-img" src="../../images/connect.png"></image>
   </view>
   <form bindsubmit="formSubmit">

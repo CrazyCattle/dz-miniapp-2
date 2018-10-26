@@ -32,31 +32,43 @@
 
   <view class="me-setting bg-f">
     <view class="me-row" bindtap='linkResumeCenter'>
-      <image class="icon resume" src="../../images/me/icon_1.png"></image>我的简历
+      <view class="icon">
+        <image class="img resume" src="../../images/me/icon_1.png"></image>
+      </view>
+      我的简历
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap='linkExpection'>
-      <image class="icon expect" src="../../images/me/icon_2.png"></image>求职期望
+      <view class="icon">
+        <image class="img expect" src="../../images/me/icon_2.png"></image>
+      </view>
+      求职期望
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap='linkCollectFolder'>
-      <image class="icon collect" src="../../images/me/icon_3.png"></image>收藏夹
+      <view class="icon">
+        <image class="img collect" src="../../images/me/icon_3.png"></image>
+      </view>
+      收藏夹
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap="linkCourseCollect">
-      <image class="icon course" src="../../images/me/icon_4.png"></image>我的课程
+      <view class="icon">
+        <image class="img course" src="../../images/me/icon_4.png"></image>
+      </view>
+      我的课程
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <!-- <view class="me-row">
-      <image class="icon job" src="../../images/me/job.png"></image>求职锦囊
+      <image class="img job" src="../../images/me/job.png"></image>求职锦囊
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
@@ -65,25 +77,34 @@
 
   <view class="me-setting bg-f" wx:if="{{ !!stud_id }}">
     <!-- <view class="me-row" bindtap='linkSetting'>
-      <image class="icon pwd" src="../../images/me/notice.png"></image>消息设置
+      <image class="img pwd" src="../../images/me/notice.png"></image>消息设置
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view> -->
     <view class="me-row" bindtap="editPwd">
-      <image class="icon pwd" src="../../images/me/icon_5.png"></image>修改密码
+      <view class="icon">
+        <image class="img pwd" src="../../images/me/icon_5.png"></image>
+      </view>
+      修改密码
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap='linkSuggestion'>
-      <image class="icon infor" src="../../images/me/icon_6.png"></image>建议反馈
+      <view class="icon">
+        <image class="img infor" src="../../images/me/icon_6.png"></image>
+      </view>
+      建议反馈
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap="loginOut">
-      <image class="icon out" src="../../images/me/icon_7.png"></image>退出登录
+      <view class="icon">
+        <image class="img out" src="../../images/me/icon_7.png"></image>
+      </view>
+      退出登录
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>

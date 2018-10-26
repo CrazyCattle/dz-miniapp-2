@@ -268,24 +268,24 @@ Page({
     }
   },
   linkJobDetail (e) {
-    if (getUserState()) {
+    // if (getUserState()) {
       const id = e.currentTarget.dataset.id
       wx.navigateTo({
         url: `../jobDetail/detail?id=${id}`
       })
-    } else {
-      navToLogin()
-    }
+    // } else {
+    //   navToLogin()
+    // }
   },
   linkCompanyDetail (e) {
-    if (getUserState()) {
+    // if (getUserState()) {
       const id = e.currentTarget.dataset.id
       wx.navigateTo({
         url: `../companyDetail/detail?id=${id}`
       })
-    } else {
-      navToLogin()
-    }
+    // } else {
+    //   navToLogin()
+    // }
   },
   linkMyCourse () {
     if (getUserState()) {

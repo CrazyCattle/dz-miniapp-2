@@ -149,14 +149,23 @@ Page({
   getCompanyInformation(cId) {
     let _self = this
     let loginType = wx.getStorageSync('loginType')
+    let data
+    if (app.globalData.student_id) {
+      data = {
+        token: app.globalData.token,
+        stu_id: app.globalData.student_id,
+        id: cId
+      }
+    } else {
+      data = {
+        stu_id: 0,
+        id: cId
+      }
+    }
     return new Promise((resolve, reject) => {
       wx.request({
         url: `${getCompanyOne}`,
-        data: {
-          stu_id: app.globalData.student_id,
-          token: app.globalData.token,
-          id: cId
-        },
+        data,
         method: 'GET',
         success: res => {
           console.log(res)

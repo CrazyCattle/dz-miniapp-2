@@ -103,6 +103,8 @@ Page({
     }
   },
   collect () {
+    const _self = this
+    let loginType = wx.getStorageSync('loginType')
     wx.request({
       url: `${sendPosCollect}`,
       data: {
@@ -116,20 +118,32 @@ Page({
       },
       success: res => {
         console.log(res)
-        if (res.data.error == '0') {
-          wx.showToast({
-            icon: 'none',
-            title: res.data.errortip,
-            duration: 1000
-          })
-          if (res.data.errortip == '成功收藏职位') {
-            this.setData({
-              collected: true
+        if (res.data.tokeninc == '0') {
+          if (loginType == 'wxlogin') {
+            setNewToken().then(res => {
+              if (res == 'ok') {
+                _self.collect()
+              }
             })
           } else {
-            this.setData({
-              collected: false
+            initLoginStatus()
+          }
+        } else {
+          if (res.data.error == '0') {
+            wx.showToast({
+              icon: 'none',
+              title: res.data.errortip,
+              duration: 1000
             })
+            if (res.data.errortip == '成功收藏职位') {
+              this.setData({
+                collected: true
+              })
+            } else {
+              this.setData({
+                collected: false
+              })
+            }
           }
         }
       }
@@ -147,14 +161,23 @@ Page({
   getDetails (id) {
     const _self = this
     let loginType = wx.getStorageSync('loginType')
+    let data
+    if (app.globalData.student_id) {
+      data = {
+        token: app.globalData.token,
+        stu_id: app.globalData.student_id,
+        id_job: id
+      }
+    } else {
+      data = {
+        stu_id: 0,
+        id_job: id
+      }
+    }
     return new Promise((resolve,reject) => {
       wx.request({
         url: `${getPositionOne}`,
-        data: {
-          token: app.globalData.token,
-          stu_id: app.globalData.student_id,
-          id_job: id
-        },
+        data,
         method: 'GET',
         success: res => {
           console.log(res)

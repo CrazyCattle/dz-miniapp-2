@@ -5,7 +5,9 @@ import {
   StuVisitorer,
   getSClass,
   classTwoLesson,
-  getLessonShare
+  getLessonShare,
+  SubIsVisitorer,
+  SubOneVisitorer
 } from '../../api.js'
 
 import {
@@ -21,6 +23,7 @@ Page({
   data: {
     cId: undefined,
     isSupport: false,
+    from_id: undefined,
 
     userToken: '',
     avatarUrl: '',
@@ -34,11 +37,13 @@ Page({
     showGetCourse: false,
     hasGetCourse: false
   },
+
   linkToIndex () {
     wx.reLaunch({
       url: '../navIndex/index',
     })
   },
+
   linkToCourse (e) {
     let id = e.currentTarget.dataset.id
     wx.navigateTo({
@@ -67,23 +72,29 @@ Page({
             icon: "none",
             duration: 1000
           });
+          console.log('GetLessonShareStatus', res.data)
           this.setData({
-            showGetCourse: false,
-            hasGetCourse: true
+            showGetCourse: false
           })
         }
       }
     })
   },
+
   GetCourse (e) {
     let id = e.currentTarget.dataset.id
     console.log(id)
     if (getUserState()) {
-      this.GetLessonShareStatus(id)
+      // this.GetLessonShareStatus(id)
+      this.setData({
+        hasGetCourse: false
+      })
+      // this.linkCourse()
     } else {
       navToLogin()
     }
   },
+
   linkCourse (e) {
     let id = e.currentTarget.dataset.id
     console.log(id)
@@ -91,6 +102,7 @@ Page({
       url: `../courseChild/course?id=${id}`,
     })
   },
+
   getLesson () {
     let loginType = wx.getStorageSync('loginType')
     wx.request({
@@ -134,6 +146,8 @@ Page({
       }
     })
   },
+
+  // 获取 支持用户的列表
   getFriendList () {
     wx.request({
       url: `${StuVisitorer}?stu_id=${app.globalData.student_id}&token=${app.globalData.token}&class_id=${this.data.cId}`,
@@ -151,6 +165,8 @@ Page({
       }
     })
   },
+
+  // 获取 分享的课程详情
   getCourseDetail () {
     wx.request({
       url: `${classTwoLesson}?class_id=${this.data.cId}`,
@@ -164,6 +180,90 @@ Page({
       }
     })
   },
+
+  // 判断是否是自己
+  isMySelf () {
+    wx.request({
+      url: `${SubOneVisitorer}`,
+      data: {
+        from_student_id: this.data.from_id,
+        visitorer_wxtoken: this.data.userToken
+      },
+      success: res => {
+        // console.log(res, 'isMySelf')
+        // wx.showToast({
+        //   title: res.data.errortip,
+        //   icon: "none",
+        //   duration: 1000
+        // });
+        if (res.data.error == 0) {
+          this.getLesson()
+          this.getFriendList()
+          this.setData({
+            isShared: false
+          })
+        } else {
+          this.setData({
+            isShared: true
+          })
+        }
+      }
+    })
+  },
+
+  // 该用户是否 支持过分享的页面
+  isSupportFun () {
+    wx.request({
+      url: `${SubIsVisitorer}`,
+      data: {
+        class_id: this.data.cId,
+        from_student_id: this.data.from_id,
+        visitorer_wxtoken: this.data.userToken
+      },
+      success: res => {
+        console.log(res, 'isSupport')
+        
+        console.log('isSupportFun：', res.data)
+        if (res.data.error == 0) {
+          this.setData({
+            showGetCourse: true
+          })
+        }
+      }
+    })
+  },
+
+  // 获取用户提交数据
+  getUserSupport () {
+    wx.request({
+      url: `${SubVisitorer}`,
+      data: {
+        class_id: this.data.cId,
+        from_student_id: this.data.from_id,
+        visitorer_wxtoken: this.data.userToken,
+        visitorer_nickname: this.data.nickName,
+        visitorer_avatar: this.data.avatarUrl
+      },
+      success: res => {
+        wx.showToast({
+          title: res.data.errortip,
+          icon: "none",
+          duration: 1000
+        });
+        console.log('获取用户提交数据', res.data)
+        if (res.data.error == 0) {
+          this.setData({
+            showGetCourse: true,
+            hasGetCourse: true
+          })
+        }
+        // if (res.data.error == 0) {
+        // } else if (res.data.error == 1) {
+        // }
+      }
+    })
+  },
+  
   getUserInfo(e) {
     if (e.detail.encryptedData) {
       const rawData = JSON.parse(e.detail.rawData)
@@ -173,37 +273,15 @@ Page({
         nickName: rawData.nickName
       })
 
-      wx.request({
-        url: `${SubVisitorer}`,
-        data: {
-          class_id: this.data.cId,
-          from_student_id: this.data.from_student_id,
-          visitorer_wxtoken: this.data.userToken,
-          visitorer_nickname: this.data.nickName,
-          visitorer_avatar: this.data.avatarUrl
-        },
-        success: res => {
-          wx.showToast({
-            title: res.data.errortip,
-            icon: "none",
-            duration: 1000
-          });
-          this.setData({
-            showGetCourse: true
-          })
-          // if (res.data.error == 0) {
-          // } else if (res.data.error == 1) {
-          // }
-        }
-      })
+      this.getUserSupport()
     }
   },
 
+  // 获取 登录用户的openid
   getUserToken () {
     new Promise((resolve, reject) => {
       wx.login({
         success: res => {
-          console.log(res, 123456)
           resolve(res)
         }
       });
@@ -218,74 +296,56 @@ Page({
           code: res.code
         },
         success: res => {
-          console.log(res, 1234)
           if (res.data.error == 0) {
-            console.log(res.data.result.openid, app.globalData.openid)
-            
-            if (res.data.result.openid === app.globalData.openid) {
+            this.setData({
+              userToken: res.data.result.openid
+            })
+
+            this.getCourseDetail()
+
+            if (!this.data.from_id) {
               this.getLesson()
               this.getFriendList()
             } else {
-              this.setData({
-                isShared: true,
-                userToken: res.data.result.openid
-              })
+              this.isSupportFun()
+              if (this.data.userToken == app.globalData.openid) {
+                this.isMySelf()
+              } else {
+                this.setData({
+                  isShared: true
+                })
+              }
             }
+            // if (this.data.userToken == app.globalData.openid) {
+            //   this.getLesson()
+            //   this.getFriendList()
+            // } else if (this.data.userToken !== app.globalData.openid && this.data.from_id){
+            //   this.setData({
+            //     isShared: true
+            //   })
+
+            //   this.isSupport()
+            // }
+            console.log(this.data.userToken == app.globalData.openid, '000')
           }
         }
       })
     })
   },
-  getUser() {
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting["scope.userInfo"]) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              console.log(res, 1111);
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res);
-              }
-              
-            }
-          });
-        }
-      }
-    });
-  },
+
   onLoad: function (options) {
     console.log(options)
     this.setData({
-      cId: options.id
+      cId: options.id,
+      from_id: options.from_student_id
     })
-    if (!options.from_student_id) {
-      this.getLesson()
-      this.getFriendList()
-    } else {
-      this.setData({
-        from_student_id: options.from_student_id
-      })
-      this.getUserToken()
-
-      // 获取 进入分享 用户的信息
-      // wx.getUserInfo({
-      //   success: res => {
-      //     console.log(res, 'init')
-      //     if (res.errMsg == 'getUserInfo:ok') {
-      //       this.setData({
-      //         isSupport: true
-      //       })
-      //     }
-      //   }
-      // })
-    }
-    this.getCourseDetail()
   },
-  
+
+  onShow () {
+    console.log(this.data.from_id, '111')
+    this.getUserToken()
+  },
+
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
       console.log(res.target)

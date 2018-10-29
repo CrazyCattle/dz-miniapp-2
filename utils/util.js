@@ -35,11 +35,13 @@ const removeData = () => {
   wx.removeStorageSync('student_id')
   wx.removeStorageSync('stud_img')
   wx.removeStorageSync('token')
+  wx.removeStorageSync('openid')
 
   app.globalData.stud_info = ''
   app.globalData.student_id = ''
   app.globalData.student_img = ''
   app.globalData.token = ''
+  app.globalData.openid = ''
   app.globalData.loginType = ''
 
   wx.showToast({

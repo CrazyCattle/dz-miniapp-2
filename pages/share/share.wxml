@@ -12,16 +12,16 @@
 
   <view class="share-box">
     <!-- 邀请 1 -->
-    <button class="btn" open-type='share' wx:if="{{ !hasPower && !isShared }}">
+    <button class="btn" open-type='share' wx:if="{{ hasPower == 0 && !isShared }}">
       <image class="img" src="../../images/invi/btn-share.png"></image>
     </button>
 
     <!-- 已领取 2 -->
-    <button class="btn" wx:if="{{ hasPower && !isShared }}">
+    <button class="btn" wx:if="{{ hasPower == 1 }}">
       <image class="img" src="../../images/invi/btn-over.png"></image>
     </button>
     <view class="share-tips" wx:if="{{ !isShared }}">分享邀请3个以上好友助力领取课程刷新页面 即可播放</view>
-    <view class="reshare" wx:if="{{ hasPower && !isShared }}">
+    <view class="reshare" wx:if="{{ hasPower == 1 }}">
       <button class="sBtn" open-type='share'>分享给好友</button>
       <button class="lBtn" bindtap="linkCourse" data-id="{{ cId }}">查看视频课程</button>
     </view>
@@ -33,13 +33,13 @@
       wx:if="{{ !hasPower && isShared }}">
       <image class="img" src="../../images/invi/btn-support.png"></image>
     </button>
-    <view class="support-txt" wx:if="{{ !hasPower && isShared && !hasGetCourse }}">支持成功后，你将获得本节课程</view>
+    <view class="support-txt" wx:if="{{ !hasPower && isShared && !showGetCourse }}">支持成功后，你将获得本节课程</view>
 
     <!-- 已领取 立即查看 -->
-    <button class="btn" wx:if="{{ hasGetCourse }}" data-id="{{ courseDetails.class_id }}" bindtap="linkToCourse">
+    <button class="btn" wx:if="{{ showGetCourse }}" data-id="{{ courseDetails.class_id }}" bindtap="linkToCourse">
       <image class="img" src="../../images/invi/btn-check.png"></image>
     </button>
-    <view class="back" wx:if="{{ hasGetCourse }}">
+    <view class="back" wx:if="{{ showGetCourse }}">
       <button class="btn" bindtap='linkToIndex'>
         <image class="img" src="../../images/invi/btn-back.png"></image>
       </button>
@@ -63,7 +63,7 @@
     </view>
   </view>
 
-  <view class="obtainPop" wx:if="{{ showGetCourse }}">
+  <view class="obtainPop" wx:if="{{ hasGetCourse && showGetCourse }}">
     <view class="cont-box">
       <view class="imgs">
         <image class="img" src="../../images/invi/BG-support.png"></image>
@@ -71,7 +71,7 @@
       <view class="pop-box">
         <view class="tips">支持成功</view>
         <text class="txt">恭喜你获赠本节课程</text>
-        <button class="btn" data-id="{{ courseDetails.class_id }}" bindtap="GetCourse">
+        <button class="btn" data-id="{{ courseDetails.class_id }}" catchtap="GetCourse">
           <image class="img" src="../../images/invi/btn-get.png"></image>
         </button>
       </view>

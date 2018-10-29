@@ -1,5 +1,12 @@
 <view class="page-play" bindtap="hideCourseList">
-  <video class="course-video" src="{{ playInfor.lesson_code }}" controls="{{ controls }}" autoplay="{{ autoplay }}" show-play-btn="{{ showPlayBtn }}" poster="{{ playInfor.lesson_img }}" show-center-play-btn="showCenterPlayBtn"></video>
+  <video class="course-video"
+    src="{{ playInfor.lesson_code }}"
+    controls="{{ controls }}"
+    autoplay="{{ autoplay }}"
+    show-play-btn="{{ showPlayBtn }}"
+    poster="{{ playInfor.lesson_play_img }}"
+    show-center-play-btn="showCenterPlayBtn">
+  </video>
   <view class="course-info bg-f">
     <view class="row">
       <text class="v-tit">{{ playInfor.lesson_name }}</text>

@@ -164,6 +164,7 @@ Page({
     wx.removeStorageSync('searches')
     wx.removeStorageSync('baseCityId')
     wx.removeStorageSync('loginType')
+    wx.removeStorageSync('openid')
 
     app.globalData.stud_info = ''
     app.globalData.student_id = ''

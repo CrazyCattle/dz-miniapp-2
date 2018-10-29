@@ -26,35 +26,35 @@ App({
       withShareTicket: true
     });
 
-    let promise = new Promise((resolve, reject) => {
-      wx.login({
-        success: res => {
-          resolve(res)
-        }
-      });
-    })
-    promise.then((res) => {
-      return new Promise((resolve, reject) => {
-        wx.request({
-          url: `${wxAuthorization}`,
-          header: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          method: 'POST',
-          data: {
-            code: res.code
-          },
-          success: res => {
-            resolve(res)
-          }
-        })
-      })
-    }).then(res => {
-      if (res.data.error == '0') {
-        this.globalData.openid = res.data.result.openid
-        wx.setStorageSync('openid', this.globalData.openid)
-      }
-    })
+    // let promise = new Promise((resolve, reject) => {
+    //   wx.login({
+    //     success: res => {
+    //       resolve(res)
+    //     }
+    //   });
+    // })
+    // promise.then((res) => {
+    //   return new Promise((resolve, reject) => {
+    //     wx.request({
+    //       url: `${wxAuthorization}`,
+    //       header: {
+    //         "Content-Type": "application/x-www-form-urlencoded"
+    //       },
+    //       method: 'POST',
+    //       data: {
+    //         code: res.code
+    //       },
+    //       success: res => {
+    //         resolve(res)
+    //       }
+    //     })
+    //   })
+    // }).then(res => {
+    //   if (res.data.error == '0') {
+    //     this.globalData.openid = res.data.result.openid
+    //     wx.setStorageSync('openid', this.globalData.openid)
+    //   }
+    // })
     // // 登录
     // new Promise((resolve, reject) => {
     //   wx.login({

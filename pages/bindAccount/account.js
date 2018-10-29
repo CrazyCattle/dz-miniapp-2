@@ -1,5 +1,6 @@
 import {
-  wxLogin
+  wxLogin,
+  wxAuthorization
 } from "../../api";
 
 const app = getApp()
@@ -40,48 +41,81 @@ Page({
         duration: 1000
       });
     } else {
-      console.log(app.globalData.openid)
-      wx.request({
-        url: `${wxLogin}`,
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        method: "POST",
-        data: {
-          wxtoken: app.globalData.openid,
-          username: this.data.username.trim(),
-          password: this.data.password.trim()
-        },
-        method: "POST",
-        success: res => {
-          console.log(res);
-          const { error } = res.data;
-          wx.showToast({
-            title: res.data.errortip,
-            icon: "none",
-            duration: 1000
-          });
-          if (error == "0") {
-            wx.setStorageSync("student_id", (app.globalData.student_id = res.data.listjson.student_id));
-            wx.setStorageSync("token", (app.globalData.token = res.data.listjson.token));
-            wx.setStorageSync("loginType", 'wxlogin');
-            app.globalData.loginType = 'wxlogin'
-
-            wx.showToast({
-              title: '绑定成功',
-              icon: 'none',
-              duration: 1000
-            })
-
-            let timer = setTimeout(() => {
-              wx.reLaunch({
-                url: "../navMe/me"
-              });
-              clearTimeout(timer)
-            }, 300)
+      let promise = new Promise((resolve, reject) => {
+        wx.login({
+          success: res => {
+            resolve(res)
           }
+        });
+      })
+      promise.then((res) => {
+        return new Promise((resolve, reject) => {
+          wx.request({
+            url: `${wxAuthorization}`,
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: 'POST',
+            data: {
+              code: res.code
+            },
+            success: res => {
+              resolve(res)
+            }
+          })
+        })
+      }).then(res => {
+        if (res.data.error == '0') {
+          let fResult = res.data.result
+          let openid = fResult.openid
+        
+          wx.request({
+            url: `${wxLogin}`,
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: "POST",
+            data: {
+              wxtoken: openid,
+              username: this.data.username.trim(),
+              password: this.data.password.trim()
+            },
+            method: "POST",
+            success: res => {
+              console.log(res);
+              const { error } = res.data;
+              wx.showToast({
+                title: res.data.errortip,
+                icon: "none",
+                duration: 1000
+              });
+              if (error == "0") {
+                app.globalData.openid = fResult.openid
+                wx.setStorageSync('openid', fResult.openid)
+                
+                wx.setStorageSync("student_id", (app.globalData.student_id = res.data.listjson.student_id));
+                wx.setStorageSync("token", (app.globalData.token = res.data.listjson.token));
+                wx.setStorageSync("loginType", 'wxlogin');
+                app.globalData.loginType = 'wxlogin'
+
+                wx.showToast({
+                  title: '绑定成功',
+                  icon: 'none',
+                  duration: 1000
+                })
+
+                let timer = setTimeout(() => {
+                  wx.reLaunch({
+                    url: "../navMe/me"
+                  });
+                  clearTimeout(timer)
+                }, 300)
+              }
+            }
+          })
         }
-      });
+      })
+      console.log(app.globalData.openid)
     }
   },
   register() {

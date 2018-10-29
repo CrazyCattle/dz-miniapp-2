@@ -21,6 +21,21 @@ Page({
     schoolInfor: '',
     expectList: []
   },
+  GetUserInfo (e) {
+    console.log(e)
+    if (e.detail.userInfo) {
+      console.log('允许获取权限')
+      wx.navigateTo({
+        url: '../loginRegister/loginregister'
+      })
+    } else {
+      wx.showToast({
+        icon: 'none',
+        title: '微信授权后才能登陆/注册',
+        duration: 1000
+      })
+    }
+  },
   getExpect() {
     wx.request({
       url: `${getExpectList}`,
@@ -77,9 +92,9 @@ Page({
     }
   },
   linkLR() {
-    wx.navigateTo({
-      url: '../loginRegister/loginregister'
-    })
+    // wx.navigateTo({
+    //   url: '../loginRegister/loginregister'
+    // })
   },
   linkMyCourse() {
     if (getUserState()) {

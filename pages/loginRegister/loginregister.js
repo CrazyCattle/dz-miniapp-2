@@ -9,6 +9,22 @@ Page({
   data: {
     logoUrl: ""
   },
+  getPhoneNumber (e) {
+    console.log(e)
+    if (e.detail.encryptedData) {
+      console.log(
+        e.detail.encryptedData, '--1--',
+        e.detail.errMsg, '--1--',
+        e.detail.iv
+      )
+    } else {
+      wx.showToast({
+        icon: 'none',
+        title: '允许微信授权才能使用微信登陆',
+        duration: 1000
+      })
+    }
+  },
   linkLogin() {
     wx.navigateTo({
       url: "../login/login"
@@ -67,6 +83,24 @@ Page({
     wx.removeStorageSync('searches')
     wx.removeStorageSync('baseCityId')
     wx.removeStorageSync('loginType')
+
+    // wx.getSetting({
+    //   success(res) {
+    //     if (res.authSetting['scope.userInfo']) {
+    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+    //       // wx.getUserInfo({
+    //       //   success: function (res) {
+    //       //     console.log(res.userInfo)
+    //       //   }
+    //       // })
+    //       wx.login({
+    //         success: res => {
+    //           console.log(res)
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
     
     // new Promise((resolve, reject) => {
     //   if (!app.globalData.schoolInfo) {

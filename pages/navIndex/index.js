@@ -43,7 +43,7 @@ Page({
     baseCity: '',
     baseCityId: '',
 
-    showAiTip: false,
+    showAiTip: wx.getStorageSync('showAiTip') || 1,
     // 职位推荐
     jobList: [],
     // 名企推荐
@@ -194,9 +194,9 @@ Page({
   closeTip() {
     if (getUserState()) {
       this.setData({
-        showAiTip: false
+        showAiTip: -1
       })
-      wx.setStorageSync('showAiTip', false)
+      wx.setStorageSync('showAiTip', -1)
     } else {
       navToLogin()
     }

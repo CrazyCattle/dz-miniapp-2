@@ -21,6 +21,21 @@ Page({
     schoolInfor: '',
     expectList: []
   },
+  GetUserInfo(e) {
+    console.log(e)
+    if (e.detail.userInfo) {
+      console.log('允许获取权限')
+      wx.navigateTo({
+        url: '../loginRegister/loginregister'
+      })
+    } else {
+      wx.showToast({
+        icon: 'none',
+        title: '微信授权后才能登陆/注册',
+        duration: 1000
+      })
+    }
+  },
   getExpect() {
     wx.request({
       url: `${getExpectList}`,
@@ -31,11 +46,17 @@ Page({
       method: 'GET',
       success: res => {
         console.log(res)
-        if (res.data.error == '0') {
+        if (res.data.error == '0' && res.data.listjson.length > 0) {
           const expectList = res.data.listjson
 
           wx.navigateTo({
             url: `../editJobExpectNew/new?id=${expectList[0].expect_id}&data=${JSON.stringify(expectList[0])}`
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '暂无求职期望数据',
+            duration: 1000
           })
         }
       }
@@ -77,9 +98,9 @@ Page({
     }
   },
   linkLR() {
-    wx.navigateTo({
-      url: '../loginRegister/loginregister'
-    })
+    // wx.navigateTo({
+    //   url: '../loginRegister/loginregister'
+    // })
   },
   linkMyCourse() {
     if (getUserState()) {

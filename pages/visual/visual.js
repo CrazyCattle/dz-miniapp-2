@@ -45,6 +45,17 @@ Page({
       url: `../courseChild/course?id=${cId}`
     })
   },
+  linkToChild2 (e) {
+    let url = e.currentTarget.dataset.url
+    let cId
+    if (url.indexOf('classTwoId=') > -1) {
+      cId = url.split('classTwoId=')
+      wx.navigateTo({
+        url: `../courseChild/course?id=${cId[1]}`
+      })
+    }
+    
+  },
   linkToMore (e) {
     const id = e.currentTarget.dataset.id
     wx.navigateTo({

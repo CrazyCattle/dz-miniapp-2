@@ -1,18 +1,16 @@
 import {
   wxLogin,
-  wxAuthorization
+  wxAuthorization,
+  WxRegLogin
 } from "../../api";
 
 const app = getApp()
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     username: "",
-    password: ""
+    password: "",
+    phone: ''
   },
   inputName(e) {
     console.log(e.detail);
@@ -118,57 +116,98 @@ Page({
       console.log(app.globalData.openid)
     }
   },
+  bingTologin () {
+    if (!this.data.password) {
+      wx.showToast({
+        title: "密码不能为空",
+        icon: "none",
+        duration: 1000
+      });
+    } else {
+      let promise = new Promise((resolve, reject) => {
+        wx.login({
+          success: res => {
+            resolve(res)
+          }
+        });
+      })
+      promise.then((res) => {
+        return new Promise((resolve, reject) => {
+          wx.request({
+            url: `${wxAuthorization}`,
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: 'POST',
+            data: {
+              code: res.code
+            },
+            success: res => {
+              resolve(res)
+            }
+          })
+        })
+      }).then(res => {
+        console.log(res)
+        if (res.data.error == '0') {
+          let { result } = res.data
+          console.log(result)
+          this.bindPhone(result.openid, this.data.password)
+        }
+      })
+    }
+  },
+  // 绑定手机号
+  bindPhone(openid, password) {
+    wx.request({
+      url: `${WxRegLogin}`,
+      data: {
+        mobile: app.globalData.userPhone,
+        wxtoken: openid,
+        password
+      },
+      success: res => {
+        console.log(res, 111)
+        if (res.data.error == 0) {
+          const { listjson } = res.data
+          wx.showToast({
+            title: '登录成功',
+            icon: 'none',
+            duration: 1000
+          })
+
+          app.globalData.openid = openid
+          wx.setStorageSync('openid', openid)
+
+          wx.setStorageSync("student_id", (app.globalData.student_id = listjson.student_id));
+          wx.setStorageSync("token", (app.globalData.token = listjson.token));
+          wx.setStorageSync("loginType", 'wxlogin');
+          app.globalData.loginType = 'wxlogin'
+
+          let timer = setTimeout(() => {
+            wx.reLaunch({
+              url: "../navMe/me"
+            });
+            clearTimeout(timer)
+          }, 300)
+        }
+      }
+    })
+  },
   register() {
     wx.navigateTo({
       url: '../register/register'
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setData({
+      phone: app.globalData.userPhone
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  }
+  onReady: function () {},
+  onShow: function () {},
+  onHide: function () {},
+  onUnload: function () {},
+  onPullDownRefresh: function () {},
+  onReachBottom: function () {}
 })

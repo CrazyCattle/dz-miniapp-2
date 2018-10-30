@@ -17,6 +17,7 @@ App({
     loginType: '',  //登陆类型
     baseCity: wx.getStorageSync('baseCity') || '全国',// 获取首页 城市
     baseCityId: wx.getStorageSync('baseCityId') || '1',// 获取首页 城市ID
+    userPhone: wx.getStorageSync('userPhone') || '', // 用户手机号
   },
   
   onLaunch: function () {

@@ -8,6 +8,13 @@
   border-right: none;
   position: relative;
 }
+.me-head-infor button.headImg {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 0 26rpx 0 0;
+  padding: 0;
+  background-color: transparent;
+}
 .me-head-infor .me-pic {
   width: 150rpx;
   height: 150rpx;
@@ -15,8 +22,13 @@
   border-radius: 50%;
 }
 .me-head-infor .me-name {
+  /* font-size: 30rpx;
+  color: #313148; */
+  margin: 0;
+  padding: 0;
   font-size: 30rpx;
   color: #313148;
+  background-color: transparent;
 }
 .me-head-infor .me-educ {
   font-size: 24rpx;

@@ -18,7 +18,11 @@
       <block wx:for="{{imgUrls}}" wx:index="index" wx:key="key">
         <swiper-item class="swiper-item {{swiperIndex == index ? 'active' : ''}}"
           data-id="{{ item.id }}">
-          <image src="{{ item.img }}" class="slide-image {{swiperIndex == index ? 'active' : ''}}"></image>
+          <image src="{{ item.img }}"
+            class="slide-image {{swiperIndex == index ? 'active' : ''}}"
+            data-url="{{ item.url }}"
+            bindtap="linkToChild2">
+          </image>
         </swiper-item>
       </block>
     </swiper>

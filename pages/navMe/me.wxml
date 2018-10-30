@@ -6,16 +6,34 @@
         <image wx:else class="me-pic" src="{{ userIcon }}"></image>
       </block>
       <block wx:else>
-        <image class="me-pic" src="{{ userIcon }}" bindtap="linkLR"></image>
+        <button
+          class="headImg"
+          open-type="getUserInfo"
+          bindgetuserinfo="GetUserInfo">
+          <image class="me-pic" src="{{ userIcon }}" bindtap="linkLR"></image>
+        </button>
       </block>
-      <view class="me-desc">
+      <!-- <view class="me-desc">
         <block wx:if="{{ stud_info.id }}">
           <view class="me-name">{{ stud_info.name }}</view>
           <text class="me-educ">{{ stud_info.school_name }} | {{ stud_info.academy }}</text>
         </block>
         <view wx:else class="me-name" bindtap="linkLR">登录/注册</view>
+      </view> -->
+      <view class="me-desc" wx:if="{{ stud_info.id }}">
+        <block wx:if="{{ stud_info.id }}">
+          <view class="me-name">{{ stud_info.name || '未命名' }}</view>
+          <text class="me-educ">{{ stud_info.school_name || '未选择学校' }} | {{ stud_info.academy || '未选择专业' }}</text>
+        </block>
       </view>
-      <view wx:if="{{ stud_info.name }}" class="editUser" bindtap='editUserInfor'>个人信息</view>
+      <button
+        wx:else class="me-name"
+        bindtap="linkLR"
+        open-type="getUserInfo"
+        bindgetuserinfo="GetUserInfo">
+        登录/注册
+      </button>
+      <view wx:if="{{ stud_info.id }}" class="editUser" bindtap='editUserInfor'>个人信息</view>
     </view>
 
     <view class="me-send-box" hidden='true'>

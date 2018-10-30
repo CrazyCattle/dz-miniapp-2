@@ -76,4 +76,7 @@ module.exports = {
   getLessonShare: `${basicUrl}/getLessonShare`, // 支持用户直接 获取课程
   SubIsVisitorer: `${basicUrl}/SubIsVisitorer`, // 判断用户是否支持过分享的页面
   SubOneVisitorer: `${basicUrl}/SubOneVisitorer`, // 判断用户是否 是分享用户本人
+  WxMobileLogin: `${basicUrl}/WxMobileLogin`, // 手机号和token登陆判断
+  WxRegLogin: `${basicUrl}/WxRegLogin`, // 注册设置密码
+  wxAuthorMobile: `${basicUrl}/wxAuthorMobile`, // 解密手机号
 }

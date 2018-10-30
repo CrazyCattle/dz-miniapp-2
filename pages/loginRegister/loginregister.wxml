@@ -6,7 +6,10 @@
       <image class="logo-img" src="https://napi.dazhao100.cn/Uploads/icon/applogo.png"></image>
     </view>
 
-    <button formType="submit" class="baseBtn" bindtap="lonkBind">微信登录</button>
+    <!-- <button formType="submit" class="baseBtn" bindtap="lonkBind">微信登录</button> -->
+    <button class="baseBtn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+      微信登录
+    </button>
     <button formType="submit" class="baseBtn mt40" bindtap="linkLogin">手机号登录</button>
 
     <view class="tc mt40">

@@ -58,7 +58,7 @@
         </view>
       </view>
       <view class="recommend bg-f" wx:if="{{ showType == 1 }}">
-        <view class="ai-tip" bindtap="linkToEditInfor">修正您的<text class="notice">个人信息</text>，AI 管家将为您匹配更精准的信息
+        <view class="ai-tip" wx:if="{{ showAiTip == 1 }}" bindtap="linkToEditInfor">修正您的<text class="notice">个人信息</text>，AI 管家将为您匹配更精准的信息
           <view class="icon" catchtap="closeTip">
             <image class="icon-close" src="../../images/close.png"></image>
           </view>

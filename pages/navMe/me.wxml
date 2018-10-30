@@ -23,7 +23,7 @@
       <view class="me-desc" wx:if="{{ stud_info.id }}">
         <block wx:if="{{ stud_info.id }}">
           <view class="me-name">{{ stud_info.name || '未命名' }}</view>
-          <text class="me-educ">{{ stud_info.school_name || '未选择学校' }} | {{ stud_info.academy || '未选择专业' }}</text>
+          <text class="me-educ">{{ stud_info.school_name || '未选择学校' }} | {{ stud_info.special || '未选择专业' }}</text>
         </block>
       </view>
       <button

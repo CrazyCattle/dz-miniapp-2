@@ -63,7 +63,7 @@
     </view>
   </view>
 
-  <view class="obtainPop" wx:if="{{ hasGetCourse && showGetCourse }}">
+  <!-- <view class="obtainPop" wx:if="{{ hasGetCourse && showGetCourse }}">
     <view class="cont-box">
       <view class="imgs">
         <image class="img" src="../../images/invi/BG-support.png"></image>
@@ -76,5 +76,21 @@
         </button>
       </view>
     </view>
+  </view> -->
+
+  <view class="obtainPop" wx:if="{{ showGetCoursePop }}">
+    <view class="cont-box">
+      <view class="imgs">
+        <image class="img" src="../../images/invi/BG-support.png"></image>
+      </view>
+      <view class="pop-box">
+        <view class="tips">支持成功</view>
+        <text class="txt">恭喜你获赠本节课程</text>
+        <button class="btn" data-id="{{ courseDetails.class_id }}" catchtap="linkToShareLogin">
+          <image class="img" src="../../images/invi/btn-get.png"></image>
+        </button>
+      </view>
+    </view>
   </view>
+
 </view>

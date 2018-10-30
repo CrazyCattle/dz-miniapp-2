@@ -79,4 +79,6 @@ module.exports = {
   WxMobileLogin: `${basicUrl}/WxMobileLogin`, // 手机号和token登陆判断
   WxRegLogin: `${basicUrl}/WxRegLogin`, // 注册设置密码
   wxAuthorMobile: `${basicUrl}/wxAuthorMobile`, // 解密手机号
+
+  WXregister: `${basicUrl}/WXregister`, // 用户 注册登录(来自分享)
 }

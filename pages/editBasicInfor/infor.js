@@ -28,6 +28,7 @@ Page({
     index: 0,
   },
   listenerPickerSelected: function (e) {
+    console.log(e.detail)
     this.setData({
       index: e.detail.value
     });

@@ -35,7 +35,9 @@ Page({
     hasPower: 0,
     shareTimes: 0,
     showGetCourse: false,
-    hasGetCourse: false
+    hasGetCourse: false,
+
+    showGetCoursePop: false
   },
 
   linkToIndex () {
@@ -226,7 +228,8 @@ Page({
         console.log('isSupportFun：', res.data)
         if (res.data.error == 0) {
           this.setData({
-            showGetCourse: true
+            showGetCourse: true,
+            hasGetCourse: true
           })
         }
       }
@@ -245,18 +248,13 @@ Page({
         visitorer_avatar: this.data.avatarUrl
       },
       success: res => {
-        wx.showToast({
-          title: res.data.errortip,
-          icon: "none",
-          duration: 1000
-        });
-        console.log('获取用户提交数据', res.data)
-        if (res.data.error == 0) {
-          this.setData({
-            showGetCourse: true,
-            hasGetCourse: true
-          })
-        }
+        console.log(res, '获取用户提交数据 getUserSupport')
+        // if (res.data.error == 0) {
+          // this.setData({
+          //   showGetCourse: true,
+          //   hasGetCourse: true
+          // })
+        // }
         // if (res.data.error == 0) {
         // } else if (res.data.error == 1) {
         // }
@@ -264,6 +262,47 @@ Page({
     })
   },
   
+
+  linkToShareLogin (e) {
+    let cId = e.currentTarget.dataset.id
+
+    console.log(cId, this.data.from_id, 'hahhah')
+    if (app.globalData.token && app.globalData.student_id) {
+      wx.showLoading()
+      this.setShareLimit()
+    } else {
+      wx.navigateTo({
+        url: `../shareRegister/register?cId=${cId}&fromId=${this.data.from_id}`
+      })
+    }
+  },
+
+  setShareLimit() {
+    wx.request({
+      url: `${getLessonShare}?token=${app.globalData.token}&stu_id=${app.globalData.student_id}&class_id=${this.data.cId}`,
+      success: res => {
+        if (res.data.tokeninc == '0') {
+          if (loginType == 'wxlogin') {
+            setNewToken().then(res => {
+              if (res == 'ok') {
+                this.setShareLimit()
+              }
+            })
+          } else {
+            initLoginStatus()
+          }
+        } else {
+          wx.hideLoading()
+          this.setData({
+            showGetCourse: true,
+            hasGetCourse: true,
+            showGetCoursePop: false
+          })
+        }
+      }
+    })
+  },
+
   getUserInfo(e) {
     if (e.detail.encryptedData) {
       const rawData = JSON.parse(e.detail.rawData)
@@ -272,8 +311,10 @@ Page({
         avatarUrl: rawData.avatarUrl,
         nickName: rawData.nickName
       })
-
       this.getUserSupport()
+      this.setData({
+        showGetCoursePop: true
+      })
     }
   },
 

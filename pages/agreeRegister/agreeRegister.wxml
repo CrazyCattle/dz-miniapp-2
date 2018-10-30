@@ -7,7 +7,7 @@
       </view>
     </view>
     <view class="back">
-      <view class="btn">注册</view>
+      <view class="btn" bindtap="setPassword">注册</view>
     </view>
     <view class="protocol">同意《大招一百用户协议》</view>
   </form>

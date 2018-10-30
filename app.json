@@ -5,6 +5,7 @@
     "pages/navMe/me",
     "pages/navCourse/course",
     "pages/navInformation/infor",
+    "pages/shareRegister/register",
     "pages/login/login",
     "pages/companyDetail/detail",
     "pages/companyRecommend/company",

@@ -58,12 +58,12 @@
 .phoneBox {
   display: flex;
   padding: 30rpx 40rpx 20rpx;
-  font-size: 30rpx;
+  font-size: 26rpx;
   color: #313148;
 }
 
 .website {
-  font-size: 24rpx;
+  font-size: 26rpx;
   text-align: center;
   color: #828ca3;
 }

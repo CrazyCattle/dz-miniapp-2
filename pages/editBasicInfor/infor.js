@@ -129,7 +129,15 @@ Page({
                 })
                 const { listjson } = res.data
                 for (var key in listjson) {
-                  stud_info[key] = listjson[key]
+                  if (key == 'student_sex') {
+                    stud_info['sex'] = listjson[key]
+                  } else if (key == 'student_mobile') {
+                    stud_info['phone'] = listjson[key]
+                  } else if (key == 'student_email') {
+                    stud_info['email'] = listjson[key]
+                  } else if (key == 'student_truename') {
+                    stud_info['name'] = listjson[key]
+                  }
                 }
                 console.log(stud_info)
                 wx.setStorageSync('stud_info', stud_info)
@@ -150,7 +158,7 @@ Page({
     this.setData({
       stud_info: wx.getStorageSync('stud_info'),
       user_name: stud_info.name,
-      user_sex: stud_info.sex,
+      user_sex: stud_info.sex || '男',
       user_phone: stud_info.phone,
       user_email: stud_info.email,
       endTime: formatTime(new Date())

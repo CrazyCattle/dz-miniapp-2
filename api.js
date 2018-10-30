@@ -81,4 +81,5 @@ module.exports = {
   wxAuthorMobile: `${basicUrl}/wxAuthorMobile`, // 解密手机号
 
   WXregister: `${basicUrl}/WXregister`, // 用户 注册登录(来自分享)
+  getShareAuthCode: `${basicUrl}/getShareAuthCode`, // 用户登录 注册 验证码获取(分享)
 }

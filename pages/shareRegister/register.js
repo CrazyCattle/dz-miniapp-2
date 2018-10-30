@@ -1,6 +1,6 @@
 import { 
   WXregister,
-  getAuthCode,
+  getShareAuthCode,
   getLessonShare
 } from "../../api";
 
@@ -24,7 +24,7 @@ Page({
     if (mobileReg.test(this.data.mobile)) {
       let time = 60;
       wx.request({
-        url: `${getAuthCode}${this.data.mobile}`,
+        url: `${getShareAuthCode}?mobile=${this.data.mobile}`,
         method: 'GET',
         success: res => {
           console.log(res)

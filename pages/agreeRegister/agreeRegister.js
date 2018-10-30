@@ -39,31 +39,39 @@ Page({
   },
   setPassword () {
     if (this.data.password) {
-      wx.request({
-        url: `${WxRegLogin}`,
-        data: {
-          mobile: this.data.mobile,
-          password: this.data.password
-        },
-        success: res => {
-          console.log(res, 'success')
-          if (res.data.error == 0) {
-            const { listjson } = res.data
-            wx.showToast({
-              title: res.data.error,
-              icon: "none",
-              duration: 1000
-            });
+      if (/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,12}$/.test(this.data.password)) {
+        wx.request({
+          url: `${WxRegLogin}`,
+          data: {
+            mobile: this.data.mobile,
+            password: this.data.password
+          },
+          success: res => {
+            console.log(res, 'success')
+            if (res.data.error == 0) {
+              const { listjson } = res.data
+              wx.showToast({
+                title: res.data.error,
+                icon: "none",
+                duration: 1000
+              });
 
-            wx.setStorageSync("student_id", (app.globalData.student_id = listjson.student_id));
-            wx.setStorageSync("token", (app.globalData.token = listjson.token));
-            wx.setStorageSync("loginType", 'userlogin');
-            app.globalData.loginType = 'userlogin'
-            wx.showLoading()
-            this.setShareLimit()
+              wx.setStorageSync("student_id", (app.globalData.student_id = listjson.student_id));
+              wx.setStorageSync("token", (app.globalData.token = listjson.token));
+              wx.setStorageSync("loginType", 'userlogin');
+              app.globalData.loginType = 'userlogin'
+              wx.showLoading()
+              this.setShareLimit()
+            }
           }
-        }
-      })
+        })
+      } else {
+        wx.showToast({
+          title: '密码请输入8-12位数字和字母组合',
+          icon: "none",
+          duration: 1000
+        });
+      }
     } else {
       wx.showToast({
         title: '请先输入密码',

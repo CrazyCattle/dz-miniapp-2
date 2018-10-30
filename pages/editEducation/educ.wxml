@@ -32,7 +32,7 @@
       <view class="row">
         <view class="row-tit">专业：</view>
         <view class="rot-ipt">
-          <input type="text" bindblur="inputMajor" bindinput="inputMajor" class="input" placeholder='请填写专业' value='{{ majorCont }}'></input>
+          <input type="text" bindblur="inputMajor" bindinput="inputMajor" class="input" placeholder='请输入专业' value='{{ majorCont }}'></input>
           <!-- <picker class="picker" mode="selector" range="{{major}}" value="{{majorIndex}}" bindchange="listenerMajor">
             <view class="inner-picker">{{ major[majorIndex] }}</view>
           </picker>

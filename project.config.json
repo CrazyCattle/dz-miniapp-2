@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.3.0",
 	"appid": "wxaddb57821238bdcb",
-	"projectname": "dz-miniapp-2",
+	"projectname": "dz-miniapp",
 	"condition": {
 		"search": {
 			"current": -1,

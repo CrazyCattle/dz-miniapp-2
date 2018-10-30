@@ -40,7 +40,7 @@ Page({
       console.log(this.data.searches)
       wx.setStorageSync('searches', this.data.searches)
       wx.navigateTo({
-        url: `../relatedPositions/positions?cId=${this.data.curCity}&keyword=${keyword}&curCity=${this.data.curCity}`
+        url: `../relatedPositions/positions?cId=${this.data.curCityId}&keyword=${keyword}&curCity=${this.data.curCity}`
       })
     }
   },

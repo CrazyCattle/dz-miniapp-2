@@ -38,6 +38,12 @@ Page({
         icon: "none",
         duration: 1000
       });
+    } else if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,12}$/.test(this.data.password)) {
+      wx.showToast({
+        title: '密码请输入8-12位数字和字母组合',
+        icon: "none",
+        duration: 1000
+      });
     } else {
       let promise = new Promise((resolve, reject) => {
         wx.login({
@@ -120,6 +126,12 @@ Page({
     if (!this.data.password) {
       wx.showToast({
         title: "密码不能为空",
+        icon: "none",
+        duration: 1000
+      });
+    } else if(!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,12}$/.test(this.data.password)) {
+      wx.showToast({
+        title: '密码请输入8-12位数字和字母组合',
         icon: "none",
         duration: 1000
       });

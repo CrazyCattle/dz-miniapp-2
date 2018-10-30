@@ -34,14 +34,14 @@
       <view class="row">
         <view class="row-tit">密码：</view>
         <view class="rot-ipt">
-          <input type="text" password class="input" bindblur="inputPwd" bindinput="inputPwd" placeholder='设置新密码'></input>
+          <input type="text" password class="input" bindblur="inputPwd" bindinput="inputPwd" placeholder='请设置登录密码'></input>
         </view>
       </view>
     </view>
     <!-- <button bindtap="loginIn" class="baseBtn mt100">绑定并登录</button> -->
     <button bindtap="bingTologin" class="baseBtn mt100">绑定并登录</button>
     <view class="link-register tc mt40">
-      可用此手机号密码电脑登陆
+      可用此手机号密码电脑登录
     </view>
     <view class="website">www.dazhao100.com</view>
   </form>

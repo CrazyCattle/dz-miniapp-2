@@ -40,7 +40,7 @@
         </view>
       </view>
     </view>
-    <button bindtap="register" class="baseBtn mt100">注册</button>
+    <button bindtap="register" class="baseBtn mt100">下一步</button>
     <view class="link-register tc mt40">
       注册及同意《大招网用户协议》
     </view>

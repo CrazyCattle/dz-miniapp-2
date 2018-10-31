@@ -38,8 +38,8 @@ Page({
     aiList: [],
 
     workType: 1,
-    orderby: 0,
-    isai: 1,
+    orderby: 1,
+    isai: 0,
     baseCity: '',
     baseCityId: '',
 
@@ -86,14 +86,14 @@ Page({
 
     if (type == 1) {
       this.setData({
-        orderby: 0,
-        isai: 1,
+        orderby: 1,
+        isai: 0,
       })
       this.getPositionListFun()
     } else if (type == 2) {
       this.setData({
-        orderby: 1,
-        isai: 0,
+        orderby: 0,
+        isai: 1,
       })
       this.getPositionListFun()
     } else if( type == 3) {
@@ -487,7 +487,6 @@ Page({
   onShow () {
     if (!app.globalData.student_id || !app.globalData.token) {
       this.setData({
-        showType: 2,
         curpage: 1,
         orderby: 1,
         isai: 0

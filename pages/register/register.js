@@ -1,7 +1,8 @@
 
 import { 
   register,
-  getAuthCode
+  getAuthCode,
+  registerhome
 } from "../../api";
 
 
@@ -92,7 +93,7 @@ Page({
         this.data.mobilecode
       );
       wx.request({
-        url: `${register}`,
+        url: `${registerhome}`,
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
@@ -102,21 +103,26 @@ Page({
           mobile: this.data.mobile
         },
         success: res => {
-          wx.showToast({
-            title: res.data.errortip,
-            icon: "none",
-            duration: 1000
-          });
           if (res.data.error == '0') {
-            wx.setStorageSync("student_id", (app.globalData.student_id = res.data.listjson.student_id));
-            wx.setStorageSync("token", (app.globalData.token = res.data.listjson.token));
-            wx.setStorageSync("loginType", 'userlogin');
-            app.globalData.loginType = 'userlogin'
-            setTimeout(() => {
-              wx.reLaunch({
-                url: '../navMe/me'
-              })
-            }, 150)
+            console.log(res)
+            wx.navigateTo({
+              url: `../setPassword/password?code=${this.data.mobilecode}&mobile=${this.data.mobile}`
+            })
+            // wx.setStorageSync("student_id", (app.globalData.student_id = res.data.listjson.student_id));
+            // wx.setStorageSync("token", (app.globalData.token = res.data.listjson.token));
+            // wx.setStorageSync("loginType", 'userlogin');
+            // app.globalData.loginType = 'userlogin'
+            // setTimeout(() => {
+            //   wx.reLaunch({
+            //     url: '../navMe/me'
+            //   })
+            // }, 150)
+          } else {
+            wx.showToast({
+              title: res.data.errortip,
+              icon: "none",
+              duration: 1000
+            });
           }
         }
       })

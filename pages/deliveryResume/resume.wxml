@@ -3,7 +3,7 @@
   <view class="list-content">
     <scroll-view scroll-y style="height: 100%;">
       <view class="srcoll-box" wx:if="{{ page == '1' && resumeListArr.length > 0 }}">
-        <form bindsubmit="formSubmit" report-submit='true'>
+        <form report-submit='true'>
           <!-- <radio-group bindchange="radioChange">
             <view class="resume-item active bg-f" wx:for="{{ resumeListArr }}" wx:key="key">
               <input type="hidden" name="id" value="{{ item.resumes_id }}"></input>
@@ -38,7 +38,7 @@
               </view>
             </view>
           <!-- </radio-group> -->
-          <button class="subFixedBtn">投递简历</button>
+          <button class="subFixedBtn" bindtap='formSubmit'>投递简历</button>
         </form>
       </view>
       <view class="resume-tips" wx:if="{{ showLinkWeb && resumeListArr.length == 0}}">

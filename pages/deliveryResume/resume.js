@@ -9,7 +9,6 @@ import {
 } from '../../utils/util';
 
 const app = getApp()
-
 Page({
   data: {
     curShow: true,
@@ -37,49 +36,40 @@ Page({
   radioChange (e) {
     console.log(e.detail.value)
   },
-  formSubmit(e) {
-    console.log(e.detail.value, e.detail.formId)
-    const id = e.detail.value.id
-    const formId = e.detail.formId
-    wx.request({
-      url: `${deliveryResume}`,
-      data: {
-        stu_id: app.globalData.student_id,
-        token: app.globalData.token,
-        resumes_id: id,
-        position_id: this.data.jobId,
-        form_id: formId
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      method: 'POST',
-      success: res => {
-        console.log(res)
-        if (res.data.error == '0') {
+  formSubmit() {
+    if (this.data.chooseId !== -1) {
+      wx.request({
+        url: `${deliveryResume}`,
+        data: {
+          stu_id: app.globalData.student_id,
+          token: app.globalData.token,
+          resumes_id: this.data.chooseId,
+          position_id: this.data.jobId
+        },
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'POST',
+        success: res => {
           wx.showToast({
             icon: 'none',
             title: res.data.errortip,
             duration: 1000
           })
-          setTimeout(() => {
-            wx.navigateBack({
-              delta: 1
+          if (res.data.error == '0') {
+            setTimeout(() => {
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 1000)
+          } else if (res.data.error == '1') {
+            this.setData({
+              showLinkWeb: true
             })
-          }, 1000)
-        } else if (res.data.error == '1') {
-          wx.showToast({
-            icon: 'none',
-            title: res.data.errortip,
-            duration: 1000
-          })
-
-          this.setData({
-            showLinkWeb: true
-          })
+          }
         }
-      }
-    })
+      })
+    }
   },
   linkResume(e) {
     let resumes_id = e.currentTarget.dataset.id

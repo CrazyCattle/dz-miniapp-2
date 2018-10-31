@@ -82,4 +82,6 @@ module.exports = {
 
   WXregister: `${basicUrl}/WXregister`, // 用户 注册登录(来自分享)
   getShareAuthCode: `${basicUrl}/getShareAuthCode`, // 用户登录 注册 验证码获取(分享)
+
+  registerhome: `${basicUrl}/registerhome`, // 手机号 注册用户，获取验证码
 }

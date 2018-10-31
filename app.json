@@ -55,7 +55,8 @@
     "pages/agreeRegister/agreeRegister",
     "pages/exchangeCity/city",
     "pages/search/search",
-    "pages/relatedPositions/positions"
+    "pages/relatedPositions/positions",
+    "pages/setPassword/password"
   ],
   "window": {
     "backgroundTextStyle": "light",

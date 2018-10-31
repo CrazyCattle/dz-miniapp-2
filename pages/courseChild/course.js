@@ -18,7 +18,7 @@ const WxParse = require('../../wxParse/wxParse.js');
 Page({
   data: {
     hasPower: false,
-    share_islimits: 0,
+    share_islimits: 1,
     class_power: 0,
 
     showMore: false,

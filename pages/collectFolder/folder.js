@@ -18,6 +18,8 @@ Page({
     curpage: 1,
     jobList: [],
     companyList: [],
+    isJobBack: false,
+    isComBack: false,
 
     canLoadMore: true,
     showLoading: true
@@ -135,12 +137,16 @@ Page({
     })
     if (this.data.fliterType == 'job') {
       this.setData({
-        jobList: []
+        jobList: [],
+        isJobBack: true,
+        isComBack: false
       })
       this.getPositionCollectFun()
     } else if (this.data.fliterType == 'company') {
       this.setData({
-        companyList: []
+        companyList: [],
+        isJobBack: false,
+        isComBack: true
       })
       this.getCompanyCollectFun()
     }
@@ -152,11 +158,36 @@ Page({
       navToLogin()
     }
   },
-  onReady: function () {},
-  onShow: function () {},
-  onHide: function () {},
-  onUnload: function () {},
-  onPullDownRefresh: function () {},
-  onReachBottom: function () {},
-  onShareAppMessage: function () {}
+  onShow: function () {
+    if (this.data.isJobBack) {
+      this.setData({
+        fliterType: 'job',
+        showLoading: true,
+        curpage: 1,
+        canLoadMore: true,
+        jobList: []
+      })
+      this.getPositionCollectFun()
+    } else if (this.data.isComBack) {
+      this.setData({
+        fliterType: 'company',
+        showLoading: true,
+        curpage: 1,
+        canLoadMore: true,
+        companyList: []
+      })
+      this.getCompanyCollectFun()
+    }
+    if (this.data.fliterType == 'job') {
+      this.setData({
+        isJobBack: true,
+        isComBack: false
+      })
+    } else {
+      this.setData({
+        isJobBack: false,
+        isComBack: true
+      })
+    }
+  }
 })

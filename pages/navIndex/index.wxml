@@ -49,15 +49,37 @@
     <view class="recommend-box mt20">
       <view class="recommend mt20 bg-f">
         <view class="recommend-tab">
-          <view class="tab recom {{ showType == 1?'cur':'' }}"
-            data-type="1"
+          <view class="tab current {{ showType == 1?'cur':'' }}" data-type="1" bindtap="showRecommend">最新职位</view>
+          <view class="tab recom {{ showType == 2?'cur':'' }}"
+            data-type="2"
             bindtap="showRecommend"
             wx:if="{{ hasToken }}">推荐职位</view>
-          <view class="tab current {{ showType == 2?'cur':'' }}" data-type="2" bindtap="showRecommend">最新职位</view>
+          
           <view class="tab hot {{ showType == 3?'cur':'' }}" data-type="3" bindtap="showRecommend">热门企业</view>
         </view>
       </view>
       <view class="recommend bg-f" wx:if="{{ showType == 1 }}">
+        <view class="position">
+          <view class="post {{ workType == 1?'cur':'' }}" data-id="1" bindtap="changeWT">全职</view>
+          <view class="post {{ workType == 2?'cur':'' }}" data-id="2" bindtap="changeWT">实习</view>
+        </view>
+        <view class="r-list">
+          <view class="r-list-item" wx:for="{{ jobList }}" wx:key="key" wx:for-index="index" wx:for-item="item" bindtap="linkJobDetail" data-id="{{ item.id_job }}">
+            <image class="pic" src="{{ item.companyLogo }}"></image>
+            <view class="cont">
+              <view class="tit">
+                <view class="job lh-normal">{{ item.jobName }}</view>
+                <view class="salary">{{ item.payMin/1000 }}-{{ item.payMax/1000 }}K</view>
+              </view>
+              <view class="company">{{ item.companyShort }}</view>
+              <view class="s-desc"> 
+                <text class="infor lh-normal">{{ item.degree }} | {{item.workProvince}}{{ item.workCity }}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="recommend bg-f" wx:if="{{ showType == 2 }}">
         <view class="ai-tip" wx:if="{{ showAiTip == 1 }}" bindtap="linkToEditInfor">修正您的<text class="notice">个人信息</text>，AI 管家将为您匹配更精准的信息
           <view class="icon" catchtap="closeTip">
             <image class="icon-close" src="../../images/close.png"></image>
@@ -94,27 +116,6 @@
                   <image src='../../images/dot.png' class="dotImg"></image>
                   <view wx:if="{{ index == key && clicked }}" data-key="{{index}}" class="noInterest" data-id="{{item.id_job}}" catchtap='noInterest'>不感兴趣</view>
                 </view>
-              </view>
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class="recommend bg-f" wx:if="{{ showType == 2 }}">
-        <view class="position">
-          <view class="post {{ workType == 1?'cur':'' }}" data-id="1" bindtap="changeWT">全职</view>
-          <view class="post {{ workType == 2?'cur':'' }}" data-id="2" bindtap="changeWT">实习</view>
-        </view>
-        <view class="r-list">
-          <view class="r-list-item" wx:for="{{ jobList }}" wx:key="key" wx:for-index="index" wx:for-item="item" bindtap="linkJobDetail" data-id="{{ item.id_job }}">
-            <image class="pic" src="{{ item.companyLogo }}"></image>
-            <view class="cont">
-              <view class="tit">
-                <view class="job lh-normal">{{ item.jobName }}</view>
-                <view class="salary">{{ item.payMin/1000 }}-{{ item.payMax/1000 }}K</view>
-              </view>
-              <view class="company">{{ item.companyShort }}</view>
-              <view class="s-desc"> 
-                <text class="infor lh-normal">{{ item.degree }} | {{item.workProvince}}{{ item.workCity }}</text>
               </view>
             </view>
           </view>

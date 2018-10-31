@@ -57,12 +57,12 @@ Page({
             initLoginStatus()
           }
         } else {
+          wx.showToast({
+            title: data.errortip,
+            icon: "none",
+            duration: 1000
+          });
           if (data.error == '0') {
-            wx.showToast({
-              title: data.errortip,
-              icon: "none",
-              duration: 1000
-            });
             let timer = setTimeout(() => {
               wx.reLaunch({
                 url: '../navMe/me'

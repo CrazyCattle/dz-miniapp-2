@@ -92,10 +92,20 @@
   background-color: #fff;
 }
 .row:first-child .txt:first-child {
+  display: flex;
+  align-items: center;
   font-family:PingFangSC-Semibold;
   font-weight: bold;
   font-size: 30rpx;
   color: #313148;
+}
+.row:first-child .txt:first-child .tit {
+  padding: 5rpx 10rpx;
+  margin-left: 10rpx;
+  font-size: 20rpx;
+  color: #BBBBBB;
+  border-radius: 3rpx;
+  background-color: #F8F8F8;
 }
 .row:first-child .txt:last-child {
   font-size: 26rpx;

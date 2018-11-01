@@ -376,14 +376,22 @@ Page({
 
   onLoad: function (options) {
     console.log(options)
-    this.setData({
-      cId: options.id,
-      from_id: options.from_student_id
-    })
+    if (options.scene) {
+      let scene = decodeURIComponent(options.scene)
+      let ids = scene.split('and')
+      this.setData({
+        cId: ids[0],
+        from_id: ids[1]
+      })
+    } else {
+      this.setData({
+        cId: options.id,
+        from_id: options.from_student_id || ''
+      })
+    }
   },
 
   onShow () {
-    console.log(this.data.from_id, '111')
     this.getUserToken()
   },
 

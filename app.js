@@ -20,80 +20,12 @@ App({
     userPhone: wx.getStorageSync('userPhone') || '', // 用户手机号
   },
   
-  onLaunch: function () {
+  onLaunch: function (options) {
     let self = this;
-
+  
     wx.showShareMenu({
       withShareTicket: true
     });
-
-    // let promise = new Promise((resolve, reject) => {
-    //   wx.login({
-    //     success: res => {
-    //       resolve(res)
-    //     }
-    //   });
-    // })
-    // promise.then((res) => {
-    //   return new Promise((resolve, reject) => {
-    //     wx.request({
-    //       url: `${wxAuthorization}`,
-    //       header: {
-    //         "Content-Type": "application/x-www-form-urlencoded"
-    //       },
-    //       method: 'POST',
-    //       data: {
-    //         code: res.code
-    //       },
-    //       success: res => {
-    //         resolve(res)
-    //       }
-    //     })
-    //   })
-    // }).then(res => {
-    //   if (res.data.error == '0') {
-    //     this.globalData.openid = res.data.result.openid
-    //     wx.setStorageSync('openid', this.globalData.openid)
-    //   }
-    // })
-    // // 登录
-    // new Promise((resolve, reject) => {
-    //   wx.login({
-    //     success: res => {
-    //       console.log(res);
-    //       resolve(res);
-    //     }
-    //   });
-    // }).then(res => {
-    //   // 获取 openid 以及 session_key
-    //   wx.request({
-    //     url: `https://www.mohuso.com/port/wxAuthorization?code=${res.code}`,
-    //     method: "GET",
-    //     success: res => {
-    //       // console.log(res.data, res.data.error, res.data.result.openid)
-    //       if (res.data.error == "0") {
-    //         this.globalData.openid = res.data.result.openid;
-    //         console.log(self.globalData.openid);
-    //         wx.setStorage({
-    //           "key": "openid",
-    //           "data": this.globalData.openid
-    //         });
-    //         wx.getStorage({
-    //           key:"openid",
-    //           success: (res) => {
-    //             console.log('异步', res)
-    //           }
-    //         })
-    //       }
-    //     },
-    //     fail: function() {
-    //       // fail
-    //     },
-    //     complete: function() {
-    //       // complete
-    //     }
-    //   });
-    // });
 
     // 获取用户信息
     wx.getSetting({

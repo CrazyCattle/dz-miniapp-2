@@ -30,14 +30,18 @@ Page({
   }, 
 
   linkJobDetail (e) {
-    if (getUserState()) {
-      const id = e.currentTarget.dataset.id
-      wx.navigateTo({
-        url: `../jobDetail/detail?id=${id}`
-      })
-    } else {
-      navToLogin()
-    }
+    // if (getUserState()) {
+    //   const id = e.currentTarget.dataset.id
+    //   wx.navigateTo({
+    //     url: `../jobDetail/detail?id=${id}`
+    //   })
+    // } else {
+    //   navToLogin()
+    // }
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `../jobDetail/detail?id=${id}`
+    })
   },
   linkJobList() {
     wx.navigateTo({

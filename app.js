@@ -9,6 +9,7 @@ App({
   globalData: {
     userInfo: null,
     openid: wx.getStorageSync('openid') || '', //微信openid
+    shareOpenid: wx.getStorageSync('shareOpenid') || '', // 进入分享页openid
     stud_info: wx.getStorageSync('stud_info') || '', //学生信息
     student_img: wx.getStorageSync('userIcon') || '',//学生图片
     student_id: wx.getStorageSync('student_id') || '',//学生id

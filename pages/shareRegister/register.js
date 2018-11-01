@@ -101,7 +101,8 @@ Page({
         method: 'POST',
         data: {
           mobilecode: this.data.mobilecode,
-          mobile: this.data.mobile
+          mobile: this.data.mobile,
+          wxtoken: app.globalData.shareOpenid
         },
         success: res => {
           wx.showToast({
@@ -118,7 +119,7 @@ Page({
             app.globalData.loginType = 'userlogin'
             wx.showLoading()
             this.setShareLimit()
-          } else {
+          } else if (res.data.error == 2) {
             let timer = setTimeout(() => {
               wx.navigateTo({
                 url: `../agreeRegister/agreeRegister?cId=${this.data.cId}&fromId=${this.data.fromId}&mobile=${this.data.mobile}`
@@ -145,6 +146,7 @@ Page({
             initLoginStatus()
           }
         } else {
+          console.log(res)
           let timer = setTimeout(() => {
             wx.navigateTo({
               url: `../share/share?id=${this.data.cId}&from_student_id=${this.data.fromId}`

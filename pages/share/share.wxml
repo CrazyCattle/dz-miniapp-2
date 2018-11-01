@@ -36,7 +36,10 @@
     <view class="support-txt" wx:if="{{ !hasPower && isShared && !showGetCourse }}">支持成功后，你将获得本节课程</view>
 
     <!-- 已领取 立即查看 -->
-    <button class="btn" wx:if="{{ showGetCourse }}" data-id="{{ courseDetails.class_id }}" bindtap="linkToCourse">
+    <button class="btn"
+      wx:if="{{ showGetCourse }}"
+      data-id="{{ courseDetails.class_id }}"
+      bindtap="linkToCourse">
       <image class="img" src="../../images/invi/btn-check.png"></image>
     </button>
     <view class="back" wx:if="{{ showGetCourse }}">

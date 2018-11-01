@@ -44,7 +44,8 @@ Page({
           url: `${WxRegLogin}`,
           data: {
             mobile: this.data.mobile,
-            password: this.data.password
+            password: this.data.password,
+            wxtoken: app.globalData.shareOpenid
           },
           success: res => {
             console.log(res, 'success')

@@ -7,7 +7,8 @@ import {
   classTwoLesson,
   getLessonShare,
   SubIsVisitorer,
-  SubOneVisitorer
+  SubOneVisitorer,
+  getCheckoutShare
 } from '../../api.js'
 
 import {
@@ -48,8 +49,54 @@ Page({
 
   linkToCourse (e) {
     let id = e.currentTarget.dataset.id
-    wx.navigateTo({
-      url: `../courseChild/course?id=${id}`
+
+    let promise = new Promise((resolve, reject) => {
+      wx.login({
+        success: res => {
+          resolve(res)
+        }
+      });
+    })
+    promise.then((res) => {
+      return new Promise((resolve, reject) => {
+        wx.request({
+          url: `${wxAuthorization}`,
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          method: 'POST',
+          data: {
+            code: res.code
+          },
+          success: res => {
+            resolve(res)
+          }
+        })
+      })
+    }).then(res => {
+      const { result } = res.data
+      wx.request({
+        url: `${getCheckoutShare}`,
+        data: {
+          class_id: this.data.cId,
+          from_student_id: this.data.from_id,
+          wxtoken: result.openid
+        },
+        success: res => {
+          app.globalData.shareOpenid = result.openid
+          wx.setStorageSync('shareOpenid', result.openid)
+          console.log(app.globalData.shareOpenid)
+          if (res.data.error == 0) {
+            wx.navigateTo({
+              url: `../courseChild/course?id=${id}`
+            })
+          } else {
+            wx.navigateTo({
+              url: `../shareRegister/register?cId=${this.data.cId}&fromId=${this.data.from_id}`
+            })
+          }
+        }
+      })
     })
   },
 

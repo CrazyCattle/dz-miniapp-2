@@ -84,4 +84,5 @@ module.exports = {
   getShareAuthCode: `${basicUrl}/getShareAuthCode`, // 用户登录 注册 验证码获取(分享)
 
   registerhome: `${basicUrl}/registerhome`, // 手机号 注册用户，获取验证码
+  getCheckoutShare: `${basicUrl}/getCheckoutShare`, // 领取分享课程  判断用户是否存在
 }

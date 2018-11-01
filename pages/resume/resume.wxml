@@ -1,51 +1,5 @@
 <view class="resume">
-  <view class="resume-box">
-    <image bindtap="prewResumeImg" mode="widthFix" style="display;block;width: 100%;" src="{{ imgurl }}"></image>
-  </view>
-  <view class="send-box bg-f">
-    <button class="baseBtn" bindtap="close">邮件投递</button>
-  </view>
-
-  <view class="send" wx:if="{{ sendResumeBox }}">
-    <view class="title">简历快速投递</view>
-    <view class="tips">
-      你可以把做好的简历一键投递到心仪公司HR的邮箱备战校招，快人一步！
-    </view>
-    <form>
-      <view class="send-content">
-        <view class="row">
-          <text class="row-title">邮件主题：</text>
-          <view class="ipt-box">
-            <input class="ipt" bindinput="iptTitle" bindblur="iptTitle" placeholder-class='placeholder' placeholder='输入邮件主题'></input>
-          </view>
-        </view>
-        <view class="row">
-          <text class="row-title">您的姓名：</text>
-          <view class="ipt-box">
-            <input class="ipt"  bindinput="iptName" bindblur="iptName" placeholder-class='placeholder' placeholder='输入您的姓名'></input>
-          </view>
-        </view>
-        <view class="row">
-          <text class="row-title">收件邮箱：</text>
-          <view class="ipt-box">
-            <input class="ipt" bindinput="iptReEmail" bindblur="iptReEmail" placeholder-class='placeholder' placeholder='输入HR收件邮箱'></input>
-          </view>
-        </view>
-        <view class="row">
-          <text class="row-title">发件邮箱：</text>
-          <view class="ipt-box">
-            <input class="ipt"  bindinput="iptSendEmail" bindblur="iptSendEmail" placeholder-class='placeholder' placeholder='输入您的发件邮箱'></input>
-          </view>
-        </view>
-        <view class="row textarea-box">
-          <textarea class="textarea"  bindinput="iptCont" bindblur="iptCont" placeholder-class='placeholder' placeholder='' value="{{ sendTxt }}"></textarea>
-        </view>
-        <view class="row">
-          <button class="btn reset" bindtap="close">取消</button>
-          <button class="btn ok" bindtap="sendresume">投递</button>
-        </view>
-      </view>
-    </form>
-  </view>
-  <mask wx:if="{{ sendResumeBox }}"></mask>
+  <web-view
+    src="{{ imgurl }}">
+  </web-view>
 </view>

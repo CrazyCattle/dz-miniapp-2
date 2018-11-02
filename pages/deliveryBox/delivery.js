@@ -23,7 +23,36 @@ Page({
     page: -1,
     canGetDropinbox : true,
     dropinboxPage: 1,
-
+    copy: [
+      {
+        jobName: '企业服务部实习生',
+        apply_time: '2016.12.30',
+        companyShort: '上海脚步网络科技有限公司',
+        apply_passstate: '-1',
+        companyLogo: 'http://yuncompany.bestsep.com//Uploads/icon/dr/sbzdh.jpg'
+      },
+      {
+        jobName: 'test 1',
+        apply_time: '2018-01-01',
+        companyShort: '上海脚步网',
+        apply_passstate: '-1',
+        companyLogo: 'http://yuncompany.bestsep.com//Uploads/icon/dr/sbzdh.jpg'
+      },
+      {
+        jobName: 'test 1',
+        apply_time: '2018-01-01',
+        companyShort: '上海脚步网',
+        apply_passstate: '-1',
+        companyLogo: 'http://yuncompany.bestsep.com//Uploads/icon/dr/sbzdh.jpg'
+      },
+      {
+        jobName: 'test 1',
+        apply_time: '2018-01-01',
+        companyShort: '上海脚步网',
+        apply_passstate: '-1',
+        companyLogo: 'http://yuncompany.bestsep.com//Uploads/icon/dr/sbzdh.jpg'
+      }
+    ],
     mydropinbox: []
   },
   //获取投递箱
@@ -54,26 +83,32 @@ Page({
           }
         } else {
           if (res.data.error == 0) {
-            const { list } = res.data.result
-
-            console.log(list)
-            if (list.length == 0 && _self.data.mydropinbox.length == 0) {
-              _self.setData({
-                hasMoreInfor1: false
-              })
-            }
-            if (list.length < 10 & list.length > 0) {
-              _self.setData({
-                canGetDropinbox: false
-              })
-            } else {
-              _self.setData({
-                dropinboxPage: ++_self.data.dropinboxPage
-              })
-            }
+            const { listjson } = res.data
+            // console.log(listjson)
+            // if (listjson.length == 0 && _self.data.mydropinbox.length == 0) {
+            //   _self.setData({
+            //     hasMoreInfor1: false
+            //   })
+            // }
+            // if (listjson.length < 10 & listjson.length > 0) {
+            //   _self.setData({
+            //     canGetDropinbox: false
+            //   })
+            // } else {
+            //   _self.setData({
+            //     dropinboxPage: ++_self.data.dropinboxPage
+            //   })
+            // }
+            // _self.setData({
+            //   mydropinbox: _self.data.mydropinbox.concat(listjson),
+            //   showMore1: false
+            // })
             _self.setData({
-              mydropinbox: _self.data.mydropinbox.concat(list),
-              showMore1: false
+              mydropinbox: listjson
+            })
+          } else {
+            _self.setData({
+              mydropinbox: []
             })
           }
         }
@@ -99,21 +134,15 @@ Page({
   },
   onLoad: function (options) {
     if (getUserState() && !!app.globalData.student_id && !!app.globalData.token) {
-      // this.getMydropinboxFun()
+      this.getMydropinboxFun()
     } else {
-      // wx.showToast({
-      //   title: "请先登录",
-      //   icon: "none",
-      //   duration: 1000
-      // });
-      // navToLogin()
+      wx.showToast({
+        title: "请先登录",
+        icon: "none",
+        duration: 1000
+      });
+      navToLogin()
     }
   },
-  onReady: function () { },
-  onShow: function () { },
-  onHide: function () { },
-  onUnload: function () { },
-  onPullDownRefresh: function () { },
-  onReachBottom: function () { },
-  onShareAppMessage: function () { }
+  onShow: function () {}
 })

@@ -85,4 +85,5 @@ module.exports = {
 
   registerhome: `${basicUrl}/registerhome`, // 手机号 注册用户，获取验证码
   getCheckoutShare: `${basicUrl}/getCheckoutShare`, // 领取分享课程  判断用户是否存在
+  ShareResumesOne: `${basicUrl}/ShareResumesOne`, //  简历分享
 }

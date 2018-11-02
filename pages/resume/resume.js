@@ -1,6 +1,7 @@
 import {
   getResumeOne,
-  sendEmail
+  sendEmail,
+  ShareResumesOne
 } from '../../api';
 
 import {
@@ -14,7 +15,8 @@ const emailReg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 Page({
   data: {
     resumes_id: '',
-    imgurl: ''
+    imgurl: '',
+    student_id: ''
   },
   getResumeDetail(id) {
     let _self = this
@@ -45,27 +47,61 @@ Page({
           }
         } else {
           if (res.data.error == '0') {
-            const { imgurl } = res.data.listjson
+            const { listjson } = res.data
             _self.setData({
-              imgurl
+              imgurl: listjson.imgurl,
+              resumeTitle: listjson.title
             })
+            console.log()
           }
         }
       }
     })
   },
-  prewResumeImg() {
-    wx.previewImage({
-      urls: [this.data.imgurl]
+
+  getShareResume () {
+    wx.request({
+      url: `${ShareResumesOne}`,
+      data: {
+        resumes_id: this.data.resumes_id,
+        stu_id: this.data.student_id
+      },
+      success: res => {
+        if (res.data.error == 0) {
+          const { imgurl } = res.data.listjson
+          this.setData({
+            imgurl
+          })
+        }
+      }
     })
   },
+
   onLoad: function (options) {
     let id = options.resumes_id
+    let student_id = options.student_id || ''
+
     this.setData({
       resumes_id: id
     })
-    this.getResumeDetail(id)
+
+    if (student_id) {
+      this.setData({
+        student_id: student_id
+      })
+      this.getShareResume()
+    } else {
+      this.getResumeDetail(id)
+    }
   },
-  onReady: function () { },
-  onShow: function () { }
+  onShareAppMessage (e) {
+    return {
+      title: `<${this.data.resumeTitle}>_大招智能简历`,
+      // imageUrl: '',
+      path: `pages/resume/resume?resumes_id=${this.data.resumes_id}&student_id=${app.globalData.student_id}`,
+      success: function (res) {
+        console.log(res)
+      }
+    }
+  }
 })

@@ -1,6 +1,9 @@
+.resume {
+  min-height: 100vh;
+}
 .resume-box {
   width: 700rpx;
-  height: 994rpx;
+  min-height: 994rpx;
   margin: 52rpx auto 0;
   overflow-y: scroll;
 }

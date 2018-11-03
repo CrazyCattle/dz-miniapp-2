@@ -18,12 +18,13 @@ const app = getApp()
 
 Page({
   data: {
+    tabActive: 1,
     student_id: '',
     type: 0,
     page: -1,
     canGetDropinbox : true,
     dropinboxPage: 1,
-    copy: [
+    mydropinbox: [
       {
         jobName: '企业服务部实习生',
         apply_time: '2016.12.30',
@@ -35,25 +36,43 @@ Page({
         jobName: 'test 1',
         apply_time: '2018-01-01',
         companyShort: '上海脚步网',
-        apply_passstate: '-1',
+        apply_passstate: '0',
         companyLogo: 'http://yuncompany.bestsep.com//Uploads/icon/dr/sbzdh.jpg'
       },
       {
         jobName: 'test 1',
         apply_time: '2018-01-01',
         companyShort: '上海脚步网',
-        apply_passstate: '-1',
+        apply_passstate: '1',
         companyLogo: 'http://yuncompany.bestsep.com//Uploads/icon/dr/sbzdh.jpg'
       },
       {
         jobName: 'test 1',
         apply_time: '2018-01-01',
         companyShort: '上海脚步网',
-        apply_passstate: '-1',
+        apply_passstate: '2',
+        companyLogo: 'http://yuncompany.bestsep.com//Uploads/icon/dr/sbzdh.jpg'
+      },
+      {
+        jobName: 'test 1',
+        apply_time: '2018-01-01',
+        companyShort: '上海脚步网',
+        apply_passstate: '3',
+        companyLogo: 'http://yuncompany.bestsep.com//Uploads/icon/dr/sbzdh.jpg'
+      },
+      {
+        jobName: 'test 1',
+        apply_time: '2018-01-01',
+        companyShort: '上海脚步网',
+        apply_passstate: '4',
         companyLogo: 'http://yuncompany.bestsep.com//Uploads/icon/dr/sbzdh.jpg'
       }
-    ],
-    mydropinbox: []
+    ]
+  },
+  linkToDropDetail () {
+    wx.navigateTo({
+      url: '../deliveryBoxDetail/detail'
+    })
   },
   //获取投递箱
   getMydropinboxFun() {
@@ -116,25 +135,25 @@ Page({
     })
   },
   lower() {
-    if (this.data.canGetDropinbox) {
-      const self = this;
-      wx.showNavigationBarLoading();
-      self.setData({
-        showMore1: true
-      })
-      if (self.timer1) {
-        clearTimeout(self.timer1);
-      }
-      self.timer1 = setTimeout(() => {
-        self.getMydropinboxFun()
-        wx.hideNavigationBarLoading();
-      }, 500);
-    }
-    console.log('lower1')
+    // if (this.data.canGetDropinbox) {
+    //   const self = this;
+    //   wx.showNavigationBarLoading();
+    //   self.setData({
+    //     showMore1: true
+    //   })
+    //   if (self.timer1) {
+    //     clearTimeout(self.timer1);
+    //   }
+    //   self.timer1 = setTimeout(() => {
+    //     self.getMydropinboxFun()
+    //     wx.hideNavigationBarLoading();
+    //   }, 500);
+    // }
+    // console.log('lower1')
   },
   onLoad: function (options) {
     if (getUserState() && !!app.globalData.student_id && !!app.globalData.token) {
-      this.getMydropinboxFun()
+      // this.getMydropinboxFun()
     } else {
       wx.showToast({
         title: "请先登录",

@@ -1,0 +1,191 @@
+.resume-box .list {
+  padding: 20rpx 15rpx;
+}
+.resume-box .list > .item {
+  display: flex;
+  box-sizing: border-box;
+  padding: 32rpx 30rpx;
+  margin-bottom: 24rpx;
+  border-radius:4rpx;
+  background-color: #fff;
+}
+.resume-box .list .img {
+  width: 116rpx;
+  height: 116rpx;
+  margin-right: 22rpx;
+}
+.resume-box .list .conts {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.conts__top,
+.conts__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.conts__top .tit {
+  max-width: 335rpx;
+  font-size: 28rpx;
+  color: #313148;
+  font-weight: bold;
+  font-family:'PingFangSC-Semibold';
+}
+.conts__top .time {
+  font-size: 22rpx;
+  color: #848CA1;
+}
+
+.conts__bottom .company {
+  font-size: 26rpx;
+  color: #848CA1;
+}
+.conts__bottom .status {
+  font-size: 24rpx;
+  color: #618FEB;
+}
+
+.detail {
+  padding: 28rpx 32rpx;
+  background-color: #fff;
+}
+.detail .d__head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 42rpx;
+  justify-content: space-between;
+}
+.detail .d__head .item {
+  font-size: 22rpx;
+  color: #848CA1;
+  position: relative;
+}
+.detail .d__head .item::after {
+  content: '';
+  position: absolute;
+  width: 36rpx;
+  height: 2rpx;
+  top: 50%;
+  right: -112rpx;
+  background-color: #D6DAE4;
+}
+.detail .d__head .item.active {
+  color: #618FEB;
+}
+.detail .d__head .item.active::after {
+  background-color: #618FEB;
+}
+.detail .d__head .item:last-child::after {
+  width: 0;
+}
+
+.detail .d__row {
+  padding-left: 28rpx;
+  margin-bottom: 45rpx;
+  position: relative;
+}
+.detail .d__row::before,
+.detail .d__row::after {
+  content: '';
+  position: absolute;
+  background-color: #D6DAE4;
+}
+.detail .d__row::before {
+  left: 0;
+  top: 10rpx;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+}
+.detail .d__row::after {
+  left: 5rpx;
+  top: 10rpx;
+  height: calc(100% - 10rpx);
+  width: 2rpx;
+}
+.detail .d__row.active::before,
+.detail .d__row.active::after {
+  background-color: #618FEB;
+}
+
+.detail .d__row .d__row-tit,
+.detail .d__row .d__row-cont {
+  display: block;
+  font-size: 24rpx;
+  color: #848CA1;
+}
+.detail .d__row.active .d__row-tit,
+.detail .d__row.active .d__row-cont {
+  color: #618FEB;
+}
+.detail .d__row .d__row-tit {
+  margin-bottom: 22rpx;
+}
+
+.d__row-button {
+  display: flex;
+  height: 60rpx;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.d__row-button .status {
+  display: flex;
+  font-size: 26rpx;
+  align-items: center;
+}
+.d__row-button .status .status-icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+.d__row-button .status-accept,
+.d__row-button .status-refuse {
+  color: #848CA1;
+}
+.status-accept .icon {
+  width: 100%;
+  height: 100%;
+}
+.status-refuse .status-icon {
+  font-size: 20rpx;
+  line-height: 36rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #848CA1;
+}
+
+.d__row-button .btn {
+  width: 200rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  color: #9DA4B4;
+  background-color: #E6E9F3;
+}
+.d__row-button .btn:last-child {
+  margin-right: 0;
+}
+.d__row-button .acceptBtn {
+  color: #fff;
+  background-color: #618FEB;
+}
+.d__row-button .refseBtn {
+  color: #618FEB;
+}
+
+.detail .d__row.active .status-refuse .status-icon {
+  background-color: #F85D67;
+}
+.detail .d__row.active .d__row-button .status-refuse {
+  color: #F85D67;
+}
+.detail .d__row.active .d__row-button .status-accept {
+  color: #5CD892; 
+}

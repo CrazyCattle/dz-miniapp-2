@@ -1,33 +1,36 @@
 <view class="resume-box">
-  <!-- <view class="resume-status-tab">
-    <view class="tab-item">投递成功</view>
-    <view class="tab-item">面试邀请</view>
-    <view class="tab-item">录用通知</view>
-    <view class="tab-item">被淘汰</view>
-  </view> -->
-  <scroll-view class="scroll" scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
-    <view class="list" wx:if="{{ mydropinbox.length >= 1 }}">
-      <view class="item" wx:for="{{ mydropinbox }}" wx:key="key" wx:for-index="index">
-        <image class="img" src="{{ item.companyLogo }}"></image>
-        <view class="conts">
-          <view class="conts__top">
-            <text class="tit ellipsis">{{ item.jobName }}</text>
-            <text class="time">{{ item.apply_time }}</text>
-          </view>
-          <view class="conts__bottom">
-            <text class="company">{{ item.companyShort }}</text>
-            <text class="status">
-              <block>【投递成功】</block> 
-              <!-- <block wx:if="{{ item.apply_passstate == '-1'}}">【不合适】</block>
-              <block wx:if="{{ item.apply_passstate == '0'}}">【待处理】</block>
-              <block wx:if="{{ item.apply_passstate == '1'}}">【待定】</block>
-              <block wx:if="{{ item.apply_passstate == '2'}}">【邀请面试】</block>
-              <block wx:if="{{ item.apply_passstate == '3'}}">【已面试】</block> -->
-            </text>
+  <view class="resume-status-tab">
+    <view class="tab-item {{ tabActive===1?'active':'' }}" bindtap="">投递成功</view>
+    <view class="tab-item {{ tabActive===2?'active':'' }}" bindtap="">面试邀请</view>
+    <view class="tab-item {{ tabActive===3?'active':'' }}" bindtap="">录用通知</view>
+    <view class="tab-item {{ tabActive===4?'active':'' }}" bindtap="">被淘汰</view>
+  </view>
+  <view class="scrollBox">
+    <scroll-view class="scroll" scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
+      <view class="list" wx:if="{{ mydropinbox.length >= 1 }}">
+        <view class="item" wx:for="{{ mydropinbox }}" wx:key="key" wx:for-index="index" bindtap="linkToDropDetail">
+          <image class="img" src="{{ item.companyLogo }}"></image>
+          <view class="conts">
+            <view class="conts__top">
+              <text class="tit ellipsis">{{ item.jobName }}</text>
+              <text class="time">{{ item.apply_time }}</text>
+            </view>
+            <view class="conts__bottom">
+              <text class="company">{{ item.companyShort }}</text>
+              <text class="status">
+                <!-- <block>【投递成功】</block>  -->
+                <block wx:if="{{ item.apply_passstate == '-1'}}">【不合适】</block>
+                <block wx:if="{{ item.apply_passstate == '0'}}">【待处理】</block>
+                <block wx:if="{{ item.apply_passstate == '1'}}">【待定】</block>
+                <block wx:if="{{ item.apply_passstate == '2'}}">【邀请面试】</block>
+                <block wx:if="{{ item.apply_passstate == '3'}}">【已面试】</block>
+                <block wx:if="{{ item.apply_passstate == '4'}}">【投递成功】</block>
+              </text>
+            </view>
           </view>
         </view>
       </view>
-    </view>
-    <tip content="暂无任何数据" wx:if="{{ mydropinbox.length == 0 }}"></tip>
-  </scroll-view>
+      <tip content="暂无任何数据" wx:if="{{ mydropinbox.length == 0 }}"></tip>
+    </scroll-view>
+  </view>
 </view>

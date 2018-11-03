@@ -1,0 +1,97 @@
+<view class="resume-box">
+  <view class="list">
+    <view class="item">
+      <image class="img" src="{{ mydropinbox.detail.companyLogo }}"></image>
+      <view class="conts">
+        <view class="conts__top">
+          <text class="tit ellipsis">{{ mydropinbox.detail.jobName }}</text>
+          <text class="time">{{ mydropinbox.detail.apply_time }}</text>
+        </view>
+        <view class="conts__bottom">
+          <text class="company">{{ mydropinbox.detail.companyShort }}</text>
+          <text class="status">
+            <!-- <block>【投递成功】</block>  -->
+            <block wx:if="{{ mydropinbox.detail.apply_passstate == '-1'}}">【不合适】</block>
+            <block wx:if="{{ mydropinbox.detail.apply_passstate == '0'}}">【待处理】</block>
+            <block wx:if="{{ mydropinbox.detail.apply_passstate == '1'}}">【待定】</block>
+            <block wx:if="{{ mydropinbox.detail.apply_passstate == '2'}}">【邀请面试】</block>
+            <block wx:if="{{ mydropinbox.detail.apply_passstate == '3'}}">【已面试】</block>
+            <block wx:if="{{ mydropinbox.detail.apply_passstate == '4'}}">【投递成功】</block>
+          </text>
+        </view>
+      </view>
+    </view>
+    <view class="detail">
+      <view class="d__head">
+        <text class="item active">投递简历</text>
+        <text class="item">面试邀请</text>
+        <text class="item">录用通知</text>
+      </view>
+      <view class="d__list">
+        <view class="d__row active">
+          <text class="d__row-tit">通过查看，您的初选未通过 </text>
+          <text class="d__row-cont">面试时间: 2017.01.30 10:52:01
+            面试地点:福州闽侯县创业路5号
+            联系人:王女士
+            联系电话: 12345678910
+            补充说明:麻烦记得带.上毕业证书原件或是复印件
+          </text>
+          <view class="d__row-button">
+            <view class="btn acceptBtn">接受</view>
+            <view class="btn refseBtn">拒绝</view>
+          </view>
+          <view class="d__row-button">
+            <view class="btn">接受</view>
+            <view class="btn">拒绝</view>
+          </view>
+        </view>
+        <view class="d__row active">
+          <text class="d__row-tit">通过查看，您的初选未通过 </text>
+          <text class="d__row-cont">面试时间: 2017.01.30 10:52:01
+            面试地点:福州闽侯县创业路5号
+            联系人:王女士
+            联系电话: 12345678910
+            补充说明:麻烦记得带.上毕业证书原件或是复印件
+          </text>
+          <view class="d__row-button">
+            <view class="status status-accept">
+              <view class="status-icon"><image class="icon" src="../../images/accept-icon.png"></image></view>已接受
+            </view>
+          </view>
+          <view class="d__row-button">
+            <view class="status status-refuse"><view class="status-icon">X</view>已拒绝</view>
+          </view>
+        </view>
+        <view class="d__row">
+          <text class="d__row-tit">通过查看，您的初选未通过 </text>
+          <text class="d__row-cont">面试时间: 2017.01.30 10:52:01
+            面试地点:福州闽侯县创业路5号
+            联系人:王女士
+            联系电话: 12345678910
+            补充说明:麻烦记得带.上毕业证书原件或是复印件
+          </text>
+          <view class="d__row-button">
+            <view class="status status-accept">
+              <view class="status-icon"><image class="icon" src="../../images/accept-icon_disabled.png"></image></view>已接受
+            </view>
+          </view>
+          <view class="d__row-button">
+            <view class="status status-refuse"><view class="status-icon">X</view>已拒绝</view>
+          </view>
+        </view>
+        <view class="d__row active">
+          <text class="d__row-tit">通过查看，您的初选未通过 </text>
+          <text class="d__row-cont">投递时间：2016.12.30  10:54:01</text>
+        </view>
+        <view class="d__row">
+          <text class="d__row-tit">通过查看，您的初选未通过</text>
+          <text class="d__row-cont">投递时间：2016.12.30  10:54:01</text>
+        </view>
+        <view class="d__row">
+          <text class="d__row-tit">通过查看，您的初选未通过</text>
+          <text class="d__row-cont">投递时间：2016.12.30  10:54:01</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

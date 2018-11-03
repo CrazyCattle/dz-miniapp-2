@@ -49,13 +49,14 @@
     "pages/myResume/resume",
     "pages/collectFolder/folder",
     "pages/authorizedRecoverty/recovery",
-    "pages/deliveryBox/delivery",
     "pages/waiting/waiting",
     "pages/recoverySuccess/success",
     "pages/agreeRegister/agreeRegister",
     "pages/exchangeCity/city",
     "pages/search/search",
     "pages/relatedPositions/positions",
+    "pages/deliveryBoxDetail/detail",
+    "pages/deliveryBox/delivery",
     "pages/setPassword/password"
   ],
   "window": {

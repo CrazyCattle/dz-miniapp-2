@@ -74,6 +74,8 @@ Page({
     this.setData({
       tabActive: id
     })
+
+    this.getMydropinboxFun()
   },
   linkToDropDetail () {
     wx.navigateTo({
@@ -91,7 +93,7 @@ Page({
         token: app.globalData.token,
         nums: 10,
         p: _self.data.dropinboxPage,
-        type: 0
+        type: _self.data.tabActive
       },
       method: 'GET',
       success: res => {
@@ -109,25 +111,25 @@ Page({
         } else {
           if (res.data.error == 0) {
             const { listjson } = res.data
-            // console.log(listjson)
-            // if (listjson.length == 0 && _self.data.mydropinbox.length == 0) {
-            //   _self.setData({
-            //     hasMoreInfor1: false
-            //   })
-            // }
-            // if (listjson.length < 10 & listjson.length > 0) {
-            //   _self.setData({
-            //     canGetDropinbox: false
-            //   })
-            // } else {
-            //   _self.setData({
-            //     dropinboxPage: ++_self.data.dropinboxPage
-            //   })
-            // }
-            // _self.setData({
-            //   mydropinbox: _self.data.mydropinbox.concat(listjson),
-            //   showMore1: false
-            // })
+            console.log(listjson)
+            if (listjson.length == 0 && _self.data.mydropinbox.length == 0) {
+              _self.setData({
+                hasMoreInfor1: false
+              })
+            }
+            if (listjson.length < 10 & listjson.length > 0) {
+              _self.setData({
+                canGetDropinbox: false
+              })
+            } else {
+              _self.setData({
+                dropinboxPage: ++_self.data.dropinboxPage
+              })
+            }
+            _self.setData({
+              mydropinbox: _self.data.mydropinbox.concat(listjson),
+              showMore1: false
+            })
             _self.setData({
               mydropinbox: listjson
             })
@@ -159,7 +161,7 @@ Page({
   },
   onLoad: function (options) {
     if (getUserState() && !!app.globalData.student_id && !!app.globalData.token) {
-      // this.getMydropinboxFun()
+      this.getMydropinboxFun()
     } else {
       wx.showToast({
         title: "请先登录",

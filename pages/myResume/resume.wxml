@@ -16,6 +16,11 @@
         </view> -->
       </view>
     </view>
-    <tip content="暂无简历数据" wx:if="{{ resumeList.length == 0 }}"></tip>
+    <view class="resume-tips" wx:if="{{ resumeList.length == 0}}">
+      <image class="tip-icon" src="../../images/noresume.png"></image>
+      <view class="tip">还没有写简历，快去写一封吧~</view>
+      <view class="tipfooter">电脑登陆<text>www.dazhao100.com</text>写简历</view>
+    </view>
+    <!-- <tip content="暂无简历数据" wx:if="{{ resumeList.length == 0 }}"></tip> -->
   </scroll-view>
 </view>

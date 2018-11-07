@@ -69,7 +69,7 @@
             <view class="cont">
               <view class="tit">
                 <view class="job lh-normal">{{ item.jobName }}</view>
-                <view class="salary">{{ item.payMin/1000 }}-{{ item.payMax/1000 }}K</view>
+                <view class="salary">{{ item.payMin/1000 }}K-{{ item.payMax/1000 }}K</view>
               </view>
               <view class="company">{{ item.companyShort }}</view>
               <view class="s-desc"> 
@@ -107,7 +107,7 @@
             <view class="cont">
               <view class="tit">
                 <view class="job lh-normal">{{ item.jobName }}</view>
-                <view class="salary">{{ item.payMin/1000 }}-{{ item.payMax/1000 }}K</view>
+                <view class="salary">{{ item.payMin/1000 }}K-{{ item.payMax/1000 }}K</view>
               </view>
               <view class="company">{{ item.companyShort }}</view>
               <view class="s-desc"> 

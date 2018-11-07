@@ -149,7 +149,7 @@ Page({
       console.log(res.target)
     }
     return {
-      title: `${this.data.class_name}系列课程`,
+      title: `${this.data.class_name}`,
       path: `pages/courseChild/course?id=${this.data.cId}`,
       success: function (res) {
         console.log(res)

@@ -122,7 +122,7 @@
         <view class="cont">
           <view class="job lh-normal">
             <view class="title ellipsis">{{ item.jobName }}</view>
-            <view class="salary">{{ item.payMin/1000 }}-{{ item.payMax/1000 }}K</view>
+            <view class="salary">{{ item.payMin/1000 }}K-{{ item.payMax/1000 }}K</view>
           </view>
           <view class="company">{{ item.companyName }}</view>
           <view class="s-desc"> 

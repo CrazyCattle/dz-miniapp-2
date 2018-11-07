@@ -25,7 +25,10 @@
               <input type="hidden" name="id" value="{{ item.resumes_id }}"></input>
               <view class="item-lf">
                 <view class="title ellipsis">{{ item.title }}</view>
-                <view class="desc">{{item.city}} | {{ item.expectwork }}</view>
+                <view class="desc">
+                  <block wx:if="{{ item.language == '0' }}">中文</block>
+                  <block wx:if="{{ item.language == '1' }}">英文</block>
+                 | {{ item.expectwork }}</view>
               </view>
               <view class="item-rt">
                 <!-- <radio value="{{ item.resumes_id }}" /> -->

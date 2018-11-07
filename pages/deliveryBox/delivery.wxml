@@ -1,9 +1,9 @@
 <view class="resume-box">
   <view class="resume-status-tab">
-    <view class="tab-item {{ tabActive===1?'active':'' }}" bindtap="">投递成功</view>
-    <view class="tab-item {{ tabActive===2?'active':'' }}" bindtap="">面试邀请</view>
-    <view class="tab-item {{ tabActive===3?'active':'' }}" bindtap="">录用通知</view>
-    <view class="tab-item {{ tabActive===4?'active':'' }}" bindtap="">被淘汰</view>
+    <view class="tab-item {{ tabActive==1?'active':'' }}" bindtap="handleChange" data-id="1">投递成功</view>
+    <view class="tab-item {{ tabActive==2?'active':'' }}" bindtap="handleChange" data-id="2">面试邀请</view>
+    <view class="tab-item {{ tabActive==3?'active':'' }}" bindtap="handleChange" data-id="3">录用通知</view>
+    <view class="tab-item {{ tabActive==4?'active':'' }}" bindtap="handleChange" data-id="4">被淘汰</view>
   </view>
   <view class="scrollBox">
     <scroll-view class="scroll" scroll-y style="height: 100%;" bindscrolltolower="lower" scroll-top="{{scrollTop}}">

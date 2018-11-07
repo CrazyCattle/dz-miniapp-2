@@ -69,6 +69,12 @@ Page({
       }
     ]
   },
+  handleChange (e) {
+    let id = e.currentTarget.dataset.id
+    this.setData({
+      tabActive: id
+    })
+  },
   linkToDropDetail () {
     wx.navigateTo({
       url: '../deliveryBoxDetail/detail'

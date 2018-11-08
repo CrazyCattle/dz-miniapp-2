@@ -43,8 +43,22 @@
   color: #848CA1;
 }
 .conts__bottom .status {
+  margin-right: -8rpx;
   font-size: 24rpx;
   color: #618FEB;
+}
+.conts__bottom .status-1 {
+  font-size: 24rpx;
+  color: #618FEB;
+}
+.conts__bottom .status-2 {
+  color: #F6B65F;
+}
+.conts__bottom .status-3 {
+  color: #00B28A;
+}
+.conts__bottom .status-4 {
+  color: #848CA1;
 }
 
 .detail {

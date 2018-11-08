@@ -223,7 +223,8 @@ Page({
         console.log(res)
         if (res.data.error == 0) {
           this.setData({
-            courseDetails: res.data.listjson
+            courseDetails: res.data.listjson,
+            c_name: res.data.listjson.class_name
           })
         }
       }
@@ -447,7 +448,8 @@ Page({
       console.log(res.target)
     }
     return {
-      title: this.data.c_name,
+      // title: `${this.data.c_name}`,
+      title: '我正在看大招职观求职课，快来支持我！',
       // imageUrl: '',
       path: `pages/share/share?id=${this.data.cId}&from_student_id=${app.globalData.student_id}`,
       success: function (res) {

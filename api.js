@@ -1,4 +1,5 @@
 const basicUrl = "https://napi.dazhao100.cn/api";
+// const basicUrl = "http://dznewbt.naeer.com/api/";
 
 module.exports = {
   judgeStu: `${basicUrl}/judgeStu`,//判断微信用户是否存在
@@ -60,6 +61,8 @@ module.exports = {
   delExpect: `${basicUrl}/DelExpect`,// 删除求职期望
   sendExpect: `${basicUrl}/SendExpect`, // 添加求职期望
   getMydropinbox: `${basicUrl}/getMydropinbox`, //投递箱
+  getMydropinboxOne: `${basicUrl}/getMydropinboxOne`, // 投递箱 单个详情
+  setInterviewState: `${basicUrl}/setInterviewState`, // 投递箱 处理面试邀约状态
   getMyinvitation: `${basicUrl}/getMyinvitation`, //邀请函
   pushSetting: `${basicUrl}/PushSetting`, //学生推送设置
   getPushSetting: `${basicUrl}/PushSetting`, //获取学生推送设置

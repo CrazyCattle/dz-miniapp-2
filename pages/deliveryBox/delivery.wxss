@@ -58,6 +58,7 @@
   color: #848CA1;
 }
 .conts__bottom .status {
+  margin-right: -8rpx;
   font-size: 24rpx;
   color: #618FEB;
 }

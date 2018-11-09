@@ -247,7 +247,12 @@ Page({
     })
   },
   onLoad: function (options) {
-    const id = options.id
+    let id
+    if (options.scene) {
+      id = decodeURIComponent(options.scene)
+    } else {
+      id = options.id
+    }
     console.log(id)
     this.setData({
       jobId: id 
@@ -256,12 +261,6 @@ Page({
       this.setData({
         positionId: res
       })
-      // this.getSameCompany(res).then(res => {
-      //   this.setData({
-      //     companyList: this.data.companyList.concat(res)
-      //   })
-      //   console.log(this.data.companyList)
-      // })
     })
   },
   onReady: function () {},

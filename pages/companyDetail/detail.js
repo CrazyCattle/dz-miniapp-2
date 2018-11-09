@@ -207,11 +207,16 @@ Page({
     })
   },
   onLoad: function (options) {
-    console.log(options.id)
+    let id
+    if (options.scene) {
+      id = decodeURIComponent(options.scene)
+    } else {
+      id = options.id
+    }
     this.setData({
-      companyId: options.id
+      companyId: id
     })
-    this.getCompanyInformation(options.id)
+    this.getCompanyInformation(id)
   },
   onShow: function () {},
   onShareAppMessage: function(res) {

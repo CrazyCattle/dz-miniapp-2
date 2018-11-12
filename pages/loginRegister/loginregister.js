@@ -11,81 +11,73 @@ const app = getApp();
 Page({
   data: {
     logoUrl: "",
-    session_key: ''
+    session_key: '',
+    code: ''
   },
   getPhoneNumber (e) {
-    if (e.detail.encryptedData) {
-      console.log(
-        e.detail.encryptedData, '--1--',
-        e.detail.errMsg, '--1--',
-        e.detail.iv
-      )
-      
-      wx.showLoading()
-      let promise = new Promise((resolve, reject) => {
-        wx.login({
-          success: res => {
-            resolve(res)
-          }
-        });
-      })
-      promise.then((res) => {
-        return new Promise((resolve, reject) => {
-          wx.request({
-            url: `${wxAuthorization}`,
-            header: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            method: 'POST',
-            data: {
-              code: res.code
-            },
-            success: res => {
-              resolve(res)
-            }
-          })
+    wx.login({
+      success: res1 => {
+        this.setData({
+          code: res1.code
         })
-      }).then(res => {
-        console.log(res)
-        if (res.data.error == '0') {
-          let { result } = res.data
-
-          wx.request({
-            url: `${wxAuthorMobile}`,
-            header: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            method: "POST",
-            data: {
-              encryptedData: e.detail.encryptedData,
-              iv: e.detail.iv,
-              session_key: result.session_key
-            },
-            success: res => {
-              console.log(res, 'phone')
-              if (res.data.error == 0) {
-                let listjson = JSON.parse(res.data.listjson)
-                const phone = listjson.phoneNumber
-                wx.setStorageSync('userPhone', (app.globalData.userPhone = phone))
-                this.isUserExist(result, phone, result.openid)
-              } else {
-                wx.showToast({
-                  title: '请求数据失败，请稍后重试',
-                  icon: 'none',
-                  duration: 1000
-                })
+        app.globalData.code = res1.code
+        if (e.detail.encryptedData) {
+          wx.showLoading()
+          new Promise((resolve, reject) => {
+            wx.request({
+              url: `${wxAuthorization}`,
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              method: 'POST',
+              data: {
+                code: app.globalData.code
+              },
+              success: res2 => {
+                resolve(res2)
               }
+            })
+          }).then(res3 => {
+            console.log(333)
+            if (res3.data.error == '0') {
+              let { result } = res3.data
+              wx.request({
+                url: `${wxAuthorMobile}`,
+                header: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+                method: "POST",
+                data: {
+                  encryptedData: e.detail.encryptedData,
+                  iv: e.detail.iv,
+                  session_key: result.session_key
+                },
+                success: res4 => {
+                  if (res4.data.error == 0) {
+                    let listjson = JSON.parse(res4.data.listjson)
+                    const phone = listjson.phoneNumber
+                    wx.setStorageSync('userPhone', (app.globalData.userPhone = phone))
+                    this.isUserExist(result, phone, result.openid)
+                  } else {
+                    wx.showToast({
+                      title: '请求数据失败，请稍后重试',
+                      icon: 'none',
+                      duration: 1000
+                    })
+                  }
+                }
+              })
             }
           })
-        } 
-      })
-    } else {
-      wx.showToast({
-        icon: 'none',
-        title: '允许微信授权才能使用微信登陆',
-        duration: 1000
-      })
-    }
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '微信授权后才能使用微信登陆',
+            duration: 1000
+          })
+        }
+      }
+    })
   },
   // 判断用户存不存在
   isUserExist(result, phone, token) {
@@ -184,40 +176,14 @@ Page({
     wx.removeStorageSync('searches')
     wx.removeStorageSync('baseCityId')
     wx.removeStorageSync('loginType')
-    
-    // new Promise((resolve, reject) => {
-    //   if (!app.globalData.schoolInfo) {
-    //     wx.request({
-    //       url: `${schoolInfo}`,
-    //       method: "GET",
-    //       success: res => {
-    //         console.log(res);
-    //         if (res.data.error == "0") {
-    //           app.globalData.schoolInfo = res.data.result;
-    //           wx.setStorageSync("schoolInfo", res.data.result);
-    //           resolve(app.globalData.schoolInfo);
-    //         }
-    //       },
-    //       fail: res => {
-    //         throw Error(err);
-    //       },
-    //       complete: () => {
-    //         // complete
-    //       }
-    //     });
-    //   } else {
-    //     resolve(app.globalData.schoolInfo);
-    //   }
-    // }).then(res => {
-    //   this.setData({
-    //     logoUrl: res.enter_logo
-    //   });
-    // });
-  },
-  onReady: function () { },
-  onShow: function () { },
-  onHide: function () { },
-  onUnload: function () { },
-  onPullDownRefresh: function () { },
-  onReachBottom: function () { }
+
+    wx.login({
+      success: res1 => {
+        this.setData({
+          code: res1.code
+        })
+        app.globalData.code = res1.code
+      }
+    })
+  }
 });

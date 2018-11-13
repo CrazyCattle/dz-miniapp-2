@@ -11,6 +11,7 @@ import {
 const app = getApp()
 Page({
   data: {
+    hideSubmit: false,
     curShow: true,
     noResumeList: false,
     chooseId: -1,
@@ -38,6 +39,9 @@ Page({
   },
   formSubmit() {
     if (this.data.chooseId !== -1) {
+      this.setData({
+        hideSubmit: true
+      })
       wx.request({
         url: `${deliveryResume}`,
         data: {
@@ -67,6 +71,9 @@ Page({
               showLinkWeb: true
             })
           }
+          this.setData({
+            hideSubmit: false
+          })
         }
       })
     }

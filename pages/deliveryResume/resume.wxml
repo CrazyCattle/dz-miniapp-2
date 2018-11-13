@@ -41,7 +41,8 @@
               </view>
             </view>
           <!-- </radio-group> -->
-          <button class="subFixedBtn" bindtap='formSubmit'>投递简历</button>
+          <button wx:if="{{ !hideSubmit }}" class="subFixedBtn" bindtap='formSubmit'>投递简历</button>
+          <button wx:if="{{ hideSubmit }}" class="subFixedBtn">投递简历</button>
         </form>
       </view>
       <view class="resume-tips" wx:if="{{ showLinkWeb && resumeListArr.length == 0}}">

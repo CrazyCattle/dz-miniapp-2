@@ -25,7 +25,8 @@
         <text class="item {{ details.tracks[0].tracks_type == 3?'active':'' }}">录用通知</text>
       </view>
       <view class="d__list">
-        <view class="d__row {{ index == 0?'active':'' }}"  wx:for="{{ details.tracks }}" wx:for-item="iItem" wx:key>
+        <view class="d__row {{ index == 0 && !details.isemploy?'active':'' }}"
+          wx:for="{{ details.tracks }}" wx:for-item="iItem" wx:key>
           <text class="d__row-tit">{{ iItem.tracks_title }}</text>
           <text class="d__row-cont" wx:if="{{ !iItem.tracks_time }}">{{ iItem.tracks_information }}</text>
           <view class="d__row-button" wx:if="{{ !iItem.tracks_time && iItem.type == 0 && index == 0 && showBtns }}">
@@ -37,19 +38,18 @@
             <view class="status status-accept" wx:if="{{ showTips == 1 }}">
               <view class="status-icon"><image class="icon" src="../../images/accept-icon.png"></image></view>已接受
             </view>
-
             <view class="status status-refuse" wx:if="{{ showTips == 0 }}"><view class="status-icon">X</view>已拒绝</view>
           </view>
 
-
           <view class="d__row-button" wx:if="{{ !iItem.tracks_time && iItem.type == 1 }}">
             <view class="status status-accept">
-              <view class="status-icon"><image class="icon" src="../../images/accept-icon.png"></image></view>已接受
+              <view class="status-icon"><image class="icon" src="../../images/accept-icon_disabled.png"></image></view>已接受
             </view>
           </view>
           <view class="d__row-button" wx:if="{{ !iItem.tracks_time && iItem.type == 2 }}">
             <view class="status status-refuse"><view class="status-icon">X</view>已拒绝</view>
           </view>
+          
           <view class="d__row-button" wx:if="{{ !iItem.tracks_time &&  iItem.type == 0 && index !== 0 }}">
             <view class="btn">接受</view>
             <view class="btn">拒绝</view>

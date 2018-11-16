@@ -29,9 +29,7 @@
       <image class="v-user-pic" src="{{ playInfor.teacher_img}}"></image>
       <view class="v-user-infor">
         <text class="v-user-name">{{ playInfor.teacher_name }}</text>
-        <view class="v-user-desc {{ !active?'active':'' }}" bindtap="more">
-          {{!playInfor.teacher_remark?'暂无讲师信息':playInfor.teacher_remark}}
-        </view>
+        <text class="v-user-desc {{ !active?'active':'' }}" bindtap="more">{{!playInfor.teacher_remark?'暂无讲师信息':playInfor.teacher_remark}}</text>
         <view class="arrow-content" bindtap="more">
           <view wx:if="{{ !!playInfor.teacher_remark }}" class="arrow-icon {{ active?'active':'' }}">
             <view class="inner"></view>

@@ -136,6 +136,7 @@
   color:#313148;
 }
 .v-user-desc {
+  display: block;
   font-size: 24rpx;
   color:#848ca1;
   letter-spacing:0;

@@ -119,8 +119,36 @@ Page({
     })
   },
   linkLogin() {
-    wx.navigateTo({
-      url: "../login/login"
+    // wx.navigateTo({
+    //   url: "../login/login"
+    // });
+    wx.showLoading()
+    let promise = new Promise((resolve, reject) => {
+      wx.login({ success: res => {
+        resolve(res);
+      }});
+    });
+    promise.then(res => {
+      return new Promise((resolve, reject) => {
+        wx.request({
+          url: `${wxAuthorization}`,
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          method: "POST",
+          data: {
+            code: res.code
+          },
+          success: res => {
+            resolve(res);
+          }
+        });
+      });
+    })
+    .then(res => {
+      const { result } = res.data;
+      console.log(result);
+      wx.navigateTo({ url: `../login/login?openid=${result.openid}` });
     });
   },
   lonkBind() {
@@ -175,7 +203,8 @@ Page({
     wx.removeStorageSync('baseCity')
     wx.removeStorageSync('searches')
     wx.removeStorageSync('baseCityId')
-    wx.removeStorageSync('loginType')
+    wx.removeStorageSync("loginType");
+    wx.removeStorageSync('openid')
 
     wx.login({
       success: res1 => {

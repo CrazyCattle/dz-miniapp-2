@@ -9,7 +9,7 @@
     <view class="wxParse {{ showMore?'active':''}}">
       <template is="wxParse" data="{{wxParseData:article.nodes}}" />
     </view>
-    <view class="linkShare" wx:if="{{ share_islimits == 0 }}" data-id="{{ cId }}" catchtap='linkShare'>限时免费，戳此获取</view>
+    <view class="linkShare" wx:if="{{ share_islimits == 0 }}" data-id="{{ cId }}" catchtap='linkShare'>分享好友，领取课程</view>
     <!-- <view class="arrow-icon-more {{ showMore?'active':'' }}">
       <view class="inner"></view>
     </view> -->

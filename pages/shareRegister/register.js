@@ -89,10 +89,7 @@ Page({
         duration: 1000
       });
     } else {
-      console.log(
-        this.data.mobile,
-        this.data.mobilecode
-      );
+      console.log(this.data.mobile, this.data.mobilecode, wx.getStorageSync("shareOpenid"));
       wx.request({
         url: `${WXregister}`,
         header: {

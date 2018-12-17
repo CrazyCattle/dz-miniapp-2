@@ -233,7 +233,7 @@ Page({
       student_stgraduatetwo: stud_info.admission_time || '请选择年月',
       student_edgraduate: stud_info.sour_bysj || '请选择年月',
       educCont: stud_info.xueli || '请选择学历',
-      majorCont: stud_info.special || '请选择专业',
+      majorCont: stud_info.special,
       endTime: formatTime(new Date())
     })
     // wx.request({

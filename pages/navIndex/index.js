@@ -469,9 +469,11 @@ Page({
     }
   },
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '首页'
-    })
+    console.log(options)
+    if (options.workType) {
+      this.setData({ workType: options.workType });
+    }
+    wx.setNavigationBarTitle({ title: "首页" });
 
     this.setData({
       baseCity: app.globalData.baseCity,

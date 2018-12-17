@@ -49,7 +49,6 @@ Page({
 
   linkToCourse (e) {
     let id = e.currentTarget.dataset.id
-
     let promise = new Promise((resolve, reject) => {
       wx.login({
         success: res => {
@@ -83,9 +82,10 @@ Page({
           wxtoken: result.openid
         },
         success: res => {
+          console.log(result.openid, "shareOpenid");
           app.globalData.shareOpenid = result.openid
           wx.setStorageSync('shareOpenid', result.openid)
-          console.log(app.globalData.shareOpenid)
+          console.log(app.globalData.shareOpenid, wx.getStorageSync("shareOpenid"))
           if (res.data.error == 0) {
             wx.navigateTo({
               url: `../courseChild/course?id=${id}`
@@ -314,7 +314,8 @@ Page({
   linkToShareLogin (e) {
     let cId = e.currentTarget.dataset.id
 
-    console.log(cId, this.data.from_id, 'hahhah')
+    // console.log(cId, this.data.from_id, 'hahhah')
+    console.log(app.globalData.token, app.globalData.student_id, 111);
     if (app.globalData.token && app.globalData.student_id) {
       wx.showLoading()
       this.setShareLimit()
@@ -326,6 +327,7 @@ Page({
   },
 
   setShareLimit() {
+    let loginType = wx.getStorageSync("loginType")
     wx.request({
       url: `${getLessonShare}?token=${app.globalData.token}&stu_id=${app.globalData.student_id}&class_id=${this.data.cId}`,
       success: res => {
@@ -415,7 +417,7 @@ Page({
 
             //   this.isSupport()
             // }
-            console.log(this.data.userToken == app.globalData.openid, '000')
+            console.log(this.data.userToken, app.globalData.openid, '000')
           }
         }
       })

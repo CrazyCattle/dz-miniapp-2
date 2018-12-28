@@ -137,14 +137,30 @@ Page({
     // }
   },
   listenerStartTime(e) {
-    this.setData({
-      student_stgraduatetwo: e.detail.value
-    })
+    if (new Date(e.detail.value) > new Date(this.data.student_edgraduate)) {
+      wx.showToast({
+        title: "入学时间不能大于毕业时间",
+        icon: "none",
+        duration: 1000
+      });
+    } else {
+      this.setData({
+        student_stgraduatetwo: e.detail.value
+      })
+    }
   },
   listenerEndTime(e) {
-    this.setData({
-      student_edgraduate: e.detail.value
-    })
+    if (new Date(e.detail.value) < new Date(this.data.student_stgraduatetwo)) {
+      wx.showToast({
+        title: "毕业时间不能小于入学时间",
+        icon: "none",
+        duration: 1000
+      });
+    } else {
+      this.setData({
+        student_edgraduate: e.detail.value
+      })
+    }
   },
   // iptStudenNumber(e) {
   //   console.log(e)

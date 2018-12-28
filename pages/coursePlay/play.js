@@ -69,34 +69,46 @@ Page({
     }
   },
   onLoad: function (options) {
-    let id = options.id
-    this.setData({
-      courseId: id
-    })
-    wx.request({
-      url: `${getPlayUrl}${id}`+(app.globalData.student_id?`&stu_id=${app.globalData.student_id}`:''),
-      method: 'GET',
-      success: res => {
-        console.log(res)
-        const { error } = res.data
-        if (error == '0') {
-          const { listjson } = res.data
-          console.log(listjson)
-          this.setData({
-            playInfor: listjson
-          })
-          wx.setNavigationBarTitle({
-            title: listjson.lesson_name
-          })
+    if (app.globalData.student_id && app.globalData.student_id) {
+      let id = options.id
+      this.setData({
+        courseId: id
+      })
+      wx.request({
+        url: `${getPlayUrl}${id}`+(app.globalData.student_id?`&stu_id=${app.globalData.student_id}`:''),
+        method: 'GET',
+        success: res => {
+          console.log(res)
+          if (res.data.tokeninc == 0) {
+            wx.redirectTo({
+              url: '../loginRegister/loginregister',
+            })
+          } else {
+            const { error } = res.data
+            if (error == '0') {
+              const { listjson } = res.data
+              console.log(listjson)
+              this.setData({
+                playInfor: listjson
+              })
+              wx.setNavigationBarTitle({
+                title: listjson.lesson_name
+              })
+            }
+          }
+        },
+        fail: err => {
+          throw Error(err);
+        },
+        complete: res => {
+          // console.log(res)
         }
-      },
-      fail: err => {
-        throw Error(err);
-      },
-      complete: res => {
-        // console.log(res)
-      }
-    })
+      })
+    } else {
+      wx.redirectTo({
+        url: '../loginRegister/loginregister'
+      })
+    }
   },
   onShareAppMessage: function(res) {
     if (res.from === 'button') {

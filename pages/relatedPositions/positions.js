@@ -16,6 +16,9 @@ Page({
     curCity: '',
     keyword: '',
 
+    positionTxt: '行业类别',
+    positionType: '职位类别',
+
     workType: [
       { id: '1', name: '全职' },
       { id: '2', name: '实习' }
@@ -26,7 +29,7 @@ Page({
 
     chooseType: 1, //选中的过滤类型 1：招聘职位类型 2：城市 3：学历
 
-    eduType: ['专科', '本科', '硕士', '博士'],//学历类型数组
+    eduType: ['不限', '专科', '本科', '硕士', '博士'],//学历类型数组
 
     curPage: 1,
     showLoading: false,
@@ -84,16 +87,19 @@ Page({
     let txt = e.currentTarget.dataset.txt
     this.setData({
       active: 0,
-      industryTxt: txt
+      industryTxt: txt,
+      positionTxt: txt
     })
     this.reGetJobData()
   },
   //职位类别过滤
   chooseJobType (e) {
     let id = e.currentTarget.dataset.id
+    let txt = e.currentTarget.dataset.txt
     this.setData({
       active: 0,
-      jobCategoryId: id
+      jobCategoryId: id,
+      positionType: txt
     })
     this.reGetJobData()
   },

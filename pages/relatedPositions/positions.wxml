@@ -39,14 +39,13 @@
   </view>
   <view class="sort-box">
     <view class="sort-item" data-id="1" catchtap="tabFilter">
-      <!-- {{ positionTXT }} -->
-      行业类别
+      <view class="txt">{{ positionTxt }}</view>
       <view class="arrow-icon {{ active=='1'?'active':'' }}">
         <view class="inner"></view>
       </view> 
     </view>
     <view class="sort-item" data-id="2" catchtap="tabFilter">
-      职位类别
+      <view class="txt">{{ positionType }}</view>
       <view class="arrow-icon {{ active=='2'?'active':'' }}">
         <view class="inner"></view>
       </view> 
@@ -102,8 +101,9 @@
           wx:for="{{ PositionArr }}"
           catchtap="chooseJobType"
           wx:key
+          data-txt="{{ item.categoryName1 }}"
           data-id="{{ item.categoryId1 }}">
-            {{item.categoryName1}}
+            {{ item.categoryName1 }}
         </view>
       </scroll-view>
     </view>

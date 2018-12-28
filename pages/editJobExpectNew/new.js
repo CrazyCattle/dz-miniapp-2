@@ -359,6 +359,7 @@ Page({
       wx.request({
         url: `${getZPType}?module=inc_industry`,
         success: res => {
+          console.log(res, 98765)
           if (res.data.error == '0') {
             const { listjson } = res.data
             const jobOne = []
@@ -374,6 +375,7 @@ Page({
         }
       })
     }).then(res => {
+      console.log(res, 1232444)
       wx.request({
         url: `${getIndustryList}?categoryId1=${res[0].categoryId1}`,
         success: res => {
@@ -388,6 +390,7 @@ Page({
               industryArray: [this.data.industryOneC, arr],
               industryIndexArr: arr1
             })
+            console.log(this.data.industryArray, 159)
           }
         }
       })

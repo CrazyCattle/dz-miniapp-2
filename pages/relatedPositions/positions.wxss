@@ -148,6 +148,13 @@
   border-right: none;
 }
 
+.sort-box .sort-item .txt {
+  max-width: 80%;
+  height: 64rpx;
+  line-height: 64rpx;
+  overflow: hidden;
+}
+
 .type-filter-box,
 .educ-filter-box,
 .city-filter-box {

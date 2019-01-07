@@ -1,0 +1,83 @@
+<view class="fair-box">
+  <view class="fair-filter">
+    <image class="search-icon" src="../../images/search.png"></image>
+    <input type="text"
+      class="search-ipt"
+      placeholder-class='placeholder'
+      placeholder='输入学校名称或招聘会名称'>
+    </input>
+  </view>
+
+  <view class="fair-list">
+    <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower">
+      <view class="row">
+        <view class="banner">
+          <image class="img" src="../../images/index/banner.png"></image>
+          <view class="title">福建师范大学模拟视频招聘会（福州）</view>
+        </view>
+        <view class="conts bg-f">
+          <view class="item">
+            <text class="tit">举办大学：</text>
+            <text class="name">华中科技大学</text>
+          </view>
+          <view class="item">
+            <text class="tit">招聘会形式：</text>
+            <text class="name">网络招聘会</text>
+          </view>
+          <view class="item">
+            <text class="tit">召开时间：</text>
+            <text class="name">网络招聘会</text>
+          </view>
+        </view>
+      </view>
+      <view class="row">
+        <view class="banner">
+          <image class="img" src="../../images/index/banner.png"></image>
+          <view class="title">福建师范大学模拟视频招聘会（福州）</view>
+        </view>
+        <view class="conts bg-f">
+          <view class="item">
+            <text class="tit">举办大学：</text>
+            <text class="name">华中科技大学</text>
+          </view>
+          <view class="item">
+            <text class="tit">招聘会形式：</text>
+            <text class="name">网络招聘会</text>
+          </view>
+          <view class="item">
+            <text class="tit">举办地点：</text>
+            <text class="name">xx区xx位置</text>
+          </view>
+          <view class="item">
+            <text class="tit">召开时间：</text>
+            <text class="name">网络招聘会</text>
+          </view>
+        </view>
+      </view>
+      <view class="row">
+        <view class="banner">
+          <image class="img" src="../../images/index/banner.png"></image>
+          <view class="title">福建师范大学模拟视频招聘会（福州）</view>
+        </view>
+        <view class="conts bg-f">
+          <view class="item">
+            <text class="tit">举办大学：</text>
+            <text class="name">华中科技大学</text>
+          </view>
+          <view class="item">
+            <text class="tit">招聘会形式：</text>
+            <text class="name">网络招聘会</text>
+          </view>
+          <view class="item">
+            <text class="tit">举办地点：</text>
+            <text class="name">xx区xx位置</text>
+          </view>
+          <view class="item">
+            <text class="tit">召开时间：</text>
+            <text class="name">网络招聘会</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

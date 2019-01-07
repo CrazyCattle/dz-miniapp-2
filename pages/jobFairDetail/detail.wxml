@@ -1,0 +1,84 @@
+<view class="detail">
+  <view class="banner-box mb20 bg-f">
+    <view class="banner">
+      <image class="img" src="../../images/index/banner.png"></image>
+      <view class="title">福建师范大学模拟视频招聘会（福州）福建师范大学模拟视频招聘会（福州）</view>
+    </view>
+  </view>
+
+  <view class="detail-box">
+    <view class="tab bg-f">
+      <text class="item {{ changeType == '1'?'active':'' }}" bindtap="exchange" data-type="1">招聘会信息</text>
+      <text class="item {{ changeType == '2'?'active':'' }}" bindtap="exchange" data-type="2">企业列表</text>
+    </view>
+
+    <view class="row mb20 bg-f" wx:if="{{ changeType == '1' }}">
+      <view class="title">招聘会信息</view>
+      <view class="conts">
+        <view class="item">
+          <text class="tit">举办大学：</text>
+          <text class="name">华中科技大学</text>
+        </view>
+        <view class="item">
+          <text class="tit">招聘会形式：</text>
+          <text class="name">网络招聘会</text>
+        </view>
+        <view class="item">
+          <text class="tit">举办地点：</text>
+          <text class="name">拓荒广场</text>
+        </view>
+        <view class="item">
+          <text class="tit">召开时间：</text>
+          <text class="name">2017-10-24 09:00</text>
+        </view>
+        <view class="item">
+          <text class="tit">结束时间：</text>
+          <text class="name">2018-06-24 09:00</text>
+        </view>
+      </view>
+    </view>
+    <view class="row bg-f"  wx:if="{{ changeType == '1' }}">
+      <view class="title">招聘会详情</view>
+      <view class="conts">
+        <text class="jobfair-detail">为卓智大学2018届毕业生的就业环境保驾护航，同时也是为用人单位与本校毕业生搭建交流平台.，更好的给企业和求职者搭建良好的招聘、求职平台，优化人才资源配置卓智大学举办校为卓智大学2018届毕业生的就业环境保驾护航，同时也是为用人单位与本校毕业生搭建交流平台.，更好的给企业和求职者搭建良好的招聘、求职平台，优化人才资源配置卓智大学举办校</text>
+      </view>
+    </view>
+
+    <view class="bg-f" wx:if="{{ changeType == '2' }}">
+      <view class="r-list-item">
+        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
+        <view class="cont">
+          <view class="job lh-normal">
+            <view class="order">A1</view>网眼软件
+          </view>
+          <view class="company">[2个]
+            <block> 海外渠道运营助理,品牌公关助理</block>
+          </view>
+          <view class="s-desc"> 
+            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
+          </view>
+        </view>
+      </view>
+      <view class="r-list-item">
+        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
+        <view class="cont">
+          <view class="job lh-normal">
+            <view class="order">A24</view>网眼软件
+          </view>
+          <view class="company">[2个]
+            <block>海外渠道运营助理,品牌公关助理</block>
+          </view>
+          <view class="s-desc"> 
+            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
+          </view>
+        </view>
+      </view>
+      <view class="more" bindtap="linkJobList">
+        查看更多
+        <view class="arrow-icon">
+          <view class="inner"></view>
+        </view> 
+      </view>
+    </view>
+  </view>
+</view>

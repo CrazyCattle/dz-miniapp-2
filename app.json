@@ -1,6 +1,8 @@
 {
   "pages": [
+    "pages/jobFairDetail/detail",
     "pages/navIndex/index",
+    "pages/jobFair/index",
     "pages/visual/visual",
     "pages/navMe/me",
     "pages/navCourse/course",

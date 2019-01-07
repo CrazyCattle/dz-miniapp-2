@@ -296,6 +296,11 @@ Page({
       navToLogin()
     }
   },
+  linkToJobfair() {
+    wx.navigateTo({
+      url: '../jobFair/index'
+    })
+  },
   linkCoursePlay (e) {
     let id = e.target.dataset.id
     // wx.navigateTo({

@@ -40,6 +40,10 @@
         <image class="img" src="../../images/index/nav/item_2.png"></image>
         <text class="txt">我的课程</text>
       </view>  
+      <view class="nav-item" bindtap="linkToJobfair">
+        <image class="img" src="../../images/index/nav/item_5.png"></image>
+        <text class="txt">招聘会</text>
+      </view> 
       <view class="nav-item" bindtap="linkMyResume">
         <image class="img" src="../../images/index/nav/item_3.png"></image>
         <text class="txt">我的简历</text>

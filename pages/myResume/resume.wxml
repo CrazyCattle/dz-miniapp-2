@@ -1,4 +1,10 @@
 <view class="resume-list">
+  <view class="edit-tips">
+    <view class="to-edit-btn">
+      <image class="btn" bindtap="linkToView" src="../../images/edit-btn-bg.png"></image>
+      <view class="tips">20分钟帮你打造一份通过率>95的简历</view>
+    </view>
+  </view>
   <scroll-view scroll-y style="height: 100%;">
     <view class="list-box" wx:if="{{ resumeList.length > 0 }}">
       <!-- <view class="resume-item active bg-f" bindtap='linkResume' data-id="{{item.resumes_id}}" wx:for="{{ resumeList }}" wx:key="key"> -->

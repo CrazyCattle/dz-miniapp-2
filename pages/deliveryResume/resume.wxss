@@ -7,8 +7,8 @@
   box-sizing: border-box;
 }
 .resume-list  .list-content{
-  /* height: calc(100% - 140rpx); */
-  height: 100%;
+  height: calc(100% - 230rpx);
+  /* height: 100%; */
 }
 .resume-item {
   height: 180rpx;
@@ -155,4 +155,17 @@ radio .wx-radio-input{
 radio .wx-radio-input.wx-radio-input-checked::before{
   background-color: #e02e24;
   border: 1rpx solid #e02e24;
+}
+
+.to-edit-btn .btn {
+  display: block;
+  width: 408rpx;
+  height: 80rpx;
+  margin: 60rpx auto 20rpx;
+}
+.to-edit-btn .tips {
+  padding-bottom: 40rpx;
+  font-size: 24rpx;
+  color: #618FEB;
+  text-align: center;
 }

@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/jobFairDetail/detail",
     "pages/navIndex/index",
+    "pages/jobFairCompanyDetail/detail",
+    "pages/jobFairSearch/search",
+    "pages/jobFairDetail/detail",
     "pages/jobFair/index",
     "pages/visual/visual",
     "pages/navMe/me",

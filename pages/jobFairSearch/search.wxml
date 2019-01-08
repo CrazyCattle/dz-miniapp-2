@@ -1,0 +1,223 @@
+<view class="recommend-head">
+  <view class="searchBox">
+    <view
+      class="city-filter-box tl {{ active=='5'?'active':'' }}"
+      style="{{ active=='5'?'z-index: 1;':'' }}">
+      <scroll-view class="prov" scroll-y style="height: 100%;">
+        <view class="prov-box">
+          <view class="prov-item"
+            wx:for="{{ provinceList }}"
+            data-id="{{item.id}}"
+            data-txt="{{ item.name }}"
+            wx:key
+            catchtap="chooseProvince">
+            {{ item.name }}
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="search-ipt">
+      <view class="search-icon">
+        <image
+          class="img"
+          src="../../images/search.png">
+        </image>
+      </view>
+      <view class="search-tips">
+        <input type="text"
+          class="ipt"
+          placeholder='请输入公司名称'
+          placeholder-style='placeholder'>
+        </input>
+      </view>
+    </view>
+  </view>
+  <view class="sort-box">
+    <view class="sort-item" data-id="1" catchtap="tabFilter">
+      <view class="txt">{{ positionTxt }}</view>
+      <view class="arrow-icon {{ active=='1'?'active':'' }}">
+        <view class="inner"></view>
+      </view> 
+    </view>
+    <view class="sort-item" data-id="2" catchtap="tabFilter">
+      <view class="txt">{{ positionType }}</view>
+      <view class="arrow-icon {{ active=='2'?'active':'' }}">
+        <view class="inner"></view>
+      </view> 
+    </view>
+    <view class="sort-item" data-id="3" catchtap="tabFilter">
+      <block wx:if="{{ !!educTXT }}">{{ educTXT }}</block>
+      <block wx:else>学历</block>
+      <view class="arrow-icon {{ active=='3'?'active':'' }}">
+        <view class="inner"></view>
+      </view> 
+      <view
+        class="educ-filter-box tl {{ active=='3'?'active':'' }}"
+        style="{{ active=='3'?'z-index: 1;':'' }}"
+        catchtap="filterEduc">
+        <view class="educ-filter-item"
+          wx:for="{{eduType}}"
+          data-id="{{item.parameter}}"
+          wx:key
+          bindtap="chooseEdu"
+          data-txt="{{ item }}">
+            {{ item }}
+        </view>
+      </view>
+    </view>
+
+    <view
+      class="type-filter-box tl {{ active=='1'?'active':'' }}"
+      style="{{ active=='1'?'z-index: 1;':'' }}"
+      catchtap="filterEduc">
+      <scroll-view style="height: 100%;" scroll-y class="lf-filter">
+        <view class="type-filter-item"
+          wx:for="{{ IndustryArr }}"
+          catchtap="chooseParentType"
+          wx:key
+          data-id="{{ item.categoryId1 }}"
+          data-txt="{{item.categoryName1}}">
+            {{item.categoryName1}}
+        </view>
+      </scroll-view>
+    </view>
+    <view
+      class="type-filter-box tl {{ active=='2'?'active':'' }}"
+      style="{{ active=='2'?'z-index: 1;':'' }}"
+      catchtap="filterEduc">
+      <scroll-view style="height: 100%;" scroll-y class="lf-filter">
+        <view class="type-filter-item"
+          wx:for="{{ PositionArr }}"
+          catchtap="chooseJobType"
+          wx:key
+          data-txt="{{ item.categoryName1 }}"
+          data-id="{{ item.categoryId1 }}">
+            {{ item.categoryName1 }}
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+<view class="recommend bg-f">
+  <scroll-view
+    scroll-y
+    style="height: 100%;"
+    bindscrolltolower="lower"
+    scroll-top="{{scrollTop}}">
+    <view class="r-list">
+      <view class="r-list-item">
+        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
+        <view class="cont">
+          <view class="job lh-normal">
+            <view class="order">A1</view>网眼软件
+          </view>
+          <view class="company">[2个]
+            <block> 海外渠道运营助理,品牌公关助理</block>
+          </view>
+          <view class="s-desc"> 
+            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
+          </view>
+        </view>
+      </view>
+      <view class="r-list-item">
+        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
+        <view class="cont">
+          <view class="job lh-normal">
+            <view class="order">A24</view>网眼软件
+          </view>
+          <view class="company">[2个]
+            <block>海外渠道运营助理,品牌公关助理</block>
+          </view>
+          <view class="s-desc"> 
+            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
+          </view>
+        </view>
+      </view>
+      <view class="r-list-item">
+        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
+        <view class="cont">
+          <view class="job lh-normal">
+            <view class="order">A1</view>网眼软件
+          </view>
+          <view class="company">[2个]
+            <block> 海外渠道运营助理,品牌公关助理</block>
+          </view>
+          <view class="s-desc"> 
+            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
+          </view>
+        </view>
+      </view>
+      <view class="r-list-item">
+        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
+        <view class="cont">
+          <view class="job lh-normal">
+            <view class="order">A24</view>网眼软件
+          </view>
+          <view class="company">[2个]
+            <block>海外渠道运营助理,品牌公关助理</block>
+          </view>
+          <view class="s-desc"> 
+            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
+          </view>
+        </view>
+      </view>
+      <view class="r-list-item">
+        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
+        <view class="cont">
+          <view class="job lh-normal">
+            <view class="order">A1</view>网眼软件
+          </view>
+          <view class="company">[2个]
+            <block> 海外渠道运营助理,品牌公关助理</block>
+          </view>
+          <view class="s-desc"> 
+            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
+          </view>
+        </view>
+      </view>
+      <view class="r-list-item">
+        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
+        <view class="cont">
+          <view class="job lh-normal">
+            <view class="order">A24</view>网眼软件
+          </view>
+          <view class="company">[2个]
+            <block>海外渠道运营助理,品牌公关助理</block>
+          </view>
+          <view class="s-desc"> 
+            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
+          </view>
+        </view>
+      </view>
+      <view class="r-list-item">
+        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
+        <view class="cont">
+          <view class="job lh-normal">
+            <view class="order">A1</view>网眼软件
+          </view>
+          <view class="company">[2个]
+            <block> 海外渠道运营助理,品牌公关助理</block>
+          </view>
+          <view class="s-desc"> 
+            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
+          </view>
+        </view>
+      </view>
+      <view class="r-list-item">
+        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
+        <view class="cont">
+          <view class="job lh-normal">
+            <view class="order">A24</view>网眼软件
+          </view>
+          <view class="company">[2个]
+            <block>海外渠道运营助理,品牌公关助理</block>
+          </view>
+          <view class="s-desc"> 
+            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <loading wx:if="{{ showLoading }}"></loading>
+  </scroll-view>
+</view>

@@ -1,5 +1,11 @@
 <view class="resume-list">
   <!-- <view class="tit">请选择你要投递的简历</view> -->
+  <view class="edit-tips">
+    <view class="to-edit-btn">
+      <image class="btn" bindtap="linkToView" src="../../images/edit-btn-bg.png"></image>
+      <view class="tips">20分钟帮你打造一份通过率>95的简历</view>
+    </view>
+  </view>
   <view class="list-content">
     <scroll-view scroll-y style="height: 100%;">
       <view class="srcoll-box" wx:if="{{ page == '1' && resumeListArr.length > 0 }}">

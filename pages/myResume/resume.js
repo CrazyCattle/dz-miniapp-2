@@ -22,6 +22,7 @@ Page({
     // page 1
     list: []
   },
+  linkToView () {},
   linkResume(e) {
     let resumes_id = e.currentTarget.dataset.id
     wx.navigateTo({

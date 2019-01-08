@@ -106,3 +106,16 @@
   margin-left: 12rpx;
   margin-right: 12rpx;
 }
+
+.to-edit-btn .btn {
+  display: block;
+  width: 408rpx;
+  height: 80rpx;
+  margin: 60rpx auto 20rpx;
+}
+.to-edit-btn .tips {
+  padding-bottom: 40rpx;
+  font-size: 24rpx;
+  color: #618FEB;
+  text-align: center;
+}

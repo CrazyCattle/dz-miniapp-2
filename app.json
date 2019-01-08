@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/scan/scan",
     "pages/navIndex/index",
     "pages/jobFairCompanyDetail/detail",
     "pages/jobFairSearch/search",

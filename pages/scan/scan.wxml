@@ -1,0 +1,20 @@
+<view class="scan-page">
+  <view class="step">
+    <view class="tit">第一步</view>
+    <view class="txt">在电脑浏览器中输入 <text class="site">c.dazhao100.com</text> </view>
+  </view>
+  <view class="website-box">
+    <image class="img website" src="../../images/web.png"></image>
+  </view>
+
+  <view class="step">
+    <view class="tit">第二步</view>
+    <view class="txt">扫描网页上的二维码</view>
+  </view>
+  <view class="ewm-box">
+    <image class="img ewm" src="../../images/ewm.png"></image>
+  </view>
+  <view class="scan-box">
+    <image class="img scan" src="../../images/scan.png"></image>
+  </view>
+</view>

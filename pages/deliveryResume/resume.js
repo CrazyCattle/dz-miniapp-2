@@ -27,6 +27,11 @@ Page({
     resumeListArr: [],
     showLinkWeb: false
   },
+  linkToView() {
+    wx.navigateTo({
+      url: '../scan/scan'
+    })
+  },
   chooseResume (e) {
     let rId = e.currentTarget.dataset.id
 

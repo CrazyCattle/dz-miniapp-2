@@ -22,7 +22,11 @@ Page({
     // page 1
     list: []
   },
-  linkToView () {},
+  linkToView () {
+    wx.navigateTo({
+      url: '../scan/scan'
+    })
+  },
   linkResume(e) {
     let resumes_id = e.currentTarget.dataset.id
     wx.navigateTo({

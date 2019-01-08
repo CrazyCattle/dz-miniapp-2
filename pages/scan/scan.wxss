@@ -1,0 +1,41 @@
+.scan-page {
+  padding: 80rpx 60rpx;
+}
+.scan-page .img {
+  display: block;
+  margin: 0 auto;
+}
+.scan-page .step {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #313148;
+}
+.scan-page .step .tit {
+  width: 120rpx;
+  height: 48rpx;
+  margin-right: 10rpx;
+  line-height: 48rpx;
+  font-size: 28rpx;
+  text-align: center;
+  border-radius: 24rpx;
+  color: #fff;
+  background-color: #618FEB;
+}
+.scan-page .step .site {
+  color: #618FEB;
+}
+.scan-page .website {
+  width: 630rpx;
+  height: 362rpx;
+  margin: 50rpx auto 70rpx;
+}
+.scan-page .ewm {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 78rpx auto;
+}
+.scan-page .scan {
+  width: 280rpx;
+  height: 80rpx;
+}

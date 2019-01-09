@@ -1,5 +1,11 @@
 .scan-page {
+  box-sizing: border-box;
   padding: 80rpx 60rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .scan-page .img {
   display: block;

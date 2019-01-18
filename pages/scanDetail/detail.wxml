@@ -1,0 +1,73 @@
+<view class="page-login">
+  <form bindsubmit="formSubmit">
+    <view class="form-box bg-f">
+      <view class="row">
+        <view class="row-tit">姓名：</view>
+        <view class="rot-ipt">
+          <input type="text"
+            placeholder-class="placeholder"
+            class="input"
+            placeholder='请输入你的姓名'
+            bindinput="iptTitle"
+            bindchange="iptTitle">
+          </input>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">性别：</view>
+        <view class="rot-ipt">
+          <picker class="picker"
+            bindchange="listenerSalary"
+            mode="selector"
+            range="{{salaryArr}}"
+            value="{{ salaryIndex }}">
+            <view class="inner-picker">{{ salary?salary:'请选择性别' }}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">学校：</view>
+        <view class="rot-ipt">
+          <input type="text"
+            placeholder-class="placeholder"
+            class="input"
+            placeholder='请填写学校'
+            bindinput="iptTitle"
+            bindchange="iptTitle">
+          </input>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">学历：</view>
+        <view class="rot-ipt">
+          <picker class="picker"
+            bindchange="listenerSalary"
+            mode="selector"
+            range="{{salaryArr}}"
+            value="{{ salaryIndex }}">
+            <view class="inner-picker">{{ salary?salary:'请选择学历' }}</view>
+          </picker>
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view>
+        </view>
+      </view>
+      <view class="row">
+        <view class="row-tit">专业：</view>
+        <view class="rot-ipt">
+          <input type="text"
+            placeholder-class="placeholder"
+            class="input"
+            placeholder='请输入专业'
+            bindinput="iptTitle"
+            bindchange="iptTitle">
+          </input>
+        </view>
+      </view>
+    </view>
+    <button placeholder-class="placeholder" class="baseBtn mt60" bindtap="linkToEWm">保存</button>
+  </form>
+</view>

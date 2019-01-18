@@ -9,6 +9,16 @@ Page({
       changeType: type
     })
   },
+  linkJobList () {
+    wx.navigateTo({
+      url: '../jobFairSearch/search'
+    })
+  },
+  linkToDetail () {
+    wx.navigateTo({
+      url: '../jobFairCompanyDetail/detail'
+    })
+  },
   onLoad: function (options) {},
   onReady: function () {},
   onShow: function () {},

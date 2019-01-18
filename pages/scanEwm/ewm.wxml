@@ -1,0 +1,14 @@
+<view class="e-ewm">
+  <view class="ewm-box">
+    <view class="header">
+      <view class="title">招聘会电子票</view>
+      <view class="tips">（已领取）</view>
+      <view class="lf-circle"></view>
+      <view class="rt-circle"></view>
+    </view>
+    <view class="conts">
+      <text class="tips">一人限领一张，凭票入场</text>
+      <image class="ewm" src="../../images/ewm.png"></image>
+    </view>
+  </view>
+</view>

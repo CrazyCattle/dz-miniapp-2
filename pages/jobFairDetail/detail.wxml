@@ -45,7 +45,7 @@
     </view>
 
     <view class="bg-f" wx:if="{{ changeType == '2' }}">
-      <view class="r-list-item">
+      <view class="r-list-item" bindtap="linkToDetail">
         <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
         <view class="cont">
           <view class="job lh-normal">

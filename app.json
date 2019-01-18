@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/scan/scan",
     "pages/navIndex/index",
+    "pages/scanEwm/ewm",
+    "pages/scanDetail/detail",
+    "pages/scan/scan",
     "pages/jobFairCompanyDetail/detail",
     "pages/jobFairSearch/search",
     "pages/jobFairDetail/detail",

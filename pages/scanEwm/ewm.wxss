@@ -1,0 +1,69 @@
+.e-ewm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ewm-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ewm-box .header {
+  width: 100%;
+  padding: 50rpx 0;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  color: #fff;
+  border-radius: 10rpx 10rpx 0 0;
+  background-color: #618FEB;
+  position: relative;
+}
+
+.lf-circle,
+.rt-circle {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background-color: #F3F4F8;
+  position: absolute;
+  bottom: -20rpx;
+}
+.lf-circle {
+  left: -20rpx;
+}
+.rt-circle {
+  right: -20rpx;
+}
+
+.ewm-box .header .title {
+  margin-bottom: 12rpx;
+  font-size: 40rpx;
+}
+.ewm-box .header .tips {
+  font-size: 28rpx;
+}
+.ewm-box .conts {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50rpx 145rpx 155rpx;
+  border-radius: 0 0 10rpx 10rpx;
+  background-color: #fff;
+}
+.ewm-box .conts .tips {
+  margin-bottom: 70rpx;
+  font-size: 26rpx;
+  color: #132D5F;
+}
+.ewm-box .conts .ewm {
+  width: 260rpx;
+  height: 260rpx;
+}

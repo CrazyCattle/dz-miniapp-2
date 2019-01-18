@@ -10,7 +10,7 @@
 
   <view class="fair-list">
     <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower">
-      <view class="row">
+      <view class="row" bindtap="linkToDetail">
         <view class="banner">
           <image class="img" src="../../images/index/banner.png"></image>
           <view class="title">福建师范大学模拟视频招聘会（福州）</view>

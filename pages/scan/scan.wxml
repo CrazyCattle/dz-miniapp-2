@@ -15,6 +15,6 @@
     <image class="img ewm" src="../../images/ewm.png"></image>
   </view>
   <view class="scan-box">
-    <image class="img scan" src="../../images/scan.png"></image>
+    <image bindtap="linkToScandetail" class="img scan" src="../../images/scan.png"></image>
   </view>
 </view>

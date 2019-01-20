@@ -252,7 +252,7 @@
   width: 0;
   height: 0;
   border: 8rpx solid transparent;
-  border-top-color: #f3f4f8;
+  border-top-color: #fff;
   top: -9rpx;
   left: 50%;
   transform: translate(-50%, 0);

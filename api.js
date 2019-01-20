@@ -1,6 +1,6 @@
-// const basicUrl = "https://napi.dazhao100.cn/api";
+const basicUrl = "https://napi.dazhao100.cn/api";
 // const basicUrl = "http://dznewbt.naeer.com/api/";
-const basicUrl = "http://api.dznewbt102.com/api/";
+// const basicUrl = "http://api.dznewbt102.com/api/";
 
 module.exports = {
   judgeStu: `${basicUrl}/judgeStu`,//判断微信用户是否存在

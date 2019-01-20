@@ -9,7 +9,7 @@
 .banner-box {
   box-sizing: border-box;
   height: 454rpx;
-  padding: 20rpx;
+  padding: 40rpx;
 }
 .banner-box .banner,
 .banner-box .banner .img {

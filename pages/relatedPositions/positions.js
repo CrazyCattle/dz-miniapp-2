@@ -20,6 +20,7 @@ Page({
     positionType: '职位类别',
 
     workType: [
+      { id: '-1', name: '全部' },
       { id: '1', name: '全职' },
       { id: '2', name: '实习' }
     ],
@@ -42,8 +43,8 @@ Page({
     jobCategoryId: '',
     cityTXT: '',
     educTXT: '',
-    workTypeTxt: '全职',
-    workTypeId: 1,
+    workTypeTxt: '全部',
+    workTypeId: -1,
 
     active: 0,
     scrollTop: 0,

@@ -1,86 +1,60 @@
 <view class="fair-box">
-  <view class="fair-filter">
-    <image class="search-icon" src="../../images/search.png"></image>
-    <input type="text"
-      class="search-ipt"
-      placeholder-class='placeholder'
-      placeholder='输入学校名称或招聘会名称'>
-    </input>
+  <view class="fair-filter--box">
+    <view class="fair-filter">
+      <image class="search-icon" src="../../images/search.png"></image>
+      <input type="text"
+        class="search-ipt"
+        placeholder-class='placeholder'
+        bindconfirm="searchKeyword"
+        placeholder='输入学校名称或招聘会名称'>
+      </input>
+    </view>
   </view>
 
   <view class="fair-list">
     <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower">
-      <view class="row"
-        wx:for="{{ list }}"
-        data-id="{{ item.id }}"
-        bindtap="linkToDetail">
-        <view class="banner">
-          <image class="img" src="{{ item.bannerPath?item.bannerPath:'../../images/index/banner.png' }}"></image>
-          <view class="title">{{ item.name }}</view>
+      <view class="fair-list--box">
+        <view class="row"
+          wx:for="{{ list }}"
+          data-id="{{ item.id }}"
+          bindtap="linkToDetail">
+          <view class="banner">
+            <image class="img" src="{{ item.bannerPath?item.bannerPath:'../../images/index/banner.png' }}"></image>
+            <view class="title">{{ item.name }}</view>
+          </view>
+          <view class="conts bg-f">
+            <view class="item" wx:if="{{ item.schoolname }}">
+              <view class="tit">
+                <text>举</text>
+                <text>办</text>
+                <text>大</text>
+                <text>学：</text>
+              </view>
+              <text class="name">{{ item.schoolname }}</text>
+            </view>
+            <view class="item" wx:if="{{ item.typename }}">
+              <view class="tit">
+                <text>招</text>
+                <text>聘</text>
+                <text>会</text>
+                <text>形</text>
+                <text>式：</text>
+              </view>
+              <text class="name">{{ item.typename }}</text>
+            </view>
+            <view class="item" wx:if="{{ item.startTime }}">
+              <view class="tit">
+                <text>召</text>
+                <text>开</text>
+                <text>时</text>
+                <text>间：</text>
+              </view>
+              <text class="name">{{ item.startTime }}</text>
+            </view>
+          </view>
         </view>
-        <view class="conts bg-f">
-          <view class="item" wx:if="{{ item.schoolname }}">
-            <text class="tit">举办大学：</text>
-            <text class="name">{{ item.schoolname }}</text>
-          </view>
-          <view class="item" wx:if="{{ item.typename }}">
-            <text class="tit">招聘会形式：</text>
-            <text class="name">{{ item.typename }}</text>
-          </view>
-          <view class="item" wx:if="{{ item.startTime }}">
-            <text class="tit">召开时间：</text>
-            <text class="name">{{ item.startTime }}</text>
-          </view>
-        </view>
+        <loading wx:if="{{ showLoading }}"></loading>
       </view>
-      <!-- <view class="row">
-        <view class="banner">
-          <image class="img" src="../../images/index/banner.png"></image>
-          <view class="title">福建师范大学模拟视频招聘会（福州）</view>
-        </view>
-        <view class="conts bg-f">
-          <view class="item">
-            <text class="tit">举办大学：</text>
-            <text class="name">华中科技大学</text>
-          </view>
-          <view class="item">
-            <text class="tit">招聘会形式：</text>
-            <text class="name">网络招聘会</text>
-          </view>
-          <view class="item">
-            <text class="tit">举办地点：</text>
-            <text class="name">xx区xx位置</text>
-          </view>
-          <view class="item">
-            <text class="tit">召开时间：</text>
-            <text class="name">网络招聘会</text>
-          </view>
-        </view>
-      </view>
-      <view class="row">
-        <view class="banner">
-          <image class="img" src="../../images/index/banner.png"></image>
-          <view class="title">福建师范大学模拟视频招聘会（福州）</view>
-        </view>
-        <view class="conts bg-f">
-          <view class="item">
-            <text class="tit">举办大学：</text>
-            <text class="name">华中科技大学</text>
-          </view>
-          <view class="item">
-            <text class="tit">招聘会形式：</text>
-            <text class="name">网络招聘会</text>
-          </view>
-          <view class="item">
-            <text class="tit">举办地点：</text>
-            <text class="name">xx区xx位置</text>
-          </view>
-          <view class="item">
-            <text class="tit">召开时间：</text>
-            <text class="name">网络招聘会</text>
-          </view>
-        </view>
-      </view> -->
     </scroll-view>
   </view>
 </view>

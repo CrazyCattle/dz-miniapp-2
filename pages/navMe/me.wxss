@@ -146,7 +146,7 @@
   position: absolute;
   width: 0;
   height: 0;
-  left: -9rpx;
+  left: -10rpx;
   top: 50%;
   transform: translateY(-50%);
   border: 8rpx solid transparent;

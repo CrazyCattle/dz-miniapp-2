@@ -5,12 +5,15 @@ import {
 
 const app =getApp()
 
+const WxParse = require('../../wxParse/wxParse.js');
+
 Page({
   data: {
     id: '',
     changeType: '1',
     details: '',
     companyNums: 0,
+    contDetails: '',
     companyList: []
   },
   exchange (e) {
@@ -38,8 +41,10 @@ Page({
         console.log(res)
         if (res.data.error == 0) {
           this.setData({
-            details: res.data.listjson
+            details: res.data.listjson,
+            contDetails: res.data.listjson.detail
           })
+          WxParse.wxParse('article1', 'html', this.data.contDetails, this, 5);
         }
       }
     })

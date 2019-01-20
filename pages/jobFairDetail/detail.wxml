@@ -1,3 +1,4 @@
+<import src="../../wxParse/wxParse.wxml" />
 <view class="detail">
   <view class="banner-box mb20 bg-f">
     <view class="banner">
@@ -41,9 +42,10 @@
       <view class="row bg-f"  wx:if="{{ changeType == '1' }}">
         <view class="title">招聘会详情</view>
         <view class="conts">
-          <text class="jobfair-detail">
-            {{ details.detail }}
-          </text>
+          <view class="jobfair-detail wxParse">
+            <!-- {{ details.detail }} -->
+            <template is="wxParse" data="{{wxParseData:article1.nodes}}" />
+          </view>
         </view>
       </view>
       <view class="bg-f" wx:if="{{ changeType == '2' }}">

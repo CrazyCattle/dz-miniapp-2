@@ -311,7 +311,7 @@
   box-sizing: border-box;
 }
 .r-list-item .cont .job {
-  max-width: 350rpx;
+  max-width: 520rpx;
   display: flex;
   align-items: center;
   font-family: 'PingFangSC-Semibold';

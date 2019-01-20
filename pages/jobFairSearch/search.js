@@ -1,5 +1,5 @@
 import {
-  getPositionList,
+  getZphCompanyList,
   getZPType,
   getPositionType
 } from '../../api'
@@ -10,9 +10,11 @@ import {
 const app = getApp()
 Page({
   data: {
+    id: '',
 
     positionTxt: '行业类别',
-    positionType: '职位类别',
+    positionType: '职位性质',
+    keyword: '',
 
     workType: [
       { id: '1', name: '全职' },
@@ -37,8 +39,6 @@ Page({
     jobCategoryId: '',
     cityTXT: '',
     educTXT: '',
-    // workTypeTxt: '全职',
-    // workTypeId: 1,
 
     active: 0,
     scrollTop: 0,
@@ -63,6 +63,13 @@ Page({
     const id = e.currentTarget.dataset.id
     wx.navigateTo({
       url: `../jobDetail/detail?id=${id}`
+    })
+  },
+
+  linkToDetail(e) {
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `../jobFairCompanyDetail/detail?id=${id}`
     })
   },
 
@@ -95,6 +102,19 @@ Page({
       educTXT: txt
     })
     this.reGetJobData()
+  },
+
+  searchKeyword (e) {
+    let keyword = e.detail.value.trim()
+    if (keyword != this.data.keyword) {
+      this.setData({
+        keyword: keyword,
+        canLoadingMore: true,
+        jobList: [],
+        curPage: 1
+      })
+      this.getJobData()
+    }
   },
   // 切换职位类型过滤
   // chooseworkType(e) {
@@ -172,11 +192,11 @@ Page({
     let _self = this
     if (this.data.canLoadingMore) {
       wx.request({
-        url: `${getPositionList}`,
+        url: `${getZphCompanyList}`,
         data: {
           keyword: this.data.keyword,
           industry: this.data.industryTxt,
-          jobCategoryId1: this.data.jobCategoryId,
+          id: this.data.id,
           degree: this.data.educTXT,
           // workType: this.data.workTypeId,
           // city_id: this.data.curCityId,
@@ -204,6 +224,10 @@ Page({
             _self.setData({
               showLoading: false
             })
+          } else {
+            _self.setData({
+              showLoading: false
+            })
           }
         }
       })
@@ -215,6 +239,9 @@ Page({
   },
 
   onLoad: function (options) {
+    this.setData({
+      id: options.id
+    })
     this.getIndustryTypeFun() // 获取招聘单位类型
     this.getPosiType() //获取职位类别
 

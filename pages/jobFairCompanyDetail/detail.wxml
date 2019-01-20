@@ -8,7 +8,7 @@
       <image class="internet" src="../../images/internet.png"></image>{{list.industry}}
     </view>
     <view class="range">
-      <image class="zwh" src="../../images/zwh-icon.png"></image>A10
+      <image class="zwh" src="../../images/zwh-icon.png"></image>{{ list.place_num }}
       <image class="xz" src="../../images/xz-icon.png"></image>{{list.companyType}}
       <image class="gm" src="../../images/gm-icon.png"></image>{{list.peoples}}
     </view>

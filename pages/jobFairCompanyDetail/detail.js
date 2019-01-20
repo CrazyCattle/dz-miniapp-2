@@ -211,8 +211,8 @@ Page({
     if (options.scene) {
       id = decodeURIComponent(options.scene)
     } else {
-      // id = options.id
-      id = '82928'
+      id = options.id
+      // id = '82928'
     }
     this.setData({
       companyId: id

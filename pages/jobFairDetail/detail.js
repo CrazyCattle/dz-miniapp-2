@@ -7,6 +7,7 @@ const app =getApp()
 
 Page({
   data: {
+    id: '',
     changeType: '1',
     details: '',
     companyNums: 0,
@@ -20,12 +21,13 @@ Page({
   },
   linkJobList () {
     wx.navigateTo({
-      url: '../jobFairSearch/search'
+      url: `../jobFairSearch/search?id=${this.data.id}`
     })
   },
-  linkToDetail () {
+  linkToDetail (e) {
+    let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../jobFairCompanyDetail/detail'
+      url: `../jobFairCompanyDetail/detail?id=${id}`
     })
   },
   getZplDetail (id) {
@@ -63,6 +65,7 @@ Page({
   },
   onLoad: function (options) {
     let id = options.id
+    this.setData({ id })
     this.getZplDetail(id)
     this.getZplCompanyList(id)
   },

@@ -12,66 +12,68 @@
       <text class="item {{ changeType == '2'?'active':'' }}" bindtap="exchange" data-type="2">企业列表</text>
     </view>
 
-    <view class="row mb20 bg-f" wx:if="{{ changeType == '1' }}">
-      <view class="title">招聘会信息</view>
-      <view class="conts">
-        <view class="item" wx:if="{{ details.schoolname }}">
-          <text class="tit">举办大学：</text>
-          <text class="name">{{ details.schoolname }}</text>
-        </view>
-        <view class="item" wx:if="{{ details.endTime }}">
-          <text class="tit">招聘会形式：</text>
-          <text class="name">{{ details.name }}</text>
-        </view>
-        <view class="item" wx:if="{{ details.place_name }}">
-          <text class="tit">举办地点：</text>
-          <text class="name">{{ details.place_name }}</text>
-        </view>
-        <view class="item" wx:if="{{ details.startTime }}">
-          <text class="tit">召开时间：</text>
-          <text class="name">{{ details.startTime }}</text>
-        </view>
-        <view class="item" wx:if="{{ details.endTime }}">
-          <text class="tit">结束时间：</text>
-          <text class="name">{{ details.endTime }}</text>
-        </view>
-      </view>
-    </view>
-    <view class="row bg-f"  wx:if="{{ changeType == '1' }}">
-      <view class="title">招聘会详情</view>
-      <view class="conts">
-        <text class="jobfair-detail">
-          {{ details.detail }}
-        </text>
-      </view>
-    </view>
-
-    <view class="bg-f" wx:if="{{ changeType == '2' }}">
-      <view
-        class="r-list-item"
-        bindtap="linkToDetail"
-        wx:for="{{ companyList }}"
-        :key="{{ item.id }}"
-      >
-        <image class="pic" src="{{ item.companyLogo }}"></image>
-        <view class="cont">
-          <view class="job lh-normal">
-            <view class="order">{{ item.place_num }}</view>{{ item.companyShort }}
+    <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower">
+      <view class="row mb20 bg-f" wx:if="{{ changeType == '1' }}">
+        <view class="title">招聘会信息</view>
+        <view class="conts">
+          <view class="item" wx:if="{{ details.schoolname }}">
+            <text class="tit">举办大学：</text>
+            <text class="name">{{ details.schoolname }}</text>
           </view>
-          <view class="company">[{{ item.jobnum }}个]
-            <block>{{ item.jobnames }}</block>
+          <view class="item" wx:if="{{ details.endTime }}">
+            <text class="tit">招聘会形式：</text>
+            <text class="name">{{ details.name }}</text>
           </view>
-          <view class="s-desc"> 
-            <text class="infor lh-normal">{{ item.industry }} | {{ item.province }}{{ item.city }}</text>
+          <view class="item" wx:if="{{ details.place_name }}">
+            <text class="tit">举办地点：</text>
+            <text class="name">{{ details.place_name }}</text>
+          </view>
+          <view class="item" wx:if="{{ details.startTime }}">
+            <text class="tit">召开时间：</text>
+            <text class="name">{{ details.startTime }}</text>
+          </view>
+          <view class="item" wx:if="{{ details.endTime }}">
+            <text class="tit">结束时间：</text>
+            <text class="name">{{ details.endTime }}</text>
           </view>
         </view>
       </view>
-      <view class="more" wx:if="{{ companyNums > 10 }}" bindtap="linkJobList">
-        查看更多
-        <view class="arrow-icon">
-          <view class="inner"></view>
-        </view> 
+      <view class="row bg-f"  wx:if="{{ changeType == '1' }}">
+        <view class="title">招聘会详情</view>
+        <view class="conts">
+          <text class="jobfair-detail">
+            {{ details.detail }}
+          </text>
+        </view>
       </view>
-    </view>
+      <view class="bg-f" wx:if="{{ changeType == '2' }}">
+        <view
+          class="r-list-item"
+          bindtap="linkToDetail"
+          wx:for="{{ companyList }}"
+          data-id="{{ item.id }}"
+          :key="{{ item.id }}"
+        >
+          <image class="pic" src="{{ item.companyLogo }}"></image>
+          <view class="cont">
+            <view class="job lh-normal">
+              <view class="order">{{ item.place_num }}</view>{{ item.companyShort }}
+            </view>
+            <view class="company">[{{ item.jobnum }}个]
+              <block>{{ item.jobnames }}</block>
+            </view>
+            <view class="s-desc"> 
+              <text class="infor lh-normal">{{ item.industry }} | {{ item.province }}{{ item.city }}</text>
+            </view>
+          </view>
+        </view>
+        <view class="more" wx:if="{{ companyNums > 10 }}" bindtap="linkJobList">
+          查看更多
+          <view class="arrow-icon">
+            <view class="inner"></view>
+          </view> 
+        </view>
+      </view>
+    </scroll-view>
   </view>
 </view>

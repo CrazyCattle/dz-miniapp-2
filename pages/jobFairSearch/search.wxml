@@ -26,6 +26,7 @@
       <view class="search-tips">
         <input type="text"
           class="ipt"
+          bindconfirm="searchKeyword"
           placeholder='请输入公司名称'
           placeholder-style='placeholder'>
         </input>
@@ -105,115 +106,22 @@
     bindscrolltolower="lower"
     scroll-top="{{scrollTop}}">
     <view class="r-list">
-      <view class="r-list-item">
-        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
+      <view class="r-list-item"
+        wx:for="{{ jobList }}"
+        :key="{{ item.id }}"
+        bindtap="linkToDetail"
+        data-id="{{ item.id }}"
+      >
+        <image class="pic" src="{{ item.companyLogo }}"></image>
         <view class="cont">
           <view class="job lh-normal">
-            <view class="order">A1</view>网眼软件
+            <view class="order">{{ item.place_num }}</view>{{ item.companyShort }}
           </view>
-          <view class="company">[2个]
-            <block> 海外渠道运营助理,品牌公关助理</block>
-          </view>
-          <view class="s-desc"> 
-            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
-          </view>
-        </view>
-      </view>
-      <view class="r-list-item">
-        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
-        <view class="cont">
-          <view class="job lh-normal">
-            <view class="order">A24</view>网眼软件
-          </view>
-          <view class="company">[2个]
-            <block>海外渠道运营助理,品牌公关助理</block>
+          <view class="company">[{{ item.jobnum }}个]
+            <block>{{ item.jobnames }}</block>
           </view>
           <view class="s-desc"> 
-            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
-          </view>
-        </view>
-      </view>
-      <view class="r-list-item">
-        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
-        <view class="cont">
-          <view class="job lh-normal">
-            <view class="order">A1</view>网眼软件
-          </view>
-          <view class="company">[2个]
-            <block> 海外渠道运营助理,品牌公关助理</block>
-          </view>
-          <view class="s-desc"> 
-            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
-          </view>
-        </view>
-      </view>
-      <view class="r-list-item">
-        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
-        <view class="cont">
-          <view class="job lh-normal">
-            <view class="order">A24</view>网眼软件
-          </view>
-          <view class="company">[2个]
-            <block>海外渠道运营助理,品牌公关助理</block>
-          </view>
-          <view class="s-desc"> 
-            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
-          </view>
-        </view>
-      </view>
-      <view class="r-list-item">
-        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
-        <view class="cont">
-          <view class="job lh-normal">
-            <view class="order">A1</view>网眼软件
-          </view>
-          <view class="company">[2个]
-            <block> 海外渠道运营助理,品牌公关助理</block>
-          </view>
-          <view class="s-desc"> 
-            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
-          </view>
-        </view>
-      </view>
-      <view class="r-list-item">
-        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
-        <view class="cont">
-          <view class="job lh-normal">
-            <view class="order">A24</view>网眼软件
-          </view>
-          <view class="company">[2个]
-            <block>海外渠道运营助理,品牌公关助理</block>
-          </view>
-          <view class="s-desc"> 
-            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
-          </view>
-        </view>
-      </view>
-      <view class="r-list-item">
-        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
-        <view class="cont">
-          <view class="job lh-normal">
-            <view class="order">A1</view>网眼软件
-          </view>
-          <view class="company">[2个]
-            <block> 海外渠道运营助理,品牌公关助理</block>
-          </view>
-          <view class="s-desc"> 
-            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
-          </view>
-        </view>
-      </view>
-      <view class="r-list-item">
-        <image class="pic" src="http://yuncompany.bestsep.com//Uploads/icon/5c0929679c203.jpg"></image>
-        <view class="cont">
-          <view class="job lh-normal">
-            <view class="order">A24</view>网眼软件
-          </view>
-          <view class="company">[2个]
-            <block>海外渠道运营助理,品牌公关助理</block>
-          </view>
-          <view class="s-desc"> 
-            <text class="infor lh-normal">计算机软件 | 江苏南京</text>
+            <text class="infor lh-normal">{{ item.industry }} | {{ item.province }}{{ item.city }}</text>
           </view>
         </view>
       </view>

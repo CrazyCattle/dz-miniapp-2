@@ -90,4 +90,9 @@ module.exports = {
   registerhome: `${basicUrl}/registerhome`, // 手机号 注册用户，获取验证码
   getCheckoutShare: `${basicUrl}/getCheckoutShare`, // 领取分享课程  判断用户是否存在
   ShareResumesOne: `${basicUrl}/ShareResumesOne`, //  简历分享
+
+  ZphList: `${basicUrl}/ZphList`, // 招聘会->列表
+  getZphOne: `${basicUrl}/getZphOne`, // 招聘会->单个详情
+  getZphCompanyList: `${basicUrl}/getZphCompanyList`, // 招聘会->招聘会企业列表
+  ZphScanList: `${basicUrl}/ZphScanList`, // 招聘会->招聘会扫码登录页面
 }

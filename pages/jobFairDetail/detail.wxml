@@ -15,7 +15,7 @@
 
     <scroll-view scroll-y style="height: 100%;" bindscrolltolower="lower">
       <view class="row mb20 bg-f" wx:if="{{ changeType == '1' }}">
-        <view class="title">招聘会信息</view>
+        <view class="title">招聘会信息:</view>
         <view class="conts">
           <view class="item" wx:if="{{ details.schoolname }}">
             <text class="tit">举办大学：</text>
@@ -40,7 +40,7 @@
         </view>
       </view>
       <view class="row bg-f"  wx:if="{{ changeType == '1' }}">
-        <view class="title">招聘会详情</view>
+        <view class="title">招聘会详情:</view>
         <view class="conts">
           <view class="jobfair-detail wxParse">
             <!-- {{ details.detail }} -->

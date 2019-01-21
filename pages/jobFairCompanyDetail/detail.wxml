@@ -4,7 +4,7 @@
     <image class="logo" src="{{ list.companyLogo }}"></image>
     <view class="company-name">{{ list.companyShort }}</view>
     <view class="expection">
-      <image class="address" src="../../images/address.png"></image>{{list.city}}
+      <image class="address" src="../../images/address.png"></image>{{list.province}}{{list.city}}
       <image class="internet" src="../../images/internet.png"></image>{{list.industry}}
     </view>
     <view class="range">

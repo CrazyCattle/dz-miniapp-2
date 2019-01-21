@@ -1,7 +1,7 @@
 import {
   getCompanyOne,
   sendComCollect,
-  getPositionList
+  getZphPositionList
 } from '../../api'
 
 import {
@@ -18,6 +18,7 @@ const app = getApp()
 Page({
   data: {
     companyId: undefined,
+    id: '',
     showMask: false,
     collected: false,
     list: {},
@@ -55,10 +56,11 @@ Page({
     if (this.data.active == '2') {
       if (this.data.recruitList.length == 0) {
         wx.request({
-          url: `${getPositionList}`,
+          url: `${getZphPositionList}`,
           data: {
             p: 1,
             nums: 10,
+            id: this.data.id,
             company_id: this.data.companyId
           },
           method: 'GET',
@@ -215,7 +217,8 @@ Page({
       // id = '82928'
     }
     this.setData({
-      companyId: id
+      companyId: id,
+      id: options.zphId
     })
     this.getCompanyInformation(id)
   },

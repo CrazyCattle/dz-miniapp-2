@@ -91,6 +91,7 @@ module.exports = {
   getCheckoutShare: `${basicUrl}/getCheckoutShare`, // 领取分享课程  判断用户是否存在
   ShareResumesOne: `${basicUrl}/ShareResumesOne`, //  简历分享
 
+  getZphPositionList: `${basicUrl}/getZphPositionList`, //获取职位(相似职位接口+企业职位)
   ZphList: `${basicUrl}/ZphList`, // 招聘会->列表
   getZphOne: `${basicUrl}/getZphOne`, // 招聘会->单个详情
   getZphCompanyList: `${basicUrl}/getZphCompanyList`, // 招聘会->招聘会企业列表

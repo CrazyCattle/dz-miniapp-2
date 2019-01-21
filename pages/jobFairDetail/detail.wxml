@@ -23,7 +23,7 @@
           </view>
           <view class="item" wx:if="{{ details.endTime }}">
             <text class="tit">招聘会形式：</text>
-            <text class="name">{{ details.name }}</text>
+            <text class="name">{{ details.typename }}</text>
           </view>
           <view class="item" wx:if="{{ details.place_name }}">
             <text class="tit">举办地点：</text>
@@ -59,7 +59,7 @@
           <image class="pic" src="{{ item.companyLogo }}"></image>
           <view class="cont">
             <view class="job lh-normal">
-              <view class="order">{{ item.place_num }}</view>{{ item.companyShort }}
+              <view class="order" wx:if="{{ item.place_num }}">{{ item.place_num }}</view>{{ item.companyShort }}
             </view>
             <view class="company">[{{ item.jobnum }}个]
               <block>{{ item.jobnames }}</block>

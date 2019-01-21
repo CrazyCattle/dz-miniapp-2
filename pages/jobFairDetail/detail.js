@@ -30,7 +30,7 @@ Page({
   linkToDetail (e) {
     let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: `../jobFairCompanyDetail/detail?id=${id}`
+      url: `../jobFairCompanyDetail/detail?id=${id}&zphId=${this.data.id}`
     })
   },
   getZplDetail (id) {

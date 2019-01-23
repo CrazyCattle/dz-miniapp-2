@@ -12,6 +12,9 @@ Page({
     })
   },
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: options.title
+    })
     wx.request({
       url: `${getCClass}?class_id=${options.id}`,
       method: 'GET',

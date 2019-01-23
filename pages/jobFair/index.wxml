@@ -23,6 +23,16 @@
             <view class="title">{{ item.name }}</view>
           </view>
           <view class="conts bg-f">
+          <view class="item" wx:if="{{ item.place_name }}">
+              <view class="tit">
+                <text>招</text>
+                <text>聘</text>
+                <text>会</text>
+                <text>地</text>
+                <text>点：</text>
+              </view>
+              <text class="name">{{ item.place_name }}</text>
+            </view>
             <view class="item" wx:if="{{ item.schoolname }}">
               <view class="tit">
                 <text>举</text>

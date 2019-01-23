@@ -58,8 +58,10 @@ Page({
   },
   linkToMore (e) {
     const id = e.currentTarget.dataset.id
+    const txt = e.currentTarget.dataset.txt
+    console.log(txt)
     wx.navigateTo({
-      url: `../visualChild/vchild?id=${id}`
+      url: `../visualChild/vchild?id=${id}&title=${txt}`
     })
   },
   getBanner () {

@@ -44,6 +44,9 @@ Page({
             details: res.data.listjson,
             contDetails: res.data.listjson.detail
           })
+          wx.setNavigationBarTitle({
+            title: this.data.details.name
+          })
           WxParse.wxParse('article1', 'html', this.data.contDetails, this, 5);
         }
       }

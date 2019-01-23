@@ -51,6 +51,7 @@
       </view>
       <view class="more"
         bindtap='linkToMore'
+        data-txt="{{ item.class_name }}"
         data-id="{{ item.class_id }}"
         wx:if="{{ item.gtfour == 1 }}">
         查看更多

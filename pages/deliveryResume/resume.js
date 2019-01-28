@@ -11,6 +11,7 @@ import {
 const app = getApp()
 Page({
   data: {
+    zph: 0,
     hideSubmit: false,
     curShow: true,
     noResumeList: false,
@@ -53,6 +54,7 @@ Page({
           stu_id: app.globalData.student_id,
           token: app.globalData.token,
           resumes_id: this.data.chooseId,
+          is_zhaopinhui: this.data.zph == '0'?0:1,
           position_id: this.data.jobId
         },
         header: {
@@ -184,8 +186,10 @@ Page({
   },
   onLoad: function (options) {
     this.setData({
-      jobId: options.id
+      jobId: options.id,
+      zph: options.zph
     })
+    console.log(this.data.zph)
     if (!!app.globalData.student_id) {
       this.setData({
         student_id: app.globalData.student_id

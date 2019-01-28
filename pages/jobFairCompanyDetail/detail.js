@@ -41,12 +41,12 @@ Page({
     // }
     const id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: `../jobDetail/detail?id=${id}`
+      url: `../jobDetail/detail?id=${id}&zph=1`
     })
   },
   linkJobList() {
     wx.navigateTo({
-      url: `../companyJobList/list?id=${this.data.companyId}`
+      url: `../companyJobList/list?id=${this.data.companyId}&zph=1`
     })
   },
   tabInfor(e) {

@@ -21,6 +21,11 @@ const WxParse = require('../../wxParse/wxParse.js');
 
 Page({
   data: {
+    zph: 0,
+
+    jobDescript: '',
+    jobRequest: '',
+
     jobId: undefined,
     collected: false,
     work_name: '',
@@ -152,7 +157,7 @@ Page({
   delivery() {
     if (getUserState()) {
       wx.navigateTo({
-        url: `../deliveryResume/resume?id=${this.data.jobId}`
+        url: `../deliveryResume/resume?id=${this.data.jobId}&zph=${this.data.zph}`
       })
     } else {
       navToLogin()
@@ -223,6 +228,10 @@ Page({
                 })
                 WxParse.wxParse('article2', 'html', jobDescript, _self, 5);
               }
+              this.setData({
+                jobRequest,
+                jobDescript
+              })
               resolve(this.data.list.id_job)
             }
           }
@@ -248,6 +257,10 @@ Page({
   },
   onLoad: function (options) {
     let id
+    console.log(options.zph)
+    this.setData({
+      zph: options.zph?1:0
+    })
     if (options.scene) {
       id = decodeURIComponent(options.scene)
     } else {

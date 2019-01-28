@@ -37,15 +37,17 @@
   <view class="j-row mt20 bg-f">
     <view class="inner-row" wx:if="{{ hasDesc }}">
       <view class="tit">职位描述：</view>
-      <view class="job-desc wxParse">
-        <template is="wxParse" data="{{wxParseData:article1.nodes}}" />
-      </view>
+      <text class="job-desc wxParse">{{ jobDescript }}
+        <!-- <template is="wxParse" data="{{wxParseData:article1.nodes}}" /> -->
+        <!-- <template is="wxParse" data="{{wxParseData:article2.nodes}}" /> -->
+      </text>
     </view>
     <view class="inner-row" wx:if="{{ hasReq }}">
       <view class="tit">任职要求：</view>
-      <view class="job-desc wxParse">
-        <template is="wxParse" data="{{wxParseData:article2.nodes}}" />
-      </view>
+      <text class="job-desc wxParse">{{ jobRequest }}
+        <!-- <template is="wxParse" data="{{wxParseData:article2.nodes}}" /> -->
+        <!-- <template is="wxParse" data="{{wxParseData:article1.nodes}}" /> -->
+      </text>
     </view>
   </view>
 

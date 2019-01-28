@@ -106,7 +106,7 @@
   font-size: 24rpx;
   color: #848ca1;
   letter-spacing: 0.04rpx;
-  line-height: 50rpx;
+  /* line-height: 50rpx; */
 }
 .inner-row .location {
   display: flex;

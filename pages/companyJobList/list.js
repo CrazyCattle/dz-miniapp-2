@@ -13,6 +13,7 @@ import {
 Page({
   data: {
     id: undefined,
+    zph: 0,
     curpage: 1,
     canLoadMore: true,
     showLoading: false,
@@ -25,7 +26,7 @@ Page({
     if (getUserState()) {
       const id = e.currentTarget.dataset.id
       wx.navigateTo({
-        url: `../jobDetail/detail?id=${id}`
+        url: `../jobDetail/detail?id=${id}&zph=${this.data.zph}`
       })
     } else {
       navToLogin()
@@ -71,7 +72,8 @@ Page({
   },
   onLoad: function (options) {
     let id = options.id
-    this.setData({ id })
+    let zph = options.zph?1:0
+    this.setData({ id, zph })
     this.getData()
   },
   lower(e) {

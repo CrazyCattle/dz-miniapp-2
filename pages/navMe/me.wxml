@@ -50,37 +50,59 @@
 
   <view class="me-setting bg-f">
     <view class="me-row" bindtap='linkResumeCenter'>
-      <view class="icon">
-        <image class="img resume" src="../../images/me/icon_1.png"></image>
+      <view class="me-row__box">
+        <view class="icon">
+          <image class="img resume" src="../../images/me/icon_1.png"></image>
+        </view>
+        我的简历
       </view>
-      我的简历
+      <text class="row-tips primary">智能简历</text>
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap='linkExpection'>
-      <view class="icon">
-        <image class="img expect" src="../../images/me/icon_2.png"></image>
+      <view class="me-row__box">
+        <view class="icon">
+          <image class="img expect" src="../../images/me/icon_2.png"></image>
+        </view>
+        求职期望
       </view>
-      求职期望
+      <view class="arrow-icon">
+        <view class="inner"></view>
+      </view>
+    </view>
+    <view class="me-row" bindtap='linkExpection'>
+      <view class="me-row__box">
+        <view class="icon">
+          <image class="img invi" src="../../images/me/icon_8.png"></image>
+        </view>
+        邀请函
+      </view>
+      <text class="row-tips primary">马上拿Offer</text>
+      <!-- <text class="row-tips warning">NEW</text> -->
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap='linkCollectFolder'>
-      <view class="icon">
-        <image class="img collect" src="../../images/me/icon_3.png"></image>
+      <view class="me-row__box">
+        <view class="icon">
+          <image class="img collect" src="../../images/me/icon_3.png"></image>
+        </view>
+        收藏夹
       </view>
-      收藏夹
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap="linkCourseCollect">
-      <view class="icon">
-        <image class="img course" src="../../images/me/icon_4.png"></image>
+      <view class="me-row__box">
+        <view class="icon">
+          <image class="img course" src="../../images/me/icon_4.png"></image>
+        </view>
+        我的课程
       </view>
-      我的课程
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
@@ -101,28 +123,34 @@
       </view>
     </view> -->
     <view class="me-row" bindtap="editPwd">
-      <view class="icon">
-        <image class="img pwd" src="../../images/me/icon_5.png"></image>
+      <view class="me-row__box">
+        <view class="icon">
+          <image class="img pwd" src="../../images/me/icon_5.png"></image>
+        </view>
+        修改密码
       </view>
-      修改密码
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap='linkSuggestion'>
-      <view class="icon">
-        <image class="img infor" src="../../images/me/icon_6.png"></image>
+      <view class="me-row__box">
+        <view class="icon">
+          <image class="img infor" src="../../images/me/icon_6.png"></image>
+        </view>
+        建议反馈
       </view>
-      建议反馈
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>
     </view>
     <view class="me-row" bindtap="loginOut">
-      <view class="icon">
-        <image class="img out" src="../../images/me/icon_7.png"></image>
+      <view class="me-row__box">
+        <view class="icon">
+          <image class="img out" src="../../images/me/icon_7.png"></image>
+        </view>
+        退出登录
       </view>
-      退出登录
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>

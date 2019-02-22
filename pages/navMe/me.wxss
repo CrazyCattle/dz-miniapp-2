@@ -82,7 +82,9 @@
 .me-row {
   display: flex;
   height: 88rpx;
+  padding-right: 60rpx;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1rpx solid #e6e9f3;
   font-size: 26rpx;
   color: #313148;
@@ -91,6 +93,25 @@
 .me-row:last-child {
   border-bottom: none;
 }
+.me-row .me-row__box {
+  display: flex;
+  align-items: center;
+}
+.me-row .row-tips {
+  height: 36rpx;
+  padding: 0 16rpx;
+  border-radius: 30rpx;
+  line-height: 36rpx;
+  color: #fff;
+  font-size: 20rpx;
+}
+.me-row .row-tips.primary {
+  background-color: #618FEB;
+}
+.me-row .row-tips.warning {
+  background-color: #FF5C5C;
+}
+
 .me-row .icon {
   width: 40rpx;
   height: 40rpx;
@@ -130,7 +151,10 @@
   width: 32rpx;
   height: 28rpx;
 }
-
+.me-row .invi {
+  width: 32rpx;
+  height: 29rpx;
+}
 .arrow-icon {
   position: absolute;
   right: 28rpx;

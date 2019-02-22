@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/navMe/me",
     "pages/navIndex/index",
     "pages/scanEwm/ewm",
     "pages/scanDetail/detail",
@@ -9,7 +10,6 @@
     "pages/jobFairDetail/detail",
     "pages/jobFair/index",
     "pages/visual/visual",
-    "pages/navMe/me",
     "pages/navCourse/course",
     "pages/navInformation/infor",
     "pages/shareRegister/register",

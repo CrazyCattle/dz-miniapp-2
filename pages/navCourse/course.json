@@ -2,7 +2,7 @@
   "navigationBarTitleText": "课程",
   "navigationBarBackgroundColor": "#fff",
   "navigationBarTextStyle": "black",
-  "onReachBottomDistance": "0",
+  "onReachBottomDistance": 0,
   "usingComponents": {
     "loading": "/components/loading/loading",
     "tip": "/components/tips/tip",

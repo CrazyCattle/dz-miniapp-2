@@ -72,15 +72,15 @@
         <view class="inner"></view>
       </view>
     </view>
-    <view class="me-row" bindtap='linkExpection'>
+    <view class="me-row" bindtap='linkInvi'>
       <view class="me-row__box">
         <view class="icon">
           <image class="img invi" src="../../images/me/icon_8.png"></image>
         </view>
         邀请函
       </view>
-      <text class="row-tips primary">马上拿Offer</text>
-      <!-- <text class="row-tips warning">NEW</text> -->
+      <!-- <text class="row-tips primary">马上拿Offer</text> -->
+      <text class="row-tips warning">NEW</text>
       <view class="arrow-icon">
         <view class="inner"></view>
       </view>

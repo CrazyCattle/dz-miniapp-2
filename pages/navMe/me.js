@@ -69,6 +69,15 @@ Page({
       navToLogin()
     }
   },
+  linkInvi () {
+    if (getUserState()) {
+      wx.navigateTo({
+        url: '../invitation/invi'
+      })
+    } else {
+      navToLogin()
+    }
+  },
   linkSend() {
     if (getUserState()) {
       wx.navigateTo({

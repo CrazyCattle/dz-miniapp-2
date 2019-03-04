@@ -1,0 +1,36 @@
+<view class="invi-box">
+  <view class="scrollBox">
+    <view class="list" wx:if="{{ mydropinbox.length >= 1 }}">
+      <!-- <view class="item"
+        data-id="{{ item.id }}"
+        bindtap="linkToDropDetail"> -->
+      <view class="item">
+        <view class="img__box">
+          <image class="img" src="http://yuncompany.bestsep.com//Uploads/icon/com_1550471868560.png"></image>
+        </view>
+        <view class="conts">
+          <view class="conts__top">
+            <text class="tit ellipsis">企业服务部实习生</text>
+            <text class="status status-1">7k-121k</text>
+          </view>
+          <view class="conts__bottom">
+            <text class="company">上海脚步网络科技有限公司</text>
+            <text class="time">2016-12-30</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="details">
+      <view class="title">邀请函</view>
+      <view class="conts">
+        我们公司觉得您的简历很符合“产品经理”一职，诚挚邀请您投递该职位！
+      </view>
+    </view>
+
+    <view class="btn__box">
+      <view class="btn btn_accept">接受</view>
+      <view class="btn btn_refuse">拒绝</view>
+    </view>
+  </view>
+</view>

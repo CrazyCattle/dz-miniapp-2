@@ -1,0 +1,47 @@
+<view class="invi-box">
+  <view class="switch">
+    <view class="txt">开启AI推荐，增加三倍工作机会</view>
+    <switch bindchange="switch2Change" color="#618FEB" checked  />
+  </view>
+  <view class="scrollBox">
+    <scroll-view class="scroll"
+      scroll-y style="height: 100%;"
+      bindscrolltolower="lower"
+      scroll-top="{{scrollTop}}">
+      <view class="list" wx:if="{{ mydropinbox.length >= 1 }}">
+        <!-- <view class="item"
+          data-id="{{ item.id }}"
+          bindtap="linkToDropDetail"> -->
+        <view class="item"
+          wx:for="{{ mydropinbox }}"
+          wx:key="key"
+          bindtap="linkToDropDetail"
+          wx:for-index="index">
+          <view class="img__box">
+            <image class="img" src="http://yuncompany.bestsep.com//Uploads/icon/com_1550471868560.png"></image>
+            <view class="tips"></view>
+          </view>
+          <view class="conts">
+            <view class="conts__top">
+              <text class="tit ellipsis">{{ item.title }}</text>
+              <text class="status status-1">{{ item.salary }}</text>
+            </view>
+            <view class="conts__bottom">
+              <text class="company">{{ item.name }}</text>
+              <text class="time">{{ item.time }}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- <tip content=""></tip> -->
+      <view class="blank_tips" style="{{height?'height:100%':''}}">
+        <image class="tip-icon" src="../../images/tips.png"></image>
+        <view class="tip">
+          <text>暂无企业邀请记录</text>
+          <text>你可以完善简历信息，填写求职意</text>
+          <text>向，并开启上方AI推荐功能</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/navMe/me",
     "pages/navIndex/index",
+    "pages/navMe/me",
+    "pages/invitation/invi",
+    "pages/inviDetails/details",
     "pages/scanEwm/ewm",
     "pages/scanDetail/detail",
     "pages/scan/scan",

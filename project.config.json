@@ -13,6 +13,8 @@
 	"libVersion": "2.2.2",
 	"appid": "wxaddb57821238bdcb",
 	"projectname": "dz-miniapp",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
